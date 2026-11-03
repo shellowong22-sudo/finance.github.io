@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基础 90 天香港金融英语口语学习程序：单词、句型、文法、对话、听力、阅读、口语练习">
 <title>90天香港金融英语</title>
-<meta name="app-ver" content="37755c0805">
+<meta name="app-ver" content="e07efc3458">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -3071,7 +3071,15 @@ function getDownloads(){
   if(!window.claude||typeof window.claude.use!=='function')return Promise.resolve(null);
   return Promise.race([window.claude.use('downloads').catch(function(){return null}),new Promise(function(r){setTimeout(function(){r(null)},3000)})]);
 }
+function shareFile(name,data,mime){
+  try{if(window.claude||!isIOS()||!navigator.share||!navigator.canShare||typeof File!=='function')return null;
+    const f=new File([data instanceof Blob?data:new Blob([data],{type:mime||'application/octet-stream'})],name,{type:mime||'application/octet-stream'});
+    if(!navigator.canShare({files:[f]}))return null;
+    return navigator.share({files:[f],title:name}).then(function(){return 'saved'},function(e){return e&&e.name==='AbortError'?'declined':directDownload(name,data,mime)});
+  }catch(e){return null}
+}
 function saveFile(name,data,mime){
+  const sh=shareFile(name,data,mime);if(sh)return sh;
   return getDownloads().then(function(dl){
     if(dl)return dl.save({filename:name,data:data}).then(function(){return 'saved'},function(e){if(e&&e.code==='declined')return 'declined';return directDownload(name,data,mime)});
     return directDownload(name,data,mime);
@@ -3649,7 +3657,7 @@ function vMe(){
    '<div class="row"><div class="txt">云端同步进度</div>'+(Cloud.status==='on'?yes:'<span class="pill grey">未启用</span>')+'</div>'+
   '</div><p class="small muted" style="margin-bottom:0">建议用电脑或手机上的 Chrome / Edge / Safari 直接打开离线版 HTML 文件：朗读、录音、语音识别都能使用。在嵌入式预览中，麦克风可能被浏览器禁止，这时朗读和其他功能仍可正常使用。</p></section>';
   /* 数据 */
-  h+='<section class="card"><h2 class="sec-h">进度备份</h2><p class="small muted" style="margin-top:0">进度会自动保存在本机浏览器里。换电脑、换浏览器或清理缓存前，请先导出备份文件，保存到你自己的电脑上。</p><div class="btns"><button class="btn jade" data-act="export">导出备份文件</button><button class="btn" data-act="copy-backup">复制备份代码</button><label class="btn" for="importFile" style="cursor:pointer">从文件导入</label><input type="file" id="importFile" accept=".json,application/json,text/plain" hidden></div>'+
+  h+='<section class="card"><h2 class="sec-h">进度备份</h2><p class="small muted" style="margin-top:0">进度会自动保存在这台设备上。建议每周导出一次备份文件；换手机、换浏览器或清理缓存前一定要先导出。iPhone 上点“导出备份文件”会弹出分享菜单，选“存储到‘文件’”保存到 iCloud 云盘；以后在新设备上用“导入备份文件”恢复。</p><div class="btns"><button class="btn jade" data-act="export">导出备份文件</button><button class="btn" data-act="copy-backup">复制备份代码</button><label class="btn" for="importFile" style="cursor:pointer">从文件导入</label><input type="file" id="importFile" accept=".json,application/json,text/plain" hidden></div>'+
    '<label class="f" for="importTxt">或者粘贴备份代码</label><textarea id="importTxt" placeholder="把复制的备份代码粘贴在这里"></textarea><div class="btns"><button class="btn" data-act="import-txt">导入粘贴的代码</button><button class="btn ghost" data-act="reset" style="color:var(--bad)">清空全部进度</button></div></section>';
   return h;
 }
