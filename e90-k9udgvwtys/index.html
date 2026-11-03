@@ -7,7 +7,7 @@
 <title>90天香港金融英语</title>
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#c8102e">
+<meta name="theme-color" content="#0f2747">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -16,89 +16,152 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <script>window.__PWA=true</script>
 <style>
-/* layout: one-column study planner — sticky day header, timetable timeline, section cards, bottom tab bar */
+/* 专业金融风：深海军蓝 + 金色点缀。手机单栏 + 底部导航；电脑宽屏左侧导航 */
 :root{
-  --bg:#eef3f3; --surface:#ffffff; --surface-2:#f6f9f9; --ink:#13232b; --muted:#5a6b73; --line:#d6e0e3;
-  --accent:#c8102e; --accent-ink:#ffffff; --accent-soft:#fbe4e7; --jade:#0d6b63; --jade-ink:#ffffff; --jade-soft:#e0f0ed;
-  --ok:#1b7f47; --ok-soft:#e2f3e8; --warn:#9a5b00; --warn-soft:#fbf0dc; --bad:#b3261e; --bad-soft:#fbe5e3;
+  --bg:#f3f4f7; --surface:#ffffff; --surface-2:#f7f8fb; --ink:#0e1a2b; --muted:#5d6879; --line:#e0e4eb;
+  --navy:#0f2747; --navy-2:#1b3f6e; --on-navy:#ffffff; --on-navy-muted:rgba(255,255,255,.72);
+  --jade:#1d4e89; --jade-ink:#ffffff; --jade-soft:#e8eef7;
+  --accent:#c8a24c; --accent-ink:#0e1a2b; --accent-soft:#f7f0dd; --accent-text:#8a6819;
+  --ok:#1d7a4a; --ok-soft:#e3f2e9; --warn:#985a00; --warn-soft:#fbf1de; --bad:#b3261e; --bad-soft:#fbe6e4;
   --font-display:Georgia,"Times New Roman","Noto Serif SC","Songti SC",serif;
   --font-body:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Segoe UI",Roboto,sans-serif;
-  --radius:14px; --shadow:0 1px 2px rgba(19,35,43,.06),0 4px 14px rgba(19,35,43,.05);
+  --radius:12px; --shadow:0 1px 2px rgba(14,26,43,.05),0 2px 8px rgba(14,26,43,.04);
+  --side:240px; --toph:52px;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0e1518; --surface:#162126; --surface-2:#1b282e; --ink:#e6eef0; --muted:#94a6ad; --line:#26363d;
-    --accent:#ff5b6f; --accent-ink:#1a0a0d; --accent-soft:#3a1c22; --jade:#57c5b6; --jade-ink:#06201c; --jade-soft:#17322f;
-    --ok:#5fd08f; --ok-soft:#173326; --warn:#f0b45c; --warn-soft:#33270f; --bad:#ff8a80; --bad-soft:#3a1d1b;
-    --shadow:0 1px 2px rgba(0,0,0,.3);
+    --bg:#0a111d; --surface:#111b2b; --surface-2:#162235; --ink:#e7ecf3; --muted:#98a4b6; --line:#243149;
+    --navy:#0c1a2e; --navy-2:#16304f;
+    --jade:#8db4ea; --jade-ink:#0a111d; --jade-soft:#1a2a44;
+    --accent:#d9b860; --accent-ink:#0a111d; --accent-soft:#2c2614; --accent-text:#e3c57a;
+    --ok:#62cf92; --ok-soft:#143022; --warn:#f0b45c; --warn-soft:#33270f; --bad:#ff8a80; --bad-soft:#3a1d1b;
+    --shadow:0 1px 2px rgba(0,0,0,.35);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0e1518; --surface:#162126; --surface-2:#1b282e; --ink:#e6eef0; --muted:#94a6ad; --line:#26363d;
-  --accent:#ff5b6f; --accent-ink:#1a0a0d; --accent-soft:#3a1c22; --jade:#57c5b6; --jade-ink:#06201c; --jade-soft:#17322f;
-  --ok:#5fd08f; --ok-soft:#173326; --warn:#f0b45c; --warn-soft:#33270f; --bad:#ff8a80; --bad-soft:#3a1d1b;
-  --shadow:0 1px 2px rgba(0,0,0,.3);
+  --bg:#0a111d; --surface:#111b2b; --surface-2:#162235; --ink:#e7ecf3; --muted:#98a4b6; --line:#243149;
+  --navy:#0c1a2e; --navy-2:#16304f;
+  --jade:#8db4ea; --jade-ink:#0a111d; --jade-soft:#1a2a44;
+  --accent:#d9b860; --accent-ink:#0a111d; --accent-soft:#2c2614; --accent-text:#e3c57a;
+  --ok:#62cf92; --ok-soft:#143022; --warn:#f0b45c; --warn-soft:#33270f; --bad:#ff8a80; --bad-soft:#3a1d1b;
+  --shadow:0 1px 2px rgba(0,0,0,.35);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%;
-  padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
-:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
-h1,h2,h3,h4{text-wrap:balance;margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance;margin:0;letter-spacing:-.1px}
 a{color:var(--jade)}
-.wrap{max-width:760px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
 
 /* top bar */
-.top{position:sticky;top:0;z-index:20;background:var(--bg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .in{max-width:760px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
-.brand{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:.2px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.brand small{font-family:var(--font-body);font-weight:500;color:var(--muted);font-size:12px;margin-left:6px}
+.top{position:sticky;top:0;z-index:20;background:var(--navy);color:var(--on-navy);padding-top:env(safe-area-inset-top);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.top .in{max-width:820px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px;min-height:var(--toph)}
+.brand{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:.2px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--on-navy)}
+.brand small{font-family:var(--font-body);font-weight:600;color:var(--accent);font-size:11.5px;margin-left:8px;letter-spacing:1.2px;text-transform:uppercase}
+.top .pill{background:rgba(255,255,255,.12);color:var(--on-navy)}
+.top .pill.red{background:var(--accent);color:var(--accent-ink)}
+.top .pill.ok{background:rgba(98,207,146,.18);color:#bff0d3}
+.tsearch{width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.22);background:transparent;color:var(--on-navy);display:grid;place-items:center;padding:0;text-decoration:none;flex-shrink:0}
+.tsearch svg{width:18px;height:18px}
 .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:600;background:var(--jade-soft);color:var(--jade);white-space:nowrap}
-.pill.red{background:var(--accent-soft);color:var(--accent)}
+.pill.red{background:var(--accent-soft);color:var(--accent-text)}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
 .pill.warn{background:var(--warn-soft);color:var(--warn)}
 .pill.grey{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
 
-/* bottom nav */
+/* bottom nav (phone) */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-.nav .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
-.nav a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 9px;text-decoration:none;color:var(--muted);font-size:12px;font-weight:600}
+.nav .in{max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.nav .nbrand{display:none}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 9px;text-decoration:none;color:var(--muted);font-size:12px;font-weight:600;position:relative}
 .nav a svg{width:22px;height:22px}
-.nav a[aria-current="page"]{color:var(--accent)}
+.nav a[aria-current="page"]{color:var(--jade)}
+.nav a[aria-current="page"]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--accent)}
 
-/* hero for a day */
-.hero{padding:18px 0 6px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:end}
-.dnum{font-family:var(--font-display);font-size:56px;line-height:.9;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
-.dnum small{display:block;font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
-.htitle h1{font-size:22px;line-height:1.25}
-.htitle .en{font-family:var(--font-display);font-style:italic;color:var(--muted);font-size:16px}
+/* desktop: left sidebar */
+@media (min-width:1000px){
+  body{padding-left:var(--side)}
+  .nav{top:0;bottom:0;right:auto;width:var(--side);border-top:0;border-right:1px solid rgba(255,255,255,.06);background:var(--navy);padding-bottom:0}
+  .nav .in{display:flex;flex-direction:column;gap:4px;padding:18px 14px;max-width:none}
+  .nav .nbrand{display:block;font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--on-navy);padding:6px 10px 18px;line-height:1.3}
+  .nav .nbrand small{display:block;font-family:var(--font-body);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-top:4px}
+  .nav a{flex-direction:row;justify-content:flex-start;gap:12px;padding:10px 12px;border-radius:10px;font-size:15px;color:var(--on-navy-muted)}
+  .nav a:hover{background:rgba(255,255,255,.06);color:var(--on-navy)}
+  .nav a[aria-current="page"]{background:rgba(255,255,255,.1);color:var(--on-navy)}
+  .nav a[aria-current="page"]::before{top:9px;bottom:9px;left:0;right:auto;width:3px;height:auto;border-radius:0 3px 3px 0}
+  .top .brand{visibility:hidden}
+  .wrap{padding-bottom:48px}
+  .toast{bottom:28px!important;left:calc(50% + var(--side)/2)!important}
+}
+
+/* page hero */
+.hero{padding:20px 0 6px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:end}
+.htitle h1{font-size:23px;line-height:1.25}
+.htitle .en{font-family:var(--font-display);font-style:italic;color:var(--muted);font-size:15.5px}
 .hmeta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+/* day hero: navy banner */
+.hero.dayhero{margin-top:14px;padding:18px 18px 16px;border-radius:var(--radius);background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:var(--on-navy);box-shadow:var(--shadow)}
+.dayhero .htitle .en{color:var(--on-navy-muted)}
+.dayhero .pill{background:rgba(255,255,255,.12);color:var(--on-navy)}
+.dayhero .pill.red{background:var(--accent);color:var(--accent-ink)}
+.dayhero .pill.ok{background:rgba(98,207,146,.2);color:#c9f3da}
+.dayhero .pill.warn{background:rgba(240,180,92,.2);color:#ffe1b0}
+.dayhero .pill.grey{border-color:transparent}
+.dnum{font-family:var(--font-display);font-size:56px;line-height:.9;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.dnum small{display:block;font-family:var(--font-body);font-size:11.5px;font-weight:700;color:var(--on-navy-muted);letter-spacing:1.6px;text-transform:uppercase;margin-bottom:4px}
+.dprog{grid-column:1/-1;margin-top:12px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--on-navy-muted)}
+.dprog .bar{flex:1;background:rgba(255,255,255,.16)}
+.dprog .bar>i{background:var(--accent)}
 .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
 .bar > i{display:block;height:100%;background:var(--jade);border-radius:99px;transition:width .3s}
 .daynav{display:flex;gap:8px;margin:12px 0 4px}
 .daynav .btn{flex:1}
 
+/* stepper */
+.steps{position:sticky;top:calc(var(--toph) + env(safe-area-inset-top));z-index:15;background:var(--bg);margin:10px -16px 0;padding:8px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.steps::-webkit-scrollbar{display:none}
+.steps button{flex-shrink:0;display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px 5px 5px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.steps .no{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.steps .no svg{width:13px;height:13px}
+.steps button.done .no{background:var(--ok);border-color:var(--ok);color:#fff}
+.steps button[aria-current="step"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.steps button[aria-current="step"] .no{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.steps .all{margin-left:auto}
+.stephead{border-left:4px solid var(--accent)}
+.stephead .kick{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent-text)}
+.stephead h2{font-size:20px;margin:2px 0 4px}
+.stephead .meta{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stephead .desc{margin:8px 0 0;font-size:15px}
+.stepfoot{display:flex;gap:8px;align-items:center;margin:18px 0 6px;padding:14px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line)}
+.stepfoot .btn{flex:1}
+.stepfoot .btn.gold{flex:2}
+
 /* cards */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin:14px 0}
 .card > h2,.sec-h{font-size:17px;display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.sec-h .tag{font-family:var(--font-body);font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-left:auto}
+.sec-h::before{content:"";width:3px;height:16px;border-radius:2px;background:var(--accent);flex-shrink:0}
+.sec-h .tag{font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1.1px;text-transform:uppercase;margin-left:auto;white-space:nowrap}
 .muted{color:var(--muted)}
 .small{font-size:13.5px}
-.note{background:var(--surface-2);border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.note{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--muted)}
 .note.warn{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
+.tip{background:var(--jade-soft);border-radius:10px;padding:10px 12px;font-size:14.5px;color:var(--ink)}
+.tip b{color:var(--jade)}
 
 /* timetable */
 .tt{list-style:none;margin:0;padding:0;position:relative}
 .tt li{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
 .tt li:first-child{border-top:0}
-.chk{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:0;transition:all .15s}
+.chk{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:0;transition:all .15s;color:inherit}
 .chk svg{width:16px;height:16px;opacity:0}
-.chk[aria-pressed="true"]{background:var(--jade);border-color:var(--jade);color:var(--jade-ink)}
+.chk[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
 .chk[aria-pressed="true"] svg{opacity:1}
 .tt .time{font-size:12.5px;font-weight:700;color:var(--jade);font-variant-numeric:tabular-nums;letter-spacing:.3px}
 .tt .bt{font-weight:700}
@@ -122,19 +185,21 @@ a{color:var(--jade)}
 .hidezh .zh:hover,.hidezh .zh:active{filter:none}
 
 /* buttons */
-.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;font-weight:600;font-size:14.5px;line-height:1.2;min-height:40px}
+.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:9px 14px;font-weight:600;font-size:14.5px;line-height:1.2;min-height:40px;color:var(--ink)}
 .btn:hover{border-color:var(--jade)}
-.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn.jade{background:var(--jade);border-color:var(--jade);color:var(--jade-ink)}
+.btn.pri{background:var(--jade);border-color:var(--jade);color:var(--jade-ink)}
+.btn.jade{background:var(--jade-soft);border-color:transparent;color:var(--jade)}
+.btn.jade:hover{border-color:var(--jade)}
+.btn.gold{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn.ghost{background:transparent}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .btn svg{width:18px;height:18px}
-.ic{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface);display:inline-grid;place-items:center;padding:0;font-size:12.5px;font-weight:700;color:var(--jade);flex-shrink:0}
+.ic{width:36px;height:36px;border-radius:9px;border:1px solid var(--line);background:var(--surface);display:inline-grid;place-items:center;padding:0;font-size:12.5px;font-weight:700;color:var(--jade);flex-shrink:0}
 .ic svg{width:18px;height:18px}
 .ic:hover{border-color:var(--jade)}
-.ic.rec{color:var(--accent)}
+.ic.rec{color:var(--bad)}
 .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
 .seg button{border:0;background:var(--surface);padding:7px 12px;font-size:13.5px;font-weight:600;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--jade);color:var(--jade-ink)}
 
@@ -142,31 +207,32 @@ a{color:var(--jade)}
 .gram p{margin:0 0 10px}
 
 /* dialogue */
-.dlg{display:flex;flex-direction:column;gap:8px}
-.ln{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:12px;border:1px solid transparent}
+.dlg{display:flex;flex-direction:column;gap:6px}
+.ln{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:10px;border:1px solid transparent}
 .ln .who{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--jade-soft);color:var(--jade);flex-shrink:0;margin-top:2px}
-.ln.B .who{background:var(--accent-soft);color:var(--accent)}
+.ln.B .who{background:var(--accent-soft);color:var(--accent-text)}
 .ln.C .who{background:var(--warn-soft);color:var(--warn)}
 .ln .txt{flex:1;min-width:0}
 .ln .en{font-weight:600}
 .ln .zh{font-size:14px;color:var(--muted)}
 .ln.on{border-color:var(--jade);background:var(--jade-soft)}
 .ln.me.on{border-color:var(--accent);background:var(--accent-soft)}
-.rpbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;padding:10px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.rpbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;padding:10px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.rpbar .turn{color:var(--accent-text)}
 
 /* plan grid */
 .phase{margin:18px 0}
 .phase h2{font-size:18px}
 .phase .pd{font-size:14px;color:var(--muted);margin:4px 0 10px}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.cell{aspect-ratio:1;border-radius:10px;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2px;text-decoration:none;color:var(--ink);position:relative;min-width:0}
+.cell{aspect-ratio:1;border-radius:9px;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2px;text-decoration:none;color:var(--ink);position:relative;min-width:0}
 .cell b{font-family:var(--font-display);font-size:18px;line-height:1;font-variant-numeric:tabular-nums}
 .cell span{font-size:10px;color:var(--muted);line-height:1.1;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cell.review{background:var(--warn-soft);border-color:transparent}
 .cell.test{background:var(--accent-soft);border-color:transparent}
-.cell.part{box-shadow:inset 0 -4px 0 var(--jade)}
-.cell.fin{background:var(--jade);border-color:var(--jade);color:var(--jade-ink)}
-.cell.fin span{color:var(--jade-ink);opacity:.85}
+.cell.part{box-shadow:inset 0 -4px 0 var(--accent)}
+.cell.fin{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.cell.fin span{color:var(--on-navy-muted)}
 .cell.cur{outline:2.5px solid var(--accent);outline-offset:1px}
 .legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);margin-top:8px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:4px;vertical-align:-2px;margin-right:4px;border:1px solid var(--line)}
@@ -175,7 +241,7 @@ a{color:var(--jade)}
 .tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0 2px;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex-shrink:0;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px;color:var(--muted)}
-.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button[aria-pressed="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
 .flash{min-height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:24px 12px}
 .flash .big{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1.2;overflow-wrap:anywhere}
 .flash .ans{font-size:20px;font-weight:600}
@@ -186,10 +252,10 @@ a{color:var(--jade)}
 .grade .b2{border-color:var(--warn);color:var(--warn)}
 .grade .b3{border-color:var(--ok);color:var(--ok)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
-.stat{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}
-.stat b{display:block;font-family:var(--font-display);font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:12px}
+.stat b{display:block;font-family:var(--font-display);font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--jade)}
 .stat span{font-size:13px;color:var(--muted)}
-input[type=text],textarea,select{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:16px}
+input[type=text],input[type=search],textarea,select{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:10px 12px;font-size:16px}
 textarea{min-height:96px;resize:vertical}
 input[type=range]{width:100%;accent-color:var(--jade)}
 label.f{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
@@ -200,20 +266,21 @@ label.f{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
 .score{font-family:var(--font-display);font-size:40px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
 .score.good{color:var(--ok)}.score.mid{color:var(--warn)}.score.low{color:var(--bad)}
 .opts{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px;font-weight:500}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:10px 12px;font-weight:500}
 .opt.right{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
 .opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
-.timer{font-family:var(--font-display);font-size:44px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center;line-height:1.1;margin:6px 0}
+.timer{font-family:var(--font-display);font-size:44px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center;line-height:1.1;margin:6px 0;color:var(--jade)}
 .passage{font-family:var(--font-display);font-size:17.5px;line-height:1.75;max-width:65ch}
+.hidden-text{border:1px dashed var(--line);border-radius:10px;padding:18px 14px;text-align:center;color:var(--muted);background:var(--surface-2)}
 
-/* guide */
+/* guide & library */
 details.gd{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin:10px 0;box-shadow:var(--shadow)}
 details.gd > summary{list-style:none;padding:14px 16px;font-weight:700;font-size:16.5px;display:flex;align-items:center;gap:10px;cursor:pointer}
 details.gd > summary::-webkit-details-marker{display:none}
 details.gd > summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-left:auto;transition:transform .2s}
 details.gd[open] > summary::after{transform:rotate(-135deg)}
-details.gd .gb{padding:0 16px 16px;max-width:70ch}
-.gb h4{font-size:15.5px;margin:16px 0 6px;color:var(--jade)}
+details.gd .gb{padding:0 16px 16px;max-width:72ch}
+.gb h4{font-size:15.5px;margin:18px 0 6px;color:var(--jade)}
 .gb p,.gb li{font-size:15px}
 .gb ul,.gb ol{padding-left:20px;margin:6px 0}
 .gb table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
@@ -222,30 +289,59 @@ details.gd .gb{padding:0 16px 16px;max-width:70ch}
 i.say{font-style:normal;font-weight:600;color:var(--ink);background:var(--jade-soft);border-radius:6px;padding:1px 6px;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 i.say:hover{outline:1px solid var(--jade)}
 .letters{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px}
-.letters button{aspect-ratio:1;border:1px solid var(--line);background:var(--surface-2);border-radius:10px;font-family:var(--font-display);font-size:20px;font-weight:700}
-.ipa{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
-.ipa button{border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:8px 6px;text-align:center;line-height:1.25}
-.ipa b{display:block;font-size:19px;font-family:"Lucida Sans Unicode","Arial Unicode MS","Segoe UI",sans-serif}
-.ipa span{font-size:12.5px;color:var(--muted)}
-.ipa small{display:block;font-size:10.5px;color:var(--muted)}
+.letters button{aspect-ratio:1;border:1px solid var(--line);background:var(--surface-2);border-radius:9px;font-family:var(--font-display);font-size:20px;font-weight:700}
+.ipagrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:6px}
+.ipagrid button{border:1px solid var(--line);background:var(--surface-2);border-radius:9px;padding:8px 6px;text-align:center;line-height:1.25}
+.ipagrid button.hk{border-color:var(--accent);background:var(--accent-soft)}
+.ipagrid b{display:block;font-size:19px;font-family:"Lucida Sans Unicode","Arial Unicode MS","Segoe UI",sans-serif}
+.ipagrid span{font-size:12.5px;color:var(--muted)}
+.ipagrid small{display:block;font-size:10.5px;color:var(--muted)}
 .qlist{counter-reset:q;list-style:none;padding:0;margin:0}
 .qlist li{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
 .qlist li:first-child{border-top:0}
 .qlist li::before{counter-increment:q;content:counter(q);font-variant-numeric:tabular-nums;font-size:12.5px;font-weight:700;color:var(--muted);width:22px;text-align:right;flex-shrink:0}
 .qlist .t{flex:1;font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:14px 0}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.tile:hover{border-color:var(--jade)}
+.tile .k{font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:var(--accent-text)}
+.tile h3{font-size:17px;margin:4px 0 4px}
+.tile p{margin:0;font-size:14px;color:var(--muted)}
+.tile .n{position:absolute;right:14px;top:12px;font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--jade);opacity:.9}
+.crumb{display:flex;gap:6px;align-items:center;font-size:13.5px;margin:16px 0 0;color:var(--muted);flex-wrap:wrap}
+.crumb a{text-decoration:none;font-weight:600}
+.st{color:var(--jade);font-weight:800}
+.chunk{color:var(--accent-text);font-weight:800;padding:0 2px}
+.mp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mp button{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:18px 8px;font-family:var(--font-display);font-size:24px;font-weight:700}
+.mp button.right{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.mp button.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.srch{position:relative}
+.srch input{padding-left:40px}
+.srch svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+.hl{background:var(--accent-soft);color:inherit;border-radius:3px;padding:0 1px}
+.grp{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-text);margin:16px 0 4px}
+details.dd{border-top:1px solid var(--line)}
+details.dd:first-of-type{border-top:0}
+details.dd>summary{list-style:none;cursor:pointer;padding:10px 0;font-weight:700;display:flex;gap:8px;align-items:center}
+details.dd>summary::-webkit-details-marker{display:none}
+details.dd>summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-left:auto;transition:transform .2s}
+details.dd[open]>summary::after{transform:rotate(-135deg)}
+details.dd>summary .small{font-weight:500}
 
 /* sheet & toast */
-.scrim{position:fixed;inset:0;background:rgba(8,14,16,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}
-.sheet{background:var(--surface);width:100%;max-width:640px;max-height:88%;overflow:auto;border-radius:18px 18px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(0,0,0,.2)}
+.scrim{position:fixed;inset:0;background:rgba(6,12,22,.5);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);width:100%;max-width:640px;max-height:88%;overflow:auto;border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(0,0,0,.2)}
 .sheet h3{font-size:17px;margin-bottom:8px}
 .sheet .x{float:right}
-@media (min-width:700px){.scrim{align-items:center}.sheet{border-radius:18px;max-height:80%}}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:600;z-index:60;max-width:calc(100% - 32px);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+@media (min-width:700px){.scrim{align-items:center}.sheet{border-radius:16px;max-height:80%}}
+@media (min-width:1000px){.scrim{padding-left:var(--side)}}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--navy);color:var(--on-navy);padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;z-index:60;max-width:calc(100% - 32px);box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .err{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
-.recdot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 1s infinite}
+.recdot{width:10px;height:10px;border-radius:50%;background:var(--bad);display:inline-block;animation:pulse 1s infinite}
 @keyframes pulse{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-@media (max-width:420px){.dnum{font-size:46px}.htitle h1{font-size:20px}.words{grid-template-columns:1fr 1fr}.cell span{display:none}.brand small{display:none}.card{padding:14px}}
+@media (max-width:420px){.dnum{font-size:46px}.htitle h1{font-size:20px}.words{grid-template-columns:1fr 1fr}.cell span{display:none}.brand small{display:none}.card{padding:14px}.stepfoot{flex-wrap:wrap}.stepfoot .btn.gold{flex-basis:100%;order:-1}}
 
 /* extended lessons */
 .wlist{display:grid;grid-template-columns:1fr;gap:0}
@@ -267,9 +363,9 @@ details.more[open]>summary::before{content:"▾ ";}
 .gxq{padding:10px 0;border-top:1px solid var(--line)}
 .gxq:first-of-type{border-top:0}
 .gxq .q{margin-bottom:8px;font-size:15.5px}
-.blank{display:inline-block;min-width:3.2em;border-bottom:2px solid var(--jade);color:transparent;line-height:1}
+.blank{display:inline-block;min-width:3.2em;border-bottom:2px solid var(--accent);color:transparent;line-height:1}
 .seg.choice{display:flex;flex-wrap:wrap;border:0;gap:6px;overflow:visible}
-.seg.choice button{border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-weight:600}
+.seg.choice button{border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-weight:600}
 .seg.choice button.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
 .seg.choice button.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
 .seg.choice button:disabled{cursor:default}
@@ -281,13 +377,15 @@ details.more[open]>summary::before{content:"▾ ";}
 .pt .pp{font-weight:700;margin-bottom:2px}
 .pt .pp .zh{font-weight:400;font-size:13.5px;color:var(--muted);margin-left:6px}
 .pt .rows .row{padding:6px 0 6px 12px}
-.rv{display:inline-block;font-size:11px;font-weight:600;line-height:1;padding:3px 6px;border-radius:999px;background:var(--warn-soft);color:var(--ink);vertical-align:2px;margin-left:4px;font-family:var(--font-body,inherit)}
-.misnote{display:block;width:100%;text-align:left;margin-top:10px;font:inherit;font-size:14px;cursor:pointer;background:var(--warn-soft);border:1px solid transparent;color:var(--ink)}
+.rv{display:inline-block;font-size:11px;font-weight:600;line-height:1;padding:3px 6px;border-radius:999px;background:var(--accent-soft);color:var(--accent-text);vertical-align:2px;margin-left:4px;font-family:var(--font-body)}
+.misnote{display:block;width:100%;text-align:left;margin-top:10px;font:inherit;font-size:14px;cursor:pointer;background:var(--accent-soft);border:1px solid transparent;color:var(--ink)}
+.words.wide{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.words.wide .en{overflow-wrap:normal}
 
 </style>
 </head>
 <body>
-<header class="top"><div class="in"><div class="brand">90天香港金融英语<small>HK Finance English</small></div><div id="topStat" style="display:flex;gap:6px"></div></div></header>
+<header class="top"><div class="in"><div class="brand">90天香港金融英语<small>HK Finance English</small></div><div id="topStat" style="display:flex;gap:6px"></div><a class="tsearch" href="#lib-search" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a></div></header>
 <main class="wrap" id="app">
   <div id="loading" class="card" style="margin-top:24px">
     <p style="margin:0"><b>正在加载学习程序…</b></p>
@@ -296,10 +394,11 @@ details.more[open]>summary::before{content:"▾ ";}
   <noscript><div class="card err">此程序需要启用 JavaScript。请在浏览器设置中开启，或改用 Chrome / Edge / Safari 打开。</div></noscript>
 </main>
 <nav class="nav" aria-label="主导航"><div class="in">
+  <div class="nbrand">90天香港金融英语<small>HK Finance English</small></div>
   <a href="#today" data-v="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="m9 15 2 2 4-4"/></svg>今日</a>
   <a href="#plan" data-v="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>课程</a>
   <a href="#practice" data-v="practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="13" height="16" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v13"/><path d="M8 11h5M8 15h3"/></svg>练习</a>
-  <a href="#guide" data-v="guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg>技巧</a>
+  <a href="#lib" data-v="lib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg>资料库</a>
   <a href="#me" data-v="me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>我的</a>
 </div></nav>
 <div id="sheetRoot"></div>
@@ -1499,7 +1598,7 @@ X(89,{"w":["confident|自信的|I feel confident about the interview.|我对面�
 </script>
 <script>
 /* 自动生成：英式音标（来源：open-dict-data/ipa-dict en_UK，已统一为教材写法） */
-const IPA_MAP={"hello":"həˈləʊ","hi":"haɪ","good morning":"gʊd ˈmɔːnɪŋ","good afternoon":"gʊd ɑːftəˈnuːn","good evening":"gʊd ˈiːvnɪŋ","goodbye":"gʊdˈbaɪ","see you":"siː juː","thank you":"θæŋk juː","you're welcome":"jɔː ˈwelkəm","sorry":"ˈsɒri","excuse me":"ɪkˈskjuːz miː","please":"pliːz","yes":"jes","no":"nəʊ","nice to meet you":"naɪs tə ˈmiːt juː","name":"neɪm","from":"frɒm","china":"ˈtʃaɪnə","hong kong":"hɒŋ ˈkɒŋ","live":"lɪv","work":"wɜːk","job":"dʒɒb","student":"sˈtjuːdənt","finance":"ˈfaɪnæns","bank":"bæŋk","company":"ˈkʌmpəni","new":"njuː","english":"ˈɪŋglɪʃ","learn":"lɜːn","now":"naʊ","zero":"ˈzɪərəʊ","three":"θriː","eight":"eɪt","eleven":"ɪˈlevən","twelve":"twelv","thirteen":"θɜːˈtiːn","thirty":"ˈθɜːti","fifteen":"fɪfˈtiːn","fifty":"ˈfɪfti","hundred":"ˈhʌndrəd","phone number":"ˈfəʊn ˈnʌmbə","email address":"ˈiːmeɪl əˈdres","how many":"haʊ ˈmeni","double":"ˈdʌbəl","spell":"spel","family":"ˈfæmɪli","father":"ˈfɑːðə","mother":"ˈmʌðə","parents":"ˈpeərənts","brother":"ˈbrʌðə","sister":"ˈsɪstə","husband":"ˈhʌsbənd","wife":"waɪf","son":"sʌn","daughter":"ˈdɔːtə","friend":"frend","colleague":"ˈkɒliːg","married":"ˈmærɪd","single":"ˈsɪŋgəl","children":"ˈtʃɪldrən","time":"taɪm","o'clock":"əˈklɒk","half past":"hɑːf pɑːst","quarter":"ˈkwɔːtə","morning":"ˈmɔːnɪŋ","afternoon":"ɑːftəˈnuːn","evening":"ˈiːvnɪŋ","today":"təˈdeɪ","tomorrow":"təˈmɒrəʊ","yesterday":"ˈjestədeɪ","week":"wiːk","month":"mʌnθ","monday":"ˈmʌndeɪ","friday":"ˈfraɪdeɪ","weekend":"wiːˈkend","get up":"get ʌp","have breakfast":"hæv ˈbrekfəst","take the mtr":"teɪk ðə em tiː ˈɑː","go to work":"gəʊ tə wɜːk","start":"stɑːt","finish":"ˈfɪnɪʃ","lunch":"lʌntʃ","usually":"ˈjuːʒuːəli","always":"ˈɔːlweɪz","sometimes":"ˈsʌmtaɪmz","never":"ˈnevə","every day":"ˈevri deɪ","go home":"gəʊ həʊm","cook":"kʊk","go to bed":"gəʊ tə bed","menu":"ˈmenjuː","order":"ˈɔːdə","coffee":"ˈkɒfi","tea":"tiː","milk tea":"mɪlk tiː","rice":"raɪs","noodles":"ˈnuːdəlz","chicken":"ˈtʃɪkɪn","beef":"biːf","vegetables":"ˈvedʒɪtəbəlz","water":"ˈwɔːtə","takeaway":"ˈteɪkəweɪ","bill":"bɪl","delicious":"dɪˈlɪʃəs","spicy":"ˈspaɪsi","where":"weə","near":"nɪə","next to":"nekst tə","opposite":"ˈɒpəsɪt","between":"bɪˈtwiːn","behind":"bɪˈhaɪnd","in front of":"ɪn frʌnt əv","turn left":"tɜːn left","turn right":"tɜːn raɪt","go straight":"gəʊ streɪt","corner":"ˈkɔːnə","building":"ˈbɪldɪŋ","floor":"flɔː","lift":"lɪft","exit":"ˈegzɪt","mtr":"em tiː ˈɑː","bus":"bʌs","taxi":"ˈtæksi","minibus":"ˈmɪnɪbʌs","ferry":"ˈferi","octopus card":"ˈɒktəpəs kɑːd","station":"ˈsteɪʃən","platform":"ˈplætfɔːm","line":"laɪn","change":"tʃeɪndʒ","stop":"stɒp","ticket":"ˈtɪkɪt","fare":"feə","traffic":"ˈtræfɪk","late":"leɪt","price":"praɪs","how much":"haʊ mʌtʃ","cheap":"tʃiːp","expensive":"ekˈspensɪv","discount":"ˈdɪskaʊnt","cash":"kæʃ","credit card":"ˈkredɪt kɑːd","pay":"peɪ","receipt":"rɪˈsiːt","size":"saɪz","try on":"traɪ ɒn","buy":"baɪ","sell":"sel","hong kong dollar":"hɒŋ kɒŋ ˈdɒlə","weather":"ˈweðə","hot":"hɒt","cold":"kəʊld","humid":"ˈhjuːmɪd","sunny":"ˈsʌni","rainy":"ˈreɪni","cloudy":"ˈklaʊdi","windy":"ˈwɪndi","typhoon":"taɪˈfuːn","rainstorm warning":"ˈreɪnstɔːm ˈwɔːnɪŋ","umbrella":"ʌmˈbrelə","nice":"naɪs","terrible":"ˈterəbəl","forecast":"ˈfɔːkɑːst","degree":"dɪˈgriː","hobby":"ˈhɒbi","free time":"friː taɪm","like":"laɪk","enjoy":"enˈdʒɔɪ","love":"lʌv","hate":"heɪt","reading":"ˈriːdɪŋ","hiking":"ˈhaɪkɪŋ","swimming":"ˈswɪmɪŋ","watching movies":"ˈwɒtʃɪŋ ˈmuːvɪz","travel":"ˈtrævəl","music":"ˈmjuːzɪk","sport":"spɔːt","gym":"dʒɪm","interested in":"ˈɪntrəstɪd ɪn","at the moment":"ət ðə ˈməʊmənt","currently":"ˈkʌrəntli","busy":"ˈbɪzi","call":"kɔːl","meeting":"ˈmiːtɪŋ","prepare":"prɪˈpeə","check":"tʃek","reply":"rɪˈplaɪ","wait":"weɪt","write":"raɪt","read":"riːd","look for":"lʊk fə","on the phone":"ɒn ðə fəʊn","in a meeting":"ɪn ə ˈmiːtɪŋ","last week":"lɑːst wiːk","ago":"əˈgəʊ","worked":"wɜːkt","finished":"ˈfɪnɪʃt","called":"kɔːld","visited":"ˈvɪzɪtɪd","watched":"wɒtʃt","stayed":"steɪd","studied":"ˈstʌdɪd","started":"ˈstɑːtɪd","asked":"ɑːskt","answered":"ˈɑːnsəd","talked":"tɔːkt","joined":"dʒɔɪnd","went":"went","had":"hæd","saw":"sɔː","met":"met","ate":"et","bought":"bɔːt","took":"tʊk","made":"meɪd","got":"gɒt","came":"keɪm","did":"dɪd","felt":"felt","spent":"spent","thought":"θɔːt","great":"greɪt","plan":"plæn","will":"wɪl","going to":"gəʊɪŋ tə","next week":"nekst wiːk","soon":"suːn","later":"ˈleɪtə","tonight":"təˈnaɪt","future":"ˈfjuːtʃə","goal":"gəʊl","hope":"həʊp","maybe":"ˈmeɪbiː","probably":"ˈprɒbəbli","decide":"dɪˈsaɪd","apply":"əˈplaɪ","interview":"ˈɪntəvjuː","what":"wɒt","who":"huː","when":"wen","why":"waɪ","which":"wɪtʃ","how":"haʊ","how long":"haʊ lɒŋ","how often":"haʊ ˈɒfən","whose":"huːz","question":"ˈkwestʃən","answer":"ˈɑːnsə","mean":"miːn","explain":"ekˈspleɪn","example":"egˈzɑːmpəl","bigger":"ˈbɪgə","smaller":"ˈsmɔːlə","better":"ˈbetə","worse":"wɜːs","more expensive":"mɔː ekˈspensɪv","cheaper":"ˈtʃiːpə","faster":"ˈfɑːstə","busier":"ˈbɪzɪə","the best":"ðə best","the most":"ðə məʊst","than":"ðən","compare":"kəmˈpeə","difference":"ˈdɪfrəns","similar":"ˈsɪmɪlə","same":"seɪm","office":"ˈɒfɪs","desk":"desk","computer":"kəmˈpjuːtə","printer":"ˈprɪntə","document":"ˈdɒkjʊmənt","file":"faɪl","meeting room":"ˈmiːtɪŋ ruːm","pantry":"ˈpɑːntri","manager":"ˈmænɪdʒə","boss":"bɒs","staff":"stɑːf","schedule":"ˈʃedjuːl","deadline":"ˈdedlaɪn","task":"tɑːsk","urgent":"ˈɜːdʒənt","department":"dɪˈpɑːtmənt","team":"tiːm","analyst":"ˈænəlɪst","director":"daɪˈrektə","assistant":"əˈsɪstənt","accountant":"əˈkaʊntənt","sales":"seɪlz","marketing":"ˈmɑːkɪtɪŋ","operations":"ɒpəˈreɪʃənz","human resources":"ˈhjuːmən rɪˈzɔːsɪz","compliance":"kəmˈplaɪəns","risk management":"rɪsk ˈmænɪdʒmənt","front office":"frʌnt ˈɒfɪs","back office":"bæk ˈɒfɪs","responsible for":"rɪˈspɒnsəbəl fə","speak to":"spiːk tə","this is":"ðɪs ɪz","hold on":"həʊld ɒn","put through":"pʊt ˈθruː","call back":"kɔːl bæk","message":"ˈmesɪdʒ","extension":"ekˈstenʃən","available":"əˈveɪləbəl","leave a message":"liːv ə ˈmesɪdʒ","speak up":"spiːk ʌp","repeat":"rɪˈpiːt","clearly":"ˈklɪəli","voicemail":"ˈvɔɪsmeɪl","appointment":"əˈpɔɪntmənt","free":"friː","arrange":"əˈreɪndʒ","book":"bʊk","confirm":"kənˈfɜːm","reschedule":"rɪsˈtʃedjuːl","cancel":"ˈkænsəl","suit":"suːt","convenient":"kənˈviːnɪənt","instead":"ɪnˈsted","look forward to":"lʊk ˈfɔːwəd tə","calendar":"ˈkæləndə","invite":"ɪnˈvaɪt","works for me":"wɜːks fə miː","how about":"haʊ əˈbaʊt","could":"kʊd","would you mind":"wʊd juː maɪnd","help":"help","favour":"ˈfeɪvə","possible":"ˈpɒsəbəl","borrow":"ˈbɒrəʊ","lend":"lend","send":"send","share":"ʃeə","take a look":"teɪk ə lʊk","when you have a moment":"wen juː hæv ə ˈməʊmənt","appreciate":"əˈpriːʃɪeɪt","of course":"əv kɔːs","no problem":"nəʊ ˈprɒbləm","bother":"ˈbɒðə","thousand":"ˈθaʊzənd","million":"ˈmɪlɪən","billion":"ˈbɪlɪən","percent":"pəˈsent","decimal point":"ˈdesɪməl pɔɪnt","half":"hɑːf","total":"ˈtəʊtəl","average":"ˈævrɪdʒ","increase":"ɪnˈkriːs","decrease":"dɪˈkriːs","around":"əˈraʊnd","exactly":"egˈzæktli","figure":"ˈfɪgə","background":"ˈbækgraʊnd","experience":"ekˈspɪərɪəns","graduate":"ˈgrædʒueɪt","major":"ˈmeɪdʒə","skill":"skɪl","strength":"streŋθ","motivated":"ˈməʊtɪveɪtɪd","hard-working":"hɑːd ˈwɜːkɪŋ","detail-oriented":"ˈdiːteɪl ˈɔːrientɪd","opportunity":"ɒpəˈtjuːnɪti","position":"pəˈzɪʃən","career":"kəˈrɪə","because":"bɪˈkʌz","so":"səʊ","have worked":"həv ˈwɜːkt","since":"sɪns","for":"fɔː","ever":"ˈevə","already":"ɔːlˈredi","recently":"ˈriːsəntli","achieve":"əˈtʃiːv","handle":"ˈhændəl","manage":"ˈmænɪdʒ","client":"klaɪənt","portfolio":"pɔːtˈfəʊlɪəʊ","project":"ˈprɒdʒekt","responsibility":"rɪspɒnsəˈbɪlɪti","subject":"ˈsʌbdʒɪkt","regarding":"rɪˈgɑːdɪŋ","attach":"əˈtætʃ","attachment":"əˈtætʃmənt","follow up":"ˈfɒləʊ ʌp","forward":"ˈfɔːwəd","cc":"siː ˈsiː","inform":"ɪnˈfɔːm","request":"rɪˈkwest","kindly":"ˈkaɪndli","at your earliest convenience":"ət jɔː ˈɜːlɪəst kənˈviːnɪəns","best regards":"best rɪˈgɑːdz","asap":"eɪ es eɪ ˈpiː","revert":"rɪˈvɜːt","agenda":"əˈdʒendə","item":"ˈaɪtəm","purpose":"ˈpɜːpəs","objective":"ɒbˈdʒektɪv","begin":"bɪˈgɪn","discuss":"dɪˈskʌs","update":"ˈʌpdeɪt","minutes":"ˈmɪnɪts","attendee":"əˈtendiː","move on":"muːv ɒn","point":"pɔɪnt","summary":"ˈsʌməri","action item":"ˈækʃən ˈaɪtəm","wrap up":"ræp ʌp","next steps":"nekst steps","opinion":"əˈpɪnɪən","think":"θɪŋk","believe":"bɪˈliːv","view":"vjuː","perspective":"pəˈspektɪv","feel":"fiːl","point of view":"pɔɪnt əv vjuː","suggest":"səˈdʒest","recommend":"rekəˈmend","reason":"ˈriːzən","for example":"fə egˈzɑːmpəl","overall":"əʊvərˈɔːl","personally":"ˈpɜːsənəli","as far as i know":"əz ˈfɑːr əz aɪ ˈnəʊ","main":"meɪn","agree":"əˈgriː","disagree":"dɪsəˈgriː","absolutely":"æbsəˈluːtli","true":"truː","however":"haʊˈevə","concern":"kənˈsɜːn","doubt":"daʊt","on the other hand":"ɒn ðə ˈʌðə hænd","actually":"ˈæktʃuːəli","i see":"aɪ siː","fair":"feə","partly":"ˈpɑːtli","alternative":"ɔːlˈtɜːnətɪv","compromise":"ˈkɒmprəmaɪz","should":"ʃʊd","must":"mʌst","have to":"ˈhæf tə","need to":"niːd tə","don't have to":"dəʊnt ˈhæf tə","mustn't":"ˈmʌsnt","advise":"ədˈvaɪz","rule":"ruːl","policy":"ˈpɒlɪsi","requirement":"rɪˈkwaɪəmənt","mandatory":"ˈmændətəri","optional":"ˈɒpʃənəl","had better":"hæd ˈbetə","allowed":"əˈlaʊd","training":"ˈtreɪnɪŋ","may":"meɪ","might":"maɪt","possibly":"ˈpɒsəbli","likely":"ˈlaɪkli","unlikely":"ʌnˈlaɪkli","certain":"ˈsɜːtən","uncertain":"ʌnˈsɜːtən","expect":"ekˈspekt","chance":"tʃɑːns","risk":"rɪsk","depend on":"dɪˈpend ɒn","outlook":"ˈaʊtlʊk","volatile":"ˈvɒlətaɪl","assume":"əˈsuːm","rise":"raɪz","fall":"fɔːl","grow":"grəʊ","drop":"drɒp","recover":"rɪˈkʌvə","peak":"piːk","remain stable":"rɪˈmeɪn ˈsteɪbəl","fluctuate":"ˈflʌktʃuːeɪt","sharply":"ˈʃɑːpli","slightly":"ˈslaɪtli","steadily":"ˈstedɪli","significantly":"sɪgˈnɪfɪkəntli","trend":"trend","account":"əˈkaʊnt","open an account":"ˈəʊpən ən əˈkaʊnt","deposit":"dɪˈpɒsɪt","withdraw":"wɪðˈdrɔː","transfer":"ˈtrænsfɜː","balance":"ˈbæləns","interest":"ˈɪntrəst","loan":"ləʊn","mortgage":"ˈmɔːgɪdʒ","savings account":"ˈseɪvɪŋz əˈkaʊnt","current account":"ˈkʌrənt əˈkaʊnt","statement":"ˈsteɪtmənt","fee":"fiː","branch":"brɑːntʃ","proof of address":"pruːf əv əˈdres","stock":"stɒk","bond":"bɒnd","index":"ˈɪndeks","investor":"ɪnˈvestə","trading":"ˈtreɪdɪŋ","listed":"ˈlɪstɪd","stock exchange":"stɒk eksˈtʃeɪndʒ","market value":"ˈmɑːkɪt ˈvæljuː","dividend":"ˈdɪvɪdənd","bull market":"bʊl ˈmɑːkɪt","bear market":"beə ˈmɑːkɪt","volume":"ˈvɒljuːm","announce":"əˈnaʊns","customer":"ˈkʌstəmə","welcome":"ˈwelkʌm","serve":"sɜːv","introduce":"ɪntrəˈdjuːs","relationship manager":"rɪˈleɪʃənʃɪp ˈmænɪdʒə","need":"niːd","contact":"ˈkɒntækt","satisfy":"ˈsætɪsfaɪ","trust":"trʌst","loyal":"lɔɪəl","vip":"viː aɪ ˈpiː","reception":"rɪˈsepʃən","look after":"lʊk ˈɑːftə","have a seat":"hæv ə ˈsiːt","product":"ˈprɒdʌkt","feature":"ˈfiːtʃə","benefit":"ˈbenɪfɪt","return":"rɪˈtɜːn","risk level":"rɪsk ˈlevəl","fixed deposit":"fɪkst dɪˈpɒsɪt","fund":"fʌnd","insurance":"ɪnˈʃɔːrəns","flexible":"ˈfleksɪbəl","guaranteed":"gærɑːnˈtiːd","minimum":"ˈmɪnɪməm","term":"tɜːm","suitable":"ˈsuːtəbəl","charge":"tʃɑːdʒ","option":"ˈɒpʃən","complaint":"kəmˈpleɪnt","complain":"kəmˈpleɪn","apologize":"əˈpɒlədʒaɪz","mistake":"mɪˈsteɪk","problem":"ˈprɒbləm","issue":"ˈɪʃuː","solve":"sɒlv","investigate":"ɪnˈvestɪgeɪt","refund":"ˈriːfʌnd","compensation":"kɒmpənˈseɪʃən","understand":"ʌndəˈstænd","frustrated":"frʌˈstreɪtɪd","immediately":"ɪˈmiːdɪətli","inconvenience":"ɪnkənˈviːnɪəns","resolve":"rɪˈzɒlv","negotiate":"nɪˈgəʊʃɪeɪt","offer":"ˈɒfə","deal":"diːl","terms":"tɜːmz","budget":"ˈbʌdʒɪt","condition":"kənˈdɪʃən","proposal":"prəˈpəʊzəl","agreement":"əˈgriːmənt","reasonable":"ˈriːzənəbəl","lower":"ˈləʊə","accept":"əkˈsept","counter-offer":"ˈkaʊntə ˈɒfə","meet halfway":"miːt ˈhɑːfweɪ","progress":"ˈprəʊgres","status":"ˈsteɪtəs","on track":"ɒn træk","behind schedule":"bɪˈhaɪnd ˈʃedjuːl","ahead of schedule":"əˈhed əv ˈʃedjuːl","complete":"kəmˈpliːt","almost":"ˈɔːlməʊst","yet":"jet","just":"dʒʌst","delay":"dɪˈleɪ","extend":"ekˈstend","priority":"praɪˈɒrɪti","draft":"drɑːft","eta":"iː tiː ˈeɪ","teamwork":"ˈtiːmwɜːk","cooperate":"kəʊˈɒpəreɪt","support":"səˈpɔːt","divide":"dɪˈvaɪd","contribute":"ˈkɒntrɪbjuːt","communicate":"kəˈmjuːnɪkeɪt","feedback":"ˈfiːdbæk","brainstorm":"ˈbreɪnstɔːm","rely on":"rɪˈlaɪ ɒn","help out":"help aʊt","workload":"ˈwɜːkləʊd","together":"təˈgeðə","avoid":"əˈvɔɪd","presentation":"prezənˈteɪʃən","topic":"ˈtɒpɪk","outline":"ˈaʊtlaɪn","first":"fɜːst","second":"ˈsekənd","next":"nekst","then":"ðen","finally":"ˈfaɪnəli","slide":"slaɪd","conclude":"kənˈkluːd","in summary":"ɪn ˈsʌməri","overview":"ˈəʊvəvjuː","key point":"kiː pɔɪnt","divided into":"dɪˈvaɪdɪd ˈɪntʊ","feel free to":"fiːl friː tə","chart":"tʃɑːt","graph":"græf","table":"ˈteɪbəl","data":"ˈdeɪtə","bar":"bɑː","axis":"ˈæksɪs","represent":"reprɪˈzent","show":"ʃəʊ","illustrate":"ˈɪləstreɪt","compared with":"kəmˈpeəd wɪð","year-on-year":"jɪə ɒn jɪə","quarter-on-quarter":"ˈkwɔːtə ɒn ˈkwɔːtə","account for":"əˈkaʊnt fə","highlight":"ˈhaɪlaɪt","clarify":"ˈklærɪfaɪ","rephrase":"rɪˈfreɪz","detail":"ˈdiːteɪl","specific":"spəˈsɪfɪk","figure out":"ˈfɪgə aʊt","get back to":"get bæk tə","mention":"ˈmenʃən","information":"ɪnfəˈmeɪʃən","good question":"gʊd ˈkwestʃən","follow-up":"ˈfɒləʊ ʌp","wonder":"ˈwʌndə","release":"rɪˈliːs","networking":"ˈnetwɜːkɪŋ","event":"ɪˈvent","business card":"ˈbɪznəs kɑːd","industry":"ˈɪndʌstri","connect":"kəˈnekt","keep in touch":"kiːp ɪn tʌtʃ","small talk":"smɔːl tɔːk","firm":"fɜːm","mutual friend":"ˈmjuːtʃuːəl frend","catch up":"kætʃ ʌp","reach out":"riːtʃ aʊt","speaker":"ˈspiːkə","line of work":"laɪn əv wɜːk","bring":"brɪŋ","code-switching":"kəʊd ˈswɪtʃɪŋ","cantonese":"kæntəˈniːz","mandarin":"ˈmændərɪn","local":"ˈləʊkəl","expat":"ekˈspæt","hierarchy":"ˈhaɪərɑːki","formal":"ˈfɔːməl","casual":"ˈkæʒuːəl","working hours":"ˈwɜːkɪŋ aʊəz","overtime":"ˈəʊvətaɪm","lunch hour":"lʌntʃ aʊə","annual leave":"ˈænjuːəl liːv","public holiday":"ˈpʌblɪk ˈhɒlɪdeɪ","culture":"ˈkʌltʃə","noted":"ˈnəʊtɪd","regulation":"regjuːˈleɪʃən","kyc":"keɪ waɪ ˈsiː","anti-money laundering":"ˈænti ˈmʌni ˈlɔːndərɪŋ","due diligence":"djuː ˈdɪlɪdʒəns","verify":"ˈverɪfaɪ","identity":"aɪˈdentɪti","source of funds":"sɔːs əv fʌndz","suspicious":"səˈspɪʃəs","report":"rɪˈpɔːt","risk assessment":"rɪsk əˈsesmənt","approve":"əˈpruːv","reject":"rɪˈdʒekt","regulator":"ˈregjuːleɪtə","confidential":"kɒnfɪˈdenʃəl","weakness":"ˈwiːknəs","achievement":"əˈtʃiːvmənt","situation":"sɪtʃuːˈeɪʃən","action":"ˈækʃən","result":"rɪˈzʌlt","challenge":"ˈtʃælɪndʒ","improve":"ɪmˈpruːv","overcome":"əʊvəˈkʌm","initiative":"ɪˈnɪʃɪətɪv","leadership":"ˈliːdəʃɪp","reliable":"rɪˈlaɪəbəl","adaptable":"əˈdæptəbəl","result-oriented":"rɪˈzʌlt ˈɔːrɪəntɪd","difficult":"ˈdɪfɪkəlt","conflict":"ˈkɒnflɪkt","pressure":"ˈpreʃə","calm":"kɑːm","prioritize":"praɪˈɒrətaɪz","solution":"səˈluːʃən","learn from":"lɜːn frɒm","team member":"tiːm ˈmembə","successfully":"səkˈsesfəli","honest":"ˈɒnɪst","since then":"sɪns ðen","in the end":"ɪn ðə end","lesson":"ˈlesən","role":"rəʊl","expectation":"ekspɪkˈteɪʃən","career path":"kəˈrɪə pɑːθ","team culture":"tiːm ˈkʌltʃə","typical day":"ˈtɪpɪkəl deɪ","performance":"pəˈfɔːməns","evaluate":"ɪˈvæljuːeɪt","process":"ˈprəʊses","salary":"ˈsæləri","package":"ˈpækɪdʒ","benefits":"ˈbenɪfɪts","start date":"stɑːt deɪt","success":"səkˈses","hear back":"hɪə bæk","wealth management":"welθ ˈmænɪdʒmənt","asset allocation":"ˈæset æləˈkeɪʃən","risk appetite":"rɪsk ˈæpɪtaɪt","diversify":"daɪˈvɜːsɪfaɪ","long-term":"lɒŋ tɜːm","conservative":"kənˈsɜːvətɪv","aggressive":"əˈgresɪv","balanced":"ˈbælənst","retirement":"rɪˈtaɪəmənt","review":"rɪˈvjuː","rebalance":"riːˈbæləns","high-net-worth":"haɪ net wɜːθ","equities":"ˈekwɪtiz","fixed income":"fɪkst ˈɪnkʌm","investment goal":"ɪnˈvestmənt gəʊl","premium":"ˈpriːmɪəm","coverage":"ˈkʌvərɪdʒ","claim":"kleɪm","beneficiary":"benɪˈfɪʃəri","life insurance":"laɪf ɪnˈʃɔːrəns","medical insurance":"ˈmedɪkəl ɪnˈʃɔːrəns","savings plan":"ˈseɪvɪŋz plæn","critical illness":"ˈkrɪtɪkəl ˈɪlnəs","payout":"peɪaʊt","exclusion":"eksˈkluːʒən","underwriting":"ʌndəˈraɪtɪŋ","annuity":"əˈnjuːɪti","pre-existing condition":"priː ɪgˈzɪstɪŋ kənˈdɪʃən","broker":"ˈbrəʊkə","limit order":"ˈlɪmɪt ˈɔːdə","market order":"ˈmɑːkɪt ˈɔːdə","execute":"ˈeksɪkjuːt","settle":"ˈsetəl","bid":"bɪd","ask":"ɑːsk","spread":"spred","margin":"ˈmɑːdʒɪn","stop-loss":"stɒp lɒs","liquidity":"lɪˈkwɪdɪti","trading hours":"ˈtreɪdɪŋ aʊəz","fill":"fɪl","fund manager":"fʌnd ˈmænɪdʒə","asset management":"ˈæset ˈmænɪdʒmənt","nav":"en eɪ ˈviː","management fee":"ˈmænɪdʒmənt fiː","benchmark":"ˈbentʃmɑːk","outperform":"aʊtpəˈfɔːm","underperform":"ʌndəpəˈfɔːm","etf":"iː tiː ˈef","equity fund":"ˈekwɪti fʌnd","bond fund":"bɒnd fʌnd","strategy":"ˈstrætədʒi","track record":"ˈtræk rekɔːd","inflow":"ˈɪnfləʊ","outflow":"aʊtˈfləʊ","investment bank":"ɪnˈvestmənt bæŋk","ipo":"aɪ piː ˈəʊ","listing":"ˈlɪstɪŋ","underwriter":"ʌndəˈraɪtə","prospectus":"prəˈspektəs","valuation":"væljuːˈeɪʃən","merger":"ˈmɜːdʒə","acquisition":"əkwɪˈsɪʃən","m&a":"em ən ˈeɪ","roadshow":"ˈrəʊdʃəʊ","pricing":"ˈpraɪsɪŋ","oversubscribed":"əʊvəsəbˈskraɪbd","sponsor":"ˈspɒnsə","retail investor":"ˈriːteɪl ɪnˈvestə","institutional investor":"ɪnstɪˈtjuːʃənəl ɪnˈvestə","income statement":"ˈɪnkʌm ˈsteɪtmənt","balance sheet":"ˈbæləns ʃiːt","cash flow statement":"kæʃ fləʊ ˈsteɪtmənt","revenue":"ˈrevənjuː","cost":"kɒst","gross profit":"grəʊs ˈprɒfɪt","net profit":"net ˈprɒfɪt","assets":"ˈæsets","liabilities":"laɪəˈbɪlɪtiz","equity":"ˈekwɪti","earnings per share":"ˈɜːnɪŋz pɜː ʃeə","debt":"det","annual report":"ˈænjuəl rɪˈpɔːt","audit":"ˈɔːdɪt","credit risk":"ˈkredɪt rɪsk","market risk":"ˈmɑːkɪt rɪsk","liquidity risk":"lɪˈkwɪdɪti rɪsk","operational risk":"ɒpəˈreɪʃənəl rɪsk","exposure":"ekˈspəʊʒə","mitigate":"ˈmɪtɪgeɪt","hedge":"hedʒ","stress test":"stres test","limit":"ˈlɪmɪt","default":"dɪˈfɒlt","tend to":"tend tə","potential":"pəˈtenʃəl","scenario":"səˈnɑːrɪəʊ","appear to":"əˈpɪə tə","to some extent":"tə sʌm ekˈstent","economy":"ɪˈkɒnəmi","gdp":"dʒiː diː ˈpiː","inflation":"ɪnˈfleɪʃən","interest rate":"ˈɪntrəst reɪt","central bank":"ˈsentrəl bæŋk","recession":"rɪˈseʃən","growth":"grəʊθ","unemployment":"ʌnemˈplɔɪmənt","stimulus":"ˈstɪmjʊləs","currency":"ˈkʌrənsi","exchange rate":"eksˈtʃeɪndʒ reɪt","peg":"peg","hibor":"ˈhaɪbɔː","lead to":"ˈliːd tə","due to":"djuː tə","fintech":"ˈfɪntek","digital bank":"ˈdɪdʒɪtəl bæŋk","virtual bank":"ˈvɜːtʃuːəl bæŋk","mobile app":"ˈməʊbaɪl æp","payment":"ˈpeɪmənt","e-wallet":"iː ˈwɒlɪt","faster payment system":"ˈfɑːstə ˈpeɪmənt ˈsɪstəm","blockchain":"ˈblɒktʃeɪn","artificial intelligence":"ɑːtɪˈfɪʃəl ɪnˈtelɪdʒəns","automation":"ɔːtəˈmeɪʃən","cybersecurity":"saɪbəsɪˈkjʊərəti","innovation":"ɪnəˈveɪʃən","user experience":"ˈjuːzə ekˈspɪərɪəns","licensed":"ˈlaɪsənsd","commentary":"ˈkɒməntri","estimate":"ˈestɪmeɪt","sentiment":"ˈsentɪmənt","rally":"ˈræli","sell-off":"sel ɒf","correction":"kəˈrekʃən","consensus":"kənˈsensəs","upside":"ˈʌpsaɪd","downside":"ˈdaʊnsaɪd","catalyst":"ˈkætəlɪst","cautious":"ˈkɔːʃəs","summarize":"ˈsʌməraɪz","so what you're saying is":"səʊ wɒt jɔː ˈseɪɪŋ ɪz","correct me if i'm wrong":"kəˈrekt miː ɪf aɪm ˈrɒŋ","in other words":"ɪn ˈʌðə wɜːdz","agree on":"əˈgriː ɒn","timeline":"ˈtaɪmlaɪn","just to confirm":"dʒʌst tə kənˈfɜːm","make sure":"meɪk ʃɔː","income":"ˈɪnkʌm","cross-sell":"krɒs sel","open question":"ˈəʊpən ˈkwestʃən","closed question":"kləʊzd ˈkwestʃən","upgrade":"ʌpˈgreɪd","promotion":"prəˈməʊʃən","interested":"ˈɪntrəstɪd","consider":"kənˈsɪdə","protect":"prəˈtekt","plan ahead":"plæn əˈhed","education fund":"edʒuːˈkeɪʃən fʌnd","peace of mind":"piːs əv maɪnd","conference call":"ˈkɒnfrəns kɔːl","join":"dʒɔɪn","mute":"mjuːt","unmute":"ʌnˈmjuːt","share screen":"ʃeə skriːn","connection":"kəˈnekʃən","break up":"breɪk ʌp","echo":"ˈekəʊ","interrupt":"ˈɪntərʌpt","go ahead":"gəʊ əˈhed","jump in":"dʒʌmp ɪn","catch":"kætʃ","on the same page":"ɒn ðə seɪm peɪdʒ","time zone":"taɪm zəʊn","dial in":"daɪəl ɪn","bottom line":"ˈbɒtəm laɪn","in short":"ɪn ʃɔːt","key takeaway":"kiː ˈteɪkəweɪ","recommendation":"rekəmenˈdeɪʃən","decision":"dɪˈsɪʒən","approval":"əˈpruːvəl","impact":"ˈɪmpækt","pros and cons":"prəʊz ənd kɒnz","escalate":"ˈeskəleɪt","heads-up":"hedz ʌp","fyi":"ef waɪ ˈaɪ","quick update":"kwɪk ˈʌpdeɪt","long-term value":"lɒŋ tɜːm ˈvæljuː","persuade":"pəˈsweɪd","convince":"kənˈvɪns","argument":"ˈɑːgjuːmənt","evidence":"ˈevɪdəns","value":"ˈvæljuː","proven":"ˈpruːvən","imagine":"ɪˈmædʒɪn","advantage":"ədˈvɑːntɪdʒ","compelling":"kəmˈpelɪŋ","win-win":"wɪn wɪn","hassle":"ˈhæsəl","paperwork":"ˈpeɪpəwɜːk","dedicated":"ˈdedɪkeɪtɪd","most importantly":"məʊst ɪmˈpɔːtəntli","speak for themselves":"spiːk fə ðemˈselvz","unfortunately":"ʌnˈfɔːtʃənətli","disappointing":"dɪsəˈpɔɪntɪŋ","loss":"lɒs","transparent":"trænˈspærənt","reassure":"riːəʃˈjɔː","patience":"ˈpeɪʃəns","realistic":"rɪəˈlɪstɪk","regret":"rɪˈgret","tough":"tʌf","move forward":"muːv ˈfɔːwəd","misunderstanding":"mɪsʌndəˈstændɪŋ","adjust":"əˈdʒʌst","esg":"iː es ˈdʒiː","sustainable":"səˈsteɪnəbəl","green bond":"griːn bɒnd","climate change":"ˈklaɪmət tʃeɪndʒ","carbon emissions":"ˈkɑːbən ɪˈmɪʃənz","net zero":"net ˈzɪərəʊ","renewable energy":"rɪˈnjuːəbəl ˈenədʒi","governance":"ˈgʌvənəns","disclosure":"dɪsˈkləʊʒə","impact investing":"ˈɪmpækt ɪnˈvestɪŋ","greenwashing":"ˈgriːnwɒʃɪŋ","transition":"trænˈsɪʃən","rating":"ˈreɪtɪŋ","stakeholder":"ˈsteɪkhəʊldə","committed to":"kəˈmɪtɪd tə","sfc":"es ef ˈsiː","hkma":"eɪtʃ keɪ em ˈeɪ","insurance authority":"ɪnˈʃɔːrəns əˈθɒrɪti","mpf":"em piː ˈef","hkex":"eɪtʃ keɪ iː ˈeks","licence":"ˈlaɪsəns","regulated activity":"ˈregjuːleɪtɪd ækˈtɪvɪti","responsible officer":"rɪˈspɒnsəbəl ˈɒfɪsə","cpd":"siː piː ˈdiː","licensing exam":"ˈlaɪsənsɪŋ egˈzæm","registered":"ˈredʒɪstəd","stock connect":"stɒk kəˈnekt","greater bay area":"ˈgreɪtə beɪ ˈeərɪə","cross-border":"krɒs ˈbɔːdə","pitch":"pɪtʃ","elevator pitch":"ˈelɪveɪtə pɪtʃ","concise":"kənˈsaɪs","unique":"juːˈniːk","value proposition":"ˈvæljuː prɒpəˈzɪʃən","specialize in":"ˈspeʃəlaɪz ɪn","passionate":"ˈpæʃənət","differentiate":"dɪfəˈrenʃɪeɪt","memorable":"ˈmemərəbəl","hook":"hʊk","call to action":"kɔːl tə ˈækʃən","bilingual":"baɪˈlɪŋgwəl","open to":"ˈəʊpən tə","grab a coffee":"græb ə ˈkɒfi","motivation":"məʊtɪˈveɪʃən","research":"rɪˈsɜːtʃ","values":"ˈvæljuːz","fit":"fɪt","commitment":"kəˈmɪtmənt","learning curve":"ˈlɜːnɪŋ kɜːv","ambition":"æmˈbɪʃən","passion":"ˈpæʃən","attract":"əˈtrækt","presence":"ˈprezəns","from day one":"frɒm deɪ wɒn","fast learner":"fɑːst ˈlɜːnə","in five years":"ɪn faɪv jɪəz","needs analysis":"niːdz əˈnæləsɪs","fee structure":"fiː ˈstrʌktʃə","risk disclosure":"rɪsk dɪsˈkləʊʒə","objection":"ɒbˈdʒekʃən","address":"əˈdres","close":"kləʊz","onboarding":"ˈɒnbɔːdɪŋ","walk through":"wɔːk θruː","high-grade":"haɪ greɪd","target":"ˈtɑːgɪt","honesty":"ˈɒnɪsti","partnership":"ˈpɑːtnəʃɪp","chair":"tʃeə","facilitate":"fəˈsɪlɪteɪt","vote":"vəʊt","show of hands":"ʃəʊ əv hændz","park":"pɑːk","circle back":"ˈsɜːkəl bæk","take offline":"teɪk ˈɒflaɪn","align":"əˈlaɪn","deliverable":"dɪˈlɪvərəbəl","owner":"ˈəʊnə","run out of time":"rʌn aʊt əv taɪm","agreed":"əˈgriːd","onboarding process":"ˈɒnbɔːdɪŋ ˈprəʊses","business lunch":"ˈbɪznəs lʌntʃ","dish":"dɪʃ","treat":"triːt","split the bill":"splɪt ðə bɪl","my treat":"maɪ triːt","cheers":"tʃɪəz","toast":"təʊst","relax":"rɪˈlæks","dim sum":"dɪm sʌm","by the way":"baɪ ðə weɪ","discover":"dɪˈskʌvə","move":"muːv","ballpark figure":"ˈbɔːlpɑːk ˈfɪgə","touch base":"tʌtʃ beɪs","get the ball rolling":"get ðə bɔːl ˈrəʊlɪŋ","think outside the box":"θɪŋk aʊtˈsaɪd ðə ˈbɒks","up in the air":"ʌp ɪn ðə eə","back to square one":"bæk tə skweə wɒn","cut corners":"kʌt ˈkɔːnəz","in a nutshell":"ɪn ə ˈnʌtʃel","keep me posted":"kiːp miː ˈpəʊstɪd","on top of it":"ɒn tɒp əv ɪt","call it a day":"kɔːl ɪt ə deɪ","the ball is in your court":"ðə bɔːl ɪz ɪn jɔː kɔːt","a win-win":"ə wɪn wɪn","the bottom line":"ðə ˈbɒtəm laɪn","confident":"ˈkɒnfɪdənt","prepared":"prɪˈpeəd","impression":"ɪmˈpreʃən","body language":"ˈbɒdi ˈlæŋgwɪdʒ","eye contact":"ˈaɪ kɒntækt","handshake":"ˈhændʃeɪk","pause":"pɔːz","thank-you email":"ˈθæŋk juː ˈiːmeɪl","nervous":"ˈnɜːvəs","breathe":"briːð","discipline":"ˈdɪsɪplɪn","concrete":"ˈkɒŋkriːt","how are you":"haʊ ɑː ˈjuː","fine":"faɪn","thanks":"θæŋks","mr.":"ˈmɪstə","ms.":"mɪz","letter":"ˈletə","again":"əˈgen","city":"ˈsɪti","mainland":"ˈmeɪnlənd","speak":"spiːk","chinese":"tʃaɪˈniːz","myself":"maɪˈself","first name":"fɜːst neɪm","surname":"ˈsɜːneɪm","a little":"ə ˈlɪtəl","forty":"ˈfɔːti","fourteen":"fɔːˈtiːn","sixty":"ˈsɪksti","nine":"naɪn","mobile":"ˈməʊbaɪl","number":"ˈnʌmbə","digit":"ˈdɪdʒɪt","dot":"dɒt","at":"æt","grandmother":"ˈgrændmʌðə","grandfather":"ˈgrændfɑːðə","cousin":"ˈkʌzən","relative":"ˈrelətɪv","kid":"kɪd","baby":"ˈbeɪbi","older":"ˈəʊldə","younger":"ˈjʌŋgə","only child":"ˈəʊnli tʃaɪld","get along":"get əˈlɒŋ","tuesday":"ˈtjuːzdeɪ","wednesday":"ˈwenzdeɪ","thursday":"ˈθɜːzdeɪ","saturday":"ˈsætədeɪ","sunday":"ˈsʌndeɪ","date":"deɪt","year":"jɪə","noon":"nuːn","early":"ˈɜːli","birthday":"ˈbɜːθdeɪ","wake up":"weɪk ʌp","take a shower":"teɪk ə ˈʃaʊə","leave home":"liːv həʊm","arrive":"əˈraɪv","commute":"kəˈmjuːt","break":"breɪk","dinner":"ˈdɪnə","often":"ˈɒfən","rarely":"ˈreəli","fish":"fɪʃ","pork":"pɔːk","soup":"suːp","dessert":"dɪˈzɜːt","sugar":"ˈʃʊgə","ice":"aɪs","hungry":"ˈhʌŋgri","full":"fʊl","street":"striːt","map":"mæp","far":"fɑː","walk":"wɔːk","traffic lights":"ˈtræfɪk laɪts","cross":"krɒs","entrance":"ˈentrəns","ground floor":"graʊnd flɔː","lobby":"ˈlɒbi","lost":"lɒst","tram":"træm","airport":"ˈeəpɔːt","top up":"tɒp ʌp","seat":"siːt","crowded":"ˈkraʊdɪd","rush hour":"rʌʃ aʊə","get on":"get ɒn","get off":"get ɒf","direct":"daɪˈrekt","on time":"ɒn taɪm","shop":"ʃɒp","sale":"seɪl","exchange":"eksˈtʃeɪndʒ","wallet":"ˈwɒlɪt","brand":"brænd","colour":"ˈkʌlə","fitting room":"ˈfɪtɪŋ ruːm","afford":"əˈfɔːd","warm":"wɔːm","cool":"kuːl","temperature":"ˈtemprɪtʃə","wet":"wet","storm":"stɔːm","season":"ˈsiːzən","summer":"ˈsʌmə","winter":"ˈwɪntə","air conditioning":"eə kənˈdɪʃənɪŋ","yoga":"ˈjəʊgə","photography":"fəˈtɒgrəfi","cooking":"ˈkʊkɪŋ","running":"ˈrʌnɪŋ","badminton":"ˈbædmɪntən","game":"geɪm","club":"klʌb","trail":"treɪl","fun":"fʌn","right now":"raɪt naʊ","work on":"wɜːk ɒn","deal with":"diːl wɪð","email":"ˈiːmeɪl","print":"prɪnt","type":"taɪp","coffee break":"ˈkɒfi breɪk","take a message":"teɪk ə ˈmesɪdʒ","last night":"lɑːst naɪt","this morning":"ðɪs ˈmɔːnɪŋ","checked":"tʃekt","emailed":"ˈiːmeɪld","helped":"helpt","planned":"plænd","waited":"ˈweɪtɪd","listened":"ˈlɪsənd","opened":"ˈəʊpənd","tried":"traɪd","was":"wɒz","were":"wɜː","told":"təʊld","said":"sed","left":"left","found":"faʊnd","knew":"njuː","gave":"geɪv","slept":"slept","drank":"dræŋk","next year":"nekst jɪə","dream":"driːm","promise":"ˈprɒmɪs","exam":"egˈzæm","pass":"pɑːs","save money":"seɪv ˈmʌni","this weekend":"ðɪs wiːˈkend","prepare for":"prɪˈpeə fə","sure":"ʃɔː","idea":"aɪˈdɪə","word":"wɜːd","sentence":"ˈsentəns","meaning":"ˈmiːnɪŋ","correct":"kəˈrekt","wrong":"rɒŋ","curious":"ˈkjʊrɪəs","cheapest":"ˈtʃiːpəst","safer":"ˈseɪfə","riskier":"ˈrɪskɪə","easier":"ˈiːzɪə","more convenient":"mɔː kənˈviːnɪənt","prefer":"prɪˈfɜː","choice":"tʃɔɪs","worst":"wɜːst","as ... as":"əz … əz","higher":"haɪə","laptop":"ˈlæptɒp","password":"ˈpɑːswɜːd","copy":"ˈkɒpi","folder":"ˈfəʊldə","stapler":"ˈsteɪplə","sign":"saɪn","photocopier":"ˈfəʊtəkɒpɪə","it support":"aɪ ˈtiː səˈpɔːt","badge":"bædʒ","shared drive":"ʃeəd draɪv","trader":"ˈtreɪdə","intern":"ˈɪntɜːn","head of":"hed əv","report to":"rɪˈpɔːt tə","legal":"ˈliːgəl","finance department":"ˈfaɪnæns dɪˈpɑːtmənt","senior":"ˈsiːnjə","junior":"ˈdʒuːnjə","customer service":"ˈkʌstəmə ˈsɜːvɪs","hang up":"hæŋ ʌp","pick up":"pɪk ʌp","ring":"rɪŋ","caller":"ˈkɔːlə","missed call":"mɪst kɔːl","get through":"get θruː","cut off":"kʌt ɒf","return a call":"rɪˈtɜːn ə ˈkɔːl","wrong number":"rɒŋ ˈnʌmbə","postpone":"pəʊstˈpəʊn","earlier":"ˈɜːlɪə","slot":"slɒt","reminder":"rɪˈmaɪndə","clash":"klæʃ","in person":"ɪn ˈpɜːsən","video call":"ˈvɪdɪəʊ kɔːl","attend":"əˈtend","fully booked":"ˈfʊli bʊkt","sometime":"ˈsʌmtaɪm","grateful":"ˈgreɪtfəl","allow":"əˈlaʊ","mind":"maɪnd","assist":"əˈsɪst","quick question":"kwɪk ˈkwestʃən","spare":"speə","give a hand":"gɪv ə hænd","politely":"pəˈlaɪtli","remind":"rɪˈmaɪnd","sure thing":"ʃɔː θɪŋ","percentage point":"pəˈsentɪdʒ pɔɪnt","triple":"ˈtrɪpəl","per year":"pɜː jɪə","amount":"əˈmaʊnt","profit":"ˈprɒfɪt","approximately":"əˈprɒksɪmətli","minus":"ˈmaɪnəs","trillion":"ˈtrɪlɪən","basis point":"ˈbeɪsɪs pɔɪnt","times":"taɪmz","university":"juːnɪˈvɜːsɪti","previous":"ˈpriːvɪəs","client-facing":"klaɪənt ˈfeɪsɪŋ","fluent":"ˈfluːənt","communication":"kəmjuːnɪˈkeɪʃən","cv":"siː ˈviː","qualification":"kwɒlɪfɪˈkeɪʃən","certificate":"səˈtɪfɪkət","applicant":"ˈæplɪkənt","quick learner":"kwɪk ˈlɜːnə","so far":"səʊ fɑː","promote":"prəˈməʊt","supervise":"ˈsuːpəvaɪz","train":"treɪn","resign":"rɪˈzaɪn","career change":"kəˈrɪə tʃeɪndʒ","track":"træk","assets under management":"ˈæsets ˈʌndə ˈmænɪdʒmənt","successful":"səkˈsesfəl","hands-on":"hændz ɒn","dear":"dɪə","sincerely":"sɪnˈsɪəli","signature":"ˈsɪgnɪtʃə","recipient":"rɪˈsɪpɪənt","inbox":"ˈɪnbɒks","out of office":"aʊt əv ˈɒfɪs","proofread":"ˈpruːfriːd","tone":"təʊn","confirmation":"kɒnfəˈmeɪʃən","hear from":"hɪə frɒm","kick off":"kɪk ɒf","first of all":"fɜːst əv ɔːl","go through":"gəʊ θruː","hand over to":"hænd ˈəʊvə tə","any other business":"ˈeni ˈʌðə ˈbɪznəs","on behalf of":"ɒn bɪˈhɑːf əv","aim":"eɪm","apologies":"əˈpɒlədʒɪz","note-taker":"nəʊt ˈteɪkə","brief":"briːf","in my experience":"ɪn maɪ ekˈspɪərɪəns","strongly":"ˈstrɒŋli","honestly":"ˈɒnɪstli","it seems to me":"ɪt siːmz tə miː","on balance":"ɒn ˈbæləns","drawback":"ˈdrɔːbæk","approach":"əˈprəʊtʃ","key":"kiː","the way i see it":"ðə weɪ aɪ siː ɪt","valid":"ˈvælɪd","i couldn't agree more":"aɪ ˈkʊdnt əˈgriː mɔː","not necessarily":"nɒt nesɪˈserəli","i take your point":"aɪ teɪk jɔː pɔɪnt","object":"əbˈdʒekt","middle ground":"ˈmɪdəl graʊnd","debate":"dɪˈbeɪt","respect":"rɪˈspekt","disagreement":"dɪsəˈgriːmənt","frankly":"ˈfræŋkli","see eye to eye":"siː aɪ tə aɪ","required":"rɪˈkwaɪəd","be supposed to":"biː səˈpəʊzd tə","prohibited":"prəˈhɪbɪtɪd","permitted":"pəˈmɪtɪd","guideline":"ˈgaɪdlaɪn","code of conduct":"kəʊd əv ˈkɒndʌkt","ought to":"ɔːt tə","strict":"strɪkt","comply with":"kəmˈplaɪ wɪð","dress code":"dres kəʊd","perhaps":"pəˈhæps","definitely":"ˈdefɪnətli","doubtful":"ˈdaʊtfəl","predict":"prɪˈdɪkt","uncertainty":"ʌnˈsɜːtənti","worst case":"wɜːst keɪs","best case":"best keɪs","odds":"ɒdz","signal":"ˈsɪgnəl","surprise":"səˈpraɪz","soar":"sɔː","plunge":"plʌndʒ","climb":"klaɪm","dip":"dɪp","level off":"ˈlevəl ɒf","rebound":"rɪˈbaʊnd","gradual":"ˈgrædʒuːəl","dramatic":"drəˈmætɪk","low":"ləʊ","high":"haɪ","withdrawal":"wɪðˈdrɔːl","cheque":"tʃek","overdraft":"ˈəʊvədrɑːft","credit limit":"ˈkredɪt ˈlɪmɪt","online banking":"ˈɒnlaɪn ˈbæŋkɪŋ","teller":"ˈtelə","debit card":"ˈdebɪt kɑːd","repay":"rɪˈpeɪ","monthly payment":"ˈmʌnθli ˈpeɪmənt","application":"æplɪˈkeɪʃən","blue chip":"bluː tʃɪp","hang seng index":"hæŋ seŋ ˈɪndeks","shareholder":"ˈʃeəhəʊldə","yield":"jiːld","coupon":"ˈkuːpɒn","maturity":"məˈtʃɔːrɪti","turnover":"ˈtɜːnəʊvə","quote":"kwəʊt","capital":"ˈkæpɪtəl","issuer":"ˈɪʃuːə","greet":"griːt","host":"həʊst","refreshments":"rɪˈfreʃmənts","punctual":"ˈpʌŋktʃuːəl","rapport":"ræˈpɔː","personalised":"ˈpɜːsənəlaɪzd","discreet":"dɪˈskriːt","appreciation":"əpriːʃɪˈeɪʃən","escort":"ɪˈskɔːt","visitor":"ˈvɪzɪtə","lock-in period":"lɒk ɪn ˈpɪərɪəd","early withdrawal":"ˈɜːli wɪðˈdrɔːl","capital protected":"ˈkæpɪtəl prəˈtektɪd","annual return":"ˈænjuːəl rɪˈtɜːn","brochure":"ˈbrəʊʃə","terms and conditions":"tɜːmz ənd kənˈdɪʃənz","penalty":"ˈpenəlti","subscribe":"səbˈskraɪb","redeem":"rɪˈdiːm","target client":"ˈtɑːgɪt klaɪənt","upset":"ʌpˈset","unacceptable":"ʌnəkˈseptəbəl","take responsibility":"teɪk rɪspɒnsəˈbɪlɪti","follow-up call":"ˈfɒləʊ ʌp kɔːl","goodwill":"ˈgʊdwɪl","error":"ˈerə","waive":"weɪv","case number":"keɪs ˈnʌmbə","apology":"əˈpɒlədʒi","patient":"ˈpeɪʃənt","bargain":"ˈbɑːgɪn","leverage":"ˈliːvərɪdʒ","concession":"kənˈseʃən","walk away":"wɔːk əˈweɪ","volume discount":"ˈvɒljuːm ˈdɪskaʊnt","commit":"kəˈmɪt","propose":"prəˈpəʊz","close the deal":"kləʊz ðə diːl","trade-off":"treɪd ɒf","sticking point":"ˈstɪkɪŋ pɔɪnt","milestone":"ˈmaɪlstəʊn","on schedule":"ɒn ˈʃedjuːl","slip":"slɪp","bottleneck":"ˈbɒtəlnek","finalise":"ˈfaɪnəlaɪz","sign off":"saɪn ɒf","pending":"ˈpendɪŋ","overdue":"əʊvəˈdjuː","status report":"ˈsteɪtəs rɪˈpɔːt","collaborate":"kəˈlæbəreɪt","delegate":"ˈdelɪgeɪt","credit":"ˈkredɪt","team player":"tiːm pleɪə","pull together":"pʊl təˈgeðə","share the load":"ʃeə ðə ləʊd","morale":"məˈræl","coordinate":"kəʊˈɔːdɪneɪt","cover for":"ˈkʌvə fə","cross-team":"krɒs tiːm","audience":"ˈɔːdɪəns","visual":"ˈvɪʒuːəl","handout":"ˈhændaʊt","microphone":"ˈmaɪkrəfəʊn","structure":"ˈstrʌktʃə","to begin with":"tə bɪˈgɪn wɪð","point out":"pɔɪnt aʊt","rehearse":"rɪˈhɜːs","pace":"peɪs","engage":"enˈgeɪdʒ","pie chart":"paɪ tʃɑːt","line graph":"laɪn græf","bar chart":"bɑː tʃɑːt","proportion":"prəˈpɔːʃən","majority":"məˈdʒɒrɪti","minority":"maɪˈnɒrɪti","breakdown":"ˈbreɪkdaʊn","stand at":"stænd ət","roughly":"ˈrʌfli","respectively":"rɪˈspektɪvli","q&a session":"kjuː ən ˈeɪ ˈseʃən","off the top of my head":"ɒf ðə tɒp əv maɪ hed","speculate":"ˈspekjʊleɪt","beyond the scope":"bɪˈjɒnd ðə skəʊp","elaborate":"ɪˈlæbəreɪt","assumption":"əˈsʌmpʃən","hypothetical":"haɪpəˈθetɪkəl","take questions":"teɪk ˈkwestʃənz","in detail":"ɪn ˈdiːteɪl","comment":"ˈkɒment","panel":"ˈpænəl","conference":"ˈkɒnfrəns","acquaintance":"əˈkweɪntəns","name tag":"neɪm tæg","mingle":"ˈmɪŋgəl","chamber of commerce":"ˈtʃeɪmbə əv ˈkɒmɜːs","alumni":"əˈlʌmni","icebreaker":"ˈaɪsbreɪkə","approachable":"əˈprəʊtʃəbəl","refer":"rɪˈfɜː","work-life balance":"wɜːk laɪf ˈbæləns","face":"feɪs","seniority":"siːnɪˈɒrɪti","red packet":"red ˈpækɪt","lunar new year":"ˈluːnə njuː jɪə","team dinner":"tiːm ˈdɪnə","bonus":"ˈbəʊnəs","efficient":"ɪˈfɪʃənt","afternoon tea":"ɑːftəˈnuːn tiː","fast-paced":"fɑːst peɪst","sanctions":"ˈsɑːnkʃənz","screening":"ˈskriːnɪŋ","politically exposed person":"pəˈlɪtɪkli ekˈspəʊzd ˈpɜːsən","beneficial owner":"benɪˈfɪʃəl ˈəʊnə","record keeping":"ˈrekɔːd ˈkiːpɪŋ","red flag":"red flæg","enhanced due diligence":"enˈhɑːnst djuː ˈdɪlɪdʒəns","breach":"briːtʃ","audit trail":"ˈɔːdɪt treɪl","regulatory fine":"regjuːˈleɪtəri faɪn","accomplish":"əˈkɒmplɪʃ","deliver":"dɪˈlɪvə","measurable":"ˈmeʒərəbəl","outcome":"ˈaʊtkʌm","proactive":"prəʊˈæktɪv","constructive":"kənˈstrʌktɪv","go the extra mile":"gəʊ ðə ˈekstrə maɪl","time management":"taɪm ˈmænɪdʒmənt","problem-solving":"ˈprɒbləm ˈsɒlvɪŋ","attention to detail":"əˈtenʃən tə ˈdiːteɪl","tight deadline":"taɪt ˈdedlaɪn","manage expectations":"ˈmænɪdʒ ekspɪkˈteɪʃənz","take ownership":"teɪk ˈəʊnəʃɪp","frustration":"frʌˈstreɪʃən","reflect":"rɪˈflekt","turning point":"ˈtɜːnɪŋ pɔɪnt","setback":"ˈsetbæk","remain calm":"rɪˈmeɪn kɑːm","difficult client":"ˈdɪfɪkəlt klaɪənt","step in":"step ɪn","probation":"prəʊˈbeɪʃən","mentor":"ˈmentɔː","kpi":"keɪ piː ˈaɪ","growth opportunity":"grəʊθ ɒpəˈtjuːnɪti","reporting line":"rɪˈpɔːtɪŋ laɪn","team size":"tiːm saɪz","offer letter":"ˈɒfə ˈletə","notice period":"ˈnəʊtɪs ˈpɪərɪəd","hybrid working":"ˈhaɪbrɪd ˈwɜːkɪŋ","emergency fund":"ɪˈmɜːdʒənsi fʌnd","time horizon":"taɪm həˈraɪzən","compound interest":"ˈkɒmpaʊnd ˈɪntrəst","financial planning":"faɪˈnænʃəl ˈplænɪŋ","inheritance":"ɪnˈherɪtəns","family trust":"ˈfæmɪli trʌst","passive income":"ˈpɑːsɪv ˈɪnkʌm","risk profile":"rɪsk ˈprəʊfaɪl","suitability":"suːtəˈbɪlɪti","goal-based":"gəʊl beɪst","policyholder":"ˈpɒlɪsɪhəʊldə","insured":"ɪnˈʃɔːd","sum assured":"sʌm əʃˈjɔːd","rider":"ˈraɪdə","waiting period":"ˈweɪtɪŋ ˈpɪərɪəd","cooling-off period":"ˈkuːlɪŋ ɒf ˈpɪərɪəd","surrender value":"səˈrendə ˈvæljuː","hospitalisation":"hɒspɪtəlaɪˈzeɪʃən","dependants":"dɪˈpendənts","renew":"rɪˈnjuː","board lot":"bɔːd lɒt","settlement":"ˈsetəlmənt","custody":"ˈkʌstədi","short selling":"ʃɔːt ˈselɪŋ","intraday":"ɪntrəˈdeɪ","order book":"ˈɔːdə bʊk","commission":"kəˈmɪʃən","stamp duty":"stæmp ˈdjuːti","slippage":"ˈslɪpɪdʒ","volatility":"vɒləˈtɪlɪti","unit":"ˈjuːnɪt","subscription fee":"sʌbˈskrɪpʃən fiː","redemption":"rɪˈdempʃən","passive":"ˈpɑːsɪv","active":"ˈæktɪv","diversified":"daɪˈvɜːsɪfaɪd","sector":"ˈsektə","fact sheet":"fækt ʃiːt","expense ratio":"ekˈspens ˈreɪʃɪəʊ","income fund":"ˈɪnkʌm fʌnd","deal team":"diːl tiːm","pitch book":"pɪtʃ bʊk","issue price":"ˈɪʃuː praɪs","cornerstone investor":"ˈkɔːnəstəʊn ɪnˈvestə","lock-up":"lɒk ʌp","book building":"bʊk ˈbɪldɪŋ","allocation":"æləˈkeɪʃən","debut":"ˈdeɪbjuː","main board":"meɪn bɔːd","spin-off":"spɪn ɒf","operating profit":"ˈɒpəreɪtɪŋ ˈprɒfɪt","expenses":"ekˈspensɪz","write-off":"raɪt ɒf","guidance":"ˈgaɪdəns","dividend payout":"ˈdɪvɪdənd peɪaʊt","cash position":"kæʃ pəˈzɪʃən","leverage ratio":"ˈliːvərɪdʒ ˈreɪʃɪəʊ","quarterly results":"ˈkwɔːtəli rɪˈzʌlts","interim report":"ˈɪntərɪm rɪˈpɔːt","profit warning":"ˈprɒfɪt ˈwɔːnɪŋ","collateral":"kəˈlætərəl","counterparty":"ˈkaʊntəpɑːti","concentration risk":"kɒnsənˈtreɪʃən rɪsk","value at risk":"ˈvæljuː ət rɪsk","risk control":"rɪsk kənˈtrəʊl","early warning":"ˈɜːli ˈwɔːnɪŋ","contingency plan":"kənˈtɪndʒənsi plæn","probability":"prɒbəˈbɪlɪti","tolerance":"ˈtɒlərəns","margin call":"ˈmɑːdʒɪn kɔːl","rate hike":"reɪt haɪk","rate cut":"reɪt kʌt","property market":"ˈprɒpəti ˈmɑːkɪt","consumer spending":"kənˈsuːmə ˈspendɪŋ","tourism":"ˈtɔːrɪzəm","trade":"treɪd","tariff":"ˈtærɪf","slowdown":"ˈsləʊdaʊn","federal reserve":"ˈfedərəl rɪˈzɜːv","linked exchange rate system":"lɪŋkt eksˈtʃeɪndʒ reɪt ˈsɪstəm","open banking":"ˈəʊpən ˈbæŋkɪŋ","qr code":"kjuː ɑː ˈkəʊd","biometric":"baɪəʊˈmetrɪk","algorithm":"ˈælgərɪθəm","robo-adviser":"ˈrəʊbəʊ ədˈvaɪzə","tokenisation":"təʊkənaɪˈzeɪʃən","stablecoin":"ˈsteɪbəlkɔɪn","fraud":"frɔːd","two-factor authentication":"tuː ˈfæktə ɔːθentɪˈkeɪʃən","sandbox":"ˈsændbɒks","momentum":"məʊˈmentəm","bullish":"ˈbʊlɪʃ","bearish":"ˈbeərɪʃ","headwind":"ˈhedwɪnd","tailwind":"ˈteɪlwɪnd","earnings season":"ˈɜːnɪŋz ˈsiːzən","overweight":"əʊvəˈweɪt","underweight":"ʌndəˈweɪt","risk-on":"rɪsk ɒn","profit-taking":"ˈprɒfɪt ˈteɪkɪŋ","recap":"ˈriːkæp","action plan":"ˈækʃən plæn","follow-up email":"ˈfɒləʊ ʌp ˈiːmeɪl","misunderstand":"mɪsʌndəˈstænd","paraphrase":"ˈpærəfreɪz","constraint":"kənˈstreɪnt","preference":"ˈprefrəns","time frame":"taɪm freɪm","decision-maker":"dɪˈsɪʒən ˈmeɪkə","check in":"tʃek ɪn","needs-based":"niːdz beɪst","lifestyle":"ˈlaɪfstaɪl","life event":"laɪf ɪˈvent","bundle":"ˈbʌndəl","relevant":"ˈrelɪvənt","pushy":"ˈpʊʃi","referral":"rɪˈfɜːrəl","tailor":"ˈteɪlə","protection gap":"prəˈtekʃən gæp","wallet share":"ˈwɒlɪt ʃeə","headset":"ˈhedset","camera":"ˈkæmrə","meeting link":"ˈmiːtɪŋ lɪŋk","lag":"læg","frozen":"ˈfrəʊzən","background noise":"ˈbækgraʊnd nɔɪz","reconnect":"riːkəˈnekt","recording":"rɪˈkɔːdɪŋ","chat box":"tʃæt bɒks","bandwidth":"ˈbændwɪdθ","executive summary":"egˈzekjuːtɪv ˈsʌməri","headline":"ˈhedlaɪn","next step":"nekst step","rationale":"ræʃəˈnæl","budget approval":"ˈbʌdʒɪt əˈpruːvəl","go/no-go":"gəʊ nəʊ gəʊ","priority list":"praɪˈɒrɪti lɪst","talking points":"ˈtɔːkɪŋ pɔɪnts","straight to the point":"streɪt tə ðə pɔɪnt","busy schedule":"ˈbɪzi ˈʃedjuːl","storytelling":"ˈstɔːrɪtelɪŋ","case study":"keɪs ˈstʌdi","testimonial":"testɪˈməʊnɪəl","social proof":"ˈsəʊʃəl pruːf","reassurance":"riːəʃˈjɔːrəns","logical":"ˈlɒdʒɪkəl","emotional":"ɪˈməʊʃənəl","credible":"ˈkredɪbəl","exclusive":"eksˈkluːsɪv","no obligation":"nəʊ ɒblɪˈgeɪʃən","drawdown":"ˈdrɔːdaʊn","acknowledge":"əkˈnɒlɪdʒ","empathy":"ˈempəθi","downgrade":"ˈdaʊŋgreɪd","short term":"ʃɔːt tɜːm","silver lining":"ˈsɪlvə ˈlaɪnɪŋ","bounce back":"baʊns bæk","turbulence":"ˈtɜːbjʊləns","stay calm":"steɪ kɑːm","environmental":"envaɪrənˈmentəl","social":"ˈsəʊʃəl","solar power":"ˈsəʊlə paʊə","carbon neutral":"ˈkɑːbən ˈnjuːtrəl","carbon footprint":"ˈkɑːbən ˈfʊtprɪnt","fossil fuels":"ˈfɒsəl ˈfjuːəlz","diversity":"daɪˈvɜːsɪti","sustainability report":"səsteɪnəˈbɪlɪti rɪˈpɔːt","green finance":"griːn ˈfaɪnæns","long-term risk":"lɒŋ tɜːm rɪsk","type 1":"taɪp ˈwʌn","type 4":"taɪp ˈfɔː","type 9":"taɪp ˈnaɪn","wealth management connect":"welθ ˈmænɪdʒmənt kəˈnekt","bond connect":"bɒnd kəˈnekt","market misconduct":"ˈmɑːkɪt mɪsˈkɒndʌkt","insider dealing":"ɪnˈsaɪdə ˈdiːlɪŋ","fit and proper":"fɪt ənd ˈprɒpə","enforcement action":"enˈfɔːsmənt ˈækʃən","networking event":"ˈnetwɜːkɪŋ ɪˈvent","introduce myself":"ɪntrəˈdjuːs maɪˈself","mainland clients":"ˈmeɪnlənd klaɪənts","connect on linkedin":"kəˈnekt ɒn ˈlɪŋktɪn","stay in touch":"steɪ ɪn tʌtʃ","warm introduction":"wɔːm ɪntrəˈdʌkʃən","keep it short":"kiːp ɪt ʃɔːt","job description":"dʒɒb dɪˈskrɪpʃən","hiring manager":"ˈhaɪərɪŋ ˈmænɪdʒə","strengths and weaknesses":"streŋθs ənd ˈwiːknəsɪz","shortlisted":"ˈʃɔːtlɪstɪd","competency":"ˈkɒmpɪtənsi","relocate":"rɪləʊˈkeɪt","under pressure":"ˈʌndə ˈpreʃə","probation period":"prəʊˈbeɪʃən ˈpɪərɪəd","salary expectation":"ˈsæləri ekspɪkˈteɪʃən","referee":"refəˈriː","investment proposal":"ɪnˈvestmənt prəˈpəʊzəl","capital preservation":"ˈkæpɪtəl prɪsəˈveɪʃən","expected return":"ekˈspektɪd rɪˈtɜːn","income stream":"ˈɪnkʌm striːm","review meeting":"rɪˈvjuː ˈmiːtɪŋ","sign the documents":"saɪn ðə ˈdɒkjʊmənts","risk questionnaire":"rɪsk kwestʃəˈneə","think it over":"θɪŋk ɪt ˈəʊvə","quorum":"ˈkwɔːrəm","co-chair":"kəʊ ˈtʃeə","breakout session":"ˈbreɪkaʊt ˈseʃən","input":"ˈɪnpʊt","off topic":"ɒf ˈtɒpɪk","time-box":"taɪm bɒks","follow-through":"ˈfɒləʊ θruː","next meeting":"nekst ˈmiːtɪŋ","quick round":"kwɪk raʊnd","reservation":"rezəˈveɪʃən","seafood":"ˈsiːfuːd","dietary requirement":"ˈdaɪətəri rɪˈkwaɪəmənt","vegetarian":"vedʒɪˈteərɪən","set lunch":"set lʌntʃ","roast goose":"rəʊst guːs","local food":"ˈləʊkəl fuːd","the bill":"ðə bɪl","weekend plans":"wiːˈkend plænz","hit the ground running":"hɪt ðə graʊnd ˈrʌnɪŋ","learn the ropes":"lɜːn ðə rəʊps","a long shot":"ə lɒŋ ʃɒt","on the back burner":"ɒn ðə bæk ˈbɜːnə","get the green light":"get ðə griːn laɪt","think on your feet":"θɪŋk ɒn jɔː fiːt","a no-brainer":"ə nəʊ ˈbreɪnə","a steep learning curve":"ə stiːp ˈlɜːnɪŋ kɜːv","rule of thumb":"ruːl əv θʌm","ahead of the curve":"əˈhed əv ðə kɜːv","star method":"ˈstɑː ˈmeθəd","composure":"kəmˈpəʊʒə","self-introduction":"self ɪntrəˈdʌkʃən","mock interview":"mɒk ˈɪntəvjuː","follow-up question":"ˈfɒləʊ ʌp ˈkwestʃən","panel interview":"ˈpænəl ˈɪntəvjuː","arrive early":"əˈraɪv ˈɜːli","final round":"ˈfaɪnəl raʊnd"};
+const IPA_MAP={"hello":"həˈləʊ","hi":"haɪ","good morning":"gʊd ˈmɔːnɪŋ","good afternoon":"gʊd ɑːftəˈnuːn","good evening":"gʊd ˈiːvnɪŋ","goodbye":"gʊdˈbaɪ","see you":"siː juː","thank you":"θæŋk juː","you're welcome":"jɔː ˈwelkəm","sorry":"ˈsɒri","excuse me":"ɪkˈskjuːz miː","please":"pliːz","yes":"jes","no":"nəʊ","nice to meet you":"naɪs tə ˈmiːt juː","name":"neɪm","from":"frɒm","china":"ˈtʃaɪnə","hong kong":"hɒŋ ˈkɒŋ","live":"lɪv","work":"wɜːk","job":"dʒɒb","student":"sˈtjuːdənt","finance":"ˈfaɪnæns","bank":"bæŋk","company":"ˈkʌmpəni","new":"njuː","english":"ˈɪŋglɪʃ","learn":"lɜːn","now":"naʊ","zero":"ˈzɪərəʊ","three":"θriː","eight":"eɪt","eleven":"ɪˈlevən","twelve":"twelv","thirteen":"θɜːˈtiːn","thirty":"ˈθɜːti","fifteen":"fɪfˈtiːn","fifty":"ˈfɪfti","hundred":"ˈhʌndrəd","phone number":"ˈfəʊn ˈnʌmbə","email address":"ˈiːmeɪl əˈdres","how many":"haʊ ˈmeni","double":"ˈdʌbəl","spell":"spel","family":"ˈfæmɪli","father":"ˈfɑːðə","mother":"ˈmʌðə","parents":"ˈpeərənts","brother":"ˈbrʌðə","sister":"ˈsɪstə","husband":"ˈhʌsbənd","wife":"waɪf","son":"sʌn","daughter":"ˈdɔːtə","friend":"frend","colleague":"ˈkɒliːg","married":"ˈmærɪd","single":"ˈsɪŋgəl","children":"ˈtʃɪldrən","time":"taɪm","o'clock":"əˈklɒk","half past":"hɑːf pɑːst","quarter":"ˈkwɔːtə","morning":"ˈmɔːnɪŋ","afternoon":"ɑːftəˈnuːn","evening":"ˈiːvnɪŋ","today":"təˈdeɪ","tomorrow":"təˈmɒrəʊ","yesterday":"ˈjestədeɪ","week":"wiːk","month":"mʌnθ","monday":"ˈmʌndeɪ","friday":"ˈfraɪdeɪ","weekend":"wiːˈkend","get up":"get ʌp","have breakfast":"hæv ˈbrekfəst","take the mtr":"teɪk ðə em tiː ˈɑː","go to work":"gəʊ tə wɜːk","start":"stɑːt","finish":"ˈfɪnɪʃ","lunch":"lʌntʃ","usually":"ˈjuːʒuːəli","always":"ˈɔːlweɪz","sometimes":"ˈsʌmtaɪmz","never":"ˈnevə","every day":"ˈevri deɪ","go home":"gəʊ həʊm","cook":"kʊk","go to bed":"gəʊ tə bed","menu":"ˈmenjuː","order":"ˈɔːdə","coffee":"ˈkɒfi","tea":"tiː","milk tea":"mɪlk tiː","rice":"raɪs","noodles":"ˈnuːdəlz","chicken":"ˈtʃɪkɪn","beef":"biːf","vegetables":"ˈvedʒɪtəbəlz","water":"ˈwɔːtə","takeaway":"ˈteɪkəweɪ","bill":"bɪl","delicious":"dɪˈlɪʃəs","spicy":"ˈspaɪsi","where":"weə","near":"nɪə","next to":"nekst tə","opposite":"ˈɒpəsɪt","between":"bɪˈtwiːn","behind":"bɪˈhaɪnd","in front of":"ɪn frʌnt əv","turn left":"tɜːn left","turn right":"tɜːn raɪt","go straight":"gəʊ streɪt","corner":"ˈkɔːnə","building":"ˈbɪldɪŋ","floor":"flɔː","lift":"lɪft","exit":"ˈegzɪt","mtr":"em tiː ˈɑː","bus":"bʌs","taxi":"ˈtæksi","minibus":"ˈmɪnɪbʌs","ferry":"ˈferi","octopus card":"ˈɒktəpəs kɑːd","station":"ˈsteɪʃən","platform":"ˈplætfɔːm","line":"laɪn","change":"tʃeɪndʒ","stop":"stɒp","ticket":"ˈtɪkɪt","fare":"feə","traffic":"ˈtræfɪk","late":"leɪt","price":"praɪs","how much":"haʊ mʌtʃ","cheap":"tʃiːp","expensive":"ekˈspensɪv","discount":"ˈdɪskaʊnt","cash":"kæʃ","credit card":"ˈkredɪt kɑːd","pay":"peɪ","receipt":"rɪˈsiːt","size":"saɪz","try on":"traɪ ɒn","buy":"baɪ","sell":"sel","hong kong dollar":"hɒŋ kɒŋ ˈdɒlə","weather":"ˈweðə","hot":"hɒt","cold":"kəʊld","humid":"ˈhjuːmɪd","sunny":"ˈsʌni","rainy":"ˈreɪni","cloudy":"ˈklaʊdi","windy":"ˈwɪndi","typhoon":"taɪˈfuːn","rainstorm warning":"ˈreɪnstɔːm ˈwɔːnɪŋ","umbrella":"ʌmˈbrelə","nice":"naɪs","terrible":"ˈterəbəl","forecast":"ˈfɔːkɑːst","degree":"dɪˈgriː","hobby":"ˈhɒbi","free time":"friː taɪm","like":"laɪk","enjoy":"enˈdʒɔɪ","love":"lʌv","hate":"heɪt","reading":"ˈriːdɪŋ","hiking":"ˈhaɪkɪŋ","swimming":"ˈswɪmɪŋ","watching movies":"ˈwɒtʃɪŋ ˈmuːvɪz","travel":"ˈtrævəl","music":"ˈmjuːzɪk","sport":"spɔːt","gym":"dʒɪm","interested in":"ˈɪntrəstɪd ɪn","at the moment":"ət ðə ˈməʊmənt","currently":"ˈkʌrəntli","busy":"ˈbɪzi","call":"kɔːl","meeting":"ˈmiːtɪŋ","prepare":"prɪˈpeə","check":"tʃek","reply":"rɪˈplaɪ","wait":"weɪt","write":"raɪt","read":"riːd","look for":"lʊk fə","on the phone":"ɒn ðə fəʊn","in a meeting":"ɪn ə ˈmiːtɪŋ","last week":"lɑːst wiːk","ago":"əˈgəʊ","worked":"wɜːkt","finished":"ˈfɪnɪʃt","called":"kɔːld","visited":"ˈvɪzɪtɪd","watched":"wɒtʃt","stayed":"steɪd","studied":"ˈstʌdɪd","started":"ˈstɑːtɪd","asked":"ɑːskt","answered":"ˈɑːnsəd","talked":"tɔːkt","joined":"dʒɔɪnd","went":"went","had":"hæd","saw":"sɔː","met":"met","ate":"et","bought":"bɔːt","took":"tʊk","made":"meɪd","got":"gɒt","came":"keɪm","did":"dɪd","felt":"felt","spent":"spent","thought":"θɔːt","great":"greɪt","plan":"plæn","will":"wɪl","going to":"gəʊɪŋ tə","next week":"nekst wiːk","soon":"suːn","later":"ˈleɪtə","tonight":"təˈnaɪt","future":"ˈfjuːtʃə","goal":"gəʊl","hope":"həʊp","maybe":"ˈmeɪbiː","probably":"ˈprɒbəbli","decide":"dɪˈsaɪd","apply":"əˈplaɪ","interview":"ˈɪntəvjuː","what":"wɒt","who":"huː","when":"wen","why":"waɪ","which":"wɪtʃ","how":"haʊ","how long":"haʊ lɒŋ","how often":"haʊ ˈɒfən","whose":"huːz","question":"ˈkwestʃən","answer":"ˈɑːnsə","mean":"miːn","explain":"ekˈspleɪn","example":"egˈzɑːmpəl","bigger":"ˈbɪgə","smaller":"ˈsmɔːlə","better":"ˈbetə","worse":"wɜːs","more expensive":"mɔː ekˈspensɪv","cheaper":"ˈtʃiːpə","faster":"ˈfɑːstə","busier":"ˈbɪzɪə","the best":"ðə best","the most":"ðə məʊst","than":"ðən","compare":"kəmˈpeə","difference":"ˈdɪfrəns","similar":"ˈsɪmɪlə","same":"seɪm","office":"ˈɒfɪs","desk":"desk","computer":"kəmˈpjuːtə","printer":"ˈprɪntə","document":"ˈdɒkjʊmənt","file":"faɪl","meeting room":"ˈmiːtɪŋ ruːm","pantry":"ˈpɑːntri","manager":"ˈmænɪdʒə","boss":"bɒs","staff":"stɑːf","schedule":"ˈʃedjuːl","deadline":"ˈdedlaɪn","task":"tɑːsk","urgent":"ˈɜːdʒənt","department":"dɪˈpɑːtmənt","team":"tiːm","analyst":"ˈænəlɪst","director":"daɪˈrektə","assistant":"əˈsɪstənt","accountant":"əˈkaʊntənt","sales":"seɪlz","marketing":"ˈmɑːkɪtɪŋ","operations":"ɒpəˈreɪʃənz","human resources":"ˈhjuːmən rɪˈzɔːsɪz","compliance":"kəmˈplaɪəns","risk management":"rɪsk ˈmænɪdʒmənt","front office":"frʌnt ˈɒfɪs","back office":"bæk ˈɒfɪs","responsible for":"rɪˈspɒnsəbəl fə","speak to":"spiːk tə","this is":"ðɪs ɪz","hold on":"həʊld ɒn","put through":"pʊt ˈθruː","call back":"kɔːl bæk","message":"ˈmesɪdʒ","extension":"ekˈstenʃən","available":"əˈveɪləbəl","leave a message":"liːv ə ˈmesɪdʒ","speak up":"spiːk ʌp","repeat":"rɪˈpiːt","clearly":"ˈklɪəli","voicemail":"ˈvɔɪsmeɪl","appointment":"əˈpɔɪntmənt","free":"friː","arrange":"əˈreɪndʒ","book":"bʊk","confirm":"kənˈfɜːm","reschedule":"rɪsˈtʃedjuːl","cancel":"ˈkænsəl","suit":"suːt","convenient":"kənˈviːnɪənt","instead":"ɪnˈsted","look forward to":"lʊk ˈfɔːwəd tə","calendar":"ˈkæləndə","invite":"ɪnˈvaɪt","works for me":"wɜːks fə miː","how about":"haʊ əˈbaʊt","could":"kʊd","would you mind":"wʊd juː maɪnd","help":"help","favour":"ˈfeɪvə","possible":"ˈpɒsəbəl","borrow":"ˈbɒrəʊ","lend":"lend","send":"send","share":"ʃeə","take a look":"teɪk ə lʊk","when you have a moment":"wen juː hæv ə ˈməʊmənt","appreciate":"əˈpriːʃɪeɪt","of course":"əv kɔːs","no problem":"nəʊ ˈprɒbləm","bother":"ˈbɒðə","thousand":"ˈθaʊzənd","million":"ˈmɪlɪən","billion":"ˈbɪlɪən","percent":"pəˈsent","decimal point":"ˈdesɪməl pɔɪnt","half":"hɑːf","total":"ˈtəʊtəl","average":"ˈævrɪdʒ","increase":"ɪnˈkriːs","decrease":"dɪˈkriːs","around":"əˈraʊnd","exactly":"egˈzæktli","figure":"ˈfɪgə","background":"ˈbækgraʊnd","experience":"ekˈspɪərɪəns","graduate":"ˈgrædʒueɪt","major":"ˈmeɪdʒə","skill":"skɪl","strength":"streŋθ","motivated":"ˈməʊtɪveɪtɪd","hard-working":"hɑːd ˈwɜːkɪŋ","detail-oriented":"ˈdiːteɪl ˈɔːrientɪd","opportunity":"ɒpəˈtjuːnɪti","position":"pəˈzɪʃən","career":"kəˈrɪə","because":"bɪˈkʌz","so":"səʊ","have worked":"həv ˈwɜːkt","since":"sɪns","for":"fɔː","ever":"ˈevə","already":"ɔːlˈredi","recently":"ˈriːsəntli","achieve":"əˈtʃiːv","handle":"ˈhændəl","manage":"ˈmænɪdʒ","client":"klaɪənt","portfolio":"pɔːtˈfəʊlɪəʊ","project":"ˈprɒdʒekt","responsibility":"rɪspɒnsəˈbɪlɪti","subject":"ˈsʌbdʒɪkt","regarding":"rɪˈgɑːdɪŋ","attach":"əˈtætʃ","attachment":"əˈtætʃmənt","follow up":"ˈfɒləʊ ʌp","forward":"ˈfɔːwəd","cc":"siː ˈsiː","inform":"ɪnˈfɔːm","request":"rɪˈkwest","kindly":"ˈkaɪndli","at your earliest convenience":"ət jɔː ˈɜːlɪəst kənˈviːnɪəns","best regards":"best rɪˈgɑːdz","asap":"eɪ es eɪ ˈpiː","revert":"rɪˈvɜːt","agenda":"əˈdʒendə","item":"ˈaɪtəm","purpose":"ˈpɜːpəs","objective":"ɒbˈdʒektɪv","begin":"bɪˈgɪn","discuss":"dɪˈskʌs","update":"ˈʌpdeɪt","minutes":"ˈmɪnɪts","attendee":"əˈtendiː","move on":"muːv ɒn","point":"pɔɪnt","summary":"ˈsʌməri","action item":"ˈækʃən ˈaɪtəm","wrap up":"ræp ʌp","next steps":"nekst steps","opinion":"əˈpɪnɪən","think":"θɪŋk","believe":"bɪˈliːv","view":"vjuː","perspective":"pəˈspektɪv","feel":"fiːl","point of view":"pɔɪnt əv vjuː","suggest":"səˈdʒest","recommend":"rekəˈmend","reason":"ˈriːzən","for example":"fə egˈzɑːmpəl","overall":"əʊvərˈɔːl","personally":"ˈpɜːsənəli","as far as i know":"əz ˈfɑːr əz aɪ ˈnəʊ","main":"meɪn","agree":"əˈgriː","disagree":"dɪsəˈgriː","absolutely":"æbsəˈluːtli","true":"truː","however":"haʊˈevə","concern":"kənˈsɜːn","doubt":"daʊt","on the other hand":"ɒn ðə ˈʌðə hænd","actually":"ˈæktʃuːəli","i see":"aɪ siː","fair":"feə","partly":"ˈpɑːtli","alternative":"ɔːlˈtɜːnətɪv","compromise":"ˈkɒmprəmaɪz","should":"ʃʊd","must":"mʌst","have to":"ˈhæf tə","need to":"niːd tə","don't have to":"dəʊnt ˈhæf tə","mustn't":"ˈmʌsnt","advise":"ədˈvaɪz","rule":"ruːl","policy":"ˈpɒlɪsi","requirement":"rɪˈkwaɪəmənt","mandatory":"ˈmændətəri","optional":"ˈɒpʃənəl","had better":"hæd ˈbetə","allowed":"əˈlaʊd","training":"ˈtreɪnɪŋ","may":"meɪ","might":"maɪt","possibly":"ˈpɒsəbli","likely":"ˈlaɪkli","unlikely":"ʌnˈlaɪkli","certain":"ˈsɜːtən","uncertain":"ʌnˈsɜːtən","expect":"ekˈspekt","chance":"tʃɑːns","risk":"rɪsk","depend on":"dɪˈpend ɒn","outlook":"ˈaʊtlʊk","volatile":"ˈvɒlətaɪl","assume":"əˈsuːm","rise":"raɪz","fall":"fɔːl","grow":"grəʊ","drop":"drɒp","recover":"rɪˈkʌvə","peak":"piːk","remain stable":"rɪˈmeɪn ˈsteɪbəl","fluctuate":"ˈflʌktʃuːeɪt","sharply":"ˈʃɑːpli","slightly":"ˈslaɪtli","steadily":"ˈstedɪli","significantly":"sɪgˈnɪfɪkəntli","trend":"trend","account":"əˈkaʊnt","open an account":"ˈəʊpən ən əˈkaʊnt","deposit":"dɪˈpɒsɪt","withdraw":"wɪðˈdrɔː","transfer":"ˈtrænsfɜː","balance":"ˈbæləns","interest":"ˈɪntrəst","loan":"ləʊn","mortgage":"ˈmɔːgɪdʒ","savings account":"ˈseɪvɪŋz əˈkaʊnt","current account":"ˈkʌrənt əˈkaʊnt","statement":"ˈsteɪtmənt","fee":"fiː","branch":"brɑːntʃ","proof of address":"pruːf əv əˈdres","stock":"stɒk","bond":"bɒnd","index":"ˈɪndeks","investor":"ɪnˈvestə","trading":"ˈtreɪdɪŋ","listed":"ˈlɪstɪd","stock exchange":"stɒk eksˈtʃeɪndʒ","market value":"ˈmɑːkɪt ˈvæljuː","dividend":"ˈdɪvɪdənd","bull market":"bʊl ˈmɑːkɪt","bear market":"beə ˈmɑːkɪt","volume":"ˈvɒljuːm","announce":"əˈnaʊns","customer":"ˈkʌstəmə","welcome":"ˈwelkʌm","serve":"sɜːv","introduce":"ɪntrəˈdjuːs","relationship manager":"rɪˈleɪʃənʃɪp ˈmænɪdʒə","need":"niːd","contact":"ˈkɒntækt","satisfy":"ˈsætɪsfaɪ","trust":"trʌst","loyal":"lɔɪəl","vip":"viː aɪ ˈpiː","reception":"rɪˈsepʃən","look after":"lʊk ˈɑːftə","have a seat":"hæv ə ˈsiːt","product":"ˈprɒdʌkt","feature":"ˈfiːtʃə","benefit":"ˈbenɪfɪt","return":"rɪˈtɜːn","risk level":"rɪsk ˈlevəl","fixed deposit":"fɪkst dɪˈpɒsɪt","fund":"fʌnd","insurance":"ɪnˈʃɔːrəns","flexible":"ˈfleksɪbəl","guaranteed":"gærɑːnˈtiːd","minimum":"ˈmɪnɪməm","term":"tɜːm","suitable":"ˈsuːtəbəl","charge":"tʃɑːdʒ","option":"ˈɒpʃən","complaint":"kəmˈpleɪnt","complain":"kəmˈpleɪn","apologize":"əˈpɒlədʒaɪz","mistake":"mɪˈsteɪk","problem":"ˈprɒbləm","issue":"ˈɪʃuː","solve":"sɒlv","investigate":"ɪnˈvestɪgeɪt","refund":"ˈriːfʌnd","compensation":"kɒmpənˈseɪʃən","understand":"ʌndəˈstænd","frustrated":"frʌˈstreɪtɪd","immediately":"ɪˈmiːdɪətli","inconvenience":"ɪnkənˈviːnɪəns","resolve":"rɪˈzɒlv","negotiate":"nɪˈgəʊʃɪeɪt","offer":"ˈɒfə","deal":"diːl","terms":"tɜːmz","budget":"ˈbʌdʒɪt","condition":"kənˈdɪʃən","proposal":"prəˈpəʊzəl","agreement":"əˈgriːmənt","reasonable":"ˈriːzənəbəl","lower":"ˈləʊə","accept":"əkˈsept","counter-offer":"ˈkaʊntə ˈɒfə","meet halfway":"miːt ˈhɑːfweɪ","progress":"ˈprəʊgres","status":"ˈsteɪtəs","on track":"ɒn træk","behind schedule":"bɪˈhaɪnd ˈʃedjuːl","ahead of schedule":"əˈhed əv ˈʃedjuːl","complete":"kəmˈpliːt","almost":"ˈɔːlməʊst","yet":"jet","just":"dʒʌst","delay":"dɪˈleɪ","extend":"ekˈstend","priority":"praɪˈɒrɪti","draft":"drɑːft","eta":"iː tiː ˈeɪ","teamwork":"ˈtiːmwɜːk","cooperate":"kəʊˈɒpəreɪt","support":"səˈpɔːt","divide":"dɪˈvaɪd","contribute":"ˈkɒntrɪbjuːt","communicate":"kəˈmjuːnɪkeɪt","feedback":"ˈfiːdbæk","brainstorm":"ˈbreɪnstɔːm","rely on":"rɪˈlaɪ ɒn","help out":"help aʊt","workload":"ˈwɜːkləʊd","together":"təˈgeðə","avoid":"əˈvɔɪd","presentation":"prezənˈteɪʃən","topic":"ˈtɒpɪk","outline":"ˈaʊtlaɪn","first":"fɜːst","second":"ˈsekənd","next":"nekst","then":"ðen","finally":"ˈfaɪnəli","slide":"slaɪd","conclude":"kənˈkluːd","in summary":"ɪn ˈsʌməri","overview":"ˈəʊvəvjuː","key point":"kiː pɔɪnt","divided into":"dɪˈvaɪdɪd ˈɪntʊ","feel free to":"fiːl friː tə","chart":"tʃɑːt","graph":"græf","table":"ˈteɪbəl","data":"ˈdeɪtə","bar":"bɑː","axis":"ˈæksɪs","represent":"reprɪˈzent","show":"ʃəʊ","illustrate":"ˈɪləstreɪt","compared with":"kəmˈpeəd wɪð","year-on-year":"jɪə ɒn jɪə","quarter-on-quarter":"ˈkwɔːtə ɒn ˈkwɔːtə","account for":"əˈkaʊnt fə","highlight":"ˈhaɪlaɪt","clarify":"ˈklærɪfaɪ","rephrase":"rɪˈfreɪz","detail":"ˈdiːteɪl","specific":"spəˈsɪfɪk","figure out":"ˈfɪgə aʊt","get back to":"get bæk tə","mention":"ˈmenʃən","information":"ɪnfəˈmeɪʃən","good question":"gʊd ˈkwestʃən","follow-up":"ˈfɒləʊ ʌp","wonder":"ˈwʌndə","release":"rɪˈliːs","networking":"ˈnetwɜːkɪŋ","event":"ɪˈvent","business card":"ˈbɪznəs kɑːd","industry":"ˈɪndʌstri","connect":"kəˈnekt","keep in touch":"kiːp ɪn tʌtʃ","small talk":"smɔːl tɔːk","firm":"fɜːm","mutual friend":"ˈmjuːtʃuːəl frend","catch up":"kætʃ ʌp","reach out":"riːtʃ aʊt","speaker":"ˈspiːkə","line of work":"laɪn əv wɜːk","bring":"brɪŋ","code-switching":"kəʊd ˈswɪtʃɪŋ","cantonese":"kæntəˈniːz","mandarin":"ˈmændərɪn","local":"ˈləʊkəl","expat":"ekˈspæt","hierarchy":"ˈhaɪərɑːki","formal":"ˈfɔːməl","casual":"ˈkæʒuːəl","working hours":"ˈwɜːkɪŋ aʊəz","overtime":"ˈəʊvətaɪm","lunch hour":"lʌntʃ aʊə","annual leave":"ˈænjuːəl liːv","public holiday":"ˈpʌblɪk ˈhɒlɪdeɪ","culture":"ˈkʌltʃə","noted":"ˈnəʊtɪd","regulation":"regjuːˈleɪʃən","kyc":"keɪ waɪ ˈsiː","anti-money laundering":"ˈænti ˈmʌni ˈlɔːndərɪŋ","due diligence":"djuː ˈdɪlɪdʒəns","verify":"ˈverɪfaɪ","identity":"aɪˈdentɪti","source of funds":"sɔːs əv fʌndz","suspicious":"səˈspɪʃəs","report":"rɪˈpɔːt","risk assessment":"rɪsk əˈsesmənt","approve":"əˈpruːv","reject":"rɪˈdʒekt","regulator":"ˈregjuːleɪtə","confidential":"kɒnfɪˈdenʃəl","weakness":"ˈwiːknəs","achievement":"əˈtʃiːvmənt","situation":"sɪtʃuːˈeɪʃən","action":"ˈækʃən","result":"rɪˈzʌlt","challenge":"ˈtʃælɪndʒ","improve":"ɪmˈpruːv","overcome":"əʊvəˈkʌm","initiative":"ɪˈnɪʃɪətɪv","leadership":"ˈliːdəʃɪp","reliable":"rɪˈlaɪəbəl","adaptable":"əˈdæptəbəl","result-oriented":"rɪˈzʌlt ˈɔːrɪəntɪd","difficult":"ˈdɪfɪkəlt","conflict":"ˈkɒnflɪkt","pressure":"ˈpreʃə","calm":"kɑːm","prioritize":"praɪˈɒrətaɪz","solution":"səˈluːʃən","learn from":"lɜːn frɒm","team member":"tiːm ˈmembə","successfully":"səkˈsesfəli","honest":"ˈɒnɪst","since then":"sɪns ðen","in the end":"ɪn ðə end","lesson":"ˈlesən","role":"rəʊl","expectation":"ekspɪkˈteɪʃən","career path":"kəˈrɪə pɑːθ","team culture":"tiːm ˈkʌltʃə","typical day":"ˈtɪpɪkəl deɪ","performance":"pəˈfɔːməns","evaluate":"ɪˈvæljuːeɪt","process":"ˈprəʊses","salary":"ˈsæləri","package":"ˈpækɪdʒ","benefits":"ˈbenɪfɪts","start date":"stɑːt deɪt","success":"səkˈses","hear back":"hɪə bæk","wealth management":"welθ ˈmænɪdʒmənt","asset allocation":"ˈæset æləˈkeɪʃən","risk appetite":"rɪsk ˈæpɪtaɪt","diversify":"daɪˈvɜːsɪfaɪ","long-term":"lɒŋ tɜːm","conservative":"kənˈsɜːvətɪv","aggressive":"əˈgresɪv","balanced":"ˈbælənst","retirement":"rɪˈtaɪəmənt","review":"rɪˈvjuː","rebalance":"riːˈbæləns","high-net-worth":"haɪ net wɜːθ","equities":"ˈekwɪtiz","fixed income":"fɪkst ˈɪnkʌm","investment goal":"ɪnˈvestmənt gəʊl","premium":"ˈpriːmɪəm","coverage":"ˈkʌvərɪdʒ","claim":"kleɪm","beneficiary":"benɪˈfɪʃəri","life insurance":"laɪf ɪnˈʃɔːrəns","medical insurance":"ˈmedɪkəl ɪnˈʃɔːrəns","savings plan":"ˈseɪvɪŋz plæn","critical illness":"ˈkrɪtɪkəl ˈɪlnəs","payout":"peɪaʊt","exclusion":"eksˈkluːʒən","underwriting":"ʌndəˈraɪtɪŋ","annuity":"əˈnjuːɪti","pre-existing condition":"priː ɪgˈzɪstɪŋ kənˈdɪʃən","broker":"ˈbrəʊkə","limit order":"ˈlɪmɪt ˈɔːdə","market order":"ˈmɑːkɪt ˈɔːdə","execute":"ˈeksɪkjuːt","settle":"ˈsetəl","bid":"bɪd","ask":"ɑːsk","spread":"spred","margin":"ˈmɑːdʒɪn","stop-loss":"stɒp lɒs","liquidity":"lɪˈkwɪdɪti","trading hours":"ˈtreɪdɪŋ aʊəz","fill":"fɪl","fund manager":"fʌnd ˈmænɪdʒə","asset management":"ˈæset ˈmænɪdʒmənt","nav":"en eɪ ˈviː","management fee":"ˈmænɪdʒmənt fiː","benchmark":"ˈbentʃmɑːk","outperform":"aʊtpəˈfɔːm","underperform":"ʌndəpəˈfɔːm","etf":"iː tiː ˈef","equity fund":"ˈekwɪti fʌnd","bond fund":"bɒnd fʌnd","strategy":"ˈstrætədʒi","track record":"ˈtræk rekɔːd","inflow":"ˈɪnfləʊ","outflow":"aʊtˈfləʊ","investment bank":"ɪnˈvestmənt bæŋk","ipo":"aɪ piː ˈəʊ","listing":"ˈlɪstɪŋ","underwriter":"ʌndəˈraɪtə","prospectus":"prəˈspektəs","valuation":"væljuːˈeɪʃən","merger":"ˈmɜːdʒə","acquisition":"əkwɪˈsɪʃən","m&a":"em ən ˈeɪ","roadshow":"ˈrəʊdʃəʊ","pricing":"ˈpraɪsɪŋ","oversubscribed":"əʊvəsəbˈskraɪbd","sponsor":"ˈspɒnsə","retail investor":"ˈriːteɪl ɪnˈvestə","institutional investor":"ɪnstɪˈtjuːʃənəl ɪnˈvestə","income statement":"ˈɪnkʌm ˈsteɪtmənt","balance sheet":"ˈbæləns ʃiːt","cash flow statement":"kæʃ fləʊ ˈsteɪtmənt","revenue":"ˈrevənjuː","cost":"kɒst","gross profit":"grəʊs ˈprɒfɪt","net profit":"net ˈprɒfɪt","assets":"ˈæsets","liabilities":"laɪəˈbɪlɪtiz","equity":"ˈekwɪti","earnings per share":"ˈɜːnɪŋz pɜː ʃeə","debt":"det","annual report":"ˈænjuəl rɪˈpɔːt","audit":"ˈɔːdɪt","credit risk":"ˈkredɪt rɪsk","market risk":"ˈmɑːkɪt rɪsk","liquidity risk":"lɪˈkwɪdɪti rɪsk","operational risk":"ɒpəˈreɪʃənəl rɪsk","exposure":"ekˈspəʊʒə","mitigate":"ˈmɪtɪgeɪt","hedge":"hedʒ","stress test":"stres test","limit":"ˈlɪmɪt","default":"dɪˈfɒlt","tend to":"tend tə","potential":"pəˈtenʃəl","scenario":"səˈnɑːrɪəʊ","appear to":"əˈpɪə tə","to some extent":"tə sʌm ekˈstent","economy":"ɪˈkɒnəmi","gdp":"dʒiː diː ˈpiː","inflation":"ɪnˈfleɪʃən","interest rate":"ˈɪntrəst reɪt","central bank":"ˈsentrəl bæŋk","recession":"rɪˈseʃən","growth":"grəʊθ","unemployment":"ʌnemˈplɔɪmənt","stimulus":"ˈstɪmjʊləs","currency":"ˈkʌrənsi","exchange rate":"eksˈtʃeɪndʒ reɪt","peg":"peg","hibor":"ˈhaɪbɔː","lead to":"ˈliːd tə","due to":"djuː tə","fintech":"ˈfɪntek","digital bank":"ˈdɪdʒɪtəl bæŋk","virtual bank":"ˈvɜːtʃuːəl bæŋk","mobile app":"ˈməʊbaɪl æp","payment":"ˈpeɪmənt","e-wallet":"iː ˈwɒlɪt","faster payment system":"ˈfɑːstə ˈpeɪmənt ˈsɪstəm","blockchain":"ˈblɒktʃeɪn","artificial intelligence":"ɑːtɪˈfɪʃəl ɪnˈtelɪdʒəns","automation":"ɔːtəˈmeɪʃən","cybersecurity":"saɪbəsɪˈkjʊərəti","innovation":"ɪnəˈveɪʃən","user experience":"ˈjuːzə ekˈspɪərɪəns","licensed":"ˈlaɪsənsd","commentary":"ˈkɒməntri","estimate":"ˈestɪmeɪt","sentiment":"ˈsentɪmənt","rally":"ˈræli","sell-off":"sel ɒf","correction":"kəˈrekʃən","consensus":"kənˈsensəs","upside":"ˈʌpsaɪd","downside":"ˈdaʊnsaɪd","catalyst":"ˈkætəlɪst","cautious":"ˈkɔːʃəs","summarize":"ˈsʌməraɪz","so what you're saying is":"səʊ wɒt jɔː ˈseɪɪŋ ɪz","correct me if i'm wrong":"kəˈrekt miː ɪf aɪm ˈrɒŋ","in other words":"ɪn ˈʌðə wɜːdz","agree on":"əˈgriː ɒn","timeline":"ˈtaɪmlaɪn","just to confirm":"dʒʌst tə kənˈfɜːm","make sure":"meɪk ʃɔː","income":"ˈɪnkʌm","cross-sell":"krɒs sel","open question":"ˈəʊpən ˈkwestʃən","closed question":"kləʊzd ˈkwestʃən","upgrade":"ʌpˈgreɪd","promotion":"prəˈməʊʃən","interested":"ˈɪntrəstɪd","consider":"kənˈsɪdə","protect":"prəˈtekt","plan ahead":"plæn əˈhed","education fund":"edʒuːˈkeɪʃən fʌnd","peace of mind":"piːs əv maɪnd","conference call":"ˈkɒnfrəns kɔːl","join":"dʒɔɪn","mute":"mjuːt","unmute":"ʌnˈmjuːt","share screen":"ʃeə skriːn","connection":"kəˈnekʃən","break up":"breɪk ʌp","echo":"ˈekəʊ","interrupt":"ˈɪntərʌpt","go ahead":"gəʊ əˈhed","jump in":"dʒʌmp ɪn","catch":"kætʃ","on the same page":"ɒn ðə seɪm peɪdʒ","time zone":"taɪm zəʊn","dial in":"daɪəl ɪn","bottom line":"ˈbɒtəm laɪn","in short":"ɪn ʃɔːt","key takeaway":"kiː ˈteɪkəweɪ","recommendation":"rekəmenˈdeɪʃən","decision":"dɪˈsɪʒən","approval":"əˈpruːvəl","impact":"ˈɪmpækt","pros and cons":"prəʊz ənd kɒnz","escalate":"ˈeskəleɪt","heads-up":"hedz ʌp","fyi":"ef waɪ ˈaɪ","quick update":"kwɪk ˈʌpdeɪt","long-term value":"lɒŋ tɜːm ˈvæljuː","persuade":"pəˈsweɪd","convince":"kənˈvɪns","argument":"ˈɑːgjuːmənt","evidence":"ˈevɪdəns","value":"ˈvæljuː","proven":"ˈpruːvən","imagine":"ɪˈmædʒɪn","advantage":"ədˈvɑːntɪdʒ","compelling":"kəmˈpelɪŋ","win-win":"wɪn wɪn","hassle":"ˈhæsəl","paperwork":"ˈpeɪpəwɜːk","dedicated":"ˈdedɪkeɪtɪd","most importantly":"məʊst ɪmˈpɔːtəntli","speak for themselves":"spiːk fə ðemˈselvz","unfortunately":"ʌnˈfɔːtʃənətli","disappointing":"dɪsəˈpɔɪntɪŋ","loss":"lɒs","transparent":"trænˈspærənt","reassure":"riːəʃˈjɔː","patience":"ˈpeɪʃəns","realistic":"rɪəˈlɪstɪk","regret":"rɪˈgret","tough":"tʌf","move forward":"muːv ˈfɔːwəd","misunderstanding":"mɪsʌndəˈstændɪŋ","adjust":"əˈdʒʌst","esg":"iː es ˈdʒiː","sustainable":"səˈsteɪnəbəl","green bond":"griːn bɒnd","climate change":"ˈklaɪmət tʃeɪndʒ","carbon emissions":"ˈkɑːbən ɪˈmɪʃənz","net zero":"net ˈzɪərəʊ","renewable energy":"rɪˈnjuːəbəl ˈenədʒi","governance":"ˈgʌvənəns","disclosure":"dɪsˈkləʊʒə","impact investing":"ˈɪmpækt ɪnˈvestɪŋ","greenwashing":"ˈgriːnwɒʃɪŋ","transition":"trænˈsɪʃən","rating":"ˈreɪtɪŋ","stakeholder":"ˈsteɪkhəʊldə","committed to":"kəˈmɪtɪd tə","sfc":"es ef ˈsiː","hkma":"eɪtʃ keɪ em ˈeɪ","insurance authority":"ɪnˈʃɔːrəns əˈθɒrɪti","mpf":"em piː ˈef","hkex":"eɪtʃ keɪ iː ˈeks","licence":"ˈlaɪsəns","regulated activity":"ˈregjuːleɪtɪd ækˈtɪvɪti","responsible officer":"rɪˈspɒnsəbəl ˈɒfɪsə","cpd":"siː piː ˈdiː","licensing exam":"ˈlaɪsənsɪŋ egˈzæm","registered":"ˈredʒɪstəd","stock connect":"stɒk kəˈnekt","greater bay area":"ˈgreɪtə beɪ ˈeərɪə","cross-border":"krɒs ˈbɔːdə","pitch":"pɪtʃ","elevator pitch":"ˈelɪveɪtə pɪtʃ","concise":"kənˈsaɪs","unique":"juːˈniːk","value proposition":"ˈvæljuː prɒpəˈzɪʃən","specialize in":"ˈspeʃəlaɪz ɪn","passionate":"ˈpæʃənət","differentiate":"dɪfəˈrenʃɪeɪt","memorable":"ˈmemərəbəl","hook":"hʊk","call to action":"kɔːl tə ˈækʃən","bilingual":"baɪˈlɪŋgwəl","open to":"ˈəʊpən tə","grab a coffee":"græb ə ˈkɒfi","motivation":"məʊtɪˈveɪʃən","research":"rɪˈsɜːtʃ","values":"ˈvæljuːz","fit":"fɪt","commitment":"kəˈmɪtmənt","learning curve":"ˈlɜːnɪŋ kɜːv","ambition":"æmˈbɪʃən","passion":"ˈpæʃən","attract":"əˈtrækt","presence":"ˈprezəns","from day one":"frɒm deɪ wɒn","fast learner":"fɑːst ˈlɜːnə","in five years":"ɪn faɪv jɪəz","needs analysis":"niːdz əˈnæləsɪs","fee structure":"fiː ˈstrʌktʃə","risk disclosure":"rɪsk dɪsˈkləʊʒə","objection":"ɒbˈdʒekʃən","address":"əˈdres","close":"kləʊz","onboarding":"ˈɒnbɔːdɪŋ","walk through":"wɔːk θruː","high-grade":"haɪ greɪd","target":"ˈtɑːgɪt","honesty":"ˈɒnɪsti","partnership":"ˈpɑːtnəʃɪp","chair":"tʃeə","facilitate":"fəˈsɪlɪteɪt","vote":"vəʊt","show of hands":"ʃəʊ əv hændz","park":"pɑːk","circle back":"ˈsɜːkəl bæk","take offline":"teɪk ˈɒflaɪn","align":"əˈlaɪn","deliverable":"dɪˈlɪvərəbəl","owner":"ˈəʊnə","run out of time":"rʌn aʊt əv taɪm","agreed":"əˈgriːd","onboarding process":"ˈɒnbɔːdɪŋ ˈprəʊses","business lunch":"ˈbɪznəs lʌntʃ","dish":"dɪʃ","treat":"triːt","split the bill":"splɪt ðə bɪl","my treat":"maɪ triːt","cheers":"tʃɪəz","toast":"təʊst","relax":"rɪˈlæks","dim sum":"dɪm sʌm","by the way":"baɪ ðə weɪ","discover":"dɪˈskʌvə","move":"muːv","ballpark figure":"ˈbɔːlpɑːk ˈfɪgə","touch base":"tʌtʃ beɪs","get the ball rolling":"get ðə bɔːl ˈrəʊlɪŋ","think outside the box":"θɪŋk aʊtˈsaɪd ðə ˈbɒks","up in the air":"ʌp ɪn ðə eə","back to square one":"bæk tə skweə wɒn","cut corners":"kʌt ˈkɔːnəz","in a nutshell":"ɪn ə ˈnʌtʃel","keep me posted":"kiːp miː ˈpəʊstɪd","on top of it":"ɒn tɒp əv ɪt","call it a day":"kɔːl ɪt ə deɪ","the ball is in your court":"ðə bɔːl ɪz ɪn jɔː kɔːt","a win-win":"ə wɪn wɪn","the bottom line":"ðə ˈbɒtəm laɪn","confident":"ˈkɒnfɪdənt","prepared":"prɪˈpeəd","impression":"ɪmˈpreʃən","body language":"ˈbɒdi ˈlæŋgwɪdʒ","eye contact":"ˈaɪ kɒntækt","handshake":"ˈhændʃeɪk","pause":"pɔːz","thank-you email":"ˈθæŋk juː ˈiːmeɪl","nervous":"ˈnɜːvəs","breathe":"briːð","discipline":"ˈdɪsɪplɪn","concrete":"ˈkɒŋkriːt","how are you":"haʊ ɑː ˈjuː","fine":"faɪn","thanks":"θæŋks","mr.":"ˈmɪstə","ms.":"mɪz","letter":"ˈletə","again":"əˈgen","city":"ˈsɪti","mainland":"ˈmeɪnlənd","speak":"spiːk","chinese":"tʃaɪˈniːz","myself":"maɪˈself","first name":"fɜːst neɪm","surname":"ˈsɜːneɪm","a little":"ə ˈlɪtəl","forty":"ˈfɔːti","fourteen":"fɔːˈtiːn","sixty":"ˈsɪksti","nine":"naɪn","mobile":"ˈməʊbaɪl","number":"ˈnʌmbə","digit":"ˈdɪdʒɪt","dot":"dɒt","at":"æt","grandmother":"ˈgrændmʌðə","grandfather":"ˈgrændfɑːðə","cousin":"ˈkʌzən","relative":"ˈrelətɪv","kid":"kɪd","baby":"ˈbeɪbi","older":"ˈəʊldə","younger":"ˈjʌŋgə","only child":"ˈəʊnli tʃaɪld","get along":"get əˈlɒŋ","tuesday":"ˈtjuːzdeɪ","wednesday":"ˈwenzdeɪ","thursday":"ˈθɜːzdeɪ","saturday":"ˈsætədeɪ","sunday":"ˈsʌndeɪ","date":"deɪt","year":"jɪə","noon":"nuːn","early":"ˈɜːli","birthday":"ˈbɜːθdeɪ","wake up":"weɪk ʌp","take a shower":"teɪk ə ˈʃaʊə","leave home":"liːv həʊm","arrive":"əˈraɪv","commute":"kəˈmjuːt","break":"breɪk","dinner":"ˈdɪnə","often":"ˈɒfən","rarely":"ˈreəli","fish":"fɪʃ","pork":"pɔːk","soup":"suːp","dessert":"dɪˈzɜːt","sugar":"ˈʃʊgə","ice":"aɪs","hungry":"ˈhʌŋgri","full":"fʊl","street":"striːt","map":"mæp","far":"fɑː","walk":"wɔːk","traffic lights":"ˈtræfɪk laɪts","cross":"krɒs","entrance":"ˈentrəns","ground floor":"graʊnd flɔː","lobby":"ˈlɒbi","lost":"lɒst","tram":"træm","airport":"ˈeəpɔːt","top up":"tɒp ʌp","seat":"siːt","crowded":"ˈkraʊdɪd","rush hour":"rʌʃ aʊə","get on":"get ɒn","get off":"get ɒf","direct":"daɪˈrekt","on time":"ɒn taɪm","shop":"ʃɒp","sale":"seɪl","exchange":"eksˈtʃeɪndʒ","wallet":"ˈwɒlɪt","brand":"brænd","colour":"ˈkʌlə","fitting room":"ˈfɪtɪŋ ruːm","afford":"əˈfɔːd","warm":"wɔːm","cool":"kuːl","temperature":"ˈtemprɪtʃə","wet":"wet","storm":"stɔːm","season":"ˈsiːzən","summer":"ˈsʌmə","winter":"ˈwɪntə","air conditioning":"eə kənˈdɪʃənɪŋ","yoga":"ˈjəʊgə","photography":"fəˈtɒgrəfi","cooking":"ˈkʊkɪŋ","running":"ˈrʌnɪŋ","badminton":"ˈbædmɪntən","game":"geɪm","club":"klʌb","trail":"treɪl","fun":"fʌn","right now":"raɪt naʊ","work on":"wɜːk ɒn","deal with":"diːl wɪð","email":"ˈiːmeɪl","print":"prɪnt","type":"taɪp","coffee break":"ˈkɒfi breɪk","take a message":"teɪk ə ˈmesɪdʒ","last night":"lɑːst naɪt","this morning":"ðɪs ˈmɔːnɪŋ","checked":"tʃekt","emailed":"ˈiːmeɪld","helped":"helpt","planned":"plænd","waited":"ˈweɪtɪd","listened":"ˈlɪsənd","opened":"ˈəʊpənd","tried":"traɪd","was":"wɒz","were":"wɜː","told":"təʊld","said":"sed","left":"left","found":"faʊnd","knew":"njuː","gave":"geɪv","slept":"slept","drank":"dræŋk","next year":"nekst jɪə","dream":"driːm","promise":"ˈprɒmɪs","exam":"egˈzæm","pass":"pɑːs","save money":"seɪv ˈmʌni","this weekend":"ðɪs wiːˈkend","prepare for":"prɪˈpeə fə","sure":"ʃɔː","idea":"aɪˈdɪə","word":"wɜːd","sentence":"ˈsentəns","meaning":"ˈmiːnɪŋ","correct":"kəˈrekt","wrong":"rɒŋ","curious":"ˈkjʊrɪəs","cheapest":"ˈtʃiːpəst","safer":"ˈseɪfə","riskier":"ˈrɪskɪə","easier":"ˈiːzɪə","more convenient":"mɔː kənˈviːnɪənt","prefer":"prɪˈfɜː","choice":"tʃɔɪs","worst":"wɜːst","as ... as":"əz … əz","higher":"haɪə","laptop":"ˈlæptɒp","password":"ˈpɑːswɜːd","copy":"ˈkɒpi","folder":"ˈfəʊldə","stapler":"ˈsteɪplə","sign":"saɪn","photocopier":"ˈfəʊtəkɒpɪə","it support":"aɪ ˈtiː səˈpɔːt","badge":"bædʒ","shared drive":"ʃeəd draɪv","trader":"ˈtreɪdə","intern":"ˈɪntɜːn","head of":"hed əv","report to":"rɪˈpɔːt tə","legal":"ˈliːgəl","finance department":"ˈfaɪnæns dɪˈpɑːtmənt","senior":"ˈsiːnjə","junior":"ˈdʒuːnjə","customer service":"ˈkʌstəmə ˈsɜːvɪs","hang up":"hæŋ ʌp","pick up":"pɪk ʌp","ring":"rɪŋ","caller":"ˈkɔːlə","missed call":"mɪst kɔːl","get through":"get θruː","cut off":"kʌt ɒf","return a call":"rɪˈtɜːn ə ˈkɔːl","wrong number":"rɒŋ ˈnʌmbə","postpone":"pəʊstˈpəʊn","earlier":"ˈɜːlɪə","slot":"slɒt","reminder":"rɪˈmaɪndə","clash":"klæʃ","in person":"ɪn ˈpɜːsən","video call":"ˈvɪdɪəʊ kɔːl","attend":"əˈtend","fully booked":"ˈfʊli bʊkt","sometime":"ˈsʌmtaɪm","grateful":"ˈgreɪtfəl","allow":"əˈlaʊ","mind":"maɪnd","assist":"əˈsɪst","quick question":"kwɪk ˈkwestʃən","spare":"speə","give a hand":"gɪv ə hænd","politely":"pəˈlaɪtli","remind":"rɪˈmaɪnd","sure thing":"ʃɔː θɪŋ","percentage point":"pəˈsentɪdʒ pɔɪnt","triple":"ˈtrɪpəl","per year":"pɜː jɪə","amount":"əˈmaʊnt","profit":"ˈprɒfɪt","approximately":"əˈprɒksɪmətli","minus":"ˈmaɪnəs","trillion":"ˈtrɪlɪən","basis point":"ˈbeɪsɪs pɔɪnt","times":"taɪmz","university":"juːnɪˈvɜːsɪti","previous":"ˈpriːvɪəs","client-facing":"klaɪənt ˈfeɪsɪŋ","fluent":"ˈfluːənt","communication":"kəmjuːnɪˈkeɪʃən","cv":"siː ˈviː","qualification":"kwɒlɪfɪˈkeɪʃən","certificate":"səˈtɪfɪkət","applicant":"ˈæplɪkənt","quick learner":"kwɪk ˈlɜːnə","so far":"səʊ fɑː","promote":"prəˈməʊt","supervise":"ˈsuːpəvaɪz","train":"treɪn","resign":"rɪˈzaɪn","career change":"kəˈrɪə tʃeɪndʒ","track":"træk","assets under management":"ˈæsets ˈʌndə ˈmænɪdʒmənt","successful":"səkˈsesfəl","hands-on":"hændz ɒn","dear":"dɪə","sincerely":"sɪnˈsɪəli","signature":"ˈsɪgnɪtʃə","recipient":"rɪˈsɪpɪənt","inbox":"ˈɪnbɒks","out of office":"aʊt əv ˈɒfɪs","proofread":"ˈpruːfriːd","tone":"təʊn","confirmation":"kɒnfəˈmeɪʃən","hear from":"hɪə frɒm","kick off":"kɪk ɒf","first of all":"fɜːst əv ɔːl","go through":"gəʊ θruː","hand over to":"hænd ˈəʊvə tə","any other business":"ˈeni ˈʌðə ˈbɪznəs","on behalf of":"ɒn bɪˈhɑːf əv","aim":"eɪm","apologies":"əˈpɒlədʒɪz","note-taker":"nəʊt ˈteɪkə","brief":"briːf","in my experience":"ɪn maɪ ekˈspɪərɪəns","strongly":"ˈstrɒŋli","honestly":"ˈɒnɪstli","it seems to me":"ɪt siːmz tə miː","on balance":"ɒn ˈbæləns","drawback":"ˈdrɔːbæk","approach":"əˈprəʊtʃ","key":"kiː","the way i see it":"ðə weɪ aɪ siː ɪt","valid":"ˈvælɪd","i couldn't agree more":"aɪ ˈkʊdnt əˈgriː mɔː","not necessarily":"nɒt nesɪˈserəli","i take your point":"aɪ teɪk jɔː pɔɪnt","object":"əbˈdʒekt","middle ground":"ˈmɪdəl graʊnd","debate":"dɪˈbeɪt","respect":"rɪˈspekt","disagreement":"dɪsəˈgriːmənt","frankly":"ˈfræŋkli","see eye to eye":"siː aɪ tə aɪ","required":"rɪˈkwaɪəd","be supposed to":"biː səˈpəʊzd tə","prohibited":"prəˈhɪbɪtɪd","permitted":"pəˈmɪtɪd","guideline":"ˈgaɪdlaɪn","code of conduct":"kəʊd əv ˈkɒndʌkt","ought to":"ɔːt tə","strict":"strɪkt","comply with":"kəmˈplaɪ wɪð","dress code":"dres kəʊd","perhaps":"pəˈhæps","definitely":"ˈdefɪnətli","doubtful":"ˈdaʊtfəl","predict":"prɪˈdɪkt","uncertainty":"ʌnˈsɜːtənti","worst case":"wɜːst keɪs","best case":"best keɪs","odds":"ɒdz","signal":"ˈsɪgnəl","surprise":"səˈpraɪz","soar":"sɔː","plunge":"plʌndʒ","climb":"klaɪm","dip":"dɪp","level off":"ˈlevəl ɒf","rebound":"rɪˈbaʊnd","gradual":"ˈgrædʒuːəl","dramatic":"drəˈmætɪk","low":"ləʊ","high":"haɪ","withdrawal":"wɪðˈdrɔːl","cheque":"tʃek","overdraft":"ˈəʊvədrɑːft","credit limit":"ˈkredɪt ˈlɪmɪt","online banking":"ˈɒnlaɪn ˈbæŋkɪŋ","teller":"ˈtelə","debit card":"ˈdebɪt kɑːd","repay":"rɪˈpeɪ","monthly payment":"ˈmʌnθli ˈpeɪmənt","application":"æplɪˈkeɪʃən","blue chip":"bluː tʃɪp","hang seng index":"hæŋ seŋ ˈɪndeks","shareholder":"ˈʃeəhəʊldə","yield":"jiːld","coupon":"ˈkuːpɒn","maturity":"məˈtʃɔːrɪti","turnover":"ˈtɜːnəʊvə","quote":"kwəʊt","capital":"ˈkæpɪtəl","issuer":"ˈɪʃuːə","greet":"griːt","host":"həʊst","refreshments":"rɪˈfreʃmənts","punctual":"ˈpʌŋktʃuːəl","rapport":"ræˈpɔː","personalised":"ˈpɜːsənəlaɪzd","discreet":"dɪˈskriːt","appreciation":"əpriːʃɪˈeɪʃən","escort":"ɪˈskɔːt","visitor":"ˈvɪzɪtə","lock-in period":"lɒk ɪn ˈpɪərɪəd","early withdrawal":"ˈɜːli wɪðˈdrɔːl","capital protected":"ˈkæpɪtəl prəˈtektɪd","annual return":"ˈænjuːəl rɪˈtɜːn","brochure":"ˈbrəʊʃə","terms and conditions":"tɜːmz ənd kənˈdɪʃənz","penalty":"ˈpenəlti","subscribe":"səbˈskraɪb","redeem":"rɪˈdiːm","target client":"ˈtɑːgɪt klaɪənt","upset":"ʌpˈset","unacceptable":"ʌnəkˈseptəbəl","take responsibility":"teɪk rɪspɒnsəˈbɪlɪti","follow-up call":"ˈfɒləʊ ʌp kɔːl","goodwill":"ˈgʊdwɪl","error":"ˈerə","waive":"weɪv","case number":"keɪs ˈnʌmbə","apology":"əˈpɒlədʒi","patient":"ˈpeɪʃənt","bargain":"ˈbɑːgɪn","leverage":"ˈliːvərɪdʒ","concession":"kənˈseʃən","walk away":"wɔːk əˈweɪ","volume discount":"ˈvɒljuːm ˈdɪskaʊnt","commit":"kəˈmɪt","propose":"prəˈpəʊz","close the deal":"kləʊz ðə diːl","trade-off":"treɪd ɒf","sticking point":"ˈstɪkɪŋ pɔɪnt","milestone":"ˈmaɪlstəʊn","on schedule":"ɒn ˈʃedjuːl","slip":"slɪp","bottleneck":"ˈbɒtəlnek","finalise":"ˈfaɪnəlaɪz","sign off":"saɪn ɒf","pending":"ˈpendɪŋ","overdue":"əʊvəˈdjuː","status report":"ˈsteɪtəs rɪˈpɔːt","collaborate":"kəˈlæbəreɪt","delegate":"ˈdelɪgeɪt","credit":"ˈkredɪt","team player":"tiːm pleɪə","pull together":"pʊl təˈgeðə","share the load":"ʃeə ðə ləʊd","morale":"məˈræl","coordinate":"kəʊˈɔːdɪneɪt","cover for":"ˈkʌvə fə","cross-team":"krɒs tiːm","audience":"ˈɔːdɪəns","visual":"ˈvɪʒuːəl","handout":"ˈhændaʊt","microphone":"ˈmaɪkrəfəʊn","structure":"ˈstrʌktʃə","to begin with":"tə bɪˈgɪn wɪð","point out":"pɔɪnt aʊt","rehearse":"rɪˈhɜːs","pace":"peɪs","engage":"enˈgeɪdʒ","pie chart":"paɪ tʃɑːt","line graph":"laɪn græf","bar chart":"bɑː tʃɑːt","proportion":"prəˈpɔːʃən","majority":"məˈdʒɒrɪti","minority":"maɪˈnɒrɪti","breakdown":"ˈbreɪkdaʊn","stand at":"stænd ət","roughly":"ˈrʌfli","respectively":"rɪˈspektɪvli","q&a session":"kjuː ən ˈeɪ ˈseʃən","off the top of my head":"ɒf ðə tɒp əv maɪ hed","speculate":"ˈspekjʊleɪt","beyond the scope":"bɪˈjɒnd ðə skəʊp","elaborate":"ɪˈlæbəreɪt","assumption":"əˈsʌmpʃən","hypothetical":"haɪpəˈθetɪkəl","take questions":"teɪk ˈkwestʃənz","in detail":"ɪn ˈdiːteɪl","comment":"ˈkɒment","panel":"ˈpænəl","conference":"ˈkɒnfrəns","acquaintance":"əˈkweɪntəns","name tag":"neɪm tæg","mingle":"ˈmɪŋgəl","chamber of commerce":"ˈtʃeɪmbə əv ˈkɒmɜːs","alumni":"əˈlʌmni","icebreaker":"ˈaɪsbreɪkə","approachable":"əˈprəʊtʃəbəl","refer":"rɪˈfɜː","work-life balance":"wɜːk laɪf ˈbæləns","face":"feɪs","seniority":"siːnɪˈɒrɪti","red packet":"red ˈpækɪt","lunar new year":"ˈluːnə njuː jɪə","team dinner":"tiːm ˈdɪnə","bonus":"ˈbəʊnəs","efficient":"ɪˈfɪʃənt","afternoon tea":"ɑːftəˈnuːn tiː","fast-paced":"fɑːst peɪst","sanctions":"ˈsɑːnkʃənz","screening":"ˈskriːnɪŋ","politically exposed person":"pəˈlɪtɪkli ekˈspəʊzd ˈpɜːsən","beneficial owner":"benɪˈfɪʃəl ˈəʊnə","record keeping":"ˈrekɔːd ˈkiːpɪŋ","red flag":"red flæg","enhanced due diligence":"enˈhɑːnst djuː ˈdɪlɪdʒəns","breach":"briːtʃ","audit trail":"ˈɔːdɪt treɪl","regulatory fine":"regjuːˈleɪtəri faɪn","accomplish":"əˈkɒmplɪʃ","deliver":"dɪˈlɪvə","measurable":"ˈmeʒərəbəl","outcome":"ˈaʊtkʌm","proactive":"prəʊˈæktɪv","constructive":"kənˈstrʌktɪv","go the extra mile":"gəʊ ðə ˈekstrə maɪl","time management":"taɪm ˈmænɪdʒmənt","problem-solving":"ˈprɒbləm ˈsɒlvɪŋ","attention to detail":"əˈtenʃən tə ˈdiːteɪl","tight deadline":"taɪt ˈdedlaɪn","manage expectations":"ˈmænɪdʒ ekspɪkˈteɪʃənz","take ownership":"teɪk ˈəʊnəʃɪp","frustration":"frʌˈstreɪʃən","reflect":"rɪˈflekt","turning point":"ˈtɜːnɪŋ pɔɪnt","setback":"ˈsetbæk","remain calm":"rɪˈmeɪn kɑːm","difficult client":"ˈdɪfɪkəlt klaɪənt","step in":"step ɪn","probation":"prəʊˈbeɪʃən","mentor":"ˈmentɔː","kpi":"keɪ piː ˈaɪ","growth opportunity":"grəʊθ ɒpəˈtjuːnɪti","reporting line":"rɪˈpɔːtɪŋ laɪn","team size":"tiːm saɪz","offer letter":"ˈɒfə ˈletə","notice period":"ˈnəʊtɪs ˈpɪərɪəd","hybrid working":"ˈhaɪbrɪd ˈwɜːkɪŋ","emergency fund":"ɪˈmɜːdʒənsi fʌnd","time horizon":"taɪm həˈraɪzən","compound interest":"ˈkɒmpaʊnd ˈɪntrəst","financial planning":"faɪˈnænʃəl ˈplænɪŋ","inheritance":"ɪnˈherɪtəns","family trust":"ˈfæmɪli trʌst","passive income":"ˈpɑːsɪv ˈɪnkʌm","risk profile":"rɪsk ˈprəʊfaɪl","suitability":"suːtəˈbɪlɪti","goal-based":"gəʊl beɪst","policyholder":"ˈpɒlɪsɪhəʊldə","insured":"ɪnˈʃɔːd","sum assured":"sʌm əʃˈjɔːd","rider":"ˈraɪdə","waiting period":"ˈweɪtɪŋ ˈpɪərɪəd","cooling-off period":"ˈkuːlɪŋ ɒf ˈpɪərɪəd","surrender value":"səˈrendə ˈvæljuː","hospitalisation":"hɒspɪtəlaɪˈzeɪʃən","dependants":"dɪˈpendənts","renew":"rɪˈnjuː","board lot":"bɔːd lɒt","settlement":"ˈsetəlmənt","custody":"ˈkʌstədi","short selling":"ʃɔːt ˈselɪŋ","intraday":"ɪntrəˈdeɪ","order book":"ˈɔːdə bʊk","commission":"kəˈmɪʃən","stamp duty":"stæmp ˈdjuːti","slippage":"ˈslɪpɪdʒ","volatility":"vɒləˈtɪlɪti","unit":"ˈjuːnɪt","subscription fee":"sʌbˈskrɪpʃən fiː","redemption":"rɪˈdempʃən","passive":"ˈpɑːsɪv","active":"ˈæktɪv","diversified":"daɪˈvɜːsɪfaɪd","sector":"ˈsektə","fact sheet":"fækt ʃiːt","expense ratio":"ekˈspens ˈreɪʃɪəʊ","income fund":"ˈɪnkʌm fʌnd","deal team":"diːl tiːm","pitch book":"pɪtʃ bʊk","issue price":"ˈɪʃuː praɪs","cornerstone investor":"ˈkɔːnəstəʊn ɪnˈvestə","lock-up":"lɒk ʌp","book building":"bʊk ˈbɪldɪŋ","allocation":"æləˈkeɪʃən","debut":"ˈdeɪbjuː","main board":"meɪn bɔːd","spin-off":"spɪn ɒf","operating profit":"ˈɒpəreɪtɪŋ ˈprɒfɪt","expenses":"ekˈspensɪz","write-off":"raɪt ɒf","guidance":"ˈgaɪdəns","dividend payout":"ˈdɪvɪdənd peɪaʊt","cash position":"kæʃ pəˈzɪʃən","leverage ratio":"ˈliːvərɪdʒ ˈreɪʃɪəʊ","quarterly results":"ˈkwɔːtəli rɪˈzʌlts","interim report":"ˈɪntərɪm rɪˈpɔːt","profit warning":"ˈprɒfɪt ˈwɔːnɪŋ","collateral":"kəˈlætərəl","counterparty":"ˈkaʊntəpɑːti","concentration risk":"kɒnsənˈtreɪʃən rɪsk","value at risk":"ˈvæljuː ət rɪsk","risk control":"rɪsk kənˈtrəʊl","early warning":"ˈɜːli ˈwɔːnɪŋ","contingency plan":"kənˈtɪndʒənsi plæn","probability":"prɒbəˈbɪlɪti","tolerance":"ˈtɒlərəns","margin call":"ˈmɑːdʒɪn kɔːl","rate hike":"reɪt haɪk","rate cut":"reɪt kʌt","property market":"ˈprɒpəti ˈmɑːkɪt","consumer spending":"kənˈsuːmə ˈspendɪŋ","tourism":"ˈtɔːrɪzəm","trade":"treɪd","tariff":"ˈtærɪf","slowdown":"ˈsləʊdaʊn","federal reserve":"ˈfedərəl rɪˈzɜːv","linked exchange rate system":"lɪŋkt eksˈtʃeɪndʒ reɪt ˈsɪstəm","open banking":"ˈəʊpən ˈbæŋkɪŋ","qr code":"kjuː ɑː ˈkəʊd","biometric":"baɪəʊˈmetrɪk","algorithm":"ˈælgərɪθəm","robo-adviser":"ˈrəʊbəʊ ədˈvaɪzə","tokenisation":"təʊkənaɪˈzeɪʃən","stablecoin":"ˈsteɪbəlkɔɪn","fraud":"frɔːd","two-factor authentication":"tuː ˈfæktə ɔːθentɪˈkeɪʃən","sandbox":"ˈsændbɒks","momentum":"məʊˈmentəm","bullish":"ˈbʊlɪʃ","bearish":"ˈbeərɪʃ","headwind":"ˈhedwɪnd","tailwind":"ˈteɪlwɪnd","earnings season":"ˈɜːnɪŋz ˈsiːzən","overweight":"əʊvəˈweɪt","underweight":"ʌndəˈweɪt","risk-on":"rɪsk ɒn","profit-taking":"ˈprɒfɪt ˈteɪkɪŋ","recap":"ˈriːkæp","action plan":"ˈækʃən plæn","follow-up email":"ˈfɒləʊ ʌp ˈiːmeɪl","misunderstand":"mɪsʌndəˈstænd","paraphrase":"ˈpærəfreɪz","constraint":"kənˈstreɪnt","preference":"ˈprefrəns","time frame":"taɪm freɪm","decision-maker":"dɪˈsɪʒən ˈmeɪkə","check in":"tʃek ɪn","needs-based":"niːdz beɪst","lifestyle":"ˈlaɪfstaɪl","life event":"laɪf ɪˈvent","bundle":"ˈbʌndəl","relevant":"ˈrelɪvənt","pushy":"ˈpʊʃi","referral":"rɪˈfɜːrəl","tailor":"ˈteɪlə","protection gap":"prəˈtekʃən gæp","wallet share":"ˈwɒlɪt ʃeə","headset":"ˈhedset","camera":"ˈkæmrə","meeting link":"ˈmiːtɪŋ lɪŋk","lag":"læg","frozen":"ˈfrəʊzən","background noise":"ˈbækgraʊnd nɔɪz","reconnect":"riːkəˈnekt","recording":"rɪˈkɔːdɪŋ","chat box":"tʃæt bɒks","bandwidth":"ˈbændwɪdθ","executive summary":"egˈzekjuːtɪv ˈsʌməri","headline":"ˈhedlaɪn","next step":"nekst step","rationale":"ræʃəˈnæl","budget approval":"ˈbʌdʒɪt əˈpruːvəl","go/no-go":"gəʊ nəʊ gəʊ","priority list":"praɪˈɒrɪti lɪst","talking points":"ˈtɔːkɪŋ pɔɪnts","straight to the point":"streɪt tə ðə pɔɪnt","busy schedule":"ˈbɪzi ˈʃedjuːl","storytelling":"ˈstɔːrɪtelɪŋ","case study":"keɪs ˈstʌdi","testimonial":"testɪˈməʊnɪəl","social proof":"ˈsəʊʃəl pruːf","reassurance":"riːəʃˈjɔːrəns","logical":"ˈlɒdʒɪkəl","emotional":"ɪˈməʊʃənəl","credible":"ˈkredɪbəl","exclusive":"eksˈkluːsɪv","no obligation":"nəʊ ɒblɪˈgeɪʃən","drawdown":"ˈdrɔːdaʊn","acknowledge":"əkˈnɒlɪdʒ","empathy":"ˈempəθi","downgrade":"ˈdaʊŋgreɪd","short term":"ʃɔːt tɜːm","silver lining":"ˈsɪlvə ˈlaɪnɪŋ","bounce back":"baʊns bæk","turbulence":"ˈtɜːbjʊləns","stay calm":"steɪ kɑːm","environmental":"envaɪrənˈmentəl","social":"ˈsəʊʃəl","solar power":"ˈsəʊlə paʊə","carbon neutral":"ˈkɑːbən ˈnjuːtrəl","carbon footprint":"ˈkɑːbən ˈfʊtprɪnt","fossil fuels":"ˈfɒsəl ˈfjuːəlz","diversity":"daɪˈvɜːsɪti","sustainability report":"səsteɪnəˈbɪlɪti rɪˈpɔːt","green finance":"griːn ˈfaɪnæns","long-term risk":"lɒŋ tɜːm rɪsk","type 1":"taɪp ˈwʌn","type 4":"taɪp ˈfɔː","type 9":"taɪp ˈnaɪn","wealth management connect":"welθ ˈmænɪdʒmənt kəˈnekt","bond connect":"bɒnd kəˈnekt","market misconduct":"ˈmɑːkɪt mɪsˈkɒndʌkt","insider dealing":"ɪnˈsaɪdə ˈdiːlɪŋ","fit and proper":"fɪt ənd ˈprɒpə","enforcement action":"enˈfɔːsmənt ˈækʃən","networking event":"ˈnetwɜːkɪŋ ɪˈvent","introduce myself":"ɪntrəˈdjuːs maɪˈself","mainland clients":"ˈmeɪnlənd klaɪənts","connect on linkedin":"kəˈnekt ɒn ˈlɪŋktɪn","stay in touch":"steɪ ɪn tʌtʃ","warm introduction":"wɔːm ɪntrəˈdʌkʃən","keep it short":"kiːp ɪt ʃɔːt","job description":"dʒɒb dɪˈskrɪpʃən","hiring manager":"ˈhaɪərɪŋ ˈmænɪdʒə","strengths and weaknesses":"streŋθs ənd ˈwiːknəsɪz","shortlisted":"ˈʃɔːtlɪstɪd","competency":"ˈkɒmpɪtənsi","relocate":"rɪləʊˈkeɪt","under pressure":"ˈʌndə ˈpreʃə","probation period":"prəʊˈbeɪʃən ˈpɪərɪəd","salary expectation":"ˈsæləri ekspɪkˈteɪʃən","referee":"refəˈriː","investment proposal":"ɪnˈvestmənt prəˈpəʊzəl","capital preservation":"ˈkæpɪtəl prɪsəˈveɪʃən","expected return":"ekˈspektɪd rɪˈtɜːn","income stream":"ˈɪnkʌm striːm","review meeting":"rɪˈvjuː ˈmiːtɪŋ","sign the documents":"saɪn ðə ˈdɒkjʊmənts","risk questionnaire":"rɪsk kwestʃəˈneə","think it over":"θɪŋk ɪt ˈəʊvə","quorum":"ˈkwɔːrəm","co-chair":"kəʊ ˈtʃeə","breakout session":"ˈbreɪkaʊt ˈseʃən","input":"ˈɪnpʊt","off topic":"ɒf ˈtɒpɪk","time-box":"taɪm bɒks","follow-through":"ˈfɒləʊ θruː","next meeting":"nekst ˈmiːtɪŋ","quick round":"kwɪk raʊnd","reservation":"rezəˈveɪʃən","seafood":"ˈsiːfuːd","dietary requirement":"ˈdaɪətəri rɪˈkwaɪəmənt","vegetarian":"vedʒɪˈteərɪən","set lunch":"set lʌntʃ","roast goose":"rəʊst guːs","local food":"ˈləʊkəl fuːd","the bill":"ðə bɪl","weekend plans":"wiːˈkend plænz","hit the ground running":"hɪt ðə graʊnd ˈrʌnɪŋ","learn the ropes":"lɜːn ðə rəʊps","a long shot":"ə lɒŋ ʃɒt","on the back burner":"ɒn ðə bæk ˈbɜːnə","get the green light":"get ðə griːn laɪt","think on your feet":"θɪŋk ɒn jɔː fiːt","a no-brainer":"ə nəʊ ˈbreɪnə","a steep learning curve":"ə stiːp ˈlɜːnɪŋ kɜːv","rule of thumb":"ruːl əv θʌm","ahead of the curve":"əˈhed əv ðə kɜːv","star method":"ˈstɑː ˈmeθəd","composure":"kəmˈpəʊʒə","self-introduction":"self ɪntrəˈdʌkʃən","mock interview":"mɒk ˈɪntəvjuː","follow-up question":"ˈfɒləʊ ʌp ˈkwestʃən","panel interview":"ˈpænəl ˈɪntəvjuː","arrive early":"əˈraɪv ˈɜːli","final round":"ˈfaɪnəl raʊnd","see":"siː","meet":"miːt","car":"kɑː","market":"ˈmɑːkɪt","board":"bɔːd","food":"fuːd","two":"tuː","bird":"bɜːd","earn":"ɜːn","sit":"sɪt","list":"lɪst","bed":"bed","cat":"kæt","tax":"tæks","cup":"kʌp","put":"pʊt","good":"gʊd","about":"əˈbaʊt","day":"deɪ","rate":"reɪt","my":"maɪ","boy":"bɔɪ","go":"gəʊ","own":"əʊn","ear":"ɪə","clear":"klɪə","air":"eə","there":"ðeə","tour":"tɔː","poor":"pɔː","pen":"pen","gold":"gəʊld","gain":"geɪn","invest":"ɪnˈvest","very":"ˈveri","this":"ðɪs","the":"ðə","other":"ˈʌðə","business":"ˈbɪznəs","session":"ˈseʃən","usual":"ˈjuːʒuːəl","measure":"ˈmeʒə","hold":"həʊld","costs":"kɒsts","hits":"hɪts","funds":"fʌndz","bonds":"bɒndz","needs":"niːdz","money":"ˈmʌni","net":"net","banking":"ˈbæŋkɪŋ","long":"lɒŋ","thing":"θɪŋ","level":"ˈlevəl","wealth":"welθ","world":"wɜːld","use":"juːz","sheep":"ʃiːp","ship":"ʃɪp","leave":"liːv","least":"liːst","bad":"bæd","sad":"sæd","pan":"pæn","men":"men","man":"mæn","land":"lænd","fool":"fuːl","pull":"pʊl","pool":"puːl","look":"lʊk","luke":"luːk","cooed":"kuːd","cut":"kʌt","cart":"kɑːt","hut":"hʌt","heart":"hɑːt","much":"mʌtʃ","march":"mɑːtʃ","come":"kʌm","coast":"kəʊst","not":"nɒt","note":"nəʊt","goat":"gəʊt","want":"wɒnt","won't":"wəʊnt","rod":"rɒd","road":"rəʊd","sink":"sɪŋk","thank":"θæŋk","sank":"sæŋk","thick":"θɪk","sick":"sɪk","mouth":"maʊθ","mouse":"maʊs","path":"pɑːθ","fought":"fɔːt","thirst":"θɜːst","death":"deθ","deaf":"def","they":"ðeɪ","den":"den","dare":"deə","though":"ðəʊ","dough":"dəʊ","breed":"briːd","light":"laɪt","night":"naɪt","lot":"lɒt","lead":"liːd","right":"raɪt","row":"rəʊ","collect":"kəˈlekt","fly":"flaɪ","fry":"fraɪ","vest":"vest","west":"west","vine":"vaɪn","wine":"waɪn","wary":"ˈweəri","vet":"vet","verse":"vɜːs","prize":"praɪz","place":"pleɪs","plays":"pleɪz","buzz":"bʌz","loose":"luːs","lose":"luːz","sip":"sɪp","sheet":"ʃiːt","shell":"ʃel","she":"ʃiː","chip":"tʃɪp","watch":"wɒtʃ","wash":"wɒʃ","match":"mætʃ","mash":"mæʃ","thin":"θɪn","ban":"bæn","bang":"bæŋ","win":"wɪn","wing":"wɪŋ","sin":"sɪn","sing":"sɪŋ","ran":"ræn","rang":"ræŋ","ride":"raɪd","bet":"bet","hit":"hɪt","hid":"hɪd","card":"kɑːd","ray":"reɪ","knee":"niː","bike":"baɪk","save":"seɪv","say":"seɪ","lie":"laɪ","sixteen":"sɪkˈstiːn","eighteen":"eɪˈtiːn","eighty":"ˈeɪti","although":"ɒlˈðəʊ","know":"nəʊ","lies":"laɪz","wide":"waɪd","five":"faɪv","over":"ˈəʊvə","months":"mʌnθs","profits":"ˈprɒfɪts","deals":"diːlz","tasks":"tɑːsks","wanted":"ˈwɒntɪd","needed":"ˈniːdɪd","invested":"ɪnˈvestɪd","reported":"rɪˈpɔːtɪd","stocks":"stɒks","banks":"bæŋks","loans":"ləʊnz","prices":"ˈpraɪsɪz","changes":"ˈtʃeɪndʒɪz","businesses":"ˈbɪznəsɪz","charges":"ˈtʃɑːdʒɪz","banana":"bəˈnɑːnə","investment":"ɪnˈvestmənt"};
 
 </script>
 <script>
@@ -1590,7 +1689,8 @@ const GUIDE=[
 <p>这套程序为“零基础、每天 8 小时、目标在香港金融行业工作、以口语为重点”的你设计。90 天分三个阶段，每 7 天安排 1 个复习日，第 30、60、90 天是阶段测试。</p>
 <h4>每天怎么用</h4>
 <ol>
-<li>打开 <b>今日</b>：按时间表从上到下完成 7 个学习块，完成一块就勾选一块。</li>
+<li>打开 <b>今日</b>：一天分成 7 步（发音、单词、文法、听力、口语、阅读、复盘），一次只显示当前这一步。做完点 <b>完成本步 · 下一步</b>。喜欢一次看完全部内容，可以点步骤栏最右边的 <b>一页显示</b>。</li>
+<li><b>资料库</b> 里有发音系统课、语法总表、场景句库和全局搜索，随时可以查、随时可以练。</li>
 <li>每个单词、句子、对话都可以点 🔊 听原音；点 <b>慢</b> 用慢速听。</li>
 <li>口语练习时点 <b>🎙 跟读</b>：程序会识别你说的话并打分（需要浏览器支持）；不支持时会改为录音，录完回放和原音对比。</li>
 <li>晚上到 <b>练习</b> 页做闪卡复习和听写，程序会按记忆曲线自动安排复习。</li>
@@ -1825,6 +1925,295 @@ const PRON_TIPS=[
  ["词尾辅音","work / worked","中文没有辅音结尾，容易吞掉或加 /ə/：work 不要读成 work-er。"]
 ];
 
+/* ---------- 进阶指南 ---------- */
+GUIDE.push(
+{id:"thinking2",t:"英文逻辑思维进阶：从中式表达到专业表达",h:`
+<p>上一节讲了 8 个思维转换。这一节给你可以每天练的具体工具：中英思维对照、逻辑连接词地图、主语思维、委婉表达和 3 个日常训练。</p>
+<h4>1. 中英思维 8 组对照</h4>
+<table><tr><th>中文习惯</th><th>英文习惯</th><th>例子</th></tr>
+<tr><td>先背景，后结论</td><td>先结论，后理由</td><td><i class="say">We should wait. The market is too volatile right now.</i></td></tr>
+<tr><td>主题 + 评论（“这个产品，风险很低”）</td><td>主语 + 谓语</td><td><i class="say">This product has low risk.</i></td></tr>
+<tr><td>多用动词</td><td>正式场合多用名词</td><td>“我们决定上市” → <i class="say">Our decision to list was well received.</i></td></tr>
+<tr><td>修饰语放前面</td><td>核心词先说，修饰往后挂</td><td><i class="say">the report that you sent me yesterday</i></td></tr>
+<tr><td>逻辑靠意会</td><td>逻辑靠连接词</td><td><i class="say">Rates are high, so demand is weak.</i></td></tr>
+<tr><td>笼统（“效果很好”）</td><td>具体（数字、时间、对象）</td><td><i class="say">Sales grew 12 percent in the third quarter.</i></td></tr>
+<tr><td>直接（“你应该……”）</td><td>委婉（“您可以考虑……”）</td><td><i class="say">You might want to consider a bond fund.</i></td></tr>
+<tr><td>谦虚否定自己</td><td>积极、自信地表达</td><td>“我英语很差” → <i class="say">I'm still improving my English, and I learn fast.</i></td></tr>
+</table>
+<h4>2. 逻辑连接词地图</h4>
+<p>说每一句之前先想：这句和上一句是什么关系？然后从对应的一组里选词。</p>
+<table><tr><th>关系</th><th>口语常用</th><th>书面 / 正式</th></tr>
+<tr><td>因果</td><td><i class="say">because</i> · <i class="say">so</i> · <i class="say">that's why</i></td><td>due to · as a result · therefore</td></tr>
+<tr><td>转折对比</td><td><i class="say">but</i> · <i class="say">on the other hand</i></td><td>however · whereas · although</td></tr>
+<tr><td>递进补充</td><td><i class="say">also</i> · <i class="say">plus</i> · <i class="say">what's more</i></td><td>in addition · moreover · furthermore</td></tr>
+<tr><td>举例</td><td><i class="say">for example</i> · <i class="say">like</i></td><td>for instance · such as</td></tr>
+<tr><td>顺序</td><td><i class="say">first</i> · <i class="say">then</i> · <i class="say">after that</i></td><td>firstly · subsequently · finally</td></tr>
+<tr><td>条件</td><td><i class="say">if</i> · <i class="say">as long as</i></td><td>unless · provided that</td></tr>
+<tr><td>让步</td><td><i class="say">even though</i></td><td>despite · in spite of</td></tr>
+<tr><td>总结</td><td><i class="say">so, overall</i> · <i class="say">in short</i></td><td>to sum up · in conclusion</td></tr>
+</table>
+<p class="small">注意：英文不说 <i>Although…, but…</i>，也不说 <i>Because…, so…</i>，两个连接词只保留一个。</p>
+<h4>3. 主语思维：先选对主语</h4>
+<p>中文句子常常没有主语，或者主语是“话题”。英文开口前先选一个真正做动作的主语：</p>
+<ul>
+<li>“人很多” → <i class="say">There are a lot of people.</i></li>
+<li>“价格涨了” → <i class="say">Prices have gone up.</i></li>
+<li>“我们部门人手不够” → <i class="say">Our team is short-staffed.</i></li>
+<li>“这个月业绩不错” → <i class="say">We had a good month.</i></li>
+<li>“开会时间改了” → <i class="say">The meeting has been moved.</i></li>
+</ul>
+<h4>4. 委婉与留余地（金融行业尤其重要）</h4>
+<p>金融行业不能随便承诺，也不能太直接地否定客户。常用的软化方式：</p>
+<ul>
+<li>加情态动词：<i class="say">This could be a good option.</i> / <i class="say">It might take longer.</i></li>
+<li>加“似乎、可能”：<i class="say">It seems that the market is slowing.</i></li>
+<li>用建议代替命令：<i class="say">I'd suggest reviewing the plan.</i></li>
+<li>用问题代替否定：<i class="say">Have you thought about the risk?</i></li>
+<li>坏消息前加缓冲：<i class="say">I'm afraid there's a delay.</i></li>
+</ul>
+<h4>5. 每天 3 个逻辑训练（每个 5 分钟）</h4>
+<ol>
+<li><b>一句话结论：</b>看完一条新闻，用一句英文说出结论：<i class="say">The main point is that rates will stay high.</i></li>
+<li><b>一分钟三点法：</b>随机一个话题，先说观点，再说三个理由，最后总结。用计时器卡 60 秒。</li>
+<li><b>换个说法：</b>把今天学的 3 个句子，各用另一种结构说一遍（主动改被动、名词改动词、直接改委婉）。</li>
+</ol>`},
+
+{id:"finlogic",t:"金融场景表达逻辑：6 个万能框架",h:`
+<p>金融工作中的大部分对话都有固定的逻辑结构。掌握这 6 个框架，你就知道每种场景该先说什么、后说什么。</p>
+<h4>1. 向上汇报：BLUF（结论先行）</h4>
+<p>结论 → 2-3 个理由 → 需要对方做什么。</p>
+<p><i class="say">The bottom line is that we should approve the discount. First, the client is planning to add more assets. Second, a competitor has offered a lower fee. I need your approval by Friday.</i></p>
+<h4>2. 项目汇报：SCQA</h4>
+<p>情境 Situation → 问题 Complication → 疑问 Question → 答案 Answer。</p>
+<p><i class="say">Our onboarding takes three weeks. Clients are complaining and some have gone to competitors. So how can we make it faster? I suggest combining the three forms into one digital form.</i></p>
+<h4>3. 客户建议：需求 → 方案 → 理由 → 风险 → 下一步</h4>
+<p><i class="say">You told me your priority is a stable income. Based on that, I'd recommend a bond fund. It pays a regular income and has lower volatility. However, bond prices can fall when rates rise. Shall we look at the details together?</i></p>
+<h4>4. 市场评论：发生了什么 → 为什么 → 展望 → 观点</h4>
+<p><i class="say">The Hang Seng Index rose 1.5 percent yesterday. Sentiment improved after weaker US jobs data. We expect volatility ahead of the Fed meeting. We remain overweight banks.</i></p>
+<h4>5. 讲数据：总 → 分 → 比较 → 原因</h4>
+<p><i class="say">Total revenue was 2 billion dollars. Wealth management accounted for 40 percent. That's up 8 percent from last year, mainly because of strong demand from mainland clients.</i></p>
+<h4>6. 处理异议和投诉：LAER</h4>
+<p>倾听 Listen → 认可 Acknowledge → 探询 Explore → 回应 Respond。</p>
+<p><i class="say">I understand. That's a fair concern. Could you tell me a bit more about what worries you? … In that case, we could start with a smaller amount and review it in three months.</i></p>
+<h4>练习方法</h4>
+<p>每个框架先背一个例子，再用自己的工作内容替换关键词，每天选 2 个框架各说 3 遍并录音。</p>`},
+
+{id:"chinglish",t:"常见中式英语 32 例",h:`
+<p>这些错误母语者通常能听懂，但会让你听起来不够专业。每条先读错误句，再大声读 3 遍正确句。</p>
+<table><tr><th>中式英语</th><th>地道说法</th><th>说明</th></tr>
+<tr><td>I very like it.</td><td><i class="say">I really like it.</i></td><td>very 不能直接修饰动词</td></tr>
+<tr><td>I'm agree.</td><td><i class="say">I agree.</i></td><td>agree 是动词，不用 am</td></tr>
+<tr><td>Please contact with me.</td><td><i class="say">Please contact me.</i></td><td>contact 后直接接人</td></tr>
+<tr><td>Let's discuss about it.</td><td><i class="say">Let's discuss it.</i></td><td>discuss 不加 about</td></tr>
+<tr><td>Can you explain me?</td><td><i class="say">Can you explain it to me?</i></td><td>explain 后不能直接接人</td></tr>
+<tr><td>How to say this in English?</td><td><i class="say">How do you say this in English?</i></td><td>问句要有完整主谓</td></tr>
+<tr><td>Although it's risky, but…</td><td><i class="say">Although it's risky, …</i></td><td>although 和 but 只用一个</td></tr>
+<tr><td>Because the rate is high, so…</td><td><i class="say">Because the rate is high, …</i></td><td>because 和 so 只用一个</td></tr>
+<tr><td>more better</td><td><i class="say">much better</i></td><td>better 已是比较级</td></tr>
+<tr><td>informations / advices</td><td><i class="say">information / advice</i></td><td>不可数名词不加 s</td></tr>
+<tr><td>The people is…</td><td><i class="say">The people are…</i></td><td>people 是复数</td></tr>
+<tr><td>He don't know.</td><td><i class="say">He doesn't know.</i></td><td>第三人称单数</td></tr>
+<tr><td>I have finished it yesterday.</td><td><i class="say">I finished it yesterday.</i></td><td>有过去时间用一般过去时</td></tr>
+<tr><td>I am working in HSBC for 3 years.</td><td><i class="say">I've been working at HSBC for three years.</i></td><td>持续到现在用完成时</td></tr>
+<tr><td>Open the computer / light.</td><td><i class="say">Turn on the computer.</i></td><td>电器用 turn on / off</td></tr>
+<tr><td>The price is very cheap.</td><td><i class="say">The price is very low.</i></td><td>price 用 high / low</td></tr>
+<tr><td>The bank rose the rate.</td><td><i class="say">The bank raised the rate.</i></td><td>rise 不及物，raise 及物</td></tr>
+<tr><td>I'm boring.</td><td><i class="say">I'm bored.</i></td><td>-ing 让人…，-ed 感到…</td></tr>
+<tr><td>Give you.</td><td><i class="say">Here you are.</i></td><td>递东西的固定说法</td></tr>
+<tr><td>My English is very poor.</td><td><i class="say">I'm still working on my English.</i></td><td>职场中积极表达</td></tr>
+<tr><td>Do you understand?</td><td><i class="say">Does that make sense?</i></td><td>前者像在质疑对方</td></tr>
+<tr><td>You must buy this fund.</td><td><i class="say">You might want to consider this fund.</i></td><td>对客户不能命令，也不能施压</td></tr>
+<tr><td>I want a meeting with you.</td><td><i class="say">I'd like to set up a meeting with you.</i></td><td>I'd like 更礼貌</td></tr>
+<tr><td>We will revert to you.</td><td><i class="say">We'll get back to you.</i></td><td>revert 在国际场合不够通用</td></tr>
+<tr><td>Please kindly find attached.</td><td><i class="say">Please find attached the report.</i></td><td>please 和 kindly 不要叠用</td></tr>
+<tr><td>Add oil!</td><td><i class="say">You can do it!</i> / <i class="say">Keep it up!</i></td><td>“加油”的地道说法</td></tr>
+<tr><td>Do you have any question?</td><td><i class="say">Do you have any questions?</i></td><td>any 后接复数</td></tr>
+<tr><td>I'll call you later on.</td><td><i class="say">I'll call you later.</i></td><td>later 就够了</td></tr>
+<tr><td>Long time no contact.</td><td><i class="say">It's been a while!</i></td><td>商务场合更自然</td></tr>
+<tr><td>The meeting is cancel.</td><td><i class="say">The meeting has been cancelled.</i></td><td>被动语态要有过去分词</td></tr>
+<tr><td>I come from Mainland.</td><td><i class="say">I'm from mainland China.</i></td><td>mainland 前要有限定</td></tr>
+<tr><td>Sorry, my mistake, sorry.</td><td><i class="say">Sorry, that was my mistake. I'll fix it today.</i></td><td>道歉一次，然后给解决方案</td></tr>
+</table>`},
+
+{id:"method2",t:"高效学习技巧进阶",h:`
+<h4>1. 8 小时精力管理</h4>
+<ul>
+<li><b>上午脑力最好：</b>安排发音、单词和文法这类需要专注的内容（本程序的第 1-3 步）。</li>
+<li><b>下午容易犯困：</b>安排需要开口和动起来的口语练习（第 5 步），可以站着说、走着说。</li>
+<li><b>晚上做输出：</b>阅读、复述、写日记，把一天的内容用出来。</li>
+<li>每 50 分钟休息 10 分钟；每天运动 30 分钟；保证 7 小时睡眠。睡眠是记忆巩固最关键的时间。</li>
+</ul>
+<h4>2. 单词记忆：5 条规则</h4>
+<ol>
+<li><b>整句记：</b>每个词至少记住一个例句，口语里调用的是句子，不是单词。</li>
+<li><b>词根词缀：</b>invest → investor（人）→ investment（名词）；pay → payment → payable。同族词一起记。</li>
+<li><b>马上用：</b>学完立刻用这个词说一句关于自己的话：<i class="say">I want to invest in my English.</i></li>
+<li><b>闪卡要诚实：</b>想不起来就点“不认识”，不要骗自己；每天把“今日到期”刷完。</li>
+<li><b>场景归类：</b>按场景（开会、电话、客户）复习，比按字母顺序更容易记住。用“资料库 → 场景句库”。</li>
+</ol>
+<h4>3. 听力提升四步法</h4>
+<ol>
+<li><b>泛听：</b>不看文字听一遍，抓大意（本程序的“听力理解”就是这一步）。</li>
+<li><b>精听：</b>一句一句听，听不懂的地方反复听 3 遍。</li>
+<li><b>听写：</b>把听到的写下来，对照原文找错（“练习 → 听写”）。</li>
+<li><b>跟读：</b>用影子跟读把这段材料说出来。能说出来的，以后就能听懂。</li>
+</ol>
+<p>听不懂时先判断原因：是<b>生词</b>（去查、加进闪卡）、<b>连读弱读</b>（去发音课练）、<b>语速</b>（先慢速再正常）、还是<b>数字</b>（做数字听力）？对症练习比反复硬听有效得多。</p>
+<h4>4. 口语提升：4 个每天能做的方法</h4>
+<ul>
+<li><b>复述法：</b>读完一段对话或文章，合上，用自己的话说一遍。这是从“会读”到“会说”最快的方法。</li>
+<li><b>自言自语：</b>做饭、通勤时，用英文描述你在做什么、你在想什么。</li>
+<li><b>录音对比：</b>每天至少录 1 次，和原音对比，每次只改 1 个问题。</li>
+<li><b>找一个“声音榜样”：</b>选一位你喜欢的英式英语主播或财经评论员，专门模仿他的语调和节奏。</li>
+</ul>
+<h4>5. 费曼学习法：用英文教别人</h4>
+<p>学完一个文法点或一个金融概念，假装给一位新同事讲解，用最简单的英文讲 1 分钟。讲不清楚的地方，就是你还没真正掌握的地方。</p>
+<h4>6. 用好错题本</h4>
+<p>答错的文法题、听写和跟读低于 70 分的句子，程序会自动收进“练习 → 错题本”。每天花 10 分钟清错题：同一个错误改正 3 次，才算真正掌握。</p>
+<h4>7. 遇到平台期怎么办</h4>
+<p>第 3-5 周和第 8-10 周常常会觉得“没有进步”。这是正常的：输入在积累，输出还没跟上。这时候：① 回听第 2 天的录音和最近的录音，对比进步；② 换一种练习方式（例如多做角色扮演、少做阅读）；③ 降低难度，用慢速材料重建信心。</p>
+<h4>8. 90 天里程碑自测</h4>
+<table><tr><th>时间</th><th>你应该能做到</th></tr>
+<tr><td>第 30 天</td><td>1 分钟自我介绍不卡顿；听懂慢速日常对话；完成点餐、问路、打电话、约时间。</td></tr>
+<tr><td>第 60 天</td><td>在会议上发表观点并回应同事；写一封清楚的商务邮件；用 STAR 法回答面试行为题。</td></tr>
+<tr><td>第 90 天</td><td>和客户完成一次完整的金融产品对话；做 2 分钟的市场点评；自信应对香港金融面试。</td></tr>
+</table>
+<p>每个里程碑前一天，录一段 3 分钟的自我测试，和上一个里程碑的录音对比。</p>`}
+);
+const GUIDE_ORDER=['start','schedule','thinking','thinking2','finlogic','method','method2','natural','speaking','chinglish','templates','interview','checklist','resources'];
+
+</script>
+<script>
+/* 发音系统课数据：音标详解、易混音听辨、粤语母语者难点、节奏与语调 */
+/* 音标：[分类, 符号, 发音要领, 例词(3个，用 / 分隔), 常见问题(可空)] */
+const SOUNDS=[
+ ["长元音","iː","嘴角向两边拉开，像微笑；舌尖抵住下齿，声音拉长、肌肉稍紧。","see/meet/fee","常读得太短，sheep 和 ship 不分。"],
+ ["长元音","ɑː","嘴巴张大，舌头放低后缩，发长长的“啊”。","car/market/chart",""],
+ ["长元音","ɔː","双唇收圆并向前突，发长长的“奥”。","saw/call/board","容易和 /əʊ/ 混淆：call 不要读成 coal。"],
+ ["长元音","uː","双唇收圆、用力向前，发长长的“乌”。","food/two/review","容易读短，fool 和 full 不分。"],
+ ["长元音","ɜː","嘴巴半开，舌头放在中间、不卷舌，发长长的“额”。","bird/work/earn","不要读成“窝”，也不要加美式卷舌。"],
+ ["短元音","ɪ","嘴巴放松，比 /iː/ 开一点，短促有力。","sit/list/risk","读成长音 /iː/，live 听起来像 leave。"],
+ ["短元音","e","嘴巴半开，嘴角稍向两边，短音“诶”。","bed/credit/sell","和 /æ/ 不分，bed 和 bad 不分。"],
+ ["短元音","æ","嘴巴张大，舌头压低，嘴角向两边拉，介于“哎”和“啊”之间。","cat/bank/tax","常读成 /e/：bank 要把嘴张开。"],
+ ["短元音","ʌ","嘴巴半开、放松，短促的“阿”。","cup/fund/budget","和 /ɑː/ 混淆：cut 不要读成 cart。"],
+ ["短元音","ɒ","嘴巴张开、双唇稍圆，短促的“奥”。","hot/stock/profit","和 /əʊ/ 混淆：cost 不要读成 coast。"],
+ ["短元音","ʊ","双唇稍圆、放松，短音。","put/book/good","读成长音 /uː/。"],
+ ["短元音","ə","最轻、最短、最放松的“呃”，只出现在不重读的音节。","about/account/percent","把每个音节都读重，英语就失去了节奏。"],
+ ["双元音","eɪ","从 /e/ 滑向 /ɪ/：“诶-一”，后半段轻。","day/rate/pay","滑动不够，读成单音 /e/。"],
+ ["双元音","aɪ","从 /a/ 滑向 /ɪ/：“爱”。","my/price/buy",""],
+ ["双元音","ɔɪ","从 /ɔː/ 滑向 /ɪ/。","boy/join/point",""],
+ ["双元音","əʊ","从 /ə/ 滑向 /ʊ/：英式“欧”。","go/loan/own","读成单音“奥”，loan 听起来像 lawn。"],
+ ["双元音","aʊ","从 /a/ 滑向 /ʊ/。","now/account/amount",""],
+ ["双元音","ɪə","从 /ɪ/ 滑向 /ə/。","ear/year/clear",""],
+ ["双元音","eə","从 /e/ 滑向 /ə/，英式不卷舌。","air/share/there",""],
+ ["双元音","ʊə","从 /ʊ/ 滑向 /ə/（很多英国人已读成 /ɔː/）。","tour/sure/poor",""],
+ ["爆破音","p","双唇紧闭，突然放开并送气，声带不振动。","pen/pay/price","词尾 /p/ 不发，stop 只剩 sto。"],
+ ["爆破音","b","同 /p/ 的口型，但声带振动、不送气。","bank/bond/buy",""],
+ ["爆破音","t","舌尖抵住上齿龈，突然放开并送气。","tea/total/rate","词尾 /t/ 被吞掉，rate 和 ray 不分。"],
+ ["爆破音","d","同 /t/ 的口型，声带振动。","deal/debt/fund","词尾 /d/ 被吞掉或读成 /t/。"],
+ ["爆破音","k","舌根抵住软腭，突然放开并送气。","cash/client/bank","词尾 /k/ 不完整。"],
+ ["爆破音","g","同 /k/ 的口型，声带振动。","gold/growth/gain",""],
+ ["摩擦音","f","上齿轻咬下唇，送气摩擦，声带不振动。","fund/fee/profit",""],
+ ["摩擦音","v","同 /f/ 的口型，但声带振动；嘴唇不要收圆。","value/invest/very","读成 /w/ 或 /f/，very 读成 wary。"],
+ ["摩擦音","θ","舌尖轻放在上下齿之间，送气，声带不振动。","think/three/growth","读成 /f/ 或 /s/：three 像 free。"],
+ ["摩擦音","ð","同 /θ/ 的口型，声带振动。","this/the/other","读成 /d/：they 像 day。"],
+ ["摩擦音","s","舌尖靠近上齿龈，气流从缝隙出来，“丝”。","stock/sell/cost",""],
+ ["摩擦音","z","同 /s/ 的口型，声带振动，像蜜蜂的嗡嗡声。","zero/rise/business","读成 /s/：rise 和 rice 不分。"],
+ ["摩擦音","ʃ","双唇稍向前突，舌面抬高，“嘘”。","share/cash/session",""],
+ ["摩擦音","ʒ","同 /ʃ/ 的口型，声带振动。","usual/decision/measure","读成 /ʃ/ 或 /dʒ/。"],
+ ["摩擦音","h","只是送气，像对着手哈气。","hold/high/hedge",""],
+ ["破擦音","tʃ","舌尖抵住上齿龈，从 /t/ 迅速滑到 /ʃ/。","check/charge/change",""],
+ ["破擦音","dʒ","同 /tʃ/，声带振动。","job/budget/manager","和 /ʒ/、/z/ 混淆。"],
+ ["破擦音","tr","/t/ 和 /r/ 连成一个音，嘴唇稍圆。","trade/transfer/trust","中间不要加元音，不要读成“特-入”。"],
+ ["破擦音","dr","/d/ 和 /r/ 连成一个音。","draft/drop/address",""],
+ ["破擦音","ts","/t/ 和 /s/ 连成一个音，常见于复数。","assets/costs/hits","词尾 -ts 要清楚，assets 不要读成 asset。"],
+ ["破擦音","dz","/d/ 和 /z/ 连成一个音，常见于复数。","funds/bonds/needs",""],
+ ["鼻音","m","双唇闭合，气流从鼻腔出来。","money/margin/term",""],
+ ["鼻音","n","舌尖抵住上齿龈，气流从鼻腔出来。","net/loan/nine","和 /l/ 混淆：night 读成 light。"],
+ ["鼻音","ŋ","舌根抵住软腭，气流从鼻腔出来，不要加 /g/。","banking/long/thing","和 /n/ 混淆：thing 读成 thin。"],
+ ["其他","l","舌尖抵住上齿龈，气流从舌头两侧出来；词尾的 l 舌尖也要碰到上齿龈。","loan/level/deal","词首和 /n/ 混淆；词尾 deal 读成 dear。"],
+ ["其他","r","舌尖向后卷、不碰任何地方，双唇稍圆；英式英语词尾的 r 不发音。","rate/risk/return","读成 /l/ 或 /w/。"],
+ ["其他","w","双唇收圆并突出，然后迅速放开。","wealth/week/world","和 /v/ 混淆。"],
+ ["其他","j","舌面抬高靠近上颚，像“耶”的开头。","yield/year/use",""]
+];
+
+/* 易混音听辨：[标题, 说明, [[词1,词2],...]] */
+const PAIRS=[
+ ["/iː/ 与 /ɪ/","长音拉长、嘴角拉开；短音放松短促",[["sheep","ship"],["leave","live"],["feel","fill"],["seat","sit"],["least","list"]]],
+ ["/e/ 与 /æ/","/æ/ 嘴巴张得更大",[["bed","bad"],["said","sad"],["pen","pan"],["men","man"],["lend","land"]]],
+ ["/ʊ/ 与 /uː/","/uː/ 更长、嘴唇更圆",[["full","fool"],["pull","pool"],["look","Luke"],["could","cooed"]]],
+ ["/ʌ/ 与 /ɑː/","/ɑː/ 更长、口腔更靠后",[["cut","cart"],["hut","heart"],["much","march"],["come","calm"]]],
+ ["/ɒ/ 与 /əʊ/","/əʊ/ 是滑动的双元音",[["cost","coast"],["not","note"],["got","goat"],["want","won't"],["rod","road"]]],
+ ["/θ/ 与 /s/","/θ/ 舌尖在齿间",[["think","sink"],["thank","sank"],["thick","sick"],["mouth","mouse"],["path","pass"]]],
+ ["/θ/ 与 /f/","/θ/ 用舌头，/f/ 用嘴唇",[["three","free"],["thought","fought"],["thirst","first"],["death","deaf"]]],
+ ["/ð/ 与 /d/","/ð/ 舌尖在齿间并振动",[["they","day"],["then","den"],["there","dare"],["though","dough"],["breathe","breed"]]],
+ ["/l/ 与 /n/","/n/ 从鼻子出气",[["light","night"],["low","no"],["lot","not"],["line","nine"],["lead","need"]]],
+ ["/l/ 与 /r/","/r/ 舌尖不碰上颚",[["light","right"],["low","row"],["lead","read"],["collect","correct"],["fly","fry"]]],
+ ["/v/ 与 /w/","/v/ 上齿碰下唇",[["vest","west"],["vine","wine"],["very","wary"],["vet","wet"],["verse","worse"]]],
+ ["/s/ 与 /z/","/z/ 声带振动",[["rice","rise"],["price","prize"],["place","plays"],["bus","buzz"],["loose","lose"]]],
+ ["/ʃ/ 与 /s/","/ʃ/ 嘴唇向前突",[["ship","sip"],["sheet","seat"],["shell","sell"],["she","see"]]],
+ ["/tʃ/ 与 /ʃ/","/tʃ/ 先有一个 /t/ 的停顿",[["cheap","sheep"],["chip","ship"],["watch","wash"],["match","mash"]]],
+ ["/n/ 与 /ŋ/","/ŋ/ 用舌根",[["thin","thing"],["ban","bang"],["win","wing"],["sin","sing"],["ran","rang"]]],
+ ["词尾 /t/ 与 /d/","/d/ 前面的元音稍长",[["right","ride"],["bet","bed"],["hit","hid"],["cart","card"]]],
+ ["有无词尾辅音","词尾辅音要发出来",[["rate","ray"],["need","knee"],["bike","buy"],["save","say"],["line","lie"]]],
+ ["13 与 30","-teen 重音在后，-ty 重音在前",[["thirteen","thirty"],["fourteen","forty"],["fifteen","fifty"],["sixteen","sixty"],["eighteen","eighty"]]]
+];
+
+/* 粤语母语者十大发音难点 */
+const HKERR=[
+ {id:"th",t:"th 音：/θ/ 和 /ð/",why:"粤语没有这两个音，常用 f、s、d 代替：three 读成 free，this 读成 dis。",tip:"舌尖轻轻伸出，放在上下齿之间，然后吹气。对着镜子能看到一点舌尖就对了。/θ/ 只吹气，/ð/ 声带要振动。",
+  words:["think","three","thousand","growth","month","the","this","other","together","although"],
+  sents:["I think the third quarter was better.","The three of them work together.","Thank you for this month's growth report.","Although the market fell, the fund did well."]},
+ {id:"ln",t:"l 和 n 不分",why:"很多粤语使用者把 n 读成 l（俗称“懒音”），也有人反过来：night 读成 light，no 读成 low。",tip:"/n/ 是鼻音：捏住鼻子就发不出来。/l/ 舌尖抵住上齿龈，气流从舌头两边出来。先慢慢交替读 no-low、night-light。",
+  words:["loan","net","low","no","light","night","level","nine","long","know"],
+  sents:["The loan is not low.","Nine new clients called last night.","Please let me know.","The net level is nearly ninety."]},
+ {id:"rl",t:"r 和 l",why:"粤语没有 /r/，常读成 /l/ 或 /w/：rate 读成 late，correct 读成 collect。",tip:"/r/：舌尖向后卷、不碰任何地方，双唇稍圆。/l/：舌尖碰住上齿龈。英式英语词尾的 r（如 year、share）不发音。",
+  words:["rate","late","rise","lies","right","light","correct","collect","return","realistic"],
+  sents:["The interest rate is rising.","Please collect the correct report.","Right, let's look at the risk.","The return looks realistic."]},
+ {id:"vw",t:"v、w 和 f",why:"粤语没有 /v/，常把 very 读成 wery 或 fery。",tip:"/v/：上齿轻咬下唇，声带振动，嘴唇不要收圆。/w/：嘴唇收圆向前突，不碰牙齿。/f/：口型和 /v/ 一样，但声带不振动。",
+  words:["value","very","invest","view","wealth","week","wide","five","over","available"],
+  sents:["We have very good value this week.","Five investors viewed the website.","What's the overall view?","The service is available every weekday."]},
+ {id:"final",t:"词尾辅音",why:"粤语词尾的 -p -t -k 不爆破，所以英语词尾的 t、d、k、s、z 常被吞掉：rate 听起来像 ray，need 像 knee。",tip:"词尾辅音要发出来，但要轻、要短；如果下一个词以元音开头，直接连过去更自然：need_a、check_it。",
+  words:["rate","need","bank","cost","fund","risk","asked","months","profits","deals"],
+  sents:["We need to check the bank's costs.","The fund lost six percent last month.","Sales and profits both increased.","I asked about the risk."]},
+ {id:"cluster",t:"辅音连缀",why:"中文音节结构简单，遇到 str-、spr-、-sts、-nths 这类连在一起的辅音，容易在中间加元音或漏掉一个。",tip:"辅音之间不要加“e”的音。先慢慢把每个辅音连起来读，再逐步加快：s-t-r → str → strategy。",
+  words:["strategy","structure","spread","transfer","client","credit","assets","costs","months","tasks"],
+  sents:["Our strategy is to spread the risk.","The client transferred the assets.","Fixed costs rose for three months.","Here are the tasks for next week."]},
+ {id:"vowel",t:"长短元音",why:"粤语里元音长短不区分意思，所以 seat/sit、full/fool、heart/hut 容易读成一样。",tip:"长元音（/iː/ /uː/ /ɑː/ /ɔː/ /ɜː/）要拉长、更用力；短元音（/ɪ/ /ʊ/ /ʌ/ /ɒ/）要短促放松。",
+  words:["seat","sit","leave","live","feel","fill","full","fool","heart","hut"],
+  sents:["Please leave the list on the seat.","We will fill the full order.","I feel the deal is still in the pool."]},
+ {id:"ed",t:"-ed 的三种读音",why:"过去式 -ed 有三种读法，常被统一读成“的”，或者干脆不读。",tip:"清辅音（p k f s ʃ tʃ）后读 /t/：asked、worked、checked。浊音和元音后读 /d/：called、opened、planned。t 和 d 后读 /ɪd/：wanted、needed、invested。",
+  words:["asked","worked","checked","called","opened","planned","wanted","needed","invested","reported"],
+  sents:["I called the client and asked about the order.","We invested early and waited.","She checked the numbers and reported the result."]},
+ {id:"s",t:"-s 的三种读音",why:"复数和第三人称单数的 -s 常被省略或统一读成 /s/。",tip:"清辅音后读 /s/：stocks、banks、costs。浊音和元音后读 /z/：funds、loans、pays。s z ʃ tʃ dʒ 后读 /ɪz/：prices、changes、businesses。",
+  words:["stocks","banks","costs","funds","loans","bonds","prices","changes","businesses","charges"],
+  sents:["Stocks rose, but bonds fell.","Prices change when rates rise.","The bank charges fees on overseas transfers."]},
+ {id:"rhythm",t:"节奏：重读与弱读",why:"粤语每个字差不多一样重（音节节拍），英语是重音节拍：重要的词重读，虚词轻读。每个词都读一样重，就会听起来生硬、难懂。",tip:"名词、实义动词、形容词、数字、否定词要重读；a、the、to、for、and、of、can 等虚词弱读成 /ə/。下面方括号里的词要重读。",
+  words:["account","percent","about","banana","economy","investment"],
+  sents:["I'd [like] to [open] an [account].","We [can't] [meet] on [Friday].","The [fund] [rose] by [five] [percent].","Can you [send] me the [report]?"]}
+];
+
+/* 节奏与语调模块 */
+const RHYTHM=[
+ {id:"wstress",t:"单词重音",d:"重音位置错了，母语者可能完全听不懂。同一词族重音会移动，名词和动词有时重音不同。大写部分是重音。",
+  items:[["economy","e-CON-o-my"],["economic","e-co-NOM-ic"],["economist","e-CON-o-mist"],["finance","FI-nance"],["financial","fi-NAN-cial"],["investment","in-VEST-ment"],["analysis","a-NAL-y-sis"],["analyst","AN-a-lyst"],["photograph","PHO-to-graph"],["photography","pho-TOG-ra-phy"],["record (名词)","REC-ord"],["record (动词)","re-CORD"],["increase (名词)","IN-crease"],["increase (动词)","in-CREASE"],["percent","per-CENT"],["portfolio","port-FO-li-o"]]},
+ {id:"numbers",t:"数字的重音",d:"-teen 结尾重音在后面，-ty 结尾重音在前面。金融工作中听错数字代价很高，说的时候要把重音读清楚。",
+  items:[["thirteen","thir-TEEN"],["thirty","THIR-ty"],["fifteen","fif-TEEN"],["fifty","FIF-ty"],["eighteen","eigh-TEEN"],["eighty","EIGH-ty"],["one point five million","one point five MIL-lion"],["two billion dollars","two BIL-lion DOL-lars"]]},
+ {id:"sstress",t:"句子重音与对比重音",d:"重读带信息的词，虚词轻读。想纠正或强调时，把重音放在对比的词上。方括号里的词要重读。",
+  sents:["I [said] [fifteen], [not] [fifty].","The [meeting] is on [Monday], not the [call].","[I] didn't send it. [Peter] did.","We need the report [today], not [tomorrow].","The [fee] is [low], but the [risk] is [high]."]},
+ {id:"linking",t:"连读与弱读",d:"辅音结尾 + 元音开头要连起来；虚词要弱读。听懂连读，听力会提高一大截。",
+  pairs:[["Not at all.","no-ta-tall"],["Pick it up.","pi-ki-tup"],["Check it out.","che-ki-tout"],["A lot of clients.","a lo-tov clients"],["Can I ask a question?","ca-nai a-ska question"],["First of all.","firs-to-vall"],["Look at it.","loo-ka-tit"],["I want to go.","I wan-na go（to 弱读成 /tə/）"],["This is for you.","for 弱读成 /fə/"],["Fish and chips.","and 弱读成 /n/"]]},
+ {id:"intonation",t:"语调",d:"一般疑问句（Yes/No）用升调 ↗；特殊疑问句（What/Where/How）和陈述句用降调 ↘；列举时前面升、最后降。",
+  pairs:[["Are you free on Friday?","↗ 升调：一般疑问句"],["Could you send me the file?","↗ 升调：礼貌请求"],["What time is the meeting?","↘ 降调：特殊疑问句"],["The meeting is at three.","↘ 降调：陈述句"],["We offer funds, bonds, and insurance.","列举：funds ↗ bonds ↗ insurance ↘"],["Really?","↗ 惊讶、确认"],["Thank you very much.","↘ 真诚、确定"]]},
+ {id:"chunk",t:"意群停顿",d:"长句按意思分组，在斜线处稍微停顿换气。停顿得当，听起来更自信、更清楚。",
+  sents:["Our revenue / grew by twelve percent / in the third quarter, / mainly because of / strong demand / from mainland clients.","If you invest / for three years, / you will get / a higher rate.","The main reason / is that the market / is still volatile.","Thank you all / for coming today. / Let's get started."]},
+ {id:"fluency",t:"流利度：填充语与思考时间",d:"卡住时不要沉默或说“嗯…呃…”，用英文的填充语为自己争取 2-3 秒。",
+  sents:["Well, that's a good question.","Let me think for a moment.","Actually, I'd like to add something.","What I mean is that the risk is too high.","To be honest, I'm not completely sure.","How can I put it? It's a bit complicated."]}
+];
+
+/* 每周发音重点 → 发音课模块 */
+const PRON_LINK=["hk-vowel","hk-th","rh-wstress","rh-sstress","rh-linking","rh-linking","hk-final","rh-intonation","rh-chunk","rh-numbers","rh-sstress","rh-fluency","hk-rhythm"];
+
 </script>
 <script>
 'use strict';
@@ -1853,6 +2242,7 @@ const ICON={
  plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
  practice:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="13" height="16" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v13"/><path d="M8 11h5M8 15h3"/></svg>',
  guide:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg>',
+ search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
  me:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>'
 };
 
@@ -1897,13 +2287,13 @@ function wordsOf(days){const seen={},r=[];days.forEach(function(d){if(!L[d])retu
 function sentsOf(days,withDlg){const r=[];days.forEach(function(d){if(!L[d])return;L[d].sents.forEach(function(s){r.push({en:s.en,zh:s.zh,day:d})});if(withDlg){L[d].dlg.concat(L[d].dlg2||[]).forEach(function(l){r.push({en:l.en,zh:l.zh,day:d})})}});return r}
 
 const BLOCKS=[
- {k:'pron',time:'08:30–09:30',min:60,t:'发音与影子跟读'},
- {k:'vocab',time:'09:30–10:45',min:75,t:'单词学习与复习'},
- {k:'gram',time:'11:00–12:00',min:60,t:'文法与句型'},
- {k:'listen',time:'14:00–15:00',min:60,t:'听力精听与听写'},
- {k:'speak',time:'15:15–17:15',min:120,t:'口语实战'},
- {k:'read',time:'19:30–20:30',min:60,t:'阅读理解'},
- {k:'out',time:'20:30–21:15',min:45,t:'输出与复盘'}
+ {k:'pron',s:'发音',time:'08:30–09:30',min:60,t:'发音与影子跟读'},
+ {k:'vocab',s:'单词',time:'09:30–10:45',min:75,t:'单词学习与复习'},
+ {k:'gram',s:'文法',time:'11:00–12:00',min:60,t:'文法与句型'},
+ {k:'listen',s:'听力',time:'14:00–15:00',min:60,t:'听力精听与听写'},
+ {k:'speak',s:'口语',time:'15:15–17:15',min:120,t:'口语实战'},
+ {k:'read',s:'阅读',time:'19:30–20:30',min:60,t:'阅读理解'},
+ {k:'out',s:'复盘',time:'20:30–21:15',min:45,t:'输出与复盘'}
 ];
 const CHECK=['清晰度','发音','重音与节奏','流利度','结构','词汇','语法','自信'];
 function blockDesc(n,k){
@@ -1948,7 +2338,7 @@ function blockDesc(n,k){
 
 /* ---------- 存储（本机 + 云端同步，均可失败降级） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -2277,42 +2667,129 @@ function dueInfo(){const today=dnum(),pool=learnedPool(),due=[],nw=[];pool.forEa
 /* ---------- 视图状态 ---------- */
 let view='today',viewArg=null;
 const RP={day:0,w:0,me:'B',i:-1,active:false,wait:false};
-const RD={};          /* 阅读答题 */
+const RD={},RDV={};          /* 阅读答题 */
 const QZ={};          /* 词汇测验 */
 const PR={tab:'cards',src:'due',day:0};
 let FC=null,DT=null,SP=null,TK=null;
 
 /* ---------- 今日 / 某天 ---------- */
+/* ---------- 每日学习：分步模式 ---------- */
+function stepOf(n){const st=S.step[n];if(st&&BLOCKS.some(function(b){return b.k===st}))return st;const d=S.done[n]||{};for(let i=0;i<BLOCKS.length;i++){if(!d[BLOCKS[i].k])return BLOCKS[i].k}return BLOCKS[0].k}
 function vDay(n,isToday){
   const t=typeOf(n),tt=titleOf(n),ph=phaseOf(n),bd=blocksDone(n);
-  let h=(isToday?installCard():'')+'<section class="hero"><div class="dnum"><small>Day</small>'+n+'</div><div class="htitle"><h1>'+esc(tt.t)+'</h1><div class="en">'+esc(tt.e)+'</div></div>'+
+  let h=(isToday?installCard():'')+'<section class="hero dayhero"><div class="dnum"><small>Day</small>'+n+'</div><div class="htitle"><h1>'+esc(tt.t)+'</h1><div class="en">'+esc(tt.e)+'</div></div>'+
    '<div class="hmeta"><span class="pill">第 '+ph.n+' 阶段 · '+esc(ph.t)+'</span><span class="pill grey">第 '+weekOf(n)+' 周</span>'+
    (t==='review'?'<span class="pill warn">复习日</span>':'')+(t==='test'?'<span class="pill red">阶段测试</span>':'')+
-   (S.fin[n]?'<span class="pill ok">已完成</span>':'')+(isToday?'<span class="pill red">今日学习</span>':'')+'</div></section>';
-  h+='<div class="bar" aria-label="今日进度"><i style="width:'+Math.round(bd/7*100)+'%"></i></div><p class="small muted" style="margin:4px 0 0">今日进度 '+bd+' / 7 · 计划学习 8 小时</p>';
+   (S.fin[n]?'<span class="pill ok">已完成</span>':'')+(isToday?'<span class="pill red">今日学习</span>':'')+'</div>'+
+   '<div class="dprog" aria-label="今日进度"><div class="bar"><i style="width:'+Math.round(bd/7*100)+'%"></i></div><span>'+bd+' / 7 步 · 计划 8 小时</span></div></section>';
   if(isToday){const nm=misCount();if(nm)h+='<button class="note misnote" data-act="go-mis">错题本里有 <b>'+nm+'</b> 项待重做，今天抽 10 分钟清一清 ›</button>'}
   h+='<div class="daynav">'+(n>1?'<a class="btn" href="#day-'+(n-1)+'">‹ 第 '+(n-1)+' 天</a>':'')+(n!==S.cur?'<button class="btn jade" data-act="setcur" data-day="'+n+'">设为当前学习日</button>':'')+(n<90?'<a class="btn" href="#day-'+(n+1)+'">第 '+(n+1)+' 天 ›</a>':'')+'</div>';
-  h+=cardTimetable(n);
+  if(S.set.allInOne){
+    h+='<div class="btns" style="justify-content:flex-end"><button class="btn ghost" data-act="allinone">切换为分步学习</button></div>';
+    return h+cardTimetable(n)+vDayAll(n)+cardFinish(n);
+  }
+  const k=stepOf(n);let idx=0;BLOCKS.forEach(function(b,i){if(b.k===k)idx=i});
+  h+=stepsBar(n,k)+stepHead(n,idx)+stepCards(n,k)+stepFoot(n,idx);
+  if(idx===BLOCKS.length-1||blocksDone(n)===7)h+=cardFinish(n);
+  return h;
+}
+function stepsBar(n,k){const d=S.done[n]||{};
+  return '<nav class="steps" aria-label="学习步骤">'+BLOCKS.map(function(b,i){return '<button class="'+(d[b.k]?'done':'')+'" data-act="step" data-day="'+n+'" data-k="'+b.k+'" aria-current="'+(b.k===k?'step':'false')+'"><span class="no">'+(d[b.k]?ICON.check:(i+1))+'</span>'+esc(b.s)+'</button>'}).join('')+'<button class="all" data-act="allinone" title="把今天全部内容显示在一页">一页显示</button></nav>'}
+function stepHead(n,idx){const b=BLOCKS[idx],on=!!((S.done[n]||{})[b.k]);
+  return '<section class="card stephead" id="stephead"><div class="kick">Step '+(idx+1)+' / 7 · '+b.time+' · '+b.min+' 分钟</div><h2>'+esc(b.t)+(on?' <span class="pill ok" style="vertical-align:3px">已完成</span>':'')+'</h2><p class="desc">'+esc(blockDesc(n,b.k))+'</p></section>'}
+function stepFoot(n,idx){const b=BLOCKS[idx],on=!!((S.done[n]||{})[b.k]),last=idx===BLOCKS.length-1;
+  let h='<div class="stepfoot">'+(idx>0?'<button class="btn" data-act="step" data-day="'+n+'" data-k="'+BLOCKS[idx-1].k+'">‹ 上一步</button>':'');
+  if(on)h+=(last?'<button class="btn" data-act="blk" data-day="'+n+'" data-k="'+b.k+'">取消完成</button>':'<button class="btn gold" data-act="step" data-day="'+n+'" data-k="'+BLOCKS[idx+1].k+'">下一步：'+esc(BLOCKS[idx+1].s)+' ›</button>');
+  else h+='<button class="btn gold" data-act="step-done" data-day="'+n+'" data-k="'+b.k+'">'+(last?'完成最后一步 ✓':'完成本步 · 下一步 ›')+'</button>';
+  return h+'</div>'}
+function stepCards(n,k){
+  const t=typeOf(n);
+  if(t==='lesson'){const l=L[n];
+    if(k==='pron')return cardPronFocus(n)+cardSents(n)+(l.pt&&l.pt.length?cardPt(n):'');
+    if(k==='vocab')return cardWords(n,l.words,'今日单词',l.words.length+' Words',false)+cardDue();
+    if(k==='gram')return cardGram(n)+(l.gx&&l.gx.length?cardGx('g'+n,l.gx,'文法练习','先自己选，再看解析'):'');
+    if(k==='listen')return cardLq('d'+n)+cardListen(n);
+    if(k==='speak')return cardDlg(n,0)+(l.dlg2&&l.dlg2.length?cardDlg(n,1):'')+(l.tr&&l.tr.length?cardTr('t'+n,l.tr,'中译英口头翻译','看中文，先大声说出英文，再看答案'):'')+cardTask(n);
+    if(k==='read')return l.read?readCard('d'+n,l.read,'今日阅读'):cardRead(n);
+    return cardOut(n);
+  }
+  const days=srcDays(n),test=t==='test',scope=test?'本阶段':'本周';
+  if(k==='pron')return cardReviewOverview(n)+cardPronFocus(n)+cardShadowWeek(n);
+  if(k==='vocab')return (test?cardQuiz('t'+n,wordsOf(days),20,'阶段词汇测验'):'')+cardWords(n,wordsOf(days),test?'本阶段单词':'本周单词','Review',true)+cardDue();
+  if(k==='gram'){const gx=gatherGx(n,test?15:10);return gx.length?cardGx('rg'+n,gx,'综合文法练习','从'+scope+'随机抽题'):'<section class="card"><p class="muted" style="margin:0">'+scope+'暂无文法题。</p></section>'}
+  if(k==='listen')return cardLq('w'+n)+cardDictReview(n);
+  if(k==='speak'){const tr=gatherTr(n,test?15:10);return (tr.length?cardTr('rt'+n,tr,'综合中译英','从'+scope+'随机抽题'):'')+cardReviewSpeak(n)}
+  if(k==='read')return READ[n]?readCard(String(n),READ[n],test?'阶段阅读':'本周阅读'):'';
+  return (test?cardSelf(n):'')+cardOut(n);
+}
+function vDayAll(n){
+  const t=typeOf(n);let h='';
   if(t==='lesson'){
     const l=L[n];
     h+=cardWords(n,l.words,'今日单词',l.words.length+' Words',false)+cardSents(n)+cardGram(n);
     if(l.gx&&l.gx.length)h+=cardGx('g'+n,l.gx,'文法练习','先自己选，再看解析');
     h+=cardDlg(n,0);
     if(l.dlg2&&l.dlg2.length)h+=cardDlg(n,1);
+    h+=cardLq('d'+n);
     if(l.tr&&l.tr.length)h+=cardTr('t'+n,l.tr,'中译英口头翻译','看中文，先大声说出英文，再看答案');
     if(l.pt&&l.pt.length)h+=cardPt(n);
     h+=cardTask(n)+cardListen(n);
     h+=l.read?readCard('d'+n,l.read,'今日阅读'):cardRead(n);
+    h+=cardOut(n,true);
   }else{
     const days=srcDays(n),gx=gatherGx(n,t==='test'?15:10),tr=gatherTr(n,t==='test'?15:10);
     h+=cardReviewOverview(n)+(t==='test'?cardQuiz('t'+n,wordsOf(days),20,'阶段词汇测验'):'');
     if(READ[n])h+=readCard(String(n),READ[n],t==='test'?'阶段阅读':'本周阅读');
     if(gx.length)h+=cardGx('rg'+n,gx,'综合文法练习','从'+(t==='test'?'本阶段':'本周')+'随机抽题');
+    h+=cardLq('w'+n);
     if(tr.length)h+=cardTr('rt'+n,tr,'综合中译英','从'+(t==='test'?'本阶段':'本周')+'随机抽题');
     h+=cardReviewSpeak(n)+(t==='test'?cardSelf(n):'')+cardWords(n,wordsOf(days),t==='test'?'本阶段单词':'本周单词','Review',true);
   }
-  h+=cardFinish(n);
   return h;
+}
+function cardPronFocus(n){
+  const w=weekOf(n),link=(typeof PRON_LINK!=='undefined'&&PRON_LINK[w-1])||'',m=link?pronModule(link):null;
+  return '<section class="card" id="pfocus"><h2 class="sec-h">本周发音课 <span class="tag">Week '+w+'</span></h2>'+(S.set.allInOne||typeOf(n)!=='lesson'?'<p style="margin:0 0 8px">'+esc(PRON[w-1]||PRON[PRON.length-1])+'</p>':'')+
+   (m?'<p style="margin:0">对应模块：<b>'+esc(m.t)+'</b>。先用 10 分钟练这个模块，再用下面的句子做影子跟读：听一句 → 暂停 → 模仿 → 录音对比。</p><div class="btns"><a class="btn pri" href="#lib-pron-'+link+'">进入发音课 ›</a><a class="btn" href="#lib-pron-pairs">易混音听辨</a></div>':'')+'</section>'}
+function pronModule(id){try{const p=id.split('-'),key=p.slice(1).join('-');if(p[0]==='hk'){for(let i=0;i<HKERR.length;i++)if(HKERR[i].id===key)return HKERR[i]}if(p[0]==='rh'){for(let j=0;j<RHYTHM.length;j++)if(RHYTHM[j].id===key)return RHYTHM[j]}}catch(e){}return null}
+function cardDue(){const info=dueInfo();
+  return '<section class="card" id="due"><h2 class="sec-h">闪卡复习 <span class="tag">Spaced Review</span></h2><p style="margin:0">今日到期 <b>'+info.due.length+'</b> 个 · 还没学的新词 <b>'+info.nw.length+'</b> 个 · 已掌握 <b>'+masteredCount()+'</b> 个</p><div class="btns"><button class="btn pri" data-act="go-cards">去刷今日到期的闪卡</button></div></section>'}
+function cardShadowWeek(n){const list=shuffleSeed(sentsOf(srcDays(n),false),n+11).slice(0,10);
+  return '<section class="card" id="sents"><h2 class="sec-h">影子跟读 10 句 <span class="tag">Shadowing</span></h2><p class="small muted" style="margin:0 0 6px">从'+(typeOf(n)==='test'?'本阶段':'本周')+'句子中抽取。每句先听、再跟、最后点麦克风打分。</p><div class="rows">'+list.map(rowSent).join('')+'</div></section>'}
+function cardDictReview(n){
+  return '<section class="card" id="dictrv"><h2 class="sec-h">听写与数字听力 <span class="tag">Dictation</span></h2><p style="margin:0">从'+(typeOf(n)==='test'?'本阶段':'本周')+'句子中随机听写 20 句，统计正确率；再做 1 组数字听力。</p><div class="btns"><button class="btn pri" data-act="dict-review" data-day="'+n+'">随机听写 20 句</button><button class="btn" data-act="speak-review" data-day="'+n+'">跟读打分</button><button class="btn jade" data-act="go-num">数字听力</button></div></section>'}
+/* 听力理解：不看文字，听句子选意思 */
+const LQ={};
+function lqItems(key){
+  let lines=[];const n=+key.slice(1);
+  try{if(key.charAt(0)==='d'){lines=L[n].dlg.concat(L[n].dlg2||[])}else{srcDays(n).forEach(function(d){lines=lines.concat(L[d].dlg,L[d].dlg2||[])})}}catch(e){lines=[]}
+  lines=lines.filter(function(l){return l.zh&&l.en&&l.en.split(/\s+/).length>=4});
+  const seed=hashStr(key),pick=shuffleSeed(lines,seed).slice(0,8);
+  return pick.map(function(l,i){const others=shuffleSeed(lines.filter(function(o){return o.zh!==l.zh}),seed+i+1).slice(0,2).map(function(o){return o.zh});const opts=shuffleSeed([l.zh].concat(others),seed+i*3+7);return {en:l.en,o:opts,a:opts.indexOf(l.zh)}});
+}
+function cardLq(key){
+  const items=lqItems(key),st=LQ[key]||(LQ[key]={});
+  if(!items.length)return '';
+  let right=0,done=0;
+  let h='<section class="card" id="lq-'+esc(key)+'"><h2 class="sec-h">听力理解 <span class="tag">Listening · '+items.length+' 句</span></h2><p class="small muted" style="margin:0 0 6px">不看文字：先点播放听这一句（可以听 2-3 遍），再选出它的意思。答完会显示原文。</p>';
+  items.forEach(function(it,i){const pick=st[i];
+    h+='<div class="gxq"><div class="q" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b>'+(i+1)+'.</b><button class="btn jade" data-say="'+esc(it.en)+'">'+ICON.spk+' 播放</button>'+sayBtn(it.en,true)+'</div><div class="opts">';
+    it.o.forEach(function(o,oi){let cls='opt';if(pick!==undefined){if(oi===it.a)cls+=' right';else if(oi===pick)cls+=' wrong'}
+      h+='<button class="'+cls+'" data-act="lq" data-key="'+esc(key)+'" data-i="'+i+'" data-o="'+oi+'"'+(pick!==undefined?' disabled':'')+'>'+String.fromCharCode(65+oi)+'. '+esc(o)+'</button>'});
+    h+='</div>';
+    if(pick!==undefined){done++;if(pick===it.a)right++;h+='<p class="small" style="margin:8px 0 0"><b>原文：</b>'+esc(it.en)+' '+micBtn(it.en,it.o[it.a])+'</p>'}
+    h+='</div>';
+  });
+  if(done===items.length)h+='<p class="note" style="margin-top:12px">听懂 '+right+' / '+items.length+' 句。'+(right<items.length?'把听错的句子跟读 3 遍，再回到对话里听一次。':'很好！试试关掉中文，直接听整段对话。')+'</p>';
+  return h+'</section>';
+}
+function cardOut(n,noTimer){
+  const t=typeOf(n);
+  let h='<section class="card" id="out"><h2 class="sec-h">输出与复盘 <span class="tag">Output</span></h2><ol style="padding-left:20px;margin:0 0 8px;font-size:15px"><li>'+(t==='lesson'?'不看稿，用 2 分钟复述今天的阅读或对话，并录音回放。':'用 3 分钟总结'+(t==='test'?'本阶段':'本周')+'学到的内容，并录音回放。')+'</li><li>写 5 句英文日记：今天学了什么、哪里最难、明天要改进什么。</li><li>对照口语自评 8 项（'+CHECK.join('、')+'），找出 1 个最需要改进的点。</li></ol>';
+  if(!noTimer)h+=timerHtml();
+  h+=recWidget('out'+n);
+  h+='<label class="f" for="diary">英文日记（自动保存，可同步）</label><textarea id="diary" data-day="'+n+'" placeholder="Today I learned how to... / The most difficult part was... / Tomorrow I will...">'+esc(S.note[n]||'')+'</textarea>';
+  return h+'</section>';
 }
 function cardTimetable(n){
   const d=S.done[n]||{};
@@ -2347,7 +2824,7 @@ function cardDlg(n,w){
   h+='</div><div class="rpbar">';
   if(act){
     const cur=d[RP.i];
-    if(RP.wait&&cur)h+='<b style="color:var(--accent)">轮到你说 '+esc(cur.who)+' 的台词</b><button class="btn pri" data-act="rp-next">说完了，继续 ›</button>';
+    if(RP.wait&&cur)h+='<b class="turn">轮到你说 '+esc(cur.who)+' 的台词</b><button class="btn pri" data-act="rp-next">说完了，继续 ›</button>';
     else h+='<span class="muted small">正在播放…</span>';
     h+='<button class="btn ghost" data-act="rp-stop">停止</button>';
   }else{
@@ -2371,8 +2848,9 @@ function readCard(key,r,title){
   const st=RD[key]||(RD[key]={});
   let correct=0,answered=0;
   let h='<section class="card" id="reading-'+esc(key)+'"><h2 class="sec-h">'+esc(title)+' <span class="tag">Reading · '+r.p.split(/\s+/).length+' 词</span></h2><h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:8px">'+esc(r.t)+'</h3>';
-  h+='<div class="btns" style="margin:0 0 10px"><button class="btn" data-act="read-say" data-key="'+esc(key)+'">'+ICON.play+' 朗读全文</button><button class="btn ghost" data-act="read-say" data-key="'+esc(key)+'" data-slow="1">慢速朗读</button><button class="btn ghost" data-act="tts-stop">停止</button></div>';
-  h+='<p class="passage">'+esc(r.p)+'</p>';
+  const hideTxt=S.set.lfirst&&!RDV[key]&&Object.keys(st).length<r.q.length;
+  h+='<div class="btns" style="margin:0 0 10px"><button class="btn" data-act="read-say" data-key="'+esc(key)+'">'+ICON.play+' 朗读全文</button><button class="btn ghost" data-act="read-say" data-key="'+esc(key)+'" data-slow="1">慢速朗读</button><button class="btn ghost" data-act="tts-stop">停止</button><button class="btn ghost" data-act="lfirst" aria-pressed="'+!!S.set.lfirst+'">'+(S.set.lfirst?'✓ 先听后看':'先听后看')+'</button></div>';
+  h+=hideTxt?'<div class="hidden-text"><b>先听后看：原文已隐藏</b><br><span class="small">先点“朗读全文”听 1-2 遍，凭听力回答下面的问题，答完自动显示原文。</span><div class="btns" style="justify-content:center"><button class="btn" data-act="read-reveal" data-key="'+esc(key)+'">现在显示原文</button></div></div>':'<p class="passage">'+esc(r.p)+'</p>';
   r.q.forEach(function(q,qi){
     const pick=st[qi];
     h+='<div style="margin-top:14px"><b>'+(qi+1)+'. '+esc(q[0])+'</b><div class="opts">';
@@ -2444,7 +2922,7 @@ function shuffleSeed(arr,seed){const a=arr.slice();let s=seed*9301+49297;for(let
 function cardSelf(n){
   const v=(S.self[n]&&S.self[n].v)||[];
   const sum=v.reduce(function(a,b){return a+(+b||0)},0);
-  return '<section class="card" id="self"><h2 class="sec-h">口语自评 <span class="tag">'+(v.length?sum+' / 40':'未评')+'</span></h2><p class="small muted" style="margin-top:0">回放刚才的录音，每项 1-5 分（标准见“技巧 → 口语自评清单”）。</p><div class="rows">'+CHECK.map(function(c,i){return '<div class="row"><div class="txt"><div class="en">'+esc(c)+'</div></div><div class="seg" role="group" aria-label="'+esc(c)+'">'+[1,2,3,4,5].map(function(k){return '<button data-act="self" data-day="'+n+'" data-i="'+i+'" data-v="'+k+'" aria-pressed="'+(+v[i]===k)+'">'+k+'</button>'}).join('')+'</div></div>'}).join('')+'</div></section>';
+  return '<section class="card" id="self"><h2 class="sec-h">口语自评 <span class="tag">'+(v.length?sum+' / 40':'未评')+'</span></h2><p class="small muted" style="margin-top:0">回放刚才的录音，每项 1-5 分（标准见“资料库 → 学习方法与技巧 → 口语自评清单”）。</p><div class="rows">'+CHECK.map(function(c,i){return '<div class="row"><div class="txt"><div class="en">'+esc(c)+'</div></div><div class="seg" role="group" aria-label="'+esc(c)+'">'+[1,2,3,4,5].map(function(k){return '<button data-act="self" data-day="'+n+'" data-i="'+i+'" data-v="'+k+'" aria-pressed="'+(+v[i]===k)+'">'+k+'</button>'}).join('')+'</div></div>'}).join('')+'</div></section>';
 }
 function cardFinish(n){
   if(S.fin[n])return '<section class="card" style="text-align:center"><p style="margin:0 0 8px"><b>第 '+n+' 天已完成。</b></p>'+(n<90?'<a class="btn jade" href="#day-'+(n+1)+'">去第 '+(n+1)+' 天 ›</a>':'')+' <button class="btn ghost" data-act="unfin" data-day="'+n+'">取消完成</button></section>';
@@ -2661,13 +3139,13 @@ function refreshSpeak(){if(!SP)return;if(SP.host==='sheet')refreshSheet();else r
 
 /* ---------- 技巧 ---------- */
 function vGuide(){
-  let h='<section class="hero" style="grid-template-columns:1fr"><div class="htitle"><h1>技巧与方法</h1><div class="en">Think, learn and speak like a professional</div></div></section><p class="small muted" style="margin:0 0 6px">点击带底色的英文可以听发音。</p>';
+  let h='<section class="hero" style="grid-template-columns:1fr;padding-top:8px"><div class="htitle"><h1>学习方法与技巧</h1><div class="en">Think, learn and speak like a professional</div></div></section><p class="small muted" style="margin:0 0 6px">点击带底色的英文可以听发音。</p>';
   const gen={
     schedule:{t:'每日 8 小时学习安排',h:'<p>时间按香港时间（HKT）设计，口语相关练习（发音跟读、口语实战、输出复盘）约占 3 小时 45 分钟，接近一半。</p><table><tr><th>时间</th><th>内容</th><th>时长</th></tr>'+BLOCKS.map(function(b){return '<tr><td style="white-space:nowrap">'+b.time+'</td><td>'+esc(b.t)+'</td><td>'+b.min+' 分钟</td></tr>'}).join('')+'</table><p>每学 50 分钟休息 10 分钟；午饭后可以小睡 20 分钟。周末如果需要休息，可以把复习日安排在周日，强度减半。</p>'},
     pron:{t:'发音入门：字母、音标与难点',h:'<h4>26 个字母</h4><div class="letters">'+LETTERS.map(function(l){return '<button data-say="'+l+'" aria-label="朗读字母 '+l+'">'+l+'</button>'}).join('')+'</div><h4>44 个音素（点击听例词）</h4><p class="small muted">国内教材常说 48 个音标，多出的是 tr、dr、ts、dz 四个辅音组合。</p><div class="ipa">'+IPA.map(function(p){return '<button data-say="'+esc(p[2])+'"><b>/'+esc(p[1])+'/</b><span>'+esc(p[2])+'</span><small>'+esc(p[0])+'</small></button>'}).join('')+'</div><h4>中国学习者的 6 个发音难点</h4><table><tr><th>难点</th><th>例词</th><th>要领</th></tr>'+PRON_TIPS.map(function(t){return '<tr><td><b>'+esc(t[0])+'</b></td><td><i class="say">'+esc(t[1])+'</i></td><td>'+esc(t[2])+'</td></tr>'}).join('')+'</table><h4>13 周发音重点</h4><ol>'+PRON.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ol>'},
     interview:{t:'香港金融面试高频 30 题',h:'<p>每题用 1-2 分钟作答：观点题用 PREP，经历题用 STAR。点“练习”会把题目带到自由口语页，配合计时和录音。</p><ol class="qlist">'+INTERVIEW.map(function(q,i){return '<li><span class="t">'+esc(q)+'</span>'+sayBtn(q)+'<button class="btn" data-act="iv-go" data-i="'+i+'">练习</button></li>'}).join('')+'</ol>'}
   };
-  const order=['start','schedule','thinking','method','natural','speaking','pron','templates','interview','checklist','resources'];
+  const order=(typeof GUIDE_ORDER!=='undefined'&&GUIDE_ORDER)||['start','schedule','thinking','method','natural','speaking','templates','interview','checklist','resources'];
   order.forEach(function(id,idx){
     let sec=gen[id];if(!sec){for(let i=0;i<GUIDE.length;i++){if(GUIDE[i].id===id)sec=GUIDE[i]}}
     if(!sec)return;
@@ -2698,6 +3176,7 @@ function vMe(){
   h+='<label class="f" for="rate">语速：<span id="rateV">'+S.set.rate.toFixed(2)+'</span>×</label><input type="range" id="rate" min="0.5" max="1.3" step="0.05" value="'+S.set.rate+'">';
   if(TTS.ok&&TTS.voices.length){h+='<label class="f" for="voiceSel">声音</label><select id="voiceSel"><option value="">自动选择（推荐）</option>'+TTS.voices.map(function(v){return '<option value="'+esc(v.name)+'"'+(S.set.voice===v.name?' selected':'')+'>'+esc(v.name)+' · '+esc(v.lang)+'</option>'}).join('')+'</select>'}
   h+='<div class="btns"><button class="btn jade" data-say="Good morning. Welcome to Hong Kong. Let\'s get started.">'+ICON.spk+' 试听</button></div></section>';
+  h+='<section class="card"><h2 class="sec-h">学习页面</h2><div class="seg" role="group" aria-label="学习页面"><button data-act="layout" data-v="step" aria-pressed="'+!S.set.allInOne+'">分步学习（推荐）</button><button data-act="layout" data-v="all" aria-pressed="'+!!S.set.allInOne+'">一页显示全部</button></div><p class="small muted" style="margin:8px 0 0">分步学习：一次只显示当前这一步，做完进入下一步。一页显示：当天所有内容在同一页。</p></section>';
   /* 兼容性 */
   const yes='<span class="pill ok">可用</span>',no='<span class="pill warn">不可用</span>';
   h+='<section class="card"><h2 class="sec-h">功能检测</h2><div class="rows">'+
@@ -2734,7 +3213,7 @@ function render(){
     else if(view==='day')html=vDay(viewArg,viewArg===S.cur);
     else if(view==='plan')html=vPlan();
     else if(view==='practice')html=vPractice();
-    else if(view==='guide')html=vGuide();
+    else if(view==='lib')html=(typeof vLib==='function')?vLib(viewArg||''):vGuide();
     else if(view==='me')html=vMe();
   }catch(e){
     console.error('[render]',e);
@@ -2742,13 +3221,17 @@ function render(){
   }
   app.innerHTML=html;
   updateChrome();
+  try{const sb=document.querySelector('.steps'),cur=sb&&sb.querySelector('[aria-current="step"]');if(sb&&cur){const x=cur.offsetLeft-sb.clientWidth/2+cur.offsetWidth/2;sb.scrollLeft=Math.max(0,x)}}catch(e){}
 }
 function renderKeep(){const y=window.scrollY||0;render();try{window.scrollTo(0,y)}catch(e){}}
+function scrollToSteps(){try{const el=document.querySelector('.steps'),hd=$('stephead');if(!el||!hd)return;const y=hd.getBoundingClientRect().top+window.scrollY-el.offsetHeight-70;if((window.scrollY||0)>y)window.scrollTo(0,Math.max(0,y))}catch(e){}}
 function route(){
   const h=(location.hash||'').replace(/^#/,'');
   let v='today',arg=null;
   if(/^day-\d+$/.test(h)){v='day';arg=clampDay(h.slice(4))}
-  else if(['today','plan','practice','guide','me'].indexOf(h)>=0)v=h;
+  else if(['today','plan','practice','me'].indexOf(h)>=0)v=h;
+  else if(h==='guide'){v='lib';arg='guide'}
+  else if(h==='lib'||h.indexOf('lib-')===0){v='lib';arg=h==='lib'?'':h.slice(4)}
   stopMedia();RP.active=false;RP.i=-1;clearInterval(TM.iv);TM.left=0;
   view=v;viewArg=arg;Cloud.deferred=false;render();
   try{window.scrollTo(0,0)}catch(e){}
@@ -2843,6 +3326,16 @@ function act(a,ds,el){
   case 'reset':openSheet(function(){return '<h3>清空全部学习进度？</h3><p>所有勾选、单词复习记录和测验成绩都会被删除，且无法恢复。建议先导出备份。</p><div class="btns"><button class="btn pri" data-act="reset-yes">确定清空</button><button class="btn" data-act="sheet-close">取消</button></div>'});break;
   case 'reset-yes':S=fresh();save();closeSheet();FC=null;DT=null;TK=null;toast('进度已清空');go('today');break;
   case 'reload':try{location.reload()}catch(e){}break;
+  case 'step':{S.step[n]=ds.k;save();renderKeep();scrollToSteps();break}
+  case 'step-done':{const d=S.done[n]||(S.done[n]={});d[ds.k]=1;S.log[dkey()]=1;S.max=Math.max(S.max,n);let nx=null;for(let i=0;i<BLOCKS.length;i++){if(BLOCKS[i].k===ds.k&&i<BLOCKS.length-1)nx=BLOCKS[i+1].k}
+    if(nx)S.step[n]=nx;save();renderKeep();scrollToSteps();if(blocksDone(n)===7&&!S.fin[n])toast('7 步全部完成！点“完成第 '+n+' 天”进入下一天');else if(nx)toast('完成！下一步：'+BLOCKS.filter(function(b){return b.k===nx})[0].t);break}
+  case 'allinone':S.set.allInOne=!S.set.allInOne;save();renderKeep();break;
+  case 'go-cards':PR.tab='cards';PR.src='due';FC=null;stopMedia();go('practice');break;
+  case 'go-num':PR.tab='num';NUM=null;stopMedia();go('practice');break;
+  case 'lq':{const st=LQ[ds.key]||(LQ[ds.key]={});const i=+ds.i;if(st[i]!==undefined)break;st[i]=+ds.o;S.log[dkey()]=1;const items=lqItems(ds.key);let c=0,all=true;items.forEach(function(it,k2){if(st[k2]===undefined)all=false;else if(st[k2]===it.a)c++});if(all){S.quiz['lq'+ds.key]=Math.round(c/items.length*100)}save();rerenderCard('lq-'+ds.key,function(){return cardLq(ds.key)});break}
+  case 'lfirst':S.set.lfirst=!S.set.lfirst;save();renderKeep();break;
+  case 'read-reveal':RDV[ds.key]=1;renderKeep();break;
+  default:if(typeof libAct==='function')libAct(a,ds,el,n);break;
   case 'no-install':S.set.noInstall=true;save();renderKeep();break;
   }
 }
@@ -2874,6 +3367,8 @@ function boot(){
     const t=e.target;if(!t)return;
     if(t.id==='rate'){S.set.rate=Math.max(0.5,Math.min(1.3,parseFloat(t.value)||0.9));const v=$('rateV');if(v)v.textContent=S.set.rate.toFixed(2);clearTimeout(window.__rt);window.__rt=setTimeout(save,400)}
     if(t.id==='dictIn'&&DT)DT.input=t.value;
+    if(t.id==='diary'){const d=clampDay(t.getAttribute('data-day'));S.note[d]=String(t.value).slice(0,4000);clearTimeout(window.__dt);window.__dt=setTimeout(save,600)}
+    if(t.id==='srchIn'&&typeof libSearchInput==='function')libSearchInput(t.value);
   });
   document.addEventListener('change',function(e){
     const t=e.target;if(!t)return;
@@ -2898,6 +3393,212 @@ function boot(){
   const ld=$('loading');if(ld)ld.remove();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){safe(boot,'boot')});else safe(boot,'boot');
+
+</script>
+<script>
+/* ---------- 资料库：发音课、语法总表、场景句库、全局搜索、学习方法 ---------- */
+const GCAT=[
+ ["句子骨架与基础","Sentence Basics",[1,2,3,4,9,19,22]],
+ ["时态","Tenses",[6,15,16,17,18,31,47,58]],
+ ["情态动词与语气","Modals & Tone",[10,26,37,38,59,68,79]],
+ ["词类、搭配与数字","Words & Numbers",[5,11,12,13,20,23,27,48,66,81]],
+ ["被动语态","Passive Voice",[40,41,55]],
+ ["从句与逻辑连接","Clauses & Linking",[29,43,52,53,64,65,69,71]],
+ ["条件句","Conditionals",[44,46,62]],
+ ["商务表达框架","Business Frameworks",[8,24,25,32,33,34,36,39,45,50,51,54,57,61,67,72,73,74,75,76,78,80,82,83,85,86,87,88,89]]
+];
+const SCENES=[
+ {id:"intro",t:"问候与自我介绍",e:"Greetings & Introductions",days:[1,2,29,82]},
+ {id:"life",t:"香港日常生活",e:"Daily Life in Hong Kong",days:[3,4,5,6,8,9,10,11,18,20]},
+ {id:"social",t:"闲聊与商务社交",e:"Small Talk & Networking",days:[12,13,15,16,17,19,53,87,88]},
+ {id:"office",t:"办公室与同事",e:"Office & Colleagues",days:[22,23,26,48,54]},
+ {id:"phone",t:"电话与电话会议",e:"Phone & Conference Calls",days:[24,75]},
+ {id:"email",t:"约时间与商务邮件",e:"Scheduling & Emails",days:[25,32]},
+ {id:"meeting",t:"开会与讨论",e:"Meetings & Discussions",days:[33,34,36,37,38,86]},
+ {id:"report",t:"汇报与演示",e:"Updates & Presentations",days:[47,50,51,52,76]},
+ {id:"client",t:"客户接待与产品介绍",e:"Clients & Products",days:[43,44,61,62,64,65,73,74,85]},
+ {id:"hard",t:"投诉、谈判与说服",e:"Complaints, Negotiation & Persuasion",days:[45,46,78,79]},
+ {id:"market",t:"市场、经济与财务数据",e:"Markets, Economy & Numbers",days:[27,39,41,67,69,72]},
+ {id:"bank",t:"银行、合规与监管",e:"Banking, Compliance & Regulation",days:[40,55,66,68,71,80,81]},
+ {id:"interview",t:"求职面试",e:"Job Interviews",days:[29,31,57,58,59,83,89]}
+];
+const HK_SOUNDS=['θ','ð','v','z','ʒ','l','n','r','ŋ','iː','ɪ','æ','ʊ','uː'];
+const HK_PAIRS={th:[5,6,7],ln:[8],rl:[9],vw:[10],final:[16,15],vowel:[0,2,3],s:[11],rhythm:[17]};
+function pmark(s){return esc(s).replace(/\[([^\]]+)\]/g,'<b class="st">$1</b>').replace(/\s\/\s/g,' <span class="chunk">/</span> ')}
+function pplain(s){return String(s).replace(/[\[\]]/g,'').replace(/\s\/\s/g,', ').replace(/\s*\([^)]*\)/g,'')}
+function crumb(parts){return '<nav class="crumb" aria-label="位置"><a href="#lib">资料库</a>'+parts.map(function(p){return ' › '+(p[1]?'<a href="#'+p[1]+'">'+esc(p[0])+'</a>':'<span>'+esc(p[0])+'</span>')}).join('')+'</nav>'}
+function pageHero(t,e){return '<section class="hero" style="grid-template-columns:1fr;padding-top:8px"><div class="htitle"><h1>'+esc(t)+'</h1><div class="en">'+esc(e)+'</div></div></section>'}
+function sentRow(en,zh){const p=pplain(en);return '<div class="row"><div class="txt"><div class="en">'+pmark(en)+'</div>'+(zh?'<div class="zh">'+esc(zh)+'</div>':'')+'</div><div class="acts">'+sayBtn(p)+sayBtn(p,true)+micBtn(p,zh||'')+'</div></div>'}
+
+function vLib(arg){
+  try{
+    if(!arg)return libHome();
+    if(arg==='guide')return crumb([['学习方法与技巧']])+vGuide();
+    if(arg==='pron')return pronHome();
+    if(arg==='pron-pairs')return pronPairs();
+    if(arg.indexOf('pron-')===0){const m=pronModule(arg.slice(5));if(m)return pronPage(arg.slice(5),m)}
+    if(arg==='gram')return gramPage();
+    if(arg==='scene')return scenePage('');
+    if(arg.indexOf('scene-')===0)return scenePage(arg.slice(6));
+    if(arg==='search')return searchPage();
+  }catch(e){console.error('[lib]',e)}
+  return libHome();
+}
+function libHome(){
+  const doneP=Object.keys(S.pr||{}).filter(function(k){return S.pr[k]}).length,totalP=HKERR.length+RHYTHM.length;
+  let h=pageHero('资料库','Library · Reference · Methods');
+  h+='<div class="srch" style="margin-top:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="srchGo" placeholder="搜索单词、句子、语法…" aria-label="搜索" data-act="go-search" readonly></div>';
+  h+='<div class="tiles">'+
+   '<a class="tile" href="#lib-pron"><span class="n">48</span><div class="k">Pronunciation</div><h3>发音系统课</h3><p>48 个音标详解 · 18 组易混音听辨 · 粤语母语者十大难点 · 节奏与语调。已完成 '+doneP+' / '+totalP+' 个模块。</p></a>'+
+   '<a class="tile" href="#lib-gram"><span class="n">75</span><div class="k">Grammar</div><h3>语法总表</h3><p>90 天全部语法点按 8 大类整理，每个语法点都能直接练习。</p></a>'+
+   '<a class="tile" href="#lib-scene"><span class="n">13</span><div class="k">Phrasebook</div><h3>场景句库</h3><p>开会、电话、客户、投诉、谈判、面试等 13 个职场与金融场景的常用表达。</p></a>'+
+   '<a class="tile" href="#lib-search"><div class="k">Search</div><h3>全局搜索</h3><p>一次搜索全部单词、句子、对话、口语翻译和语法点。</p></a>'+
+   '<a class="tile" href="#guide"><span class="n">'+((typeof GUIDE_ORDER!=='undefined'&&GUIDE_ORDER)?GUIDE_ORDER.length:10)+'</span><div class="k">Methods</div><h3>学习方法与技巧</h3><p>英文逻辑思维、高效学习方法、自然表达、口语技巧、面试题库和自评清单。</p></a>'+
+  '</div>';
+  return h;
+}
+
+/* 发音课 */
+function pronHome(){
+  let h=crumb([['发音课']])+pageHero('发音系统课','Pronunciation Course');
+  h+='<p class="tip" style="margin:14px 0"><b>建议顺序：</b>① 先过一遍音标表，点击每个音看发音要领；② 重点练“粤语母语者十大难点”，每天 1 个；③ 用“易混音听辨”测试自己能不能听出区别；④ 第 3 周起每天练 1 个“节奏与语调”模块。金色边框的 14 个音，是粤语母语者最容易出错的。</p>';
+  h+='<section class="card"><h2 class="sec-h">48 个音标 <span class="tag">IPA</span></h2><p class="small muted" style="margin:0 0 8px">44 个基本音素，加上 tr、dr、ts、dz 四个辅音组合（国内教材常说 48 个音标）。点击查看发音要领和例词。</p>';
+  let cat='';SOUNDS.forEach(function(s,i){if(s[0]!==cat){if(cat)h+='</div>';cat=s[0];h+='<div class="grp">'+esc(cat)+'</div><div class="ipagrid">'}
+    h+='<button class="'+(HK_SOUNDS.indexOf(s[1])>=0?'hk':'')+'" data-act="snd" data-i="'+i+'" aria-label="音标 '+esc(s[1])+'"><b>/'+esc(s[1])+'/</b><span>'+esc(s[3].split('/')[0])+'</span></button>'});
+  h+='</div></section>';
+  h+='<section class="card"><h2 class="sec-h">粤语母语者十大难点 <span class="tag">For Cantonese Speakers</span></h2><div class="rows">'+HKERR.map(function(m,i){const d=S.pr&&S.pr['hk-'+m.id];return '<div class="row"><div class="txt"><div class="en">'+(i+1)+'. '+esc(m.t)+(d?' <span class="pill ok">已练</span>':'')+'</div><div class="zh">'+esc(m.why.slice(0,38))+'…</div></div><a class="btn jade" href="#lib-pron-hk-'+m.id+'">练习</a></div>'}).join('')+'</div></section>';
+  h+='<section class="card"><h2 class="sec-h">易混音听辨 <span class="tag">Minimal Pairs</span></h2><p style="margin:0">18 组最容易混的音（ship / sheep、think / sink、light / night、thirteen / thirty…）。程序读一个词，你选听到的是哪一个。</p><div class="btns"><a class="btn pri" href="#lib-pron-pairs">开始听辨</a></div></section>';
+  h+='<section class="card"><h2 class="sec-h">节奏与语调 <span class="tag">Rhythm & Intonation</span></h2><div class="rows">'+RHYTHM.map(function(m){const d=S.pr&&S.pr['rh-'+m.id];return '<div class="row"><div class="txt"><div class="en">'+esc(m.t)+(d?' <span class="pill ok">已练</span>':'')+'</div><div class="zh">'+esc(m.d.slice(0,40))+'…</div></div><a class="btn jade" href="#lib-pron-rh-'+m.id+'">练习</a></div>'}).join('')+'</div></section>';
+  h+='<section class="card"><h2 class="sec-h">26 个字母 <span class="tag">Alphabet</span></h2><div class="letters">'+LETTERS.map(function(l){return '<button data-say="'+l+'" aria-label="朗读字母 '+l+'">'+l+'</button>'}).join('')+'</div><p class="small muted" style="margin:10px 0 0">香港常用缩写要会逐个字母读：H-K-M-A、S-F-C、M-P-F、I-P-O、E-T-F、K-Y-C。</p></section>';
+  return h;
+}
+function soundSheet(i){const s=SOUNDS[i];if(!s)return '';const ws=s[3].split('/');
+  return '<h3 style="font-size:28px;font-family:var(--font-display)">/'+esc(s[1])+'/ <span class="small muted" style="font-family:var(--font-body)">'+esc(s[0])+'</span></h3><p class="tip"><b>发音要领：</b>'+esc(s[2])+'</p>'+(s[4]?'<p class="note warn small">常见问题：'+esc(s[4])+'</p>':'')+
+   '<div class="rows">'+ws.map(function(w){const ip=ipaOf(w);return '<div class="row"><div class="txt"><div class="en">'+esc(w)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div></div><div class="acts">'+sayBtn(w)+sayBtn(w,true)+micBtn(w,'')+'</div></div>'}).join('')+'</div><p class="small muted">听原音 → 慢速跟读 3 遍 → 点麦克风打分。对着镜子检查口型。</p>'}
+function pronPage(id,m){
+  const isHK=id.indexOf('hk-')===0,done=S.pr&&S.pr[id];
+  let h=crumb([['发音课','lib-pron'],[m.t]])+pageHero(m.t,isHK?'Cantonese-speaker focus':'Rhythm & Intonation');
+  if(isHK){
+    h+='<section class="card"><h2 class="sec-h">为什么会错</h2><p style="margin:0 0 10px">'+esc(m.why)+'</p><p class="tip" style="margin:0"><b>怎么改：</b>'+esc(m.tip)+'</p></section>';
+    h+='<section class="card"><h2 class="sec-h">练习词 <span class="tag">'+m.words.length+' Words</span></h2><div class="words wide">'+m.words.map(function(w){const ip=ipaOf(w);return '<div class="word"><div class="txt"><div class="en">'+esc(w)+'</div>'+(ip?'<div class="zh ipa">/'+esc(ip)+'/</div>':'')+'</div>'+sayBtn(w)+micBtn(w,'')+'</div>'}).join('')+'</div><div class="btns"><button class="btn" data-act="say-list" data-list="'+esc(m.words.join('|'))+'">'+ICON.play+' 全部朗读</button></div></section>';
+    h+='<section class="card"><h2 class="sec-h">练习句 <span class="tag">Sentences</span></h2><div class="rows">'+m.sents.map(function(x){return sentRow(x,'')}).join('')+'</div></section>';
+    const rel=HK_PAIRS[m.id]||[];
+    if(rel.length)h+='<section class="card"><h2 class="sec-h">听辨测试 <span class="tag">Minimal Pairs</span></h2><p style="margin:0">练完后测一测，能不能听出区别：</p><div class="btns">'+rel.map(function(k){return '<button class="btn jade" data-act="mp-start" data-set="'+k+'">'+esc(PAIRS[k][0])+'</button>'}).join('')+'</div></section>';
+  }else{
+    h+='<section class="card"><p class="tip" style="margin:0">'+esc(m.d)+'</p></section>';
+    if(m.items)h+='<section class="card"><h2 class="sec-h">跟读 <span class="tag">'+m.items.length+'</span></h2><div class="rows">'+m.items.map(function(it){const p=pplain(it[0]);return '<div class="row"><div class="txt"><div class="en">'+esc(it[0])+'</div><div class="zh" style="font-weight:700;color:var(--jade);letter-spacing:.5px">'+esc(it[1])+'</div></div><div class="acts">'+sayBtn(p)+sayBtn(p,true)+micBtn(p,'')+'</div></div>'}).join('')+'</div></section>';
+    if(m.sents)h+='<section class="card"><h2 class="sec-h">练习句 <span class="tag">Sentences</span></h2><div class="rows">'+m.sents.map(function(x){return sentRow(x,'')}).join('')+'</div></section>';
+    if(m.pairs)h+='<section class="card"><h2 class="sec-h">听和模仿 <span class="tag">Practice</span></h2><div class="rows">'+m.pairs.map(function(x){return sentRow(x[0],x[1])}).join('')+'</div></section>';
+  }
+  h+='<div class="stepfoot"><a class="btn" href="#lib-pron">‹ 发音课</a><button class="btn gold" data-act="pr-done" data-id="'+id+'">'+(done?'✓ 已练习（点此取消）':'我练完了，标记为已练')+'</button></div>';
+  return h;
+}
+let MPS=null;
+function mpBuild(set){const pool=set>=0?PAIRS[set][2]:PAIRS.reduce(function(a,p){return a.concat(p[2])},[]);const items=[];for(let i=0;i<10;i++){const pr=pool[Math.floor(Math.random()*pool.length)];items.push({w:pr,a:Math.random()<0.5?0:1})}return {set:set,items:items,i:0,pick:-1,right:0}}
+function mpSay(){try{if(MPS&&MPS.items[MPS.i]){const it=MPS.items[MPS.i];setTimeout(function(){TTS.speak(it.w[it.a])},250)}}catch(e){}}
+function pronPairs(){
+  let h=crumb([['发音课','lib-pron'],['易混音听辨']])+pageHero('易混音听辨','Minimal Pairs');
+  h+='<section class="card"><p class="small muted" style="margin:0 0 8px">选一组音开始。每组 10 题：程序读一个词，你选听到的是哪一个。分数 80 以上说明你已经能听出区别。</p><div class="seg choice">'+PAIRS.map(function(p,i){const b=S.quiz['mp'+i];return '<button data-act="mp-start" data-set="'+i+'" aria-pressed="'+(MPS&&MPS.set===i)+'">'+esc(p[0])+(b!=null?' · '+b:'')+'</button>'}).join('')+'<button data-act="mp-start" data-set="-1">全部随机</button></div></section>';
+  if(!MPS)return h;
+  h+='<section class="card" id="mpCard">';
+  if(MPS.i>=MPS.items.length){const pct=MPS.right*10;h+='<div style="text-align:center"><div class="score '+scoreClass(pct)+'">'+MPS.right+' / 10</div><p>'+(pct>=80?'很好，你已经能听出这组音的区别。':'再练几次。先去发音课把两个音各跟读 10 遍。')+'</p><button class="btn pri" data-act="mp-start" data-set="'+MPS.set+'">再来一组</button></div>';return h+'</section>'}
+  const it=MPS.items[MPS.i],title=MPS.set>=0?PAIRS[MPS.set][0]:'全部随机',hint=MPS.set>=0?PAIRS[MPS.set][1]:'';
+  h+='<p class="small muted" style="margin:0">第 '+(MPS.i+1)+' / 10 题 · '+esc(title)+(hint?' · '+esc(hint):'')+'</p><div class="btns"><button class="btn jade" data-say="'+esc(it.w[it.a])+'">'+ICON.spk+' 再听一次</button><button class="btn" data-say="'+esc(it.w[it.a])+'" data-slow="1">慢速</button></div>';
+  h+='<div class="mp">'+[0,1].map(function(o){let cls='';if(MPS.pick>=0){if(o===it.a)cls='right';else if(o===MPS.pick)cls='wrong'}return '<button class="'+cls+'" data-act="mp-pick" data-o="'+o+'"'+(MPS.pick>=0?' disabled':'')+'>'+esc(it.w[o])+'</button>'}).join('')+'</div>';
+  if(MPS.pick>=0)h+='<p style="margin:12px 0 0">'+(MPS.pick===it.a?'<b style="color:var(--ok)">✓ 听对了</b>':'<b style="color:var(--bad)">✗ 刚才读的是 '+esc(it.w[it.a])+'</b>')+'　对比听：'+sayBtn(it.w[0])+' '+esc(it.w[0])+'　'+sayBtn(it.w[1])+' '+esc(it.w[1])+'</p><div class="btns"><button class="btn pri" data-act="mp-next">下一题 ›</button></div>';
+  return h+'</section>';
+}
+
+/* 语法总表 */
+function gramPage(){
+  let h=crumb([['语法总表']])+pageHero('语法总表','Grammar Reference');
+  h+='<section class="card"><p class="small muted" style="margin:0">90 天的全部语法点按 8 大类整理。展开查看讲解和例句，点“练习”直接做这一课的 5 道题。</p><div class="btns">'+GCAT.map(function(c,i){return '<a class="btn ghost" href="#gc-'+i+'" data-act="jump" data-to="gc-'+i+'">'+esc(c[0])+' · '+c[2].length+'</a>'}).join('')+'</div></section>';
+  GCAT.forEach(function(c,ci){
+    h+='<section class="card" id="gc-'+ci+'"><h2 class="sec-h">'+esc(c[0])+' <span class="tag">'+esc(c[1])+'</span></h2>';
+    c[2].forEach(function(d){const l=L[d];if(!l)return;const g=l.gram;const q=S.quiz['g'+d];
+      h+='<details class="dd"><summary>'+esc(g.t)+' <span class="small muted">第 '+d+' 天'+(q!=null?' · '+q+'%':'')+'</span></summary><p style="margin:0 0 8px">'+esc(g.d)+'</p><div class="rows">'+g.x.map(rowSent).join('')+'</div><div class="btns">'+(l.gx&&l.gx.length?'<button class="btn pri" data-act="gram-practice" data-day="'+d+'">练习 '+l.gx.length+' 题</button>':'')+'<a class="btn ghost" href="#day-'+d+'">去第 '+d+' 天</a></div></details>'});
+    h+='</section>';
+  });
+  return h;
+}
+
+/* 场景句库 */
+function scenePage(id){
+  if(!id){
+    let h=crumb([['场景句库']])+pageHero('场景句库','Phrasebook by Scenario');
+    h+='<div class="tiles">'+SCENES.map(function(s){let c=0;s.days.forEach(function(d){if(L[d])c+=L[d].sents.length+(L[d].pt||[]).length*3+(L[d].tr||[]).length});return '<a class="tile" href="#lib-scene-'+s.id+'"><span class="n">'+c+'</span><div class="k">'+esc(s.e)+'</div><h3>'+esc(s.t)+'</h3><p>'+s.days.map(function(d){return esc(L[d]?L[d].t:'')}).join(' · ')+'</p></a>'}).join('')+'</div>';
+    return h;
+  }
+  let sc=null;SCENES.forEach(function(s){if(s.id===id)sc=s});if(!sc)return scenePage('');
+  let h=crumb([['场景句库','lib-scene'],[sc.t]])+pageHero(sc.t,sc.e);
+  h+='<section class="card"><p class="small muted" style="margin:0 0 6px">按课程整理。每句都能听、慢速听、跟读打分。建议把最常用的 10 句做成你自己的“口头禅”。</p>';
+  sc.days.forEach(function(d,i){const l=L[d];if(!l)return;
+    h+='<details class="dd"'+(i===0?' open':'')+'><summary>'+esc(l.t)+' <span class="small muted">第 '+d+' 天</span></summary>';
+    h+='<div class="grp">核心句型</div><div class="rows">'+l.sents.map(rowSent).join('')+'</div>';
+    if(l.pt&&l.pt.length)h+='<div class="grp">句型替换</div><div class="rows">'+l.pt.map(function(p){const s=p.p.replace('{x}',p.subs[0]);return '<div class="row"><div class="txt"><div class="en">'+esc(p.p.replace('{x}','…'))+'</div><div class="zh">'+esc(p.zh)+' · 例：'+esc(s)+'</div></div><div class="acts">'+sayBtn(s)+micBtn(s,p.zh)+'</div></div>'}).join('')+'</div>';
+    if(l.tr&&l.tr.length)h+='<div class="grp">更多表达</div><div class="rows">'+l.tr.map(function(t){return rowSent({en:t.en,zh:t.zh})}).join('')+'</div>';
+    h+='<div class="btns"><a class="btn ghost" href="#day-'+d+'">去第 '+d+' 天学习</a></div></details>';
+  });
+  return h+'</section>';
+}
+
+/* 全局搜索 */
+let SIDX=null,SRQ='';
+function buildIndex(){
+  const r=[],seenW={},seenS={};
+  function addS(type,en,zh,d){const k=type+'|'+en;if(!en||seenS[k])return;seenS[k]=1;r.push({t:type,en:en,zh:zh||'',d:d,l:(en+' '+(zh||'')).toLowerCase()})}
+  lessonDaysIn(1,90).forEach(function(d){const l=L[d];
+    l.words.forEach(function(w){const k=w.en.toLowerCase();if(seenW[k])return;seenW[k]=1;r.push({t:'w',en:w.en,zh:w.zh,ex:w.ex||'',d:d,l:(w.en+' '+w.zh+' '+(w.ex||'')).toLowerCase()})});
+    l.sents.forEach(function(s){addS('s',s.en,s.zh,d)});
+    (l.pt||[]).forEach(function(p){p.subs.forEach(function(x){addS('s',p.p.replace('{x}',x),p.zh,d)})});
+    (l.tr||[]).forEach(function(t){addS('s',t.en,t.zh,d)});
+    l.dlg.concat(l.dlg2||[]).forEach(function(x){addS('c',x.en,x.zh,d)});
+    r.push({t:'g',en:l.gram.t,zh:l.gram.d,d:d,l:(l.gram.t+' '+l.gram.d).toLowerCase()});
+  });
+  return r;
+}
+function hlText(s,q){const e=esc(s);if(!q)return e;const lq=esc(q).toLowerCase();const i=e.toLowerCase().indexOf(lq);if(i<0)return e;return e.slice(0,i)+'<mark class="hl">'+e.slice(i,i+lq.length)+'</mark>'+e.slice(i+lq.length)}
+function searchResults(q){
+  q=String(q||'').trim();if(!q)return '<p class="small muted" style="margin:12px 0 0">输入英文或中文，例如：interest rate、开会、投诉、follow up、现在完成时。</p>';
+  if(!SIDX)SIDX=buildIndex();
+  const lq=q.toLowerCase(),G={w:[],s:[],c:[],g:[]};
+  SIDX.forEach(function(x){if(x.l.indexOf(lq)>=0)G[x.t].push(x)});
+  G.w.sort(function(a,b){const ae=a.en.toLowerCase(),be=b.en.toLowerCase();return (ae===lq?0:ae.indexOf(lq)===0?1:2)-(be===lq?0:be.indexOf(lq)===0?1:2)});
+  const total=G.w.length+G.s.length+G.c.length+G.g.length;
+  if(!total)return '<p class="note" style="margin-top:12px">没有找到“'+esc(q)+'”。试试更短的关键词，或者换成中文 / 英文。</p>';
+  let h='<p class="small muted" style="margin:12px 0 0">共找到 '+total+' 条</p>';
+  const lim=30;
+  if(G.w.length)h+='<div class="grp">单词 · '+G.w.length+'</div><div class="rows">'+G.w.slice(0,lim).map(function(x){const ip=ipaOf(x.en);return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div>'+(x.ex?'<div class="ex">'+hlText(x.ex,q)+'</div>':'')+'</div><div class="acts">'+sayBtn(x.en)+(x.ex?sayBtn(x.ex,true):'')+'</div></div>'}).join('')+'</div>';
+  if(G.s.length)h+='<div class="grp">句子 · '+G.s.length+'</div><div class="rows">'+G.s.slice(0,lim).map(function(x){return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div></div><div class="acts">'+sayBtn(x.en)+micBtn(x.en,x.zh)+'</div></div>'}).join('')+'</div>';
+  if(G.c.length)h+='<div class="grp">对话 · '+G.c.length+'</div><div class="rows">'+G.c.slice(0,lim).map(function(x){return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div></div><div class="acts">'+sayBtn(x.en)+micBtn(x.en,x.zh)+'</div></div>'}).join('')+'</div>';
+  if(G.g.length)h+='<div class="grp">语法 · '+G.g.length+'</div><div class="rows">'+G.g.slice(0,lim).map(function(x){return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+'</div><div class="zh">'+hlText(x.zh.slice(0,80),q)+'…</div></div><div class="acts"><button class="btn" data-act="gram-practice" data-day="'+x.d+'">练习</button></div></div>'}).join('')+'</div>';
+  if(total>lim*4)h+='<p class="small muted">每类最多显示 '+lim+' 条，请输入更具体的关键词。</p>';
+  return h;
+}
+function searchPage(){
+  let h=crumb([['全局搜索']])+pageHero('全局搜索','Search everything');
+  h+='<section class="card"><div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="srchIn" placeholder="单词、句子、对话、语法（中英文都可以）" value="'+esc(SRQ)+'" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="搜索"></div><div id="srchRes">'+searchResults(SRQ)+'</div></section>';
+  setTimeout(function(){const el=$('srchIn');if(el&&!SHEET)try{el.focus()}catch(e){}},60);
+  return h;
+}
+let srT=null;
+function libSearchInput(v){SRQ=v;clearTimeout(srT);srT=setTimeout(function(){const el=$('srchRes');if(el)el.innerHTML=searchResults(SRQ)},140)}
+
+/* 资料库相关操作 */
+function libAct(a,ds,el,n){
+  switch(a){
+  case 'snd':openSheet(function(){return soundSheet(+ds.i)});break;
+  case 'say-list':TTS.chain(String(ds.list||'').split('|'));break;
+  case 'pr-done':{S.pr=S.pr||{};if(S.pr[ds.id])delete S.pr[ds.id];else{S.pr[ds.id]=1;S.log[dkey()]=1;toast('已标记为已练习')}save();renderKeep();break}
+  case 'mp-start':{const set=+ds.set;MPS=mpBuild(isFinite(set)?set:-1);stopMedia();if(view==='lib'&&viewArg==='pron-pairs'){renderKeep();const c=$('mpCard');if(c)try{c.scrollIntoView({block:'center'})}catch(e){}}else go('lib-pron-pairs');mpSay();break}
+  case 'mp-pick':{if(!MPS||MPS.pick>=0)break;const it=MPS.items[MPS.i];MPS.pick=+ds.o;if(MPS.pick===it.a)MPS.right++;S.log[dkey()]=1;renderKeep();break}
+  case 'mp-next':{if(!MPS)break;MPS.i++;MPS.pick=-1;if(MPS.i>=MPS.items.length){const b=S.quiz['mp'+MPS.set];const pct=MPS.right*10;if(MPS.set>=0&&(b==null||pct>b))S.quiz['mp'+MPS.set]=pct;save()}renderKeep();mpSay();break}
+  case 'gram-practice':{const d=clampDay(ds.day);const l=L[d];if(!l||!l.gx)break;closeSheet();openSheet(function(){return '<h3>'+esc(l.gram.t)+'</h3>'+cardGx('g'+d,l.gx,'文法练习','第 '+d+' 天 · 先自己选，再看解析')});break}
+  case 'go-search':go('lib-search');break;
+  case 'jump':{const t=$(ds.to);if(t)try{t.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){t.scrollIntoView()}break}
+  case 'layout':S.set.allInOne=ds.v==='all';save();renderKeep();toast(S.set.allInOne?'已切换为一页显示':'已切换为分步学习');break;
+  }
+}
 
 </script>
 </body>
