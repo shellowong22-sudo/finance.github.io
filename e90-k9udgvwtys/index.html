@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基础 90 天香港金融英语口语学习程序：单词、句型、文法、对话、听力、阅读、口语练习">
 <title>90天香港金融英语</title>
+<meta name="app-ver" content="37755c0805">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -330,7 +331,7 @@ details.dd[open]>summary::after{transform:rotate(-135deg)}
 details.dd>summary .small{font-weight:500}
 
 /* sheet & toast */
-.scrim{position:fixed;inset:0;background:rgba(6,12,22,.5);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.scrim{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(6,12,22,.5);z-index:50;display:flex;align-items:flex-end;justify-content:center}
 .sheet{background:var(--surface);width:100%;max-width:640px;max-height:88%;overflow:auto;border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(0,0,0,.2)}
 .sheet h3{font-size:17px;margin-bottom:8px}
 .sheet .x{float:right}
@@ -382,6 +383,10 @@ details.more[open]>summary::before{content:"▾ ";}
 .words.wide{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
 .words.wide .en{overflow-wrap:normal}
 .ph{background:var(--accent-soft);border-bottom:2px solid var(--accent);padding:0 2px;border-radius:3px}
+.updbar{position:fixed;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:70;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:var(--navy);color:var(--on-navy);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.updbar span{flex:1;font-weight:600}
+.updbar .ghost{color:var(--on-navy);border-color:rgba(255,255,255,.25)}
+@media (min-width:1000px){.updbar{left:calc(var(--side) + 24px);right:24px;bottom:24px;max-width:520px}}
 
 </style>
 </head>
@@ -2785,7 +2790,7 @@ function blockDesc(n,k){
 
 /* ---------- 存储（本机 + 云端同步，均可失败降级） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -3095,8 +3100,16 @@ function installCard(){
   else steps='在 Chrome 里点右上角“⋮”→“添加到主屏幕”或“安装应用”。之后从桌面图标打开即可。';
   return '<section class="card" id="install" style="border-color:var(--jade)"><h2 class="sec-h">把程序添加到手机桌面</h2><p style="margin:0 0 8px">'+esc(steps)+'</p><p class="small muted" style="margin:0">提示：桌面图标里的进度和浏览器里的是分开保存的，建议从现在起只用桌面图标打开。</p><div class="btns"><button class="btn ghost" data-act="no-install">知道了，不再提示</button></div></section>';
 }
+let UPD={last:0,shown:false};
+function checkUpdate(){
+  try{if(!window.__PWA||UPD.shown||!/^https?:$/.test(location.protocol)||navigator.onLine===false)return;const m=document.querySelector('meta[name="app-ver"]');const cur=m&&m.getAttribute('content');if(!cur||Date.now()-UPD.last<5*60*1000)return;UPD.last=Date.now();
+    fetch('./index.html?check='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){const x=String(t).match(/name="app-ver" content="([0-9a-f]+)"/);if(x&&x[1]!==cur&&!UPD.shown){UPD.shown=true;showUpdate()}}).catch(function(){})}catch(e){}
+}
+function showUpdate(){try{const d=document.createElement('div');d.className='updbar';d.setAttribute('role','status');d.innerHTML='<span>有新版本可用</span><button class="btn gold" id="updGo">立即更新</button><button class="btn ghost" id="updNo" aria-label="稍后">稍后</button>';document.body.appendChild(d);
+  $('updGo').onclick=function(){try{save()}catch(e){}location.reload()};$('updNo').onclick=function(){d.remove()}}catch(e){}}
 function registerSW(){
   if(!window.__PWA||!('serviceWorker' in navigator)||!/^https?:$/.test(location.protocol))return;
+  try{document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')checkUpdate()});setTimeout(checkUpdate,4000)}catch(e){}
   try{navigator.serviceWorker.register('sw.js').catch(function(e){console.warn('[sw]',e&&e.message)})}catch(e){}
 }
 
@@ -3129,6 +3142,7 @@ function vDay(n,isToday){
    (t==='review'?'<span class="pill warn">复习日</span>':'')+(t==='test'?'<span class="pill red">阶段测试</span>':'')+
    (S.fin[n]?'<span class="pill ok">已完成</span>':'')+(isToday?'<span class="pill red">今日学习</span>':'')+'</div>'+
    '<div class="dprog" aria-label="今日进度"><div class="bar"><i style="width:'+Math.round(bd/7*100)+'%"></i></div><span>'+bd+' / 7 步 · 计划 8 小时</span></div></section>';
+  if(isToday&&Cloud.status!=='on'&&finCount()>=3&&Date.now()-(S.set.lastBk||0)>7*864e5)h+='<div class="note warn" style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="flex:1;min-width:180px">学习进度只保存在这台设备上。建议每周导出一次备份，以免换手机或清理浏览器时丢失。</span><button class="btn" data-act="export">导出备份</button><button class="btn ghost" data-act="copy-backup">复制备份代码</button></div>';
   if(isToday){const nm=misCount();if(nm)h+='<button class="note misnote" data-act="go-mis">错题本里有 <b>'+nm+'</b> 项待重做，今天抽 10 分钟清一清 ›</button>'}
   h+='<div class="daynav">'+(n>1?'<a class="btn" href="#day-'+(n-1)+'">‹ 第 '+(n-1)+' 天</a>':'')+(n!==S.cur?'<button class="btn jade" data-act="setcur" data-day="'+n+'">设为当前日</button>':'')+(n<90?'<a class="btn" href="#day-'+(n+1)+'">第 '+(n+1)+' 天 ›</a>':'')+'</div>';
   if(S.set.allInOne){
@@ -3733,7 +3747,7 @@ function act(a,ds,el){
   case 'go-mis':PR.tab='mis';MG=null;stopMedia();go('practice');break;
   case 'mis-del':{if(ds.en&&S.mis.s[ds.en]){delete S.mis.s[ds.en];save()}renderKeep();break}
   case 'num-check':case 'num-skip':{if(!NUM||NUM.checked)break;const inp=$('numIn');NUM.input=inp?inp.value:'';const it=NUM.list[NUM.i];NUM.ok=a==='num-check'&&numOk(it,NUM.input);NUM.checked=true;if(NUM.ok)NUM.right++;S.log[dkey()]=1;save();renderKeep();break}
-  case 'num-next':if(NUM){NUM.i++;NUM.checked=false;NUM.input='';NUM.ok=false}renderKeep();setTimeout(function(){const it=NUM&&NUM.list[NUM.i];if(it)TTS.speak(it.say)},150);break;
+  case 'num-next':{if(NUM){NUM.i++;NUM.checked=false;NUM.input='';NUM.ok=false;const it=NUM.list[NUM.i];if(it)TTS.speak(it.say)}renderKeep();break}
   case 'num-new':NUM=null;renderKeep();break;
   case 'rp-next':RP.i++;RP.wait=false;rpStep();break;
   case 'rp-stop':RP.active=false;RP.wait=false;TTS.stop();rerenderDlg();break;
@@ -3761,7 +3775,7 @@ function act(a,ds,el){
   case 'cards-restart':FC=null;render();break;
   case 'dict-play':{if(!DT||!DT.list[DT.i])break;TTS.speak(DT.list[DT.i].en,{slow:!!ds.slow});setTimeout(function(){const i=$('dictIn');if(i&&!DT.checked)try{i.focus({preventScroll:true})}catch(e){}},50);break}
   case 'dict-check':case 'dict-skip':{const inp=$('dictIn');DT.input=inp?inp.value:'';const s=DT.list[DT.i];const r=compare(s.en,a==='dict-skip'?'':DT.input);DT.res=r;DT.checked=true;DT.sum+=r.score;DT.n++;S.log[dkey()]=1;misSent(s.en,s.zh,r.score);save();renderKeep();break}
-  case 'dict-next':DT.i++;DT.checked=false;DT.input='';DT.res=null;renderKeep();setTimeout(function(){if(DT&&DT.list[DT.i])TTS.speak(DT.list[DT.i].en,{quiet:true})},120);break;
+  case 'dict-next':{DT.i++;DT.checked=false;DT.input='';DT.res=null;if(DT.list[DT.i])TTS.speak(DT.list[DT.i].en);renderKeep();break}
   case 'dict-restart':DT=null;render();break;
   case 'tk-prev':TK.i=(TK.i-1+TK.list.length)%TK.list.length;SP=null;render();break;
   case 'tk-next':TK.i=(TK.i+1)%TK.list.length;SP=null;render();break;
@@ -3769,8 +3783,8 @@ function act(a,ds,el){
   case 'topic-iv':PR.topic=INTERVIEW[Math.floor(Math.random()*INTERVIEW.length)];render();break;
   case 'iv-go':PR.tab='talk';PR.topic=INTERVIEW[+ds.i]||INTERVIEW[0];go('practice');break;
   case 'accent':S.set.accent=ds.v;S.set.voice='';save();renderKeep();TTS.speak(ds.v==='en-GB'?'This is a British English voice.':'This is an American English voice.');break;
-  case 'export':saveFile('hk-english-90-progress-'+dkey()+'.json',backupJson(),'application/json').then(function(r){if(r==='saved'||r==='direct')toast('已生成备份文件');else if(r==='declined')toast('已取消保存');else toast('无法保存文件，请用“复制备份代码”')});break;
-  case 'copy-backup':copyText(backupJson()).then(function(ok){toast(ok?'备份代码已复制，请粘贴保存到你电脑的记事本里':'复制失败，请改用导出文件')});break;
+  case 'export':S.set.lastBk=Date.now();save();saveFile('hk-english-90-progress-'+dkey()+'.json',backupJson(),'application/json').then(function(r){if(r==='saved'||r==='direct')toast('已生成备份文件');else if(r==='declined')toast('已取消保存');else toast('无法保存文件，请用“复制备份代码”')});break;
+  case 'copy-backup':S.set.lastBk=Date.now();save();copyText(backupJson()).then(function(ok){toast(ok?'备份代码已复制，请粘贴保存到你电脑的记事本里':'复制失败，请改用导出文件')});break;
   case 'import-txt':{const t=$('importTxt');if(t&&t.value.trim())importData(t.value);else toast('请先粘贴备份代码');break}
   case 'reset':openSheet(function(){return '<h3>清空全部学习进度？</h3><p>所有勾选、单词复习记录和测验成绩都会被删除，且无法恢复。建议先导出备份。</p><div class="btns"><button class="btn pri" data-act="reset-yes">确定清空</button><button class="btn" data-act="sheet-close">取消</button></div>'});break;
   case 'reset-yes':S=fresh();save();closeSheet();FC=null;DT=null;TK=null;toast('进度已清空');go('today');break;
@@ -3950,7 +3964,7 @@ function pronPage(id,m){
 }
 let MPS=null;
 function mpBuild(set){const pool=set>=0?PAIRS[set][2]:PAIRS.reduce(function(a,p){return a.concat(p[2])},[]);const items=[];for(let i=0;i<10;i++){const pr=pool[Math.floor(Math.random()*pool.length)];items.push({w:pr,a:Math.random()<0.5?0:1})}return {set:set,items:items,i:0,pick:-1,right:0}}
-function mpSay(){try{if(MPS&&MPS.items[MPS.i]){const it=MPS.items[MPS.i];setTimeout(function(){TTS.speak(it.w[it.a])},250)}}catch(e){}}
+function mpSay(){try{if(MPS&&MPS.items[MPS.i]){const it=MPS.items[MPS.i];TTS.speak(it.w[it.a])}}catch(e){}}
 function pronPairs(){
   let h=crumb([['发音课','lib-pron'],['易混音听辨']])+pageHero('易混音听辨','Minimal Pairs');
   h+='<section class="card"><p class="small muted" style="margin:0 0 8px">选一组音开始。每组 10 题：程序读一个词，你选听到的是哪一个。分数 80 以上说明你已经能听出区别。</p><div class="seg choice">'+PAIRS.map(function(p,i){const b=S.quiz['mp'+i];return '<button data-act="mp-start" data-set="'+i+'" aria-pressed="'+(MPS&&MPS.set===i)+'">'+esc(p[0])+(b!=null?' · '+b:'')+'</button>'}).join('')+'<button data-act="mp-start" data-set="-1">全部随机</button></div></section>';
