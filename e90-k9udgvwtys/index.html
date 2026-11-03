@@ -381,6 +381,7 @@ details.more[open]>summary::before{content:"▾ ";}
 .misnote{display:block;width:100%;text-align:left;margin-top:10px;font:inherit;font-size:14px;cursor:pointer;background:var(--accent-soft);border:1px solid transparent;color:var(--ink)}
 .words.wide{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
 .words.wide .en{overflow-wrap:normal}
+.ph{background:var(--accent-soft);border-bottom:2px solid var(--accent);padding:0 2px;border-radius:3px}
 
 </style>
 </head>
@@ -2548,6 +2549,118 @@ const EMAILS=[
  {t:"婉拒请求",use:"不能满足对方要求时",s:"Re: Request for a fee waiver",b:"Dear Mr. Yip,\n\nThank you for your request, and I understand why it matters to you.\n\nUnfortunately, we are not able to waive the annual fee for this account type. However, if you move to our Premier account, the fee would be included, and you would also get a dedicated adviser.\n\nI would be happy to explain the options in more detail.\n\nBest regards,\nShello",n:"感谢 + 理解 → 清楚地说“不能” → 提供替代方案 → 主动跟进。"}
 ];
 
+/* 参考答案：[结构说明, 英文答案]。方括号里是需要换成你自己情况的内容 */
+const ANS={
+"Tell me about yourself.":["现在 → 过去 → 未来：现在做什么、相关经历和优势、为什么申请这个职位",
+"My name is [Shello]. I'm [a finance professional] who recently moved to Hong Kong. For the past [few] years, I have [worked closely with clients and explained financial ideas in simple language]. What I enjoy most is helping people make clear, confident decisions about their money. I'm bilingual in Mandarin and English, and I understand the needs of mainland clients. Now I'm looking for a role where I can build long-term client relationships in Hong Kong, and that's why I'm very interested in this position."],
+"Why do you want to work in finance?":["PREP：观点 → 两个理由 → 例子 → 重申",
+"I want to work in finance because it combines two things I really enjoy: numbers and people. First, I like analysing markets and understanding why prices move. Second, I like helping people plan for their future. For example, [when I helped a family member compare savings plans], I saw how much a clear explanation can change someone's decision. So for me, finance is not just about money. It's about helping people feel secure."],
+"Why Hong Kong?":["三点法：国际金融中心 → 连接内地 → 个人优势",
+"There are three main reasons. First, Hong Kong is one of the world's leading financial centres, so it's the best place to learn and grow. Second, it connects international markets with mainland China, especially through schemes like Stock Connect and Wealth Management Connect. And third, my background fits that connection well. I speak Mandarin and English, and I understand mainland clients. So Hong Kong is where I can contribute the most."],
+"Why our company?":["公司 → 职位 → 你：引用研究到的事实，再连接到自己",
+"I've done some research on your company, and three things stood out. Your bank has a strong presence in the Greater Bay Area, you are growing your wealth management team, and you invest a lot in training new staff. This role focuses on [mainland clients], which matches my background. I'm also looking for a place where I can keep learning, and your training programme is one of the best in the market."],
+"What are your greatest strengths?":["一个优势 + 具体例子 + 对这个职位的价值",
+"I would say my greatest strength is that I'm a fast learner with strong discipline. For example, I moved to Hong Kong with limited English, and I studied for eight hours a day for three months. Now I can hold a full business conversation in English. In this role, that means I can learn your products and processes quickly and start contributing from day one."],
+"What is your biggest weakness?":["真实但不致命的弱点 → 正在做的改进 → 已有的进步",
+"My biggest weakness is that my English is still developing, especially when people speak very fast. To improve, I practise every day: I listen to financial news, I record myself, and I always confirm key points in writing after a meeting. I've already improved a lot, and I'm confident that in six months it won't be an issue at all."],
+"Where do you see yourself in five years?":["短期目标 → 中期目标 → 与公司共同成长",
+"In the first year, I want to learn your products well and build trust with my first group of clients. In three years, I hope to manage my own client portfolio and become one of the top performers in the team. In five years, I would like to be a senior relationship manager, and maybe help train new colleagues. I see myself growing with the company, not just in the company."],
+"Tell me about a time you worked under pressure.":["STAR：情境 → 任务 → 行动 → 结果（带数字）",
+"In my previous job, [three colleagues were on leave during our busiest month]. My task was to make sure all client requests were handled on time. I made a priority list every morning, asked my manager to approve a simpler checking process, and stayed in close contact with clients about timing. As a result, we completed [all 120 requests] on time, and we didn't receive a single complaint."],
+"Tell me about a mistake you made at work.":["STAR + 学到的教训：承认 → 补救 → 预防",
+"Once I sent a client a document with the wrong fee rate. I noticed the mistake the next morning. I called the client immediately, explained the error, and sent the corrected version within an hour. The client appreciated my honesty. Since then, I always double-check numbers before sending anything, and I use a simple checklist. The lesson for me was that a fast, honest correction builds trust."],
+"Describe a conflict with a colleague and how you handled it.":["STAR：说清分歧 → 私下沟通 → 找共同目标 → 结果",
+"A colleague and I disagreed about how to present a proposal to a client. He wanted to focus on returns, and I wanted to focus on risk. Instead of arguing in the meeting, I asked him for a coffee and listened to his reasons. We realised we both wanted the client to trust us. So we agreed to show the returns first, then explain the risks clearly. The client signed, and we worked well together after that."],
+"How would you handle a difficult client?":["LAER：倾听 → 认可 → 了解原因 → 回应方案",
+"First, I would listen without interrupting, because most difficult clients just want to be heard. Then I would acknowledge their feelings, for example, I understand why you're frustrated. Next, I would ask questions to find the real cause. Finally, I would offer clear options and a timeline. If the problem is beyond my authority, I would escalate it quickly and keep the client updated."],
+"What do you know about our products?":["展示研究：主要业务 → 一两个具体产品 → 你会怎么介绍给客户",
+"From my research, your bank focuses on [wealth management for high-net-worth clients], including investment funds, insurance and wealth planning. I noticed that you recently launched [a digital investment platform], which makes it easier for younger clients to start investing. I think that's a strong advantage, because many clients now want both professional advice and a simple digital experience."],
+"How do you keep up with financial markets?":["日常习惯：每天读什么 → 听什么 → 怎么总结",
+"I have a daily routine. Every morning I read the business news in the South China Morning Post and check Bloomberg for global markets. During my commute, I listen to financial podcasts in English. In the evening, I write a short summary of what moved the market and why. This habit helps me explain market news to clients in simple language."],
+"What is your view on the Hong Kong market right now?":["市场评论四步：现状 → 原因 → 展望 → 观点（留余地）",
+"[The Hong Kong market has been volatile this year.] The main drivers are US interest rates, the mainland economy and investor sentiment towards technology stocks. In the short term, I expect volatility to continue. However, valuations look reasonable compared with other markets, so for long-term investors there may be opportunities. Of course, any decision should depend on the client's goals and risk profile."],
+"Pitch me a fund or a stock.":["需求 → 产品 → 三个理由 → 风险 → 适合谁",
+"I'd like to recommend a global bond fund for clients who want a stable income. First, it pays a regular monthly income. Second, it is diversified across hundreds of high-grade bonds. Third, the fees are below the market average. The main risk is that bond prices can fall when interest rates rise. So it's suitable for conservative investors with a time horizon of at least three years."],
+"How would you explain risk to a conservative client?":["用简单语言 → 具体数字 → 类比 → 确认理解",
+"I would avoid technical words and use clear numbers. For example, I would say: If you invest one hundred thousand dollars, in a normal year it might go up or down by about five thousand. In a very bad year, it could fall by around ten thousand. Then I would compare it with a bank deposit, which is safer but grows more slowly. Finally, I would ask the client how they would feel about that loss, to make sure the product really suits them."],
+"Why should we hire you?":["三个理由：技能 → 优势 → 态度，最后总结",
+"There are three reasons. First, I understand mainland clients and speak their language, which is important for your growth in the Greater Bay Area. Second, I learn fast. I improved my English from beginner level to business level in a short time. Third, I'm very client-focused and honest, which builds long-term trust. So I can bring both new clients and strong commitment to your team."],
+"What are your salary expectations?":["先表示灵活 → 给出研究过的范围 → 强调整体机会",
+"Based on my research and my experience, I'm looking for a package in the range of [your range] a month. But I'm flexible. For me, the most important things are the learning opportunities, the team and the long-term career path. I'm happy to discuss the whole package."],
+"How do you prioritise when you have many tasks?":["方法：紧急程度 × 重要程度 → 每天清单 → 主动沟通",
+"I use a simple method. Every morning I list my tasks and sort them by urgency and importance. Client requests and anything with a deadline come first. I block time in my calendar for important work, like preparing proposals. If two deadlines clash, I talk to my manager early, rather than missing one. At the end of the day, I review what's done and plan for tomorrow."],
+"Tell me about a time you showed leadership.":["STAR：没有职位也能领导——主动发起、组织、带来结果",
+"In my last job, our team kept making the same mistakes on client forms. Nobody was responsible for fixing it, so I offered to lead a small project. I collected the most common errors, created a one-page checklist, and ran a short training session for the team. Within two months, form errors dropped by [about 60 percent]. My manager then asked me to train all new staff."],
+"How do you handle rejection in sales?":["态度 → 方法 → 例子",
+"I try not to take rejection personally. A no usually means not now, or not this product. After a rejection, I ask myself what I could do better, and sometimes I ask the client directly for feedback. I also keep in touch politely. For example, one client said no to an insurance plan, but six months later, when her situation changed, she called me back and signed."],
+"What do you think about ESG investing?":["观点 → 理由 → 风险（漂绿）→ 结论",
+"I think ESG investing is becoming an important part of finance, especially for younger clients. Companies with good governance and strong environmental practices may face fewer long-term risks. However, investors need to be careful about greenwashing, so it's important to read the fund documents and check how a fund actually selects companies. Overall, I see ESG as a useful tool, as long as it is transparent."],
+"How would interest rate changes affect our business?":["因果链：利率变化 → 对客户的影响 → 对银行业务的影响",
+"Interest rates affect almost every part of a bank. When rates rise, banks usually earn more from loans, and clients become more interested in deposits and bonds. But mortgage payments go up, and the property market may slow down. When rates fall, clients often move from deposits to funds and stocks, which can increase investment fees. So the key is to adjust our product focus to the rate cycle."],
+"What is KYC and why is it important?":["定义 → 包括什么 → 为什么重要（客户、银行、监管）",
+"KYC stands for Know Your Customer. It means verifying a client's identity, understanding their source of funds, and knowing their financial situation and risk profile. It is important for three reasons. It helps prevent money laundering and fraud, it is required by regulators like the HKMA and the SFC, and it makes sure we only recommend products that are suitable for the client."],
+"How would you build a client network in Hong Kong?":["三个渠道：现有人脉 → 活动与社群 → 转介，加上长期跟进",
+"I would use three channels. First, my existing network, especially people from the mainland who are moving to Hong Kong or investing here. Second, industry events, alumni groups and professional communities, both offline and online. Third, referrals: if I serve my first clients well, they will introduce their friends and family. The most important thing is to follow up regularly and give real value, not just sell."],
+"Describe a time you persuaded someone.":["STAR：对方的顾虑 → 你用的证据和方法 → 结果",
+"A [family member] kept all his savings in a bank deposit because he was afraid of losing money. I didn't push him. Instead, I showed him how inflation reduces the value of cash over ten years, and I suggested starting with a small amount in a low-risk bond fund. I also agreed to review it with him every six months. He tried it, felt comfortable, and later increased the amount."],
+"How would you rate your English, and how are you improving it?":["诚实评价 → 具体的学习方法 → 进步的证据",
+"I would say my English is at a good working level, and it is improving every week. I studied intensively for three months, eight hours a day, focusing on speaking. I practise with business dialogues, record myself, and listen to financial news every day. I can handle client meetings and calls, and I always confirm important details in writing. I'm committed to keep improving."],
+"How do you feel about long working hours?":["接受 + 理由 → 会如何管理精力 → 关注结果",
+"I understand that finance can be demanding, especially at month-end or when markets are busy, and I'm prepared for that. During my English training I studied eight hours a day, so I'm used to discipline. I manage my energy with regular exercise and good planning, so that I can stay focused and productive. For me, the goal is always to deliver results for clients."],
+"What do you do outside work?":["一两个爱好 → 为什么喜欢 → 与工作相关的能力",
+"Outside work, I enjoy [hiking] and reading about personal finance. Hong Kong has amazing hiking trails, and it's a great way to clear my mind after a busy week. I also [run a small online channel where I explain investment ideas in simple language], which helps me practise explaining complex topics clearly."],
+"Do you have any questions for us?":["准备 2-3 个关于职位、成功标准、团队的问题",
+"Yes, thank you. I have two questions. First, what does success look like in this role after the first six months? Second, what kind of training and support do new relationship managers receive? And if possible, I'd also like to know more about the team I would be working with."],
+"Introduce yourself in one minute.":["名字 → 从哪里来 → 做什么 → 一个爱好 → 目标",
+"Hi, my name is [Shello]. I'm from [Shenzhen], and I moved to Hong Kong [this year]. I'm working towards a career in finance, especially wealth management. In my free time, I like [hiking and cooking]. Right now I'm studying English every day, and my goal is to speak confidently with clients and colleagues. Nice to meet you."],
+"Describe your hometown.":["在哪里 → 有什么特点 → 你最喜欢什么 → 和香港的联系",
+"My hometown is [Shenzhen], a modern city just across the border from Hong Kong. Forty years ago it was a small town, but now it's a major technology centre. What I like most is the energy: everything changes very fast. It's also very close to Hong Kong, so I can go back to visit my family easily."],
+"Describe your daily routine.":["按时间顺序：早上 → 白天 → 晚上，用一般现在时",
+"On weekdays, I usually get up at seven. I have breakfast and read the financial news on my phone. From half past eight, I study English for about eight hours, with short breaks every hour. In the evening, I go for a walk or do some exercise, and then I write a short English diary. I normally go to bed at around eleven."],
+"What did you do last weekend?":["按时间顺序，用一般过去时 + 感受",
+"Last weekend was quite relaxing. On Saturday morning, I went hiking on Dragon's Back with a friend. The view was amazing. In the afternoon, we had dim sum in Sai Wan Ho. On Sunday, I stayed at home, reviewed my English flashcards, and watched a business documentary. It was a nice balance of rest and study."],
+"Talk about your favourite food in Hong Kong.":["是什么 → 在哪里吃 → 为什么喜欢 → 推荐",
+"My favourite Hong Kong food is dim sum, especially har gow and siu mai. I usually go to a traditional tea house on Sunday mornings. I love it because you can share many small dishes and talk for hours. It's also a great way to build relationships with clients. If you visit Hong Kong, you should definitely try it."],
+"Compare living in Hong Kong and your hometown.":["相同点 → 不同点（两三个方面）→ 总结",
+"Both cities are modern and busy, but there are some big differences. Hong Kong is more international, and English is used much more at work. It's also more expensive, especially rent. On the other hand, my hometown is newer and more spacious. Overall, Hong Kong is more challenging, but it gives me better opportunities for my career."],
+"What are your plans for next year?":["用 be going to / plan to：工作目标 → 学习目标 → 生活目标",
+"Next year, I'm going to focus on three things. First, I plan to get a job in wealth management and pass my licensing exams. Second, I want to keep improving my English, especially listening to fast speakers. Third, I'd like to travel more in Asia and keep a healthy routine. It's going to be a busy but exciting year."],
+"Describe your dream job.":["是什么工作 → 每天做什么 → 为什么适合你",
+"My dream job is to be a senior relationship manager at an international bank in Hong Kong. Every day I would meet clients, understand their goals, and build long-term plans for their families. I would also follow the markets closely. It fits me because I enjoy both analysis and people, and I like the feeling of being trusted."],
+"Describe a person you admire.":["是谁 → 有什么特点 → 一个例子 → 对你的影响",
+"I really admire [my first manager]. She was always calm, even in very stressful situations. Once, when a client was shouting at the front desk, she listened patiently, solved the problem, and the client later thanked her. She taught me that staying calm and listening is the most professional thing you can do."],
+"Talk about a mistake you learned from.":["发生了什么 → 后果 → 你怎么补救 → 学到什么",
+"When I started learning English, I was afraid of making mistakes, so I didn't speak for weeks. That was a big mistake, because I didn't improve. Then I started recording myself every day, even with errors. Within a month, I felt much more confident. The lesson was simple: you learn to speak by speaking, not by waiting until you're perfect."],
+"What makes a good team?":["三点法：共同目标 → 沟通 → 信任与互相支持",
+"In my opinion, a good team needs three things. First, a clear common goal, so everyone knows what success looks like. Second, open communication, where people can share ideas and problems early. And most importantly, trust: team members help each other instead of competing. When these three things are in place, the team performs much better than any individual."],
+"Should people work from home? Why or why not?":["表明立场 → 两边的理由 → 你的结论（平衡观点）",
+"I think a mix of office and home working is the best option. Working from home saves commuting time and helps people focus on deep work. However, in finance, face-to-face meetings are important for building trust with clients and learning from senior colleagues. So, overall, I would suggest two or three days in the office, and the rest at home."],
+"Will AI replace finance jobs?":["观点 → 会被替代的部分 → 不会被替代的部分 → 结论",
+"I don't think AI will replace finance jobs completely, but it will change them a lot. AI is already better at simple tasks, like checking documents, answering basic questions and spotting fraud. But clients still want a person they can trust, especially for big decisions like retirement or a family's wealth. So the people who learn to work with AI will have a big advantage."],
+"Describe a good manager.":["三个特点，每个配一句解释",
+"A good manager has three qualities. First, they set clear goals and explain why the work matters. Second, they give regular feedback, both positive and constructive, so people can grow. Third, they support the team when things go wrong, instead of blaming. A good manager makes people want to do their best."],
+"How do you handle stress?":["方法（两三个）→ 例子 → 结果",
+"I handle stress in a few ways. First, I break big tasks into small steps and focus on one at a time. Second, I exercise regularly; even a thirty-minute walk helps me think clearly. Third, I talk to someone when I need help, instead of keeping it to myself. For example, during my intensive English study, these habits helped me stay motivated for ninety days."],
+"Explain what a fund is to a new investor.":["简单定义 → 类比 → 好处 → 风险",
+"A fund is like a big basket of investments. Many investors put their money together, and a professional manager uses it to buy many different stocks or bonds. The main benefit is diversification: you own a small part of many companies, so one bad company doesn't hurt you too much. But the value of a fund can still go up and down, so it's important to choose one that matches your goals and risk level."],
+"What is your view on the Hong Kong stock market?":["现状 → 有利因素 → 不利因素 → 观点",
+"In my view, the Hong Kong stock market offers both risks and opportunities. On the positive side, valuations are lower than in many other markets, and many strong companies are listed here. On the negative side, the market is sensitive to US interest rates and the mainland economy, so it can be very volatile. So I think it suits long-term investors who can accept short-term ups and downs."],
+"How do interest rates affect people's lives?":["因果链：存款 → 贷款与按揭 → 消费和楼市",
+"Interest rates affect people's lives in several ways. When rates go up, savers earn more on their deposits, which is good news. But borrowers pay more, especially people with mortgages, so they have less money to spend. That can slow down the property market and the economy. When rates go down, the opposite happens: borrowing becomes cheaper, and people spend and invest more."],
+"Pitch a savings product to a young professional.":["引起共鸣 → 产品 → 三个好处 → 行动号召",
+"Many young professionals in Hong Kong earn a good salary, but at the end of the month they don't know where the money went. Our monthly savings plan can help. You invest a fixed amount, from as little as two thousand dollars a month. It's automatic, so you don't need to think about it. It's flexible, so you can pause if you need to. And over ten years, small amounts can grow into a real fund for your goals. Would you like to see how much you could build?"],
+"Explain the difference between stocks and bonds.":["分别定义 → 对比（回报、风险、收入）→ 怎么搭配",
+"When you buy a stock, you own a small part of a company. If the company does well, the stock price can rise a lot, but it can also fall a lot. When you buy a bond, you lend money to a company or a government. They pay you regular interest and return your money at the end. So stocks usually offer higher growth with higher risk, and bonds offer more stable income with lower risk. Many investors hold both."],
+"What is ESG and why does it matter?":["定义三个字母 → 为什么重要 → 一个提醒",
+"ESG stands for environmental, social and governance. It's a way of looking at companies beyond their profits: how they affect the environment, how they treat people, and how well they are run. It matters because these factors can create long-term risks, like pollution fines or management scandals. It also matters to many clients, who want their money to do some good. But investors should always check that a product really follows ESG principles."],
+"Describe the last presentation you gave.":["STAR：什么场合 → 内容 → 你怎么准备 → 结果和反思",
+"The last presentation I gave was [a ten-minute talk about personal finance for a group of parents]. I explained how to start saving for children's education. To prepare, I made simple slides with one key number on each, and I practised five times. The audience asked many questions, which showed they were interested. Next time, I want to make it more interactive from the start."],
+"How would you calm down an angry client?":["LAER + 语气：先听 → 道歉认可 → 了解 → 方案 → 跟进",
+"First, I would stay calm and let the client speak without interrupting. Then I would say something like, I'm really sorry about this, and I understand why you're upset. Next, I would ask a few questions to understand exactly what went wrong. After that, I would explain what I can do and by when. Finally, I would follow up personally to make sure the problem is solved."],
+"What did you learn from studying English for 90 days?":["三个收获：方法 → 自信 → 习惯，最后展望",
+"I learned three important things. First, the right method matters more than talent: shadowing, recording myself and spaced review really work. Second, confidence comes from practice. On day two I was afraid to speak, and now I can hold a business conversation. Third, small daily habits add up. Ninety days ago I was a beginner, and now English is a tool I can use at work. And I'm going to keep going."]
+};
+
 </script>
 <script>
 'use strict';
@@ -2903,7 +3016,7 @@ function refreshSheet(){
   let body='';try{body=SHEET()}catch(e){console.error('[sheet]',e);body='<p class="note err">内容加载失败，请关闭后重试。</p>'}
   root.innerHTML='<div class="scrim" data-act="sheet-scrim"><div class="sheet" role="dialog" aria-modal="true"><button class="ic x" data-act="sheet-close" aria-label="关闭">✕</button>'+body+'</div></div>';
 }
-function closeSheet(){SHEET=null;stopMedia();refreshSheet();setTimeout(flushDeferred,50)}
+function closeSheet(){const pv=SHEET&&SHEET.__prev;if(pv){stopMedia();SHEET=pv;refreshSheet();return}SHEET=null;stopMedia();refreshSheet();setTimeout(flushDeferred,50)}
 function sayBtn(text,slow){return '<button class="ic" data-say="'+esc(text)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'慢速朗读':'朗读')+'" title="'+(slow?'慢速朗读':'朗读')+'">'+(slow?'慢':ICON.spk)+'</button>'}
 function micBtn(text,zh){return '<button class="ic rec" data-act="shadow" data-en="'+esc(text)+'" data-zh="'+esc(zh||'')+'" aria-label="跟读练习" title="跟读练习">'+ICON.mic+'</button>'}
 
@@ -3017,7 +3130,7 @@ function vDay(n,isToday){
    (S.fin[n]?'<span class="pill ok">已完成</span>':'')+(isToday?'<span class="pill red">今日学习</span>':'')+'</div>'+
    '<div class="dprog" aria-label="今日进度"><div class="bar"><i style="width:'+Math.round(bd/7*100)+'%"></i></div><span>'+bd+' / 7 步 · 计划 8 小时</span></div></section>';
   if(isToday){const nm=misCount();if(nm)h+='<button class="note misnote" data-act="go-mis">错题本里有 <b>'+nm+'</b> 项待重做，今天抽 10 分钟清一清 ›</button>'}
-  h+='<div class="daynav">'+(n>1?'<a class="btn" href="#day-'+(n-1)+'">‹ 第 '+(n-1)+' 天</a>':'')+(n!==S.cur?'<button class="btn jade" data-act="setcur" data-day="'+n+'">设为当前学习日</button>':'')+(n<90?'<a class="btn" href="#day-'+(n+1)+'">第 '+(n+1)+' 天 ›</a>':'')+'</div>';
+  h+='<div class="daynav">'+(n>1?'<a class="btn" href="#day-'+(n-1)+'">‹ 第 '+(n-1)+' 天</a>':'')+(n!==S.cur?'<button class="btn jade" data-act="setcur" data-day="'+n+'">设为当前日</button>':'')+(n<90?'<a class="btn" href="#day-'+(n+1)+'">第 '+(n+1)+' 天 ›</a>':'')+'</div>';
   if(S.set.allInOne){
     h+='<div class="btns" style="justify-content:flex-end"><button class="btn ghost" data-act="allinone">切换为分步学习</button></div>';
     return h+cardTimetable(n)+vDayAll(n)+cardFinish(n);
@@ -3247,7 +3360,7 @@ function cardReviewSpeak(n){
   const topics=shuffleSeed(TOPICS,n).slice(0,3);
   let h='<section class="card" id="rspeak"><h2 class="sec-h">'+(t==='test'?'阶段口语测试':'本周口语复盘')+' <span class="tag">Speaking</span></h2>';
   h+=t==='test'?'<p>每个话题说 2 分钟，用 PREP 或 STAR 结构，全程录音：</p>':'<p>① 不看稿，完成本周任意 3 段对话的角色扮演（点“回看”进入当天）；② 录一段 3 分钟独白，总结本周学到的内容；③ 再选一个话题说 2 分钟：</p>';
-  h+='<div class="rows">'+topics.map(function(q){return '<div class="row"><div class="txt"><div class="en">'+esc(q)+'</div></div><div class="acts">'+sayBtn(q)+'</div></div>'}).join('')+'</div>';
+  h+='<div class="rows">'+topics.map(function(q){return '<div class="row"><div class="txt"><div class="en">'+esc(q)+'</div></div><div class="acts">'+sayBtn(q)+(typeof ANS==='object'&&ANS[q]?'<button class="btn jade" data-act="ans" data-q="'+esc(q)+'">参考答案</button>':'')+'</div></div>'}).join('')+'</div>';
   h+=timerHtml()+recWidget('rv'+n);
   if(t==='review')h+='<p class="small muted" style="margin-top:10px">本周文法：'+days.map(function(d){return esc(L[d].gram.t)}).join(' · ')+'</p>';
   return h+'</section>';
@@ -3370,6 +3483,7 @@ function pTrans(){
 function pTalk(){
   if(!PR.topic)PR.topic=TOPICS[Math.floor(Math.random()*TOPICS.length)];
   return '<section class="card"><h2 class="sec-h">自由口语 <span class="tag">Free Talk</span></h2><p class="small muted" style="margin-top:0">随机话题，用 PREP（观点 → 理由 → 例子 → 观点）或 STAR 结构说 1-2 分钟，录音后回放自评。</p><div style="display:flex;gap:10px;align-items:center;margin:8px 0"><b style="font-family:var(--font-display);font-size:20px;flex:1">'+esc(PR.topic)+'</b>'+sayBtn(PR.topic)+'</div><div class="btns"><button class="btn" data-act="topic-new">换一个话题</button><button class="btn" data-act="topic-iv">换一道面试题</button></div>'+timerHtml()+recWidget('talk')+
+   (typeof ANS==='object'&&ANS[PR.topic]?'<div class="btns"><button class="btn jade" data-act="ans" data-q="'+esc(PR.topic)+'">先自己说，再看参考答案</button></div>':'')+
    '<p class="note small" style="margin-top:12px">卡住时可以用：That\'s a good question. Let me think… / The main reason is… / For example… / So, overall…</p></section>';
 }
 
@@ -3477,7 +3591,7 @@ function vGuide(){
   const gen={
     schedule:{t:'每日 8 小时学习安排',h:'<p>时间按香港时间（HKT）设计，口语相关练习（发音跟读、口语实战、输出复盘）约占 3 小时 45 分钟，接近一半。</p><table><tr><th>时间</th><th>内容</th><th>时长</th></tr>'+BLOCKS.map(function(b){return '<tr><td style="white-space:nowrap">'+b.time+'</td><td>'+esc(b.t)+'</td><td>'+b.min+' 分钟</td></tr>'}).join('')+'</table><p>每学 50 分钟休息 10 分钟；午饭后可以小睡 20 分钟。周末如果需要休息，可以把复习日安排在周日，强度减半。</p>'},
     pron:{t:'发音入门：字母、音标与难点',h:'<h4>26 个字母</h4><div class="letters">'+LETTERS.map(function(l){return '<button data-say="'+l+'" aria-label="朗读字母 '+l+'">'+l+'</button>'}).join('')+'</div><h4>44 个音素（点击听例词）</h4><p class="small muted">国内教材常说 48 个音标，多出的是 tr、dr、ts、dz 四个辅音组合。</p><div class="ipa">'+IPA.map(function(p){return '<button data-say="'+esc(p[2])+'"><b>/'+esc(p[1])+'/</b><span>'+esc(p[2])+'</span><small>'+esc(p[0])+'</small></button>'}).join('')+'</div><h4>中国学习者的 6 个发音难点</h4><table><tr><th>难点</th><th>例词</th><th>要领</th></tr>'+PRON_TIPS.map(function(t){return '<tr><td><b>'+esc(t[0])+'</b></td><td><i class="say">'+esc(t[1])+'</i></td><td>'+esc(t[2])+'</td></tr>'}).join('')+'</table><h4>13 周发音重点</h4><ol>'+PRON.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ol>'},
-    interview:{t:'香港金融面试高频 30 题',h:'<p>每题用 1-2 分钟作答：观点题用 PREP，经历题用 STAR。点“练习”会把题目带到自由口语页，配合计时和录音。</p><ol class="qlist">'+INTERVIEW.map(function(q,i){return '<li><span class="t">'+esc(q)+'</span>'+sayBtn(q)+'<button class="btn" data-act="iv-go" data-i="'+i+'">练习</button></li>'}).join('')+'</ol>'}
+    interview:{t:'香港金融面试高频 30 题',h:'<p>每题用 1-2 分钟作答：观点题用 PREP，经历题用 STAR。先自己说一遍，再点“参考答案”看结构和范例，最后逐句跟读。点“练习”会把题目带到自由口语页，配合计时和录音。</p><ol class="qlist">'+INTERVIEW.map(function(q,i){return '<li><span class="t">'+esc(q)+'</span>'+sayBtn(q)+'<button class="btn jade" data-act="ans" data-q="'+esc(q)+'">参考答案</button><button class="btn" data-act="iv-go" data-i="'+i+'">练习</button></li>'}).join('')+'</ol>'}
   };
   const order=(typeof GUIDE_ORDER!=='undefined'&&GUIDE_ORDER)||['start','schedule','thinking','method','natural','speaking','templates','interview','checklist','resources'];
   order.forEach(function(id,idx){
@@ -3624,7 +3738,8 @@ function act(a,ds,el){
   case 'rp-next':RP.i++;RP.wait=false;rpStep();break;
   case 'rp-stop':RP.active=false;RP.wait=false;TTS.stop();rerenderDlg();break;
   case 'tts-stop':TTS.stop();break;
-  case 'shadow':SP={en:ds.en,zh:ds.zh,host:'sheet',res:null,busy:false,err:''};openSheet(function(){return '<h3>跟读练习</h3>'+speakBody()});break;
+  case 'shadow':{const prev=SHEET&&!SHEET.__shadow?SHEET:null;SP={en:ds.en,zh:ds.zh,host:'sheet',res:null,busy:false,err:''};const f=function(){return (prev?'<button class="btn ghost" data-act="sheet-back" style="margin-bottom:8px">‹ 返回</button>':'')+'<h3>跟读练习</h3>'+speakBody()};f.__shadow=true;f.__prev=prev;openSheet(f);break}
+  case 'sheet-back':{const pv=SHEET&&SHEET.__prev;stopMedia();if(pv){SHEET=pv;refreshSheet()}else closeSheet();break}
   case 'asr':runAsr();break;
   case 'timer':startTimer(+ds.m);break;
   case 'rw-start':rwStart(ds.id);break;
@@ -4028,8 +4143,13 @@ function emailPage(){
   });
   return h+'</section>';
 }
+/* 口语参考答案 */
+function ansMark(t){return esc(t).replace(/\[([^\]]+)\]/g,'<span class="ph">$1</span>')}
+function ansSheet(q){const a=ANS[q];if(!a)return '<p>暂无参考答案。</p>';const plain=pplain(a[1]),sents=plain.match(/[^.!?]+[.!?]+/g)||[plain];
+  return '<h3>'+esc(q)+'</h3><p class="tip"><b>结构：</b>'+esc(a[0])+'</p><p class="small muted" style="margin:8px 0">先自己说一遍，再看范例。<span class="ph">金色标记</span>的部分请换成你自己的真实情况。</p><div class="passage" style="font-size:16.5px">'+ansMark(a[1])+'</div><div class="btns"><button class="btn pri" data-say="'+esc(plain)+'">'+ICON.spk+' 朗读全文</button><button class="btn" data-say="'+esc(plain)+'" data-slow="1">慢速</button></div><div class="grp">逐句跟读</div><div class="rows">'+sents.map(function(x){x=x.trim();return '<div class="row"><div class="txt"><div class="en" style="font-weight:500">'+esc(x)+'</div></div><div class="acts">'+sayBtn(x)+micBtn(x,'')+'</div></div>'}).join('')+'</div><p class="small muted">练习方法：读熟后合上答案，只看结构说一遍，再录音和范例对比。</p>'}
 function libAct2(a,ds){
   switch(a){
+  case 'ans':{const q=ds.q;if(!ANS[q])return true;closeSheet();openSheet(function(){return ansSheet(q)});return true}
   case 'rtab':RTAB=ds.t;if(RTAB==='quiz'&&!RQ)RQ=rqBuild();renderKeep();return true;
   case 'rq-new':RQ=rqBuild();renderKeep();return true;
   case 'rq-pick':{if(!RQ||RQ.pick>=0)return true;const it=RQ.items[RQ.i];RQ.pick=+ds.o;if(RQ.pick===it.a)RQ.right++;S.log[dkey()]=1;renderKeep();return true}
