@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="572f75039d">
+<meta name="app-ver" content="322613b26a">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -523,6 +523,17 @@ details.coh ol{margin:6px 0 4px;padding-left:20px;line-height:1.7}
 .vc .vcsc button[aria-pressed="true"]{border-color:var(--jade)}
 .vc .vcsteps{margin:12px 0 4px;padding-left:20px;line-height:1.8}
 .vcpre{white-space:pre-wrap;word-break:break-word;font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--surface-2,var(--bg));border:1px solid var(--line);border-radius:10px;padding:10px 12px;max-height:260px;overflow:auto}
+
+/* 一撳就講 */
+.talk{display:flex;align-items:center;gap:14px;margin:14px 0 6px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
+.talk.on{border-color:var(--bad);background:var(--bad-soft)}
+.micbig{flex:none;width:64px;height:64px;border-radius:50%;border:0;background:var(--jade);color:var(--jade-ink);display:grid;place-items:center;box-shadow:0 4px 14px rgba(15,39,71,.25);cursor:pointer}
+.micbig svg{width:28px;height:28px}
+.micbig.on{background:var(--bad);color:#fff;animation:micpulse 1.3s ease-in-out infinite}
+@keyframes micpulse{0%{box-shadow:0 0 0 0 rgba(179,38,30,.45)}70%{box-shadow:0 0 0 16px rgba(179,38,30,0)}100%{box-shadow:0 0 0 0 rgba(179,38,30,0)}}
+@media (prefers-reduced-motion:reduce){.micbig.on{animation:none}}
+.talkst{flex:1;min-width:0}
+.talkst .live{margin-top:4px;font-size:16px;line-height:1.45;color:var(--ink);min-height:1.4em;word-break:break-word}
 
 </style>
 </head>
@@ -4035,7 +4046,7 @@ function blockDesc(n,k){
 
 /* ---------- 存儲（本機 + 雲端同步，均可失敗降級） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},vc:0,bks:{},bkw:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:''},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},vc:0,bks:{},bkw:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -4186,21 +4197,37 @@ function splitSentences(p){return (String(p).match(/[^.!?]+[.!?]+['"]?|[^.!?]+$/
 /* ---------- 語音識別 & 錄音 ---------- */
 const SRClass=window.SpeechRecognition||window.webkitSpeechRecognition||null;
 const ASR={ok:!!SRClass,cur:null,
-  listen(){
-    const self=this;
+  /* opt.interim(text)：一路講一路顯示；opt.continuous：自由講（停 idleMs 毫秒自動結束） */
+  listen(opt){
+    opt=opt||{};const self=this;
     return new Promise(function(res,rej){
-      let r;try{r=new SRClass()}catch(e){rej('init');return}AUD.recStart();
-      self.cur=r;r.lang=S.set.accent;r.interimResults=false;r.maxAlternatives=5;r.continuous=false;
-      let got=null,fin=false;
-      r.onresult=function(e){try{got=[];const a=e.results[0];for(let i=0;i<a.length;i++)got.push(a[i].transcript)}catch(x){}};
-      r.onerror=function(e){AUD.recStop();if(fin)return;fin=true;rej((e&&e.error)||'error')};
-      r.onend=function(){AUD.recStop();if(fin)return;fin=true;res(got||[])};
-      try{r.start()}catch(e){fin=true;rej('start')}
+      let r;try{r=new SRClass()}catch(e){rej('init');return}
+      AUD.recStart();self.cur=r;
+      r.lang=S.set.accent;r.interimResults=true;r.maxAlternatives=5;r.continuous=!!opt.continuous;
+      const finals=[];let alts=null,interim='',fin=false,tm=null,idle=null;
+      const stopSoon=function(){clearTimeout(idle);idle=setTimeout(function(){try{r.stop()}catch(x){finish()}},opt.idleMs||2500)};
+      const finish=function(){if(fin)return;fin=true;clearTimeout(tm);clearTimeout(idle);AUD.recStop();self.cur=null;
+        const text=(finals.join(' ')+' '+interim).replace(/\s+/g,' ').trim();
+        if(opt.continuous)res(text?[text]:[]);else res(alts&&alts.length?alts.concat(text&&alts.indexOf(text)<0?[text]:[]):(text?[text]:[]))};
+      r.onresult=function(e){try{interim='';for(let i=e.resultIndex;i<e.results.length;i++){const R=e.results[i];
+          if(R.isFinal){finals.push(R[0].transcript);if(!opt.continuous){alts=[];for(let k=0;k<R.length;k++)if(R[k].transcript)alts.push(R[k].transcript)}}else interim+=R[0].transcript}
+        if(opt.interim)opt.interim((finals.join(' ')+' '+interim).replace(/\s+/g,' ').trim());
+        if(opt.continuous)stopSoon()}catch(x){}};
+      r.onerror=function(e){const c=(e&&e.error)||'error';if((c==='no-speech'||c==='aborted')&&(finals.length||interim)){finish();return}
+        if(fin)return;fin=true;clearTimeout(tm);clearTimeout(idle);AUD.recStop();self.cur=null;rej(c)};
+      r.onend=finish;
+      tm=setTimeout(function(){try{r.stop()}catch(x){finish()}},opt.maxMs||(opt.continuous?120000:15000));
+      try{r.start()}catch(e){fin=true;AUD.recStop();self.cur=null;rej('start')}
     });
   },
   stop(){try{if(this.cur)this.cur.stop()}catch(e){}}
 };
-function asrMsg(code){const ios=isIOS()&&(code==='not-allowed'||code==='service-not-allowed')?' iPhone：請在 設定 → 通用 → 鍵盤 中打開“啟用聽寫”，並允許 Safari 使用麥克風；如果在主螢幕 App 裏仍不可用，改用 Safari 打開同一網址。':'';return (({'not-allowed':'麥克風權限被拒絕，或當前頁面環境不允許使用麥克風。','service-not-allowed':'當前環境不允許語音識別。','no-speech':'沒有聽到聲音，請靠近麥克風再試一次。','network':'語音識別需要聯網，請檢查網絡。','audio-capture':'沒有找到可用的麥克風。','aborted':'識別已停止。'})[code]||'語音識別暫時不可用，可改用錄音對比。')+ios}
+function asrMsg(code){
+  const m={'not-allowed':'未允許用咪高峰。iPhone：設定 → 私隱與安全性 → 麥克風／語音辨識，允許呢個 App 或 Safari；第一次會彈出詢問，請撳「允許」。',
+    'service-not-allowed':'呢個環境唔畀用語音識別（例如某啲 App 入面嘅預覽）。請用 Safari 打開，或者用下面嘅鍵盤 🎤。',
+    'no-speech':'聽唔到你講嘢。撳多一次，靠近啲講、大聲啲。','audio-capture':'搵唔到咪高峰，請檢查耳機或者權限。',
+    'network':'語音識別要上網，請檢查網絡再試。','language-not-supported':'呢部機唔支援英文語音識別，請用鍵盤 🎤。','init':'呢個瀏覽器唔支援語音識別，請用鍵盤 🎤。','start':'語音識別開始唔到，請再撳一次。'};
+  return m[code]||('語音識別出錯（'+code+'），請再試一次，或者用鍵盤 🎤。')}
 
 const REC={ok:!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder),mr:null,stream:null,chunks:[],
   start(){
@@ -4911,12 +4938,12 @@ function vMe(){
   h+='<section class="card" id="voiceHelp"><h2 class="sec-h">聲音、講嘢評分疑難 <span class="tag">Help</span></h2><ol class="small" style="margin:0;padding-left:20px;line-height:1.8">'+
    '<li><b>冇聲：</b>iPhone 開咗靜音模式（狀態列見到 🔕）網頁朗讀就會冇聲。撳側邊靜音掣／動作按鈕，或者喺控制中心關閉 🔕，再調大音量。</li>'+
    '<li><b>聲音唔自然：</b>設定 → 輔助使用 → 朗讀內容 → 聲音 → 英文，下載「Daniel（英國）」或者增強版聲音，再返嚟上面揀。</li>'+
-   '<li><b>講嘢評分：</b>主屏幕 App 唔支援網頁語音識別，請用「開始講（鍵盤 🎤）」：切換到英文鍵盤 → 撳 🎤 → 講完停一停就自動評分。</li>'+
+   '<li><b>講嘢評分：</b>撳藍色大咪掣直接講，講完停一停就自動評分同糾正。如果見到「唔畀用語音識別」，改用鍵盤 🎤：撳 🌐 轉 English 鍵盤 → 撳 🎤 講。</li>'+
    '<li><b>見唔到 🎤：</b>設定 → 一般 → 鍵盤 → 開啟「啟用聽寫」。</li>'+
    '<li><b>錄音冇反應：</b>設定 → 私隱與安全性 → 麥克風，允許 Safari；第一次錄音時撳「允許」。</li>'+
    '<li><b>想好似 ChatGPT 咁同 AI 對話：</b>去「練習 → AI 語音對話」，揀場景再撳「用 ChatGPT 語音開始」；練習指示會自動複製，貼上之後撳語音掣就可以傾。</li>'+
    '<li><b>AI 老師：</b>喺 Claude App 入面打開呢個學習程式，可以直接用 AI 批改；喺主屏幕 App 撳「AI 老師」會打開 Claude 幫你批改（問題已自動複製）。</li></ol>'+
-   '<div class="btns"><button class="btn jade" data-act="voice-check">'+ICON.spk+' 一鍵檢查聲音同咪</button></div><div id="vcRes" aria-live="polite"></div></section>';
+   '<div class="btns"><button class="btn jade" data-act="voice-check">'+ICON.spk+' 一鍵檢查聲音同咪</button>'+(AI.ns?'<button class="btn" data-act="ai-auto" aria-pressed="'+(S.set.aiAuto!==false)+'">講完自動 AI 講解：'+(S.set.aiAuto!==false?'開':'關')+'</button>':'')+'</div><div id="vcRes" aria-live="polite"></div></section>';
   h+='<section class="card"><h2 class="sec-h">學習頁面</h2><div class="seg" role="group" aria-label="學習頁面"><button data-act="layout" data-v="step" aria-pressed="'+!S.set.allInOne+'">分步學習（推薦）</button><button data-act="layout" data-v="all" aria-pressed="'+!!S.set.allInOne+'">一頁顯示全部</button></div><p class="small muted" style="margin:8px 0 0">分步學習：一次只顯示當前這一步，做完進入下一步。一頁顯示：當天所有內容在同一頁。</p></section>';
   /* 兼容性 */
   const yes='<span class="pill ok">可用</span>',no='<span class="pill warn">不可用</span>';
@@ -5357,13 +5384,13 @@ function aiOpenClaude(prompt){
   try{const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}catch(e){location.href=url}
   toast('已複製問題，正在打開 Claude。如果冇自動填好，貼上就得。');
 }
-function aiRun(outId,prompt){
+function aiRun(outId,prompt,tier){
   const out=$(outId);
   if(!AI.ns){if(out)out.innerHTML='<p class="note small" style="margin-top:10px">呢個版本冇內置 AI，已經幫你打開 Claude App 批改（問題已複製）。喺 Claude 入面打開呢個學習程式，就可以直接喺度睇 AI 講解。</p>';aiOpenClaude(prompt);return}
   if(AI.busy){try{if(AI.ctl)AI.ctl.abort()}catch(e){}}
   AI.busy=true;let ctl=null;try{ctl=new AbortController()}catch(e){}AI.ctl=ctl;
   if(out)out.innerHTML='<div class="aiout"><p class="small muted">AI 老師諗緊…</p></div>';
-  const opt={cache:false,modelTier:'default',onText:function(x){const o=$(outId);if(o&&x&&x.text)o.innerHTML='<div class="aiout">'+aiMd(x.text)+'</div>'}};if(ctl)opt.signal=ctl.signal;
+  const opt={cache:false,modelTier:tier||'default',onText:function(x){const o=$(outId);if(o&&x&&x.text)o.innerHTML='<div class="aiout">'+aiMd(x.text)+'</div>'}};if(ctl)opt.signal=ctl.signal;
   AI.ns(prompt,opt).then(function(r){AI.busy=false;const o=$(outId);if(o&&r&&r.text)o.innerHTML='<div class="aiout">'+aiMd(r.text)+'</div>';S.log[dkey()]=1;save()},function(e){AI.busy=false;const o=$(outId),code=e&&e.code;
     if(code==='not_granted'){AI.ns=null;if(o)o.innerHTML='<p class="note small" style="margin-top:10px">未有授權使用 AI。可以撳多一次，喺彈出視窗允許；或者改用 Claude App。</p>'}
     else if(code==='rate_limited'){if(o)o.innerHTML='<p class="note warn small" style="margin-top:10px">用得太密，請等一陣再試。</p>'}
@@ -5375,15 +5402,22 @@ function coCJK(t){return /[\u3400-\u9fff]/.test(String(t||''))}
 function coCJKWarn(){return '<p class="note warn" style="margin-top:10px"><b>出咗中文字？</b>你用緊中文鍵盤，所以聽寫變咗中文。撳鍵盤左下角 🌐 轉做 <b>English</b> 鍵盤，再撳 🎤 用英文講。<br>想好似 ChatGPT 咁直接講：去「練習 → AI 語音對話」。</p>'}
 function coIOSHint(){return isIOS()?'<p class="small muted" style="margin:6px 0 0">冇聲？iPhone 請關閉靜音模式 🔕（側邊開關／控制中心），再調大音量。</p>':''}
 function coDictHelp(){return '<details class="dd coh"><summary>點樣用鍵盤 🎤 講？</summary><ol class="small"><li>撳「🎤 開始講」，鍵盤會彈出嚟。</li><li>用 🌐 切換到<b>英文鍵盤</b>，再撳鍵盤上嘅 🎤（聽寫）。</li><li>用英文講；講完停一停，程式會<b>自動評分</b>。</li></ol><p class="small muted">見唔到 🎤：設定 → 一般 → 鍵盤 → 開啟「啟用聽寫」。</p></details>'}
+/* 一撳就講：直接語音 → 即時評分 → 即時糾正（文法、英文邏輯）→ AI 老師講解（喺 Claude 入面自動） */
+function talkBox(act,id,busy,live,idle){
+  return '<div class="talk'+(busy?' on':'')+'"><button class="micbig'+(busy?' on':'')+'" data-act="'+act+'"'+(id?' data-id="'+id+'"':'')+' aria-label="'+(busy?'停止':'直接講')+'">'+(busy?ICON.stop:ICON.mic)+'</button>'+
+    '<div class="talkst"><b>'+(busy?'聽緊…講完停一停就自動評分':idle)+'</b><div class="live" id="'+(id?'ftlive-'+id:'spLive')+'" aria-live="polite">'+esc(live||'')+'</div></div></div>';
+}
 function speakBody(){
-  const s=SP,ios=isIOS(),asr=ASR.ok&&!(ios&&isStandalone());
+  const s=SP;
   let h='<div style="display:flex;gap:10px;align-items:flex-start;margin:8px 0"><div style="flex:1"><div style="font-family:var(--font-display);font-size:21px;font-weight:700;line-height:1.35">'+esc(s.en)+'</div><div class="muted">'+esc(s.zh)+'</div></div></div>';
   h+='<div class="btns"><button class="btn" data-say="'+esc(s.en)+'">'+ICON.spk+' 原音</button><button class="btn" data-say="'+esc(s.en)+'" data-slow="1">慢速</button></div>'+coIOSHint();
-  h+='<label class="f" for="spIn">講完即刻評分</label><textarea id="spIn" rows="2" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="撳「🎤 開始講」，再撳鍵盤上嘅 🎤 用英文講">'+esc(s.input||'')+'</textarea>';
-  h+='<div class="btns"><button class="btn pri" data-act="sp-focus">'+ICON.mic+' 開始講（鍵盤 🎤）</button>'+(asr?'<button class="btn" data-act="asr" '+(s.busy?'disabled':'')+'>'+(s.busy?'聽緊…請講':'語音識別')+'</button>':'')+'<button class="btn" data-act="sp-check">評分</button><button class="btn ghost" data-act="sp-clear">清除</button></div>';
+  if(ASR.ok)h+=talkBox('talk-go','',s.busy,s.live,'撳一下咪，直接用英文講');
+  else h+='<p class="note small" style="margin-top:10px">呢個瀏覽器冇語音識別：用下面嘅鍵盤 🎤 講，或者直接打字。</p>';
   if(s.err)h+='<p class="note warn small" style="margin-top:10px">'+esc(s.err)+'</p>';
-  h+=coDictHelp();
   h+='<div id="spRes">'+(s.input?coResHTML(coScore(s.en,s.input),s.en,s.input):'')+'</div>';
+  h+='<label class="f" for="spIn">'+(ASR.ok?'或者用鍵盤 🎤 聽寫／打字':'講完即刻評分')+'</label><textarea id="spIn" rows="2" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="用 English 鍵盤嘅 🎤 講，或者打字">'+esc(s.input||'')+'</textarea>';
+  h+='<div class="btns"><button class="btn" data-act="sp-focus">'+ICON.mic+' 鍵盤 🎤</button><button class="btn" data-act="sp-check">評分</button><button class="btn ghost" data-act="sp-clear">清除</button></div>';
+  h+=coDictHelp();
   h+='<p class="small" style="margin:10px 0 0">想同 AI 好似真人咁傾偈、講錯即刻糾正？<button class="btn ghost" data-act="vc-open">AI 語音對話</button></p>';
   h+='<h3 style="font-size:15px;margin-top:14px">錄音對比</h3>'+recWidget('sp');
   h+='<p class="small muted" style="margin-top:8px">分數只供參考：重點係聽清楚自己同原音嘅分別，紅色同橙色嘅字多練幾次。</p>';
@@ -5402,28 +5436,55 @@ function coInput(t){
   if(t.id==='spIn'&&SP){SP.input=t.value;clearTimeout(coT);coT=setTimeout(function(){safe(function(){coScoreNow(true)},'coach')},1300);return}
   if(t.classList&&t.classList.contains('ftIn')){const id=t.getAttribute('data-id');const st=FT[id]||(FT[id]={});st.input=t.value;clearTimeout(coT);coT=setTimeout(function(){safe(function(){ftCheck(id,true)},'coach')},1500)}
 }
-function runAsr(){
-  if(!SP||SP.busy)return;
-  TTS.stop();SP.busy=true;SP.err='';refreshSpeak();
-  ASR.listen().then(function(alts){
+/* 喺 Claude 入面打開時，講完自動請 AI 老師講解（可以喺「我的」關閉） */
+function coAuto(){return !!AI.ns&&S.set.aiAuto!==false}
+function talkGo(){
+  if(!SP)return;
+  if(SP.busy){ASR.stop();return}
+  TTS.stop();SP.busy=true;SP.err='';SP.live='';refreshSpeak();
+  ASR.listen({interim:function(t){SP.live=t;const el=$('spLive');if(el)el.textContent=t}}).then(function(alts){
+    SP.busy=false;SP.live='';
+    if(!alts.length){SP.err=asrMsg('no-speech');refreshSpeak();return}
     let best=null,said='';alts.forEach(function(a){const r=coScore(SP.en,a);if(!best||r.score>best.score){best=r;said=a}});
-    SP.busy=false;SP.input=said;refreshSpeak();coScoreNow(true);
-  },function(code){SP.busy=false;SP.err=asrMsg(code)+' 可以改用「開始講（鍵盤 🎤）」。';refreshSpeak()});
+    SP.input=said;refreshSpeak();coScoreNow(true);
+    if(coAuto())aiRun('aiOut-t',aiPromptT(SP.en,said),'quick');
+    const box=$('spRes');if(box)try{box.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+  },function(code){SP.busy=false;SP.live='';if(code!=='aborted')SP.err=asrMsg(code);refreshSpeak()});
 }
+function runAsr(){talkGo()}
 
 /* ---------- 自由講（題目、面試、口語任務、讀本口語練習） ---------- */
 const FT={};
 function ftId(id){return String(id).replace(/[^A-Za-z0-9_-]/g,'_')}
 function freeBox(id,ctx,model,label){
   id=ftId(id);const st=FT[id]||(FT[id]={});if(st.ctx!==undefined&&st.ctx!==ctx)st.input='';st.ctx=ctx;st.model=model||'';
-  return '<div class="coach"><label class="f" for="ft-'+id+'">'+(label||'講完即刻檢查（用鍵盤 🎤 聽寫，或者直接打字）')+'</label><textarea id="ft-'+id+'" class="ftIn" data-id="'+id+'" rows="4" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="撳「🎤 開始講」，再撳鍵盤上嘅 🎤 用英文講">'+esc(st.input||'')+'</textarea>'+
-   '<div class="btns"><button class="btn pri" data-act="ft-focus" data-id="'+id+'">'+ICON.mic+' 開始講（鍵盤 🎤）</button><button class="btn" data-act="ft-check" data-id="'+id+'">檢查</button><button class="btn jade" data-act="ai-coach" data-mode="f" data-id="'+id+'">AI 老師批改</button><button class="btn ghost" data-act="ft-clear" data-id="'+id+'">清除</button></div>'+
-   '<div id="ftres-'+id+'">'+(st.input?coFreeHTML(coFree(st.input,ctx),id):'')+'</div><div id="aiOut-'+id+'"></div></div>';
+  return '<div class="coach">'+(ASR.ok?talkBox('ft-talk',id,st.busy,st.live,'撳一下咪，直接用英文講（可以講一兩分鐘）'):'')+
+   (st.err?'<p class="note warn small" style="margin-top:8px">'+esc(st.err)+'</p>':'')+
+   '<div id="ftres-'+id+'">'+(st.input?coFreeHTML(coFree(st.input,ctx),id):'')+'</div><div id="aiOut-'+id+'"></div>'+
+   '<label class="f" for="ft-'+id+'">'+(ASR.ok?'講咗嘅內容（可以改；或者用鍵盤 🎤／打字）':(label||'講完即刻檢查（用鍵盤 🎤 聽寫，或者直接打字）'))+'</label><textarea id="ft-'+id+'" class="ftIn" data-id="'+id+'" rows="4" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="用 English 鍵盤嘅 🎤 講，或者打字">'+esc(st.input||'')+'</textarea>'+
+   '<div class="btns"><button class="btn" data-act="ft-focus" data-id="'+id+'">'+ICON.mic+' 鍵盤 🎤</button><button class="btn" data-act="ft-check" data-id="'+id+'">檢查</button><button class="btn jade" data-act="ai-coach" data-mode="f" data-id="'+id+'">AI 老師批改</button><button class="btn ghost" data-act="ft-clear" data-id="'+id+'">清除</button></div></div>';
+}
+function ftRefresh(){if(SHEET)refreshSheet();else renderKeep()}
+function ftTalk(id){
+  const st=FT[id]||(FT[id]={});
+  if(st.busy){ASR.stop();return}
+  const el=$('ft-'+id);if(el)st.input=el.value;
+  TTS.stop();st.busy=true;st.live='';st.err='';ftRefresh();
+  const base=String(st.input||'').trim();
+  ASR.listen({continuous:true,idleMs:2500,interim:function(t){st.live=t;const e=$('ftlive-'+id);if(e)e.textContent=t}}).then(function(alts){
+    st.busy=false;st.live='';const t=String(alts[0]||'').trim();
+    if(!t){st.err=asrMsg('no-speech');ftRefresh();return}
+    st.input=(base?base+' ':'')+t;ftRefresh();ftCheck(id,true);
+    if(coAuto())aiRun('aiOut-'+id,aiPromptF(st.ctx,st.model,st.input),'quick');
+  },function(code){st.busy=false;st.live='';if(code!=='aborted')st.err=asrMsg(code);ftRefresh()});
 }
 function ftCheck(id,quiet){const st=FT[id];if(!st)return;const el=$('ft-'+id);if(el)st.input=el.value;const box=$('ftres-'+id);if(!box)return;
   if(!String(st.input||'').trim()){box.innerHTML='';return}if(coCJK(st.input)){box.innerHTML=coCJKWarn();return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
 function coAct(a,ds){
   switch(a){
+  case 'talk-go':talkGo();return true;
+  case 'ft-talk':ftTalk(ds.id);return true;
+  case 'ai-auto':S.set.aiAuto=!S.set.aiAuto;save();renderKeep();return true;
   case 'sp-focus':{const el=$('spIn');if(el){try{el.focus();el.setSelectionRange(el.value.length,el.value.length)}catch(e){}}return true}
   case 'sp-check':coScoreNow(false);return true;
   case 'sp-clear':{if(SP){SP.input='';SP.res=null}const el=$('spIn');if(el)el.value='';const b=$('spRes');if(b)b.innerHTML='';const o=$('aiOut-t');if(o)o.innerHTML='';return true}
