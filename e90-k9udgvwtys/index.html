@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="97caded878">
+<meta name="app-ver" content="572f75039d">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -516,6 +516,13 @@ details.coh{margin-top:10px}
 details.coh summary{font-size:14px;color:var(--muted);cursor:pointer}
 details.coh ol{margin:6px 0 4px;padding-left:20px;line-height:1.7}
 #spIn{min-height:60px}
+
+/* AI 語音陪練 */
+.vc .vcsc{display:flex;flex-wrap:wrap;gap:8px;border:0;overflow:visible}
+.vc .vcsc button{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.vc .vcsc button[aria-pressed="true"]{border-color:var(--jade)}
+.vc .vcsteps{margin:12px 0 4px;padding-left:20px;line-height:1.8}
+.vcpre{white-space:pre-wrap;word-break:break-word;font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--surface-2,var(--bg));border:1px solid var(--line);border-radius:10px;padding:10px 12px;max-height:260px;overflow:auto}
 
 </style>
 </head>
@@ -4028,7 +4035,7 @@ function blockDesc(n,k){
 
 /* ---------- 存儲（本機 + 雲端同步，均可失敗降級） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:''},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},vc:0,bks:{},bkw:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:''},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -4428,7 +4435,7 @@ function stepCards(n,k){
     if(k==='vocab')return cardWords(n,l.words,'今日單詞',l.words.length+' Words',false)+(typeof cardParts==='function'?cardParts(n):'')+cardDue();
     if(k==='gram')return cardGram(n)+(l.gx&&l.gx.length?cardGx('g'+n,l.gx,'文法練習','先自己選，再看解析'):'');
     if(k==='listen')return cardLq('d'+n)+cardListen(n);
-    if(k==='speak')return cardDlg(n,0)+(l.dlg2&&l.dlg2.length?cardDlg(n,1):'')+(l.tr&&l.tr.length?cardTr('t'+n,l.tr,'中譯英口頭翻譯','看中文，先大聲說出英文，再看答案'):'')+cardTask(n);
+    if(k==='speak')return vcCard()+cardDlg(n,0)+(l.dlg2&&l.dlg2.length?cardDlg(n,1):'')+(l.tr&&l.tr.length?cardTr('t'+n,l.tr,'中譯英口頭翻譯','看中文，先大聲說出英文，再看答案'):'')+cardTask(n);
     if(k==='read')return (l.read?readCard('d'+n,l.read,'今日閱讀'):cardRead(n))+(typeof cardBookLink==='function'?cardBookLink(n):'');
     return cardOut(n);
   }
@@ -4437,7 +4444,7 @@ function stepCards(n,k){
   if(k==='vocab')return (test?cardQuiz('t'+n,wordsOf(days),20,'階段詞彙測驗'):'')+cardWords(n,wordsOf(days),test?'本階段單詞':'本週單詞','Review',true)+cardDue();
   if(k==='gram'){const gx=gatherGx(n,test?15:10);return gx.length?cardGx('rg'+n,gx,'綜合文法練習','從'+scope+'隨機抽題'):'<section class="card"><p class="muted" style="margin:0">'+scope+'暫無文法題。</p></section>'}
   if(k==='listen')return cardLq('w'+n)+cardDictReview(n);
-  if(k==='speak'){const tr=gatherTr(n,test?15:10);return (tr.length?cardTr('rt'+n,tr,'綜合中譯英','從'+scope+'隨機抽題'):'')+cardReviewSpeak(n)}
+  if(k==='speak'){const tr=gatherTr(n,test?15:10);return vcCard()+(tr.length?cardTr('rt'+n,tr,'綜合中譯英','從'+scope+'隨機抽題'):'')+cardReviewSpeak(n)}
   if(k==='read')return READ[n]?readCard(String(n),READ[n],test?'階段閱讀':'本週閱讀'):'';
   return (test?cardSelf(n):'')+cardOut(n);
 }
@@ -4685,10 +4692,10 @@ function vPlan(){
 
 /* ---------- 練習 ---------- */
 function vPractice(){
-  const nm=misCount(),tabs=[['cards','閃卡複習'],['trans','口頭翻譯'],['dict','聽寫'],['num','數字聽力'],['speak','跟讀打分'],['quiz','單詞測驗'],['talk','自由口語'],['mis','錯題本'+(nm?' '+nm:'')]];
+  const nm=misCount(),tabs=[['ai','AI 語音對話'],['cards','閃卡複習'],['trans','口頭翻譯'],['dict','聽寫'],['num','數字聽力'],['speak','跟讀打分'],['quiz','單詞測驗'],['talk','自由口語'],['mis','錯題本'+(nm?' '+nm:'')]];
   let h='<section class="hero" style="grid-template-columns:1fr;padding-bottom:0"><div class="htitle"><h1>練習</h1><div class="en">Review · Dictation · Speaking</div></div></section>';
   h+='<div class="tabs" role="tablist">'+tabs.map(function(t){return '<button data-act="ptab" data-tab="'+t[0]+'" aria-pressed="'+(PR.tab===t[0])+'">'+t[1]+'</button>'}).join('')+'</div>';
-  if(PR.tab==='cards')h+=pCards();else if(PR.tab==='dict')h+=pDict();else if(PR.tab==='speak')h+=pSpeak();else if(PR.tab==='quiz')h+=cardQuiz('p',learnedPool(),15,'已學單詞測驗');else if(PR.tab==='trans')h+=pTrans();else if(PR.tab==='num')h+=pNum();else if(PR.tab==='mis')h+=pMis();else h+=pTalk();
+  if(PR.tab==='cards')h+=pCards();else if(PR.tab==='dict')h+=pDict();else if(PR.tab==='speak')h+=pSpeak();else if(PR.tab==='quiz')h+=cardQuiz('p',learnedPool(),15,'已學單詞測驗');else if(PR.tab==='trans')h+=pTrans();else if(PR.tab==='num')h+=pNum();else if(PR.tab==='mis')h+=pMis();else if(PR.tab==='ai')h+=vcCard();else h+=pTalk();
   return h;
 }
 function srcBar(kind){
@@ -4907,6 +4914,7 @@ function vMe(){
    '<li><b>講嘢評分：</b>主屏幕 App 唔支援網頁語音識別，請用「開始講（鍵盤 🎤）」：切換到英文鍵盤 → 撳 🎤 → 講完停一停就自動評分。</li>'+
    '<li><b>見唔到 🎤：</b>設定 → 一般 → 鍵盤 → 開啟「啟用聽寫」。</li>'+
    '<li><b>錄音冇反應：</b>設定 → 私隱與安全性 → 麥克風，允許 Safari；第一次錄音時撳「允許」。</li>'+
+   '<li><b>想好似 ChatGPT 咁同 AI 對話：</b>去「練習 → AI 語音對話」，揀場景再撳「用 ChatGPT 語音開始」；練習指示會自動複製，貼上之後撳語音掣就可以傾。</li>'+
    '<li><b>AI 老師：</b>喺 Claude App 入面打開呢個學習程式，可以直接用 AI 批改；喺主屏幕 App 撳「AI 老師」會打開 Claude 幫你批改（問題已自動複製）。</li></ol>'+
    '<div class="btns"><button class="btn jade" data-act="voice-check">'+ICON.spk+' 一鍵檢查聲音同咪</button></div><div id="vcRes" aria-live="polite"></div></section>';
   h+='<section class="card"><h2 class="sec-h">學習頁面</h2><div class="seg" role="group" aria-label="學習頁面"><button data-act="layout" data-v="step" aria-pressed="'+!S.set.allInOne+'">分步學習（推薦）</button><button data-act="layout" data-v="all" aria-pressed="'+!!S.set.allInOne+'">一頁顯示全部</button></div><p class="small muted" style="margin:8px 0 0">分步學習：一次只顯示當前這一步，做完進入下一步。一頁顯示：當天所有內容在同一頁。</p></section>';
@@ -4993,6 +5001,7 @@ function rerenderTr(key){const items=trItems(key)||[];let title='中譯英口頭
 function act(a,ds,el){
   const n=ds.day?clampDay(ds.day):S.cur;
   if(coAct(a,ds))return;
+  if(vcAct(a,ds))return;
   switch(a){
   case 'sheet-close':closeSheet();break;
   case 'blk':{const d=S.done[n]||(S.done[n]={});d[ds.k]=d[ds.k]?0:1;if(d[ds.k]){S.log[dkey()]=1;S.max=Math.max(S.max,n)}save();renderKeep();
@@ -5362,6 +5371,8 @@ function aiRun(outId,prompt){
 }
 
 /* ---------- 跟讀 / 講句子（目標句子） ---------- */
+function coCJK(t){return /[\u3400-\u9fff]/.test(String(t||''))}
+function coCJKWarn(){return '<p class="note warn" style="margin-top:10px"><b>出咗中文字？</b>你用緊中文鍵盤，所以聽寫變咗中文。撳鍵盤左下角 🌐 轉做 <b>English</b> 鍵盤，再撳 🎤 用英文講。<br>想好似 ChatGPT 咁直接講：去「練習 → AI 語音對話」。</p>'}
 function coIOSHint(){return isIOS()?'<p class="small muted" style="margin:6px 0 0">冇聲？iPhone 請關閉靜音模式 🔕（側邊開關／控制中心），再調大音量。</p>':''}
 function coDictHelp(){return '<details class="dd coh"><summary>點樣用鍵盤 🎤 講？</summary><ol class="small"><li>撳「🎤 開始講」，鍵盤會彈出嚟。</li><li>用 🌐 切換到<b>英文鍵盤</b>，再撳鍵盤上嘅 🎤（聽寫）。</li><li>用英文講；講完停一停，程式會<b>自動評分</b>。</li></ol><p class="small muted">見唔到 🎤：設定 → 一般 → 鍵盤 → 開啟「啟用聽寫」。</p></details>'}
 function speakBody(){
@@ -5373,6 +5384,7 @@ function speakBody(){
   if(s.err)h+='<p class="note warn small" style="margin-top:10px">'+esc(s.err)+'</p>';
   h+=coDictHelp();
   h+='<div id="spRes">'+(s.input?coResHTML(coScore(s.en,s.input),s.en,s.input):'')+'</div>';
+  h+='<p class="small" style="margin:10px 0 0">想同 AI 好似真人咁傾偈、講錯即刻糾正？<button class="btn ghost" data-act="vc-open">AI 語音對話</button></p>';
   h+='<h3 style="font-size:15px;margin-top:14px">錄音對比</h3>'+recWidget('sp');
   h+='<p class="small muted" style="margin-top:8px">分數只供參考：重點係聽清楚自己同原音嘅分別，紅色同橙色嘅字多練幾次。</p>';
   return h;
@@ -5381,6 +5393,7 @@ let coT=null;
 function coScoreNow(quiet){
   if(!SP)return;const el=$('spIn'),said=el?el.value:(SP.input||'');SP.input=said;
   const box=$('spRes');if(!String(said).trim()){if(box)box.innerHTML='';return}
+  if(coCJK(said)){if(box)box.innerHTML=coCJKWarn();return}
   const r=coScore(SP.en,said);if(box)box.innerHTML=coResHTML(r,SP.en,said);
   SP.res=r;S.log[dkey()]=1;misSent(SP.en,SP.zh,r.score);save();
   if(!quiet&&box)try{box.scrollIntoView({block:'nearest'})}catch(e){}
@@ -5408,7 +5421,7 @@ function freeBox(id,ctx,model,label){
    '<div id="ftres-'+id+'">'+(st.input?coFreeHTML(coFree(st.input,ctx),id):'')+'</div><div id="aiOut-'+id+'"></div></div>';
 }
 function ftCheck(id,quiet){const st=FT[id];if(!st)return;const el=$('ft-'+id);if(el)st.input=el.value;const box=$('ftres-'+id);if(!box)return;
-  if(!String(st.input||'').trim()){box.innerHTML='';return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
+  if(!String(st.input||'').trim()){box.innerHTML='';return}if(coCJK(st.input)){box.innerHTML=coCJKWarn();return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
 function coAct(a,ds){
   switch(a){
   case 'sp-focus':{const el=$('spIn');if(el){try{el.focus();el.setSelectionRange(el.value.length,el.value.length)}catch(e){}}return true}
@@ -5421,6 +5434,78 @@ function coAct(a,ds){
     if(ds.mode==='t'){if(!SP)return true;const el=$('spIn'),said=(el?el.value:SP.input)||'';if(!said.trim()){toast('先講一句，再撳 AI 老師');return true}aiRun('aiOut-t',aiPromptT(SP.en,said));return true}
     const st=FT[ds.id];if(!st)return true;const el=$('ft-'+ds.id);if(el)st.input=el.value;if(!String(st.input||'').trim()){toast('先講或者打一段英文，再撳 AI 老師');return true}
     aiRun('aiOut-'+ds.id,aiPromptF(st.ctx,st.model,st.input));return true}
+  }
+  return false;
+}
+
+/* ---------- AI 語音陪練：用 ChatGPT / Claude 嘅語音模式，同 AI 好似真人咁用英文對話 ---------- */
+/* 網頁版喺 iPhone 主屏幕 App 做唔到連續語音識別，亦冇內置 AI；所以由程式準備好場景同糾正規則，交畀 ChatGPT / Claude 嘅專業語音模式。 */
+const VC={sc:'today',mode:'instant'};
+const VC_SC=[
+ {id:'today',zh:'今日課題'},
+ {id:'client',zh:'客戶會議',en:'A meeting at a bank in Hong Kong. You are Mrs. Chan, a 55-year-old client with HK$2 million in savings. You are worried about inflation and want a safe, regular income. I am your relationship manager.'},
+ {id:'interview',zh:'金融面試',en:'A job interview for a client-facing role at a bank in Hong Kong. You are the hiring manager. Ask me common interview questions one at a time, and follow up on my answers like a real interviewer.'},
+ {id:'meeting',zh:'晨會匯報',en:'The morning meeting of a wealth management team in Hong Kong. You are my team head. Ask me to give a short update on the markets and my clients, then ask follow-up questions.'},
+ {id:'phone',zh:'電話會議',en:'A phone call with a colleague in London about a client report that is due on Friday. You are the colleague in London; I work in the Hong Kong office.'},
+ {id:'complaint',zh:'處理投訴',en:'A client calls the bank, upset because a transfer has been delayed for the third time. You are the angry client; I am the bank staff who must calm you down and solve the problem.'},
+ {id:'network',zh:'社交場合',en:'A networking event for finance professionals in Central, Hong Kong. You are a friendly manager from a fintech company. Make small talk with me and ask about my work.'},
+ {id:'book',zh:'讀本討論'},
+ {id:'free',zh:'自由傾偈',en:'A relaxed conversation. You are a friendly colleague. Talk with me about daily life, work and my plans, and ask me questions.'}
+];
+function vcLessonDay(){let n=S.cur;if(typeOf(n)!=='lesson'){const ds=lessonDaysIn(1,n);n=ds.length?ds[ds.length-1]:1}return n}
+function vcBookCh(){let id=null;for(let d=S.cur;d>=1;d--){if(BOOK_DAY[d]){id=BOOK_DAY[d];break}}return (id&&bkById(id))||BOOK[0]}
+function vcScenario(){
+  const sc=VC_SC.filter(function(x){return x.id===VC.sc})[0]||VC_SC[0];
+  if(sc.id==='today'){const n=vcLessonDay(),l=L[n];
+    return {label:'第 '+n+' 天：'+l.t+'（'+l.e+'）',
+      text:'Role-play a real situation based on my lesson today: "'+l.e+'". Choose a realistic Hong Kong setting for this topic, tell me who you are and who I am, then start. Try to make me use these words: '+l.words.slice(0,10).map(function(w){return w.en}).join(', ')+'. Sentences I learned today: '+l.sents.slice(0,4).map(function(s){return s.en}).join(' / ')}}
+  if(sc.id==='book'){const ch=vcBookCh();
+    return {label:'讀本第 '+bkNum(ch)+' 章：'+ch.zh,
+      text:'A discussion at work about "'+ch.t+'". You are a senior colleague. Ask me to explain the key ideas in simple English, as if I were talking to a client, and ask follow-up questions. Key terms: '+ch.kw.slice(0,8).map(function(k){return k[0]}).join(', ')+'.'}}
+  return {label:sc.zh,text:sc.en};
+}
+function vcPrompt(){
+  const s=vcScenario(),n=vcLessonDay();
+  const fix=VC.mode==='instant'
+    ?'2. After each of my answers, if there is any mistake, start with a very quick correction: say "Better: ..." with the corrected sentence, then explain why in ONE short sentence in Hong Kong Cantonese (grammar or English logic, for example tense, articles, word order, or putting the main point first). Then continue the role-play. If my answer was correct and natural, just say "Nice!" and continue.'
+    :'2. Do not interrupt me with corrections during the conversation; keep it going naturally and remember my mistakes for the summary.';
+  return 'You are my English speaking coach and role-play partner for working in Hong Kong finance.\n'+
+    'About me: I am a Hongkonger and my first language is Cantonese. I am on Day '+n+' of a 90-day English course, so my English is still developing. I want to speak naturally and professionally.\n'+
+    'Scenario: '+s.text+'\n\n'+
+    'Rules for this voice conversation:\n'+
+    '1. Speak natural, professional English, a little slower than normal. Keep your turns short (1 to 3 sentences) and end with a question so that I keep talking.\n'+fix+'\n'+
+    '3. After every 5 of my answers, give me a quick score out of 10 for grammar, vocabulary and fluency, in one sentence.\n'+
+    '4. If I am silent or say "help" or "唔識", give me a model sentence that I can repeat.\n'+
+    '5. When I say "summary" or "總結", stop the role-play and summarise in Hong Kong Cantonese: my 3 most important mistakes with the corrected sentences, 3 useful phrases to remember, and one tip for next time.\n'+
+    'Start now: greet me in character and ask your first question.';
+}
+function vcCard(){
+  const s=vcScenario();
+  let h='<section class="card vc" id="vcCard"><h2 class="sec-h">AI 語音陪練 <span class="tag">Live conversation</span></h2>'+
+    '<p style="margin-top:0">好似你用開嘅 ChatGPT 語音咁，同 AI 用英文傾偈：佢扮客戶、面試官或者同事；你講錯，佢即刻糾正，再用廣東話講文法同英文邏輯。</p>';
+  h+='<label class="f">揀場景</label><div class="seg vcsc" role="group" aria-label="場景">'+VC_SC.map(function(x){return '<button data-act="vc-sc" data-id="'+x.id+'" aria-pressed="'+(VC.sc===x.id)+'">'+esc(x.zh)+'</button>'}).join('')+'</div>';
+  h+='<p class="small muted" style="margin:6px 0 0">'+esc(s.label)+'</p>';
+  h+='<label class="f">糾正方式</label><div class="seg" role="group" aria-label="糾正方式"><button data-act="vc-mode" data-v="instant" aria-pressed="'+(VC.mode==='instant')+'">每句即時糾正</button><button data-act="vc-mode" data-v="end" aria-pressed="'+(VC.mode==='end')+'">講完先總結</button></div>';
+  h+='<div class="btns"><button class="btn pri" data-act="vc-go" data-app="chatgpt">'+ICON.mic+' 用 ChatGPT 語音開始</button><button class="btn" data-act="vc-go" data-app="claude">用 Claude 語音</button></div>';
+  h+='<ol class="small vcsteps"><li>撳上面個掣：練習指示會自動<b>複製</b>，再打開 ChatGPT。</li><li>喺 ChatGPT 撳輸入框 → <b>貼上</b> → 傳送。</li><li>撳輸入框旁邊嘅<b>語音掣</b>（波浪圖示），用英文講。講錯佢會即刻糾正；想結束就講 <b>“summary”</b>，佢會用廣東話總結你嘅錯處。</li></ol>';
+  h+='<details class="dd"><summary>睇吓會交畀 AI 嘅指示</summary><pre class="vcpre">'+esc(vcPrompt())+'</pre><div class="btns"><button class="btn" data-act="vc-copy">只複製指示</button></div></details>';
+  return h+'</section>';
+}
+function vcCopy(t){let ok=false;
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).catch(function(){});ok=true}}catch(e){}
+  if(!ok){try{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();ok=document.execCommand('copy');ta.remove()}catch(e){}}
+  return ok}
+function vcAct(a,ds){
+  switch(a){
+  case 'vc-sc':VC.sc=ds.id||'today';rerenderCard('vcCard',vcCard);return true;
+  case 'vc-mode':VC.mode=ds.v==='end'?'end':'instant';rerenderCard('vcCard',vcCard);return true;
+  case 'vc-open':closeSheet();PR.tab='ai';go('practice');return true;
+  case 'vc-copy':vcCopy(vcPrompt());toast('已複製練習指示');return true;
+  case 'vc-go':{const p=vcPrompt(),cl=ds.app==='claude';vcCopy(p);S.log[dkey()]=1;S.vc=(S.vc||0)+1;save();
+    const url=(cl?'https://claude.ai/new?q=':'https://chatgpt.com/?q=')+encodeURIComponent(p);
+    let w=null;try{w=window.open(url,'_blank')}catch(e){}
+    if(w){try{w.opener=null}catch(e){}}else location.href=url;
+    toast('已複製指示。喺 '+(cl?'Claude':'ChatGPT')+' 貼上、傳送，再撳語音掣開始講。');return true}
   }
   return false;
 }
