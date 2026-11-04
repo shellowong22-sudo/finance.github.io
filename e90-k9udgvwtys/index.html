@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="6c85a996bd">
+<meta name="app-ver" content="325a106e79">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -605,6 +605,30 @@ svg.vz[data-hv]:focus{outline:none}svg.vz[data-hv]:focus-visible{outline:2px sol
 button.row.bkrow{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);border-radius:0;font:inherit;color:inherit;cursor:pointer;padding-left:0;padding-right:0}
 button.row.bkrow:first-child{border-top:0}
 button.row.bkrow .en{font-weight:600}
+/* daily mission: measurable goals per step */
+.pgoals{margin:12px 0 0;border-top:1px solid var(--line);padding-top:10px;display:grid;gap:12px}
+.pgh{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--accent-text);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pgh span{font-weight:500;letter-spacing:0;color:var(--muted)}
+.pg{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:5px;align-items:center}
+.pgt{grid-column:1;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+.pgt svg{width:14px;height:14px;vertical-align:-2px;margin-right:4px;color:var(--ok)}
+.pgr{grid-column:1;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);min-width:0}
+.pgb{flex:1;min-width:36px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.pgb>i{display:block;height:100%;background:var(--jade);border-radius:99px;transition:width .3s}
+.pgr b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pgr span{white-space:nowrap}
+.pg.ok .pgb>i{background:var(--ok)}
+.pg.ok .pgt{color:var(--muted)}
+.pg>.pga{grid-column:2;grid-row:1/span 2;min-height:34px;padding:5px 12px;font-size:13.5px}
+.dprog{flex-wrap:wrap;row-gap:8px}
+.dprog .bar{flex:1 1 100%}
+.pgx .btns{align-items:center}
+.wchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.wc{font-size:13px;line-height:1.3;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted)}
+.wc.on{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);font-weight:700}
+.allh{display:flex;align-items:center;gap:10px;font-size:18px;margin:28px 0 0}
+.allh .no{flex-shrink:0;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;background:var(--accent);color:var(--accent-ink)}
+.allh+.pgoals{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:12px 14px;margin-top:10px}
 
 </style>
 </head>
@@ -1913,7 +1937,8 @@ const GUIDE=[
 <p>這套程式為“零基礎、每天 8 小時、目標在香港金融行業工作、以口語為重點”的你設計。90 天分三個階段，每 7 天安排 1 個複習日，第 30、60、90 天是階段測試。</p>
 <h4>每天怎麼用</h4>
 <ol>
-<li>打開 <b>今日</b>：一天分成 7 步（發音、單詞、文法、聽力、口語、閱讀、復盤），一次只顯示當前這一步。做完點 <b>完成本步 · 下一步</b>。喜歡一次看完全部內容，可以點步驟欄最右邊的 <b>一頁顯示</b>。</li>
+<li>打開 <b>今日</b>：一天分成 7 步（發音、單詞、文法、聽力、口語、閱讀、復盤），一次只顯示當前這一步。每一步上面有 <b>今日目標</b>，例如核心句型每句講 3 次、每次 80 分以上，溫故句子要當日重新講、重新聽寫。目標按你真正做咗嘅練習計，做夠就自動打勾；未做夠都可以撳 <b>完成本步</b>，不過要撳兩次。喜歡一次看完全部內容，可以點步驟欄最右邊的 <b>一頁顯示</b>。</li>
+<li>頂部會顯示 <b>任務完成 %、已練幾耐、全部做完約幾耐</b>。「已練」係真實時間：App 喺前台、2 分鐘內有操作先計；外部 podcast 同閱讀用 <b>開始計時</b> 記錄。普通課日全部做完約 6–7½ 小時，複習日約 5½–6 小時。</li>
 <li><b>資料庫</b> 裏有發音系統課、語法總表、場景句庫和全局搜尋，隨時可以查、隨時可以練。</li>
 <li>每個單詞、句子、對話都可以點 🔊 聽原音；點 <b>慢</b> 用慢速聽。</li>
 <li>口語練習時點 <b>🎙 跟讀</b> → <b>開始講（鍵盤 🎤）</b>：用 iPhone 鍵盤嘅聽寫講英文，講完停一停就<b>即刻評分</b>，仲會標出講錯嘅字、即時糾正，並解釋文法同英文邏輯。想要更詳細嘅批改，撳 <b>AI 老師</b>。</li><li>聽唔到朗讀？iPhone 開咗靜音模式（🔕）網頁朗讀會冇聲，記得關咗佢。詳情見 <b>我的 → 聲音、講嘢評分疑難</b>。</li><li><b>資料庫 → 金融英文讀本</b>：27 章金融英文，每章有圖表、關鍵詞、口語任務同練習；第 31 日起每日「閱讀」會推薦相關章節。</li>
@@ -4721,9 +4746,9 @@ function sentsOf(days,withDlg){const r=[];days.forEach(function(d){if(!L[d])retu
 
 const BLOCKS=[
  {k:'pron',s:'發音',time:'08:30–09:30',min:60,t:'發音與影子跟讀'},
- {k:'vocab',s:'單詞',time:'09:30–10:45',min:75,t:'單詞學習與複習'},
- {k:'gram',s:'文法',time:'11:00–12:00',min:60,t:'文法與句型'},
- {k:'listen',s:'聽力',time:'14:00–15:00',min:60,t:'聽力精聽與聽寫'},
+ {k:'vocab',s:'單詞',time:'09:40–10:40',min:60,t:'單詞學習與複習'},
+ {k:'gram',s:'文法',time:'10:50–11:35',min:45,t:'文法與句型'},
+ {k:'listen',s:'聽力',time:'13:30–15:00',min:90,t:'聽力精聽與聽寫'},
  {k:'speak',s:'口語',time:'15:15–17:15',min:120,t:'口語實戰'},
  {k:'read',s:'閱讀',time:'19:30–20:30',min:60,t:'閱讀理解'},
  {k:'out',s:'復盤',time:'20:30–21:15',min:45,t:'輸出與復盤'}
@@ -4732,46 +4757,46 @@ const CHECK=['清晰度','發音','重音與節奏','流利度','結構','詞彙
 function blockDesc(n,k){
   const t=typeOf(n),ph=phaseOf(n),res=RES[ph.n],pron=PRON[weekOf(n)-1];
   if(t==='lesson'&&L[n]&&L[n].ext){return ({
-    pron:'本週發音重點：'+pron+'。跟讀“核心句型”和“句型替換”，每句 5-10 遍，模仿重音、停頓和語調。',
-    vocab:'學習今日 '+L[n].words.length+' 個單詞：看音標、聽發音、讀例句，各跟讀 3 遍；遮住中文自測；再去“練習 → 閃卡”刷完今日到期的複習。',
-    gram:'理解今日文法，例句各讀 5 遍；完成 5 道文法練習並看懂每題解析；再用這個文法自己造 5 個句子說出來。',
-    listen:'先做本課句子和兩段對話的聽寫，再到“練習 → 數字聽力”做 1 組金額和百分比；然後精聽：'+res.listen,
-    speak:'① 中譯英口頭翻譯 10 句（先說再看答案）② 句型替換練習 ③ 兩段對話角色扮演，A、B 各演一次 ④ 完成口語任務：撳咪直接講，即刻評分同糾正。',
-    read:'完成今日閱讀和 5 道理解題，再把文章大聲朗讀 2 遍；課外閱讀：'+res.read,
-    out:'錄一段 2 分鐘獨白複述今天的閱讀文章，寫 5 句英文日記，對照“口語自評清單”找出 1 個改進點。'
+    pron:'本週發音重點：'+pron+'。核心句型每句先聽、慢速跟讀，再撳咪講 3 次（每次 80 分以上）；然後重講 1、3、7、14、30 日前嘅句子。',
+    vocab:'學習今日 '+L[n].words.length+' 個單詞：看音標、聽發音，每個例句撳咪講到 70 分以上；用最少 10 個新詞自己造句；再刷完今日閃卡。',
+    gram:'理解今日文法，做完練習題並看懂解析；例句每句講 2 次、句型替換每句講一次；最後用這個文法自己講 8 句。',
+    listen:'先做聽力理解題，再聽寫今日句子同對話、溫故句子（80% 以上先計）；然後開計時器精聽 45 分鐘：'+res.listen,
+    speak:'① 對話每句台詞講到 75 分以上，再做角色扮演（每個角色各演一次）② 中譯英 10 句 ③ 口語任務同話題自由講，各講幾次，累計 4 分鐘同 5 分鐘。',
+    read:'完成今日閱讀和理解題，再逐句朗讀文章；然後開計時器課外閱讀 30 分鐘：'+res.read,
+    out:'不看稿複述今日內容（累計 3 分鐘），寫 6 句英文日記，再按“口語自評”8 項幫自己打分，找出 1 個改進點。'
   })[k]}
   if(t==='lesson'){return ({
-    pron:'本週發音重點：'+pron+'。跟讀下方“核心句型”每句 10 遍，模仿重音、停頓和語調。',
-    vocab:'學習 15 個新詞：每個詞點讀並跟讀 3 遍，遮住中文自測；再去“練習 → 閃卡”刷完今日到期的複習。',
-    gram:'理解今日文法，例句各讀 5 遍，再用這個文法自己造 5 個句子並說出來。',
-    listen:'先做本課句子和對話的聽寫，再精聽：'+res.listen,
-    speak:'對話角色扮演 A、B 各 3 遍（先看稿、再不看稿）→ 完成口語任務：撳咪直接講，即時糾正。',
-    read:'大聲朗讀今天的對話和句子 3 遍；然後閱讀：'+res.read,
-    out:'錄一段 2 分鐘獨白複述今天所學，寫 5 句英文日記，對照“口語自評清單”找出 1 個改進點。'
+    pron:'本週發音重點：'+pron+'。核心句型每句講 3 次（每次 80 分以上），再重講之前學過嘅句子。',
+    vocab:'學習今日新詞：每個例句撳咪講到 70 分以上，用新詞自己造句，再刷完今日閃卡。',
+    gram:'理解今日文法，例句每句講 2 次，再用這個文法自己講 8 句。',
+    listen:'先聽寫本課句子和對話，再開計時器精聽：'+res.listen,
+    speak:'對話每句講到 75 分以上，角色扮演每個角色各演一次，再完成口語任務同話題自由講。',
+    read:'逐句朗讀今日內容；然後開計時器閱讀：'+res.read,
+    out:'不看稿複述今日所學（累計 3 分鐘），寫 6 句英文日記，按“口語自評”8 項打分。'
   })[k]}
   if(t==='review'){return ({
-    pron:'本週發音重點複習：'+pron+'。從本週句子中挑 10 句做影子跟讀。',
-    vocab:'閃卡複習本週全部單詞，把“不認識”的詞各造一個句子。',
-    gram:'回顧本週的文法點（見下方列表），每個文法口頭造 3 句。',
-    listen:'本週句子隨機聽寫 20 句，統計正確率。',
-    speak:'不看稿完成本週 3 段對話的角色扮演；再錄一段 3 分鐘獨白：總結本週學到的內容。',
-    read:'完成下方本週閱讀文章和 3 道理解題，然後朗讀全文 2 遍。',
-    out:'按“口語自評清單”給本週最好的一段錄音打分，寫一段 5-8 句的英文周總結。'
+    pron:'本週發音重點複習：'+pron+'。影子跟讀 10 句，再把本週全部核心句型今日重講一次（80 分以上）。',
+    vocab:'本週單詞例句抽 30 句今日重講，再刷閃卡複習（數量按到期詞而定）。',
+    gram:'做綜合文法練習，再為本週每個文法點自己講或寫 2 句。',
+    listen:'做聽力理解題，隨機聽寫 20 句，再開計時器精聽 45 分鐘。',
+    speak:'綜合中譯英；本週對話任揀 30 句台詞今日重講；再講本週總結同一個話題，累計 5 分鐘。',
+    read:'完成本週閱讀和理解題，逐句朗讀全文，再開計時器課外閱讀 30 分鐘。',
+    out:'複述本週內容（累計 3 分鐘），寫 6 句英文周總結，按“口語自評”8 項打分。'
   })[k]}
   return ({
-    pron:'綜合跟讀：從本階段隨機抽 15 句，錄音並與原音對比。',
-    vocab:'完成下方 20 題詞彙測驗，錯題加入閃卡複習。',
-    gram:'回顧本階段所有文法點，挑 5 個最不熟的重新造句。',
-    listen:'本階段句子隨機聽寫 20 句，正確率目標 80% 以上。',
-    speak:'階段口語測試：隨機抽 3 個話題，每個說 2 分鐘，講完即時檢查。',
-    read:'完成階段閱讀文章和理解題，用英文口頭複述文章大意。',
-    out:'用下方“口語自評”給自己打分，寫下下一階段的 3 個改進目標。'
+    pron:'綜合跟讀：影子跟讀 10 句，再從本階段抽 40 句核心句型今日重講（80 分以上）。',
+    vocab:'完成 20 題詞彙測驗（錯題自動加入閃卡），再重講 30 個單詞例句，刷閃卡複習。',
+    gram:'做綜合文法練習，再挑本階段 6 個文法點，每個自己講或寫 2 句。',
+    listen:'做聽力理解題，隨機聽寫 20 句（目標 80% 以上），再開計時器精聽 45 分鐘。',
+    speak:'階段口語測試：3 個話題，每個講 2 分鐘（累計 6 分鐘）；再重講 30 句對話台詞同綜合中譯英。',
+    read:'完成階段閱讀和理解題，逐句朗讀全文，再開計時器課外閱讀 30 分鐘。',
+    out:'複述本階段重點（累計 3 分鐘），寫 6 句總結同下一階段 3 個改進目標，按“口語自評”8 項打分。'
   })[k];
 }
 
 /* ---------- 存儲（本機 + 雲端同步，均可失敗降級） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},fav:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},fav:{},pg:{},tm:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -5145,7 +5170,7 @@ function registerSW(){
 
 /* ---------- 進度計算 ---------- */
 function blocksDone(n){const d=S.done[n]||{};return BLOCKS.filter(function(b){return d[b.k]}).length}
-function totalMinutes(){let m=0;Object.keys(S.done).forEach(function(n){const d=S.done[n]||{};BLOCKS.forEach(function(b){if(d[b.k])m+=b.min})});return m}
+function totalMinutes(){return pgTotal()}
 function finCount(){return Object.keys(S.fin).filter(function(k){return S.fin[k]}).length}
 function streak(){let n=0;const d=new Date();if(!S.log[dkey(d)])d.setDate(d.getDate()-1);while(S.log[dkey(d)]&&n<400){n++;d.setDate(d.getDate()-1)}return n}
 function learnedPool(){const r=wordsOf(lessonDaysIn(1,S.max));if(!S.bkw||!Object.keys(S.bkw).length)return r;const seen={};r.forEach(function(w){seen[w.k]=1});
@@ -5172,7 +5197,7 @@ function vDay(n,isToday){
    '<div class="hmeta"><span class="pill">第 '+ph.n+' 階段 · '+esc(ph.t)+'</span><span class="pill grey">第 '+weekOf(n)+' 周</span>'+
    (t==='review'?'<span class="pill warn">複習日</span>':'')+(t==='test'?'<span class="pill red">階段測試</span>':'')+
    (S.fin[n]?'<span class="pill ok">已完成</span>':'')+(isToday?'<span class="pill red">今日學習</span>':'')+'</div>'+
-   '<div class="dprog" aria-label="今日進度"><div class="bar"><i style="width:'+Math.round(bd/7*100)+'%"></i></div><span>'+bd+' / 7 步 · 計劃 8 小時</span></div></section>';
+   '<div class="dprog" aria-label="今日進度" data-pgday="'+n+'">'+pgHeroInner(n)+'</div></section>';
   if(isToday&&Cloud.status!=='on'&&finCount()>=3&&Date.now()-(S.set.lastBk||0)>7*864e5)h+='<div class="note warn" style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="flex:1;min-width:180px">學習進度只儲存在這台設備上。建議每週匯出一次備份，以免換手機或清理瀏覽器時丟失。</span><button class="btn" data-act="export">匯出備份</button><button class="btn ghost" data-act="copy-backup">複製備份代碼</button></div>';
   if(isToday){const nm=misCount();if(nm)h+='<button class="note misnote" data-act="go-mis">錯題本里有 <b>'+nm+'</b> 項待重做，今天抽 10 分鐘清一清 ›</button>'}
   h+='<div class="daynav">'+(n>1?'<a class="btn" href="#day-'+(n-1)+'">‹ 第 '+(n-1)+' 天</a>':'')+(n!==S.cur?'<button class="btn jade" data-act="setcur" data-day="'+n+'">設為當前日</button>':'')+(n<90?'<a class="btn" href="#day-'+(n+1)+'">第 '+(n+1)+' 天 ›</a>':'')+'</div>';
@@ -5187,8 +5212,8 @@ function vDay(n,isToday){
 }
 function stepsBar(n,k){const d=S.done[n]||{};
   return '<nav class="steps" aria-label="學習步驟">'+BLOCKS.map(function(b,i){return '<button class="'+(d[b.k]?'done':'')+'" data-act="step" data-day="'+n+'" data-k="'+b.k+'" aria-current="'+(b.k===k?'step':'false')+'"><span class="no">'+(d[b.k]?ICON.check:(i+1))+'</span>'+esc(b.s)+'</button>'}).join('')+'<button class="all" data-act="allinone" title="把今天全部內容顯示在一頁">一頁顯示</button></nav>'}
-function stepHead(n,idx){const b=BLOCKS[idx],on=!!((S.done[n]||{})[b.k]);
-  return '<section class="card stephead" id="stephead"><div class="kick">Step '+(idx+1)+' / 7 · '+b.time+' · '+b.min+' 分鐘</div><h2>'+esc(b.t)+(on?' <span class="pill ok" style="vertical-align:3px">已完成</span>':'')+'</h2><p class="desc">'+esc(blockDesc(n,b.k))+'</p></section>'}
+function stepHead(n,idx){const b=BLOCKS[idx],on=!!((S.done[n]||{})[b.k]),g=dayGoals(n)[b.k]||[];
+  return '<section class="card stephead" id="stephead"><div class="kick">Step '+(idx+1)+' / 7 · 約 '+pgFmt(pgStepMin(g)||b.min)+'</div><h2>'+esc(b.t)+(on?' <span class="pill ok" style="vertical-align:3px">已完成</span>':'')+'</h2><p class="desc">'+esc(blockDesc(n,b.k))+'</p>'+pgGoalsHTML(n,b.k)+'</section>'}
 function stepFoot(n,idx){const b=BLOCKS[idx],on=!!((S.done[n]||{})[b.k]),last=idx===BLOCKS.length-1;
   let h='<div class="stepfoot">'+(idx>0?'<button class="btn" data-act="step" data-day="'+n+'" data-k="'+BLOCKS[idx-1].k+'">‹ 上一步</button>':'');
   if(on)h+=(last?'<button class="btn" data-act="blk" data-day="'+n+'" data-k="'+b.k+'">取消完成</button>':'<button class="btn gold" data-act="step" data-day="'+n+'" data-k="'+BLOCKS[idx+1].k+'">下一步：'+esc(BLOCKS[idx+1].s)+' ›</button>');
@@ -5197,47 +5222,25 @@ function stepFoot(n,idx){const b=BLOCKS[idx],on=!!((S.done[n]||{})[b.k]),last=id
 function stepCards(n,k){
   const t=typeOf(n);
   if(t==='lesson'){const l=L[n];
-    if(k==='pron')return cardPronFocus(n)+cardSents(n)+(l.pt&&l.pt.length?cardPt(n):'');
-    if(k==='vocab')return cardWords(n,l.words,'今日單詞',l.words.length+' Words',false)+(typeof cardParts==='function'?cardParts(n):'')+cardDue();
-    if(k==='gram')return cardGram(n)+(l.gx&&l.gx.length?cardGx('g'+n,l.gx,'文法練習','先自己選，再看解析'):'');
+    if(k==='pron')return cardPronFocus(n)+cardSents(n)+cardSpaced(n);
+    if(k==='vocab')return cardWords(n,l.words,'今日單詞',l.words.length+' Words',false)+(typeof cardParts==='function'?cardParts(n):'')+cardWordUse(n)+cardDue();
+    if(k==='gram')return cardGram(n)+(l.gx&&l.gx.length?cardGx('g'+n,l.gx,'文法練習','先自己選，再看解析'):'')+(l.pt&&l.pt.length?cardPt(n):'')+cardGramOwn(n);
     if(k==='listen')return cardLq('d'+n)+cardListen(n);
-    if(k==='speak')return cardDlg(n,0)+(l.dlg2&&l.dlg2.length?cardDlg(n,1):'')+(l.tr&&l.tr.length?cardTr('t'+n,l.tr,'中譯英口頭翻譯','看中文，先大聲說出英文，再看答案'):'')+cardTask(n);
-    if(k==='read')return (l.read?readCard('d'+n,l.read,'今日閱讀'):cardRead(n))+(typeof cardBookLink==='function'?cardBookLink(n):'');
-    return cardOut(n);
+    if(k==='speak')return cardDlg(n,0)+(l.dlg2&&l.dlg2.length?cardDlg(n,1):'')+(l.tr&&l.tr.length?cardTr('t'+n,l.tr,'中譯英口頭翻譯','看中文，先大聲說出英文，再看答案'):'')+cardTask(n)+cardTopic(n)+cardChartSay(n);
+    if(k==='read')return (l.read?readCard('d'+n,l.read,'今日閱讀')+cardReadAloud(l.read):cardRead(n))+(typeof cardBookLink==='function'?cardBookLink(n):'')+'<section class="card" id="xread"><h2 class="sec-h">外部閱讀 <span class="tag">Reading</span></h2>'+pgExtHTML('xr',n,RES[phaseOf(n).n].read)+'</section>';
+    return cardOut(n)+cardSelf(n);
   }
   const days=srcDays(n),test=t==='test',scope=test?'本階段':'本週';
-  if(k==='pron')return cardReviewOverview(n)+cardPronFocus(n)+cardShadowWeek(n);
-  if(k==='vocab')return (test?cardQuiz('t'+n,wordsOf(days),20,'階段詞彙測驗'):'')+cardWords(n,wordsOf(days),test?'本階段單詞':'本週單詞','Review',true)+cardDue();
-  if(k==='gram'){const gx=gatherGx(n,test?15:10);return gx.length?cardGx('rg'+n,gx,'綜合文法練習','從'+scope+'隨機抽題'):'<section class="card"><p class="muted" style="margin:0">'+scope+'暫無文法題。</p></section>'}
-  if(k==='listen')return cardLq('w'+n)+cardDictReview(n);
-  if(k==='speak'){const tr=gatherTr(n,test?15:10);return (tr.length?cardTr('rt'+n,tr,'綜合中譯英','從'+scope+'隨機抽題'):'')+cardReviewSpeak(n)}
-  if(k==='read')return READ[n]?readCard(String(n),READ[n],test?'階段閱讀':'本週閱讀'):'';
-  return (test?cardSelf(n):'')+cardOut(n);
+  if(k==='pron')return cardReviewOverview(n)+cardPronFocus(n)+cardShadowWeek(n)+cardWeekSents(n);
+  if(k==='vocab')return (test?cardQuiz('t'+n,wordsOf(days),20,'階段詞彙測驗'):'')+cardWords(n,wordsOf(days),test?'本階段單詞':'本週單詞','Review',true)+cardWeekEx(n)+cardDue();
+  if(k==='gram'){const gx=gatherGx(n,test?15:10);return (gx.length?cardGx('rg'+n,gx,'綜合文法練習','從'+scope+'隨機抽題'):'<section class="card"><p class="muted" style="margin:0">'+scope+'暫無文法題。</p></section>')+cardRvGramOwn(n)}
+  if(k==='listen')return cardLq('w'+n)+cardDictReview(n)+'<section class="card" id="xlisten"><h2 class="sec-h">外部精聽 <span class="tag">Listening</span></h2>'+pgExtHTML('xl',n,RES[phaseOf(n).n].listen)+'</section>';
+  if(k==='speak'){const tr=gatherTr(n,test?15:10);return (tr.length?cardTr('rt'+n,tr,'綜合中譯英','從'+scope+'隨機抽題'):'')+cardWeekDlg(n)+cardReviewSpeak(n)}
+  if(k==='read')return (READ[n]?readCard(String(n),READ[n],test?'階段閱讀':'本週閱讀')+cardReadAloud(READ[n]):'')+'<section class="card" id="xread"><h2 class="sec-h">外部閱讀 <span class="tag">Reading</span></h2>'+pgExtHTML('xr',n,RES[phaseOf(n).n].read)+'</section>';
+  return cardOut(n)+cardSelf(n);
 }
 function vDayAll(n){
-  const t=typeOf(n);let h='';
-  if(t==='lesson'){
-    const l=L[n];
-    h+=cardWords(n,l.words,'今日單詞',l.words.length+' Words',false)+(typeof cardParts==='function'?cardParts(n):'')+cardSents(n)+cardGram(n);
-    if(l.gx&&l.gx.length)h+=cardGx('g'+n,l.gx,'文法練習','先自己選，再看解析');
-    h+=cardDlg(n,0);
-    if(l.dlg2&&l.dlg2.length)h+=cardDlg(n,1);
-    h+=cardLq('d'+n);
-    if(l.tr&&l.tr.length)h+=cardTr('t'+n,l.tr,'中譯英口頭翻譯','看中文，先大聲說出英文，再看答案');
-    if(l.pt&&l.pt.length)h+=cardPt(n);
-    h+=cardTask(n)+cardListen(n);
-    h+=l.read?readCard('d'+n,l.read,'今日閱讀'):cardRead(n);
-    h+=cardOut(n,true);
-  }else{
-    const days=srcDays(n),gx=gatherGx(n,t==='test'?15:10),tr=gatherTr(n,t==='test'?15:10);
-    h+=cardReviewOverview(n)+(t==='test'?cardQuiz('t'+n,wordsOf(days),20,'階段詞彙測驗'):'');
-    if(READ[n])h+=readCard(String(n),READ[n],t==='test'?'階段閱讀':'本週閱讀');
-    if(gx.length)h+=cardGx('rg'+n,gx,'綜合文法練習','從'+(t==='test'?'本階段':'本週')+'隨機抽題');
-    h+=cardLq('w'+n);
-    if(tr.length)h+=cardTr('rt'+n,tr,'綜合中譯英','從'+(t==='test'?'本階段':'本週')+'隨機抽題');
-    h+=cardReviewSpeak(n)+(t==='test'?cardSelf(n):'')+cardWords(n,wordsOf(days),t==='test'?'本階段單詞':'本週單詞','Review',true);
-  }
-  return h;
+  return BLOCKS.map(function(b,i){return '<h2 class="allh" id="all-'+b.k+'"><span class="no">'+(i+1)+'</span>'+esc(b.t)+'</h2>'+pgGoalsHTML(n,b.k)+stepCards(n,b.k)}).join('');
 }
 function cardPronFocus(n){
   const w=weekOf(n),link=(typeof PRON_LINK!=='undefined'&&PRON_LINK[w-1])||'',m=link?pronModule(link):null;
@@ -5246,7 +5249,7 @@ function cardPronFocus(n){
 function pronModule(id){try{const p=id.split('-'),key=p.slice(1).join('-');if(p[0]==='hk'){for(let i=0;i<HKERR.length;i++)if(HKERR[i].id===key)return HKERR[i]}if(p[0]==='rh'){for(let j=0;j<RHYTHM.length;j++)if(RHYTHM[j].id===key)return RHYTHM[j]}}catch(e){}return null}
 function cardDue(){const info=dueInfo();
   return '<section class="card" id="due"><h2 class="sec-h">閃卡複習 <span class="tag">Spaced Review</span></h2><p style="margin:0">今日到期 <b>'+info.due.length+'</b> 個 · 還沒學的新詞 <b>'+info.nw.length+'</b> 個 · 已掌握 <b>'+masteredCount()+'</b> 個</p><div class="btns"><button class="btn pri" data-act="go-cards">去刷今日到期的閃卡</button></div></section>'}
-function cardShadowWeek(n){const list=shuffleSeed(sentsOf(srcDays(n),false),n+11).slice(0,10);
+function cardShadowWeek(n){const list=rvShadow(n);
   return '<section class="card" id="sents"><h2 class="sec-h">影子跟讀 10 句 <span class="tag">Shadowing</span></h2><p class="small muted" style="margin:0 0 6px">從'+(typeOf(n)==='test'?'本階段':'本週')+'句子中抽取。每句先聽、再跟、最後點麥克風打分。</p><div class="rows">'+list.map(rowSent).join('')+'</div></section>'}
 function cardDictReview(n){
   return '<section class="card" id="dictrv"><h2 class="sec-h">聽寫與數字聽力 <span class="tag">Dictation</span></h2><p style="margin:0">從'+(typeOf(n)==='test'?'本階段':'本週')+'句子中隨機聽寫 20 句，統計正確率；再做 1 組數字聽力。</p><div class="btns"><button class="btn pri" data-act="dict-review" data-day="'+n+'">隨機聽寫 20 句</button><button class="btn" data-act="speak-review" data-day="'+n+'">跟讀打分</button><button class="btn jade" data-act="go-num">數字聽力</button></div></section>'}
@@ -5277,23 +5280,23 @@ function cardLq(key){
 }
 function cardOut(n,noTimer){
   const t=typeOf(n);
-  let h='<section class="card" id="out"><h2 class="sec-h">輸出與復盤 <span class="tag">Output</span></h2><ol style="padding-left:20px;margin:0 0 8px;font-size:15px"><li>'+(t==='lesson'?'不看稿，用 2 分鐘複述今天的閱讀或對話（撳咪直接講，即時檢查）。':'用 3 分鐘總結'+(t==='test'?'本階段':'本週')+'學到的內容（撳咪直接講，即時檢查）。')+'</li><li>寫 5 句英文日記：今天學了什麼、哪裏最難、明天要改進什麼。</li><li>對照口語自評 8 項（'+CHECK.join('、')+'），找出 1 個最需要改進的點。</li></ol>';
+  let h='<section class="card" id="out"><h2 class="sec-h">輸出與復盤 <span class="tag">Output</span></h2><ol style="padding-left:20px;margin:0 0 8px;font-size:15px"><li>'+(t==='lesson'?'不看稿，複述今天的閱讀或對話：每次講 1–2 分鐘，睇完回饋再講，累計 3 分鐘。':'總結'+(t==='test'?'本階段':'本週')+'學到的內容：每次講 1–2 分鐘，累計 3 分鐘。')+'</li><li>寫 6 句英文日記：今天學了什麼、哪裏最難、明天要改進什麼。</li><li>對照口語自評 8 項（'+CHECK.join('、')+'），找出 1 個最需要改進的點。</li></ol>';
   h+=freeBox('out'+n,(t==='lesson'?'Retell today\'s reading or dialogue in your own words (Day '+n+': '+L[n].e+')':'Summarise what you learned this '+(t==='test'?'phase':'week')),'');
   h+='<label class="f" for="diary">英文日記（自動儲存，可同步）</label><textarea id="diary" data-day="'+n+'" placeholder="Today I learned how to... / The most difficult part was... / Tomorrow I will...">'+esc(S.note[n]||'')+'</textarea>';
   return h+'</section>';
 }
 function cardTimetable(n){
-  const d=S.done[n]||{};
-  return '<section class="card" id="tt"><h2 class="sec-h">每日 8 小時時間表 <span class="tag">HKT</span></h2><ul class="tt">'+BLOCKS.map(function(b){
-    const on=!!d[b.k];
-    return '<li class="'+(on?'done':'')+'"><button class="chk" data-act="blk" data-day="'+n+'" data-k="'+b.k+'" aria-pressed="'+on+'" aria-label="完成：'+esc(b.t)+'">'+ICON.check+'</button><div><div class="time">'+b.time+' · '+b.min+' 分鐘</div><div class="bt">'+esc(b.t)+'</div><div class="bd">'+esc(blockDesc(n,b.k))+'</div></div></li>';
+  const d=S.done[n]||{},G=dayGoals(n),tot=pgDay(n);
+  return '<section class="card" id="tt"><h2 class="sec-h">今日時間表 <span class="tag">全部做完約 '+pgFmt(tot.min)+'</span></h2><p class="small muted" style="margin:0 0 8px">時間係建議；每一步嘅分鐘數係按今日目標估計（實際練咗幾耐見頂部）。做夠目標會自動打勾。</p><ul class="tt">'+BLOCKS.map(function(b){
+    const on=!!d[b.k],g=G[b.k]||[];
+    return '<li class="'+(on?'done':'')+'"><button class="chk" data-act="blk" data-day="'+n+'" data-k="'+b.k+'" aria-pressed="'+on+'" aria-label="完成：'+esc(b.t)+'">'+ICON.check+'</button><div><div class="time">'+b.time+' · 任務約 '+pgFmt(pgStepMin(g)||b.min)+(g.length?' · 完成 '+pgStepPct(g)+'%':'')+'</div><div class="bt">'+esc(b.t)+'</div><div class="bd">'+esc(blockDesc(n,b.k))+'</div></div></li>';
   }).join('')+'</ul></section>';
 }
 function wordRow(w,compact,n){
   const ip=ipaOf(w.en),ex=!compact&&w.ex,f=n&&WMAP[w.en.toLowerCase()],rv=f&&f.day<n?' <span class="rv" title="第 '+f.day+' 天學過，今天在新場景複習">複習</span>':'';
   return '<div class="wrow"><div class="txt"><div class="en">'+esc(w.en)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+rv+'</div><div class="zh">'+esc(w.zh)+'</div>'+
    (ex?'<div class="ex">'+esc(w.ex)+' <span class="zh">'+esc(w.exzh)+'</span></div>':'')+'</div><div class="acts">'+sayBtn(w.en)+
-   (ex?'<button class="ic" data-say="'+esc(w.ex)+'" aria-label="朗讀例句" title="朗讀例句">例</button>':'')+favBtn(w.en,w.zh)+'</div></div>';
+   (ex?'<button class="ic" data-say="'+esc(w.ex)+'" aria-label="朗讀例句" title="朗讀例句">例</button>'+micBtn(w.ex,w.exzh):'')+favBtn(w.en,w.zh)+'</div></div>';
 }
 function cardWords(n,words,title,tag,compact){
   const hz=S.set.hidezh,hasEx=words.some(function(w){return w.ex});
@@ -5311,7 +5314,7 @@ function cardDlg(n,w){
   const d=dlgOf(n,w),who=[];d.forEach(function(l){if(who.indexOf(l.who)<0)who.push(l.who)});
   const mine=RP.day===n&&RP.w===w,act=mine&&RP.active;
   let h='<section class="card" id="dlgCard'+w+'"><h2 class="sec-h">'+(w?'情景對話二':'情景對話')+' <span class="tag">'+(w?'Dialogue 2':'Dialogue')+'</span></h2><div class="dlg">';
-  h+=d.map(function(l,i){const on=mine&&RP.i===i;return '<div class="ln '+esc(l.who)+(on?' on':'')+(act&&l.who===RP.me?' me':'')+'"><span class="who">'+esc(l.who)+'</span><div class="txt"><div class="en">'+esc(l.en)+'</div><div class="zh">'+esc(l.zh)+'</div></div><div class="acts">'+sayBtn(l.en)+'</div></div>'}).join('');
+  h+=d.map(function(l,i){const on=mine&&RP.i===i;return '<div class="ln '+esc(l.who)+(on?' on':'')+(act&&l.who===RP.me?' me':'')+'"><span class="who">'+esc(l.who)+'</span><div class="txt"><div class="en">'+esc(l.en)+'</div><div class="zh">'+esc(l.zh)+'</div></div><div class="acts">'+sayBtn(l.en)+micBtn(l.en,l.zh)+'</div></div>'}).join('');
   h+='</div><div class="rpbar">';
   if(act){
     const cur=d[RP.i];
@@ -5325,7 +5328,7 @@ function cardDlg(n,w){
   h+='</div></section>';return h;
 }
 function cardTask(n){return '<section class="card" id="task"><h2 class="sec-h">口語任務 <span class="tag">Speaking</span></h2><p>'+esc(L[n].task)+'</p>'+freeBox('task'+n,L[n].task+'（第 '+n+' 天：'+L[n].e+'）','')+'</section>'}
-function cardListen(n){const r=RES[phaseOf(n).n];return '<section class="card" id="listen"><h2 class="sec-h">聽力 <span class="tag">Listening</span></h2><p>用本課 '+(L[n].sents.length+L[n].dlg.length)+' 個句子做聽寫：只聽不看，寫下聽到的內容，程式會逐詞標出對錯。</p><div class="btns"><button class="btn jade" data-act="dict-day" data-day="'+n+'">開始聽寫</button></div><p class="small muted" style="margin-top:10px">課外精聽：'+esc(r.listen)+'</p></section>'}
+function cardListen(n){const r=RES[phaseOf(n).n],sp=spacedItems(n);return '<section class="card" id="listen"><h2 class="sec-h">聽寫 <span class="tag">Dictation</span></h2><p>用本課 '+sentsOf([n],true).length+' 個句子做聽寫：只聽不看，寫低聽到嘅內容，程式會逐詞標出對錯。</p><div class="btns"><button class="btn jade" data-act="dict-day" data-day="'+n+'">聽寫今日句子</button>'+(sp.length?'<button class="btn" data-act="dict-spaced" data-day="'+n+'">聽寫溫故句子</button>':'')+'</div></section><section class="card" id="xlisten"><h2 class="sec-h">外部精聽 <span class="tag">Listening</span></h2>'+pgExtHTML('xl',n,r.listen)+'</section>'}
 function cardRead(n){const r=RES[phaseOf(n).n];return '<section class="card" id="read"><h2 class="sec-h">閱讀 <span class="tag">Reading</span></h2><p>先把今天的對話當作閱讀材料：遮住中文讀懂每一句，再大聲朗讀 3 遍。</p><p class="small muted">課外閱讀：'+esc(r.read)+'</p><p class="small muted">本週的閱讀理解文章在複習日（每 7 天一次）。</p></section>'}
 function cardReviewOverview(n){
   const days=srcDays(n);
@@ -5403,7 +5406,7 @@ function cardReviewSpeak(n){
   const t=typeOf(n),days=srcDays(n);
   const topics=shuffleSeed(TOPICS,n).slice(0,3);
   let h='<section class="card" id="rspeak"><h2 class="sec-h">'+(t==='test'?'階段口語測試':'本週口語復盤')+' <span class="tag">Speaking</span></h2>';
-  h+=t==='test'?'<p>每個話題說 2 分鐘，用 PREP 或 STAR 結構，講完即時檢查：</p>':'<p>① 不看稿，完成本週任意 3 段對話的角色扮演（點“回看”進入當天）；② 錄一段 3 分鐘獨白，總結本週學到的內容；③ 再選一個話題說 2 分鐘：</p>';
+  h+=t==='test'?'<p>每個話題講 2 分鐘，用 PREP 或 STAR 結構，講完即時檢查；三個話題累計 6 分鐘：</p>':'<p>① 講一段 3 分鐘獨白，總結本週學到的內容；② 再揀一個話題講 2 分鐘。兩樣都喺下面撳咪講，累計 5 分鐘：</p>';
   h+='<div class="rows">'+topics.map(function(q){return '<div class="row"><div class="txt"><div class="en">'+esc(q)+'</div></div><div class="acts">'+sayBtn(q)+(typeof ANS==='object'&&ANS[q]?'<button class="btn jade" data-act="ans" data-q="'+esc(q)+'">參考答案</button>':'')+'</div></div>'}).join('')+'</div>';
   h+=freeBox('rv'+n,topics[0],(typeof ANS==='object'&&ANS[topics[0]])?pplain(ANS[topics[0]][1]):'');
   if(t==='review')h+='<p class="small muted" style="margin-top:10px">本週文法：'+days.map(function(d){return esc(L[d].gram.t)}).join(' · ')+'</p>';
@@ -5494,6 +5497,7 @@ function pCards(){
   return h+'</section>';
 }
 function sentPool(){
+  if(PR.src==='spaced'&&PR.day){const sp=spacedItems(PR.day);return shuffle(sp.length?sp:sentsOf([PR.day],true)).slice(0,20)}
   if(PR.src==='day'&&PR.day){const t=typeOf(PR.day);return t==='lesson'?sentsOf([PR.day],true):shuffle(sentsOf(srcDays(PR.day),true)).slice(0,20)}
   if(PR.src==='all')return shuffle(sentsOf(lessonDaysIn(1,S.max),false)).slice(0,15);
   const t=typeOf(S.cur);return t==='lesson'?sentsOf([S.cur],true):shuffle(sentsOf(srcDays(S.cur),true)).slice(0,20);
@@ -5538,7 +5542,7 @@ let MG=null;
 function misCount(){try{return Object.keys(S.mis.g).filter(function(id){return GXMAP[id]}).length+Object.keys(S.mis.s).length}catch(e){return 0}}
 function misTrim(o,max){const k=Object.keys(o);if(k.length<=max)return;k.sort(function(a,b){return (o[a].t||0)-(o[b].t||0)}).slice(0,k.length-max).forEach(function(x){delete o[x]})}
 function misGx(it,right){try{if(!it||!it.id)return;if(right){delete S.mis.g[it.id]}else{const c=S.mis.g[it.id];S.mis.g[it.id]={t:Date.now(),n:(c&&c.n||0)+1};misTrim(S.mis.g,300)}}catch(e){}}
-function misSent(en,zh,score){try{if(!en)return;if(score>=85){delete S.mis.s[en]}else if(score<70){const c=S.mis.s[en];S.mis.s[en]={zh:zh||'',t:Date.now(),n:(c&&c.n||0)+1,sc:score};misTrim(S.mis.s,150)}}catch(e){}}
+function misSent(en,zh,score,dict){try{if(!en)return;if(!dict)pgSay(en,score);if(score>=85){delete S.mis.s[en]}else if(score<70){const c=S.mis.s[en];S.mis.s[en]={zh:zh||'',t:Date.now(),n:(c&&c.n||0)+1,sc:score};misTrim(S.mis.s,150)}}catch(e){}}
 function pMis(){
   const g=Object.keys(S.mis.g).filter(function(id){return GXMAP[id]}),sk=Object.keys(S.mis.s);
   let h='<section class="card"><h2 class="sec-h">錯題本 <span class="tag">Mistakes</span></h2><p class="small muted" style="margin:0 0 6px">文法題答錯、聽寫或跟讀低於 70 分的句子會自動收進來；文法題做對、句子跟讀或聽寫達到 85 分就會自動移出。專門練自己的薄弱點，是提高最快的方法。</p><p style="margin:0"><b>'+g.length+'</b> 道文法題 · <b>'+sk.length+'</b> 個薄弱句子</p></section>';
@@ -5615,7 +5619,7 @@ function refreshSpeak(){if(!SP)return;if(SP.host==='sheet')refreshSheet();else r
 function vGuide(){
   let h='<section class="hero" style="grid-template-columns:1fr;padding-top:8px"><div class="htitle"><h1>學習方法與技巧</h1><div class="en">Think, learn and speak like a professional</div></div></section><p class="small muted" style="margin:0 0 6px">點擊帶底色的英文可以聽發音。</p>';
   const gen={
-    schedule:{t:'每日 8 小時學習安排',h:'<p>時間按香港時間（HKT）設計，口語相關練習（發音跟讀、口語實戰、輸出復盤）約佔 3 小時 45 分鐘，接近一半。</p><table><tr><th>時間</th><th>內容</th><th>時長</th></tr>'+BLOCKS.map(function(b){return '<tr><td style="white-space:nowrap">'+b.time+'</td><td>'+esc(b.t)+'</td><td>'+b.min+' 分鐘</td></tr>'}).join('')+'</table><p>每學 50 分鐘休息 10 分鐘；午飯後可以小睡 20 分鐘。週末如果需要休息，可以把複習日安排在週日，強度減半。</p>'},
+    schedule:{t:'每日學習安排與任務',h:'<p>每一步上面都有「今日目標」，例如核心句型每句講 3 次、每次 80 分以上；溫故句子要喺當日重新講、重新聽寫。目標係按你真正做咗嘅練習計，做夠先自動打勾，唔係撳「完成」就算。</p><p>按目標估計：普通課日全部做完約 6–7½ 小時（第 1 週較少，因為要溫嘅舊內容未多；第 31 天起多咗讀本章節同講圖表），複習日約 5½–6 小時，階段測試日約 6 小時。外部精聽 45 分鐘同課外閱讀 30 分鐘要用計時器記錄。「我的學習」顯示嘅係你實際練習嘅時間：App 喺前台、2 分鐘內有操作先計。</p><p>下面係建議時間表（香港時間），口語相關練習（發音、口語實戰、輸出復盤）約佔 3 小時 45 分鐘，接近一半。</p><table><tr><th>時間</th><th>內容</th><th>時長</th></tr>'+BLOCKS.map(function(b){return '<tr><td style="white-space:nowrap">'+b.time+'</td><td>'+esc(b.t)+'</td><td>'+b.min+' 分鐘</td></tr>'}).join('')+'</table><p>每學 50 分鐘休息 10 分鐘；午飯後可以小睡 20 分鐘。週末如果需要休息，可以把複習日安排在週日，強度減半。</p>'},
     pron:{t:'發音入門：字母、音標與難點',h:'<h4>26 個字母</h4><div class="letters">'+LETTERS.map(function(l){return '<button data-say="'+l+'" aria-label="朗讀字母 '+l+'">'+l+'</button>'}).join('')+'</div><h4>44 個音素（點擊聽例詞）</h4><p class="small muted">國內教材常說 48 個音標，多出的是 tr、dr、ts、dz 四個輔音組合。</p><div class="ipa">'+IPA.map(function(p){return '<button data-say="'+esc(p[2])+'"><b>/'+esc(p[1])+'/</b><span>'+esc(p[2])+'</span><small>'+esc(p[0])+'</small></button>'}).join('')+'</div><h4>中國學習者的 6 個發音難點</h4><table><tr><th>難點</th><th>例詞</th><th>要領</th></tr>'+PRON_TIPS.map(function(t){return '<tr><td><b>'+esc(t[0])+'</b></td><td><i class="say">'+esc(t[1])+'</i></td><td>'+esc(t[2])+'</td></tr>'}).join('')+'</table><h4>13 周發音重點</h4><ol>'+PRON.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ol>'},
     interview:{t:'香港金融面試高頻 30 題',h:'<p>每題用 1-2 分鐘作答：觀點題用 PREP，經歷題用 STAR。先自己說一遍，再點“參考答案”看結構和範例，最後逐句跟讀。點“練習”會把題目帶到自由口語頁，配合計時和錄音。</p><ol class="qlist">'+INTERVIEW.map(function(q,i){return '<li><span class="t">'+esc(q)+'</span>'+sayBtn(q)+'<button class="btn jade" data-act="ans" data-q="'+esc(q)+'">參考答案</button><button class="btn" data-act="iv-go" data-i="'+i+'">練習</button></li>'}).join('')+'</ol>'}
   };
@@ -5663,7 +5667,7 @@ function vMe(){
    '<div class="stat"><b>'+finCount()+'<small style="font-size:15px"> / 90</small></b><span>已完成天數</span></div>'+
    '<div class="stat"><b>'+S.cur+'</b><span>當前學習日</span></div>'+
    '<div class="stat"><b>'+streak()+'</b><span>連續學習天數</span></div>'+
-   '<div class="stat"><b>'+(Math.round(mins/6)/10)+'</b><span>累計學習小時</span></div>'+
+   '<div class="stat"><b>'+(Math.round(mins/6)/10)+'</b><span>實際練習小時</span></div>'+
    '<div class="stat"><b>'+info.pool.length+'</b><span>已學單詞</span></div>'+
    '<div class="stat"><b>'+masteredCount()+'</b><span>已掌握單詞</span></div>'+
   '</div>';
@@ -5747,7 +5751,7 @@ function go(hash){if(location.hash==='#'+hash){route()}else{location.hash=hash}}
 function rpStep(){
   if(!RP.active)return;
   const d=dlgOf(RP.day,RP.w);
-  if(RP.i>=d.length){RP.active=false;RP.wait=false;S.log[dkey()]=1;save();rerenderDlg();return}
+  if(RP.i>=d.length){RP.active=false;RP.wait=false;S.log[dkey()]=1;pgRP(RP.day,RP.w,RP.me);save();rerenderDlg();return}
   const l=d[RP.i];
   if(l.who===RP.me){RP.wait=true;rerenderDlg();return}
   RP.wait=false;rerenderDlg();
@@ -5765,14 +5769,15 @@ function rerenderTr(key){const items=trItems(key)||[];let title='中譯英口頭
 function act(a,ds,el){
   const n=ds.day?clampDay(ds.day):S.cur;
   if(coAct(a,ds))return;
+  if(pgAct(a,ds))return;
   switch(a){
   case 'sheet-close':closeSheet();break;
-  case 'blk':{const d=S.done[n]||(S.done[n]={});d[ds.k]=d[ds.k]?0:1;if(d[ds.k]){S.log[dkey()]=1;S.max=Math.max(S.max,n)}save();renderKeep();
+  case 'blk':{const d=S.done[n]||(S.done[n]={});if(!d[ds.k]&&!pgConfirm(n,ds.k))break;d[ds.k]=d[ds.k]?0:1;if(d[ds.k]){S.log[dkey()]=1;S.max=Math.max(S.max,n)}save();renderKeep();
     if(blocksDone(n)===7&&!S.fin[n])toast('7 個學習塊全部完成！點頁面底部“完成第 '+n+' 天”');break}
   case 'setcur':S.cur=n;S.max=Math.max(S.max,n);save();toast('已設為當前學習日：第 '+n+' 天');go('today');break;
   case 'finish':{
-    const left=7-blocksDone(n);
-    if(left>0){openSheet(function(){return '<h3>還有 '+left+' 個學習塊沒有勾選</h3><p>按計劃完成 8 小時學習效果最好。確定要完成第 '+n+' 天嗎？</p><div class="btns"><button class="btn pri" data-act="finish-yes" data-day="'+n+'">確定完成</button><button class="btn" data-act="sheet-close">繼續學習</button></div>'});break}
+    const left=7-blocksDone(n),pd=pgDay(n);
+    if(left>0){openSheet(function(){return '<h3>還有 '+left+' 個步驟未完成</h3><p>今日任務完成 '+pd.pct+'%，已練 '+pgFmt(pgActual(n))+'（全部做完約 '+pgFmt(pd.min)+'）。未做嘅部分會令記憶同口語練習量唔夠。確定要完成第 '+n+' 天嗎？</p><div class="btns"><button class="btn pri" data-act="finish-yes" data-day="'+n+'">確定完成</button><button class="btn" data-act="sheet-close">繼續學習</button></div>'});break}
     finishDay(n);break}
   case 'finish-yes':closeSheet();finishDay(n);break;
   case 'unfin':delete S.fin[n];save();renderKeep();break;
@@ -5780,7 +5785,7 @@ function act(a,ds,el){
   case 'say-all':{const days=srcDays(n);const words=typeOf(n)==='lesson'?L[n].words:wordsOf(days);TTS.chain(words.map(function(w){return w.en}));break}
   case 'dlg-all':{const w=+ds.w===1?1:0;if(RP.active){RP.active=false;rerenderDlg()}TTS.chain(dlgOf(n,w).map(function(l){return l.en}),{each:function(i){RP.day=n;RP.w=w;RP.i=i;RP.active=false;rerenderDlg()},onend:function(){RP.i=-1;rerenderDlg()}});break}
   case 'rp-start':{TTS.stop();const prev=RP.w;RP.active=false;if(RP.day===n&&prev!==(+ds.w===1?1:0)){RP.i=-1;rerenderDlg()}RP.day=n;RP.w=+ds.w===1?1:0;RP.me=ds.me;RP.i=0;RP.active=true;RP.wait=false;rpStep();break}
-  case 'gx':{const st=GXS[ds.key]||(GXS[ds.key]={});const i=+ds.i;if(st[i]!==undefined)break;st[i]=+ds.o;S.log[dkey()]=1;
+  case 'gx':{const st=GXS[ds.key]||(GXS[ds.key]={});const i=+ds.i;if(st[i]!==undefined)break;st[i]=+ds.o;pgQ(ds.key,i);S.log[dkey()]=1;
     const items=gxItems(ds.key);if(items&&items[i])misGx(items[i],+ds.o===items[i].a);if(items){let c=0,all=true;items.forEach(function(it,k){if(st[k]===undefined)all=false;else if(st[k]===it.a)c++});if(all){S.quiz[ds.key]=Math.round(c/items.length*100);}save()}
     rerenderCard('gx-'+ds.key,function(){return cardGx(ds.key,items||[],gxTitle(ds.key),gxSub(ds.key))});break}
   case 'tr-show':{const st=TRS[ds.key]||(TRS[ds.key]={});st[+ds.i]=1;S.log[dkey()]=1;rerenderTr(ds.key);break}
@@ -5809,20 +5814,20 @@ function act(a,ds,el){
   case 'dict-day':case 'dict-review':PR.tab='dict';PR.src='day';PR.day=n;DT=null;go('practice');break;
   case 'speak-review':PR.tab='speak';PR.src='day';PR.day=n;TK=null;SP=null;go('practice');break;
   case 'read-say':{const r=findReading(ds.key||String(n));if(r)TTS.chain(splitSentences(r.p),{slow:!!ds.slow});break}
-  case 'read-ans':{const key=ds.key||String(n),st=RD[key]||(RD[key]={}),r=findReading(key);if(!r)break;st[+ds.q]=+ds.o;let c=0,all=true;r.q.forEach(function(q,i){if(st[i]===undefined)all=false;else if(st[i]===q[4])c++});if(all){S.quiz['r'+key]=Math.round(c/r.q.length*100);S.log[dkey()]=1;save()}renderKeep();break}
-  case 'self':{const o=S.self[n]||(S.self[n]={v:[]});o.v[+ds.i]=+ds.v;save();renderKeep();break}
+  case 'read-ans':{const key=ds.key||String(n),st=RD[key]||(RD[key]={}),r=findReading(key);if(!r)break;st[+ds.q]=+ds.o;pgQ('r:'+key,+ds.q);let c=0,all=true;r.q.forEach(function(q,i){if(st[i]===undefined)all=false;else if(st[i]===q[4])c++});if(all){S.quiz['r'+key]=Math.round(c/r.q.length*100);S.log[dkey()]=1;save()}renderKeep();break}
+  case 'self':{const o=S.self[n]||(S.self[n]={v:[]});o.v[+ds.i]=+ds.v;save();pgChanged();renderKeep();break}
   case 'qz-start':{const id=ds.id;const words=id==='p'?learnedPool():wordsOf(srcDays(clampDay(id.slice(1))));QZ[id]=buildQuiz(words,+ds.count||20);renderKeep();break}
   case 'qz-ans':{const q=QZ[ds.id];if(!q||q.pick>=0)break;q.pick=+ds.o;const it=q.items[q.i];if(q.pick===it.ans)q.right++;else if(it.w.k){S.srs[it.w.k]={b:0,d:dnum()};save()}TTS.speak(it.w.en,{quiet:true});renderKeep();break}
-  case 'qz-next':{const q=QZ[ds.id];if(!q)break;q.i++;q.pick=-1;if(q.i>=q.items.length){q.done=true;const pct=Math.round(q.right/q.items.length*100);S.quiz[ds.id]=Math.max(S.quiz[ds.id]||0,pct);S.log[dkey()]=1;save()}renderKeep();break}
+  case 'qz-next':{const q=QZ[ds.id];if(!q)break;q.i++;q.pick=-1;if(q.i>=q.items.length){q.done=true;const pct=Math.round(q.right/q.items.length*100);S.quiz[ds.id]=Math.max(S.quiz[ds.id]||0,pct);S.log[dkey()]=1;save();pgChanged()}renderKeep();break}
   case 'ptab':PR.tab=ds.tab;UIM.d.pt=PR.tab;UIM.save();stopMedia();render();break;
   case 'fav':favToggle(ds.en,ds.zh,el);break;
   case 'fav-cards':PR.tab='cards';PR.src='fav';FC=null;UIM.d.pt='cards';UIM.save();render();try{window.scrollTo(0,0)}catch(e){}break;
   case 'psrc':PR.src=ds.src==='cur'?'due':ds.src;if(ds.kind==='cards')FC=null;else if(ds.kind==='dict')DT=null;else{TK=null;SP=null}render();break;
   case 'cards-show':FC.show=true;TTS.speak((WMAP[FC.keys[FC.i]]||{}).en||'',{quiet:true});render();break;
-  case 'cards-grade':{const g=+ds.g,k=FC.keys[FC.i];gradeWord(k,g);if(g===1){FC.a++;if(!FC.again[k]){FC.again[k]=1;FC.keys.push(k)}}else if(g===2)FC.b++;else FC.c++;FC.i++;FC.show=false;render();break}
+  case 'cards-grade':{const g=+ds.g,k=FC.keys[FC.i];gradeWord(k,g);pgCard();if(g===1){FC.a++;if(!FC.again[k]){FC.again[k]=1;FC.keys.push(k)}}else if(g===2)FC.b++;else FC.c++;FC.i++;FC.show=false;render();break}
   case 'cards-restart':FC=null;render();break;
   case 'dict-play':{if(!DT||!DT.list[DT.i])break;TTS.speak(DT.list[DT.i].en,{slow:!!ds.slow});setTimeout(function(){const i=$('dictIn');if(i&&!DT.checked)try{i.focus({preventScroll:true})}catch(e){}},50);break}
-  case 'dict-check':case 'dict-skip':{const inp=$('dictIn');DT.input=inp?inp.value:'';const s=DT.list[DT.i];const r=compare(s.en,a==='dict-skip'?'':DT.input);DT.res=r;DT.checked=true;DT.sum+=r.score;DT.n++;S.log[dkey()]=1;misSent(s.en,s.zh,r.score);save();renderKeep();break}
+  case 'dict-check':case 'dict-skip':{const inp=$('dictIn');DT.input=inp?inp.value:'';const s=DT.list[DT.i];const r=compare(s.en,a==='dict-skip'?'':DT.input);if(a==='dict-check')pgDict(s.en,r.score,PR.day||S.cur);DT.res=r;DT.checked=true;DT.sum+=r.score;DT.n++;S.log[dkey()]=1;misSent(s.en,s.zh,r.score,1);save();renderKeep();break}
   case 'dict-next':{DT.i++;DT.checked=false;DT.input='';DT.res=null;if(DT.list[DT.i])TTS.speak(DT.list[DT.i].en);renderKeep();break}
   case 'dict-restart':DT=null;render();break;
   case 'tk-prev':stopMedia();TK.i=(TK.i-1+TK.list.length)%TK.list.length;SP=null;render();break;
@@ -5838,12 +5843,12 @@ function act(a,ds,el){
   case 'reset-yes':S=fresh();save();closeSheet();FC=null;DT=null;TK=null;toast('進度已清空');go('today');break;
   case 'reload':try{location.reload()}catch(e){}break;
   case 'step':{S.step[n]=ds.k;save();renderKeep();scrollToSteps();break}
-  case 'step-done':{const d=S.done[n]||(S.done[n]={});d[ds.k]=1;S.log[dkey()]=1;S.max=Math.max(S.max,n);let nx=null;for(let i=0;i<BLOCKS.length;i++){if(BLOCKS[i].k===ds.k&&i<BLOCKS.length-1)nx=BLOCKS[i+1].k}
+  case 'step-done':{if(!pgConfirm(n,ds.k))break;const d=S.done[n]||(S.done[n]={});d[ds.k]=1;S.log[dkey()]=1;S.max=Math.max(S.max,n);let nx=null;for(let i=0;i<BLOCKS.length;i++){if(BLOCKS[i].k===ds.k&&i<BLOCKS.length-1)nx=BLOCKS[i+1].k}
     if(nx)S.step[n]=nx;save();renderKeep();scrollToSteps();if(blocksDone(n)===7&&!S.fin[n])toast('7 步全部完成！點“完成第 '+n+' 天”進入下一天');else if(nx)toast('完成！下一步：'+BLOCKS.filter(function(b){return b.k===nx})[0].t);break}
   case 'allinone':S.set.allInOne=!S.set.allInOne;save();renderKeep();break;
   case 'go-cards':PR.tab='cards';PR.src='due';FC=null;stopMedia();go('practice');break;
   case 'go-num':PR.tab='num';NUM=null;stopMedia();go('practice');break;
-  case 'lq':{const st=LQ[ds.key]||(LQ[ds.key]={});const i=+ds.i;if(st[i]!==undefined)break;st[i]=+ds.o;S.log[dkey()]=1;const items=lqItems(ds.key);let c=0,all=true;items.forEach(function(it,k2){if(st[k2]===undefined)all=false;else if(st[k2]===it.a)c++});if(all){S.quiz['lq'+ds.key]=Math.round(c/items.length*100)}save();rerenderCard('lq-'+ds.key,function(){return cardLq(ds.key)});break}
+  case 'lq':{const st=LQ[ds.key]||(LQ[ds.key]={});const i=+ds.i;if(st[i]!==undefined)break;st[i]=+ds.o;pgQ('l:'+ds.key,i);S.log[dkey()]=1;const items=lqItems(ds.key);let c=0,all=true;items.forEach(function(it,k2){if(st[k2]===undefined)all=false;else if(st[k2]===it.a)c++});if(all){S.quiz['lq'+ds.key]=Math.round(c/items.length*100)}save();rerenderCard('lq-'+ds.key,function(){return cardLq(ds.key)});break}
   case 'lfirst':S.set.lfirst=!S.set.lfirst;save();renderKeep();break;
   case 'read-reveal':RDV[ds.key]=1;renderKeep();break;
   default:if(typeof libAct==='function')libAct(a,ds,el,n);break;
@@ -5879,7 +5884,7 @@ function boot(){
     const t=e.target;if(!t)return;
     if(t.id==='rate'){S.set.rate=Math.max(0.5,Math.min(1.3,parseFloat(t.value)||0.9));const v=$('rateV');if(v)v.textContent=S.set.rate.toFixed(2);clearTimeout(window.__rt);window.__rt=setTimeout(save,400)}
     if(t.id==='dictIn'&&DT)DT.input=t.value;
-    if(t.id==='diary'){const d=clampDay(t.getAttribute('data-day'));S.note[d]=String(t.value).slice(0,4000);clearTimeout(window.__dt);window.__dt=setTimeout(save,600)}
+    if(t.id==='diary'){const d=clampDay(t.getAttribute('data-day'));S.note[d]=String(t.value).slice(0,4000);clearTimeout(window.__dt);window.__dt=setTimeout(function(){save();pgChanged()},600)}
     if(t.id==='srchIn'&&typeof libSearchInput==='function')libSearchInput(t.value);
     if(t.id==='spIn'||(t.classList&&t.classList.contains('ftIn')))coInput(t);
   });
@@ -5900,7 +5905,7 @@ function boot(){
   document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')safe(function(){Cloud.refresh()},'cloud');else{ASR.abort();MIC.abort();if(Cloud.ref)Cloud.flush()}});
   document.addEventListener('focusout',function(){setTimeout(flushDeferred,300)});
   setInterval(flushDeferred,4000);
-  safe(favInit,'fav');safe(function(){UIM.resume()},'uim');uimInit();
+  safe(favInit,'fav');safe(function(){UIM.resume()},'uim');uimInit();safe(tmStart,'tm');
   route();
   safe(registerSW,'sw');
   setTimeout(function(){safe(function(){Cloud.init()},'cloud')},200);
@@ -6256,11 +6261,12 @@ function ftTalk(id){
   if(eng!=='asr'){localTalkFree(id);return}
   const el=$('ft-'+id);if(el)st.input=el.value;
   TTS.stop();st.busy=true;st.mode='asr';st.live='';st.err='';st.offer=0;st.gm=null;lvDrop(st);ftRefresh();
-  const base=String(st.input||'').trim();
+  const base=String(st.input||'').trim(),t0=Date.now();
   ASR.listen({continuous:true,idleMs:2500,interim:function(t){st.live=t;const e=$('ftlive-'+id);if(e)e.textContent=t}}).then(function(alts){
     st.busy=false;st.mode='';st.live='';const t=String(alts[0]||'').trim();
     if(!t){asrEmpty();st.err=asrMsg('no-speech');st.offer=1;ftRefresh();return}
     VE.miss=0;VE.stall=0;
+    pgFree(id,0,'',pgAsrSec(t,t0));
     st.input=(base?base+' ':'')+t;ftRefresh();ftCheck(id,true);
     if(coAuto())aiRun('aiOut-'+id,aiPromptF(st.ctx,st.model,st.input),'quick');
   },function(code){st.busy=false;st.mode='';st.live='';if(code==='aborted'){ftRefresh();return}
@@ -6269,7 +6275,7 @@ function ftTalk(id){
     st.err=asrMsg(code);ftRefresh()});
 }
 function ftCheck(id,quiet){const st=FT[id];if(!st)return;const el=$('ft-'+id);if(el){st.input=el.value;lvDrop(st)}const box=$('ftres-'+id);if(!box)return;
-  if(!String(st.input||'').trim()){box.innerHTML='';return}if(coCJK(st.input)){box.innerHTML=coCJKWarn();return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
+  if(!String(st.input||'').trim()){box.innerHTML='';return}if(coCJK(st.input)){box.innerHTML=coCJKWarn();return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;pgFree(id,0,st.input);save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
 function coAct(a,ds){
   if(gmAct(a,ds))return true;
   switch(a){
@@ -6471,8 +6477,8 @@ function gmTalkFree(id){
   if(st.busy){if(st.phase==='rec')MIC.stop();return}
   TTS.stop();st.busy=true;st.mode='gm';st.phase='rec';st.err='';st.offer=0;st.gm=null;lvDrop(st);ftRefresh();
   MIC.start({silenceMs:3000,maxMs:120000,waitMs:8000,level:function(v,heard){const el=$('ftlive-'+id);if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
-    st.phase='ai';ftRefresh();return gmFree(st.ctx,st.model,w);
-  }).then(function(r){st.busy=false;st.mode='';st.phase='';st.gm=r;st.input=String(r.heard||'');S.log[dkey()]=1;save();ftRefresh()},
+    st.phase='ai';st.wsec=w&&w.buf?Math.max(0,(w.buf.byteLength-44)/32000-3):0;ftRefresh();return gmFree(st.ctx,st.model,w);
+  }).then(function(r){st.busy=false;st.mode='';st.phase='';st.gm=r;st.input=String(r.heard||'');S.log[dkey()]=1;pgFree(id,0,st.input,pgWords(st.input)>=3?Math.max(st.wsec||0,pgWords(st.input)/2.2):0);save();ftRefresh()},
     function(e){st.busy=false;st.mode='';st.phase='';st.err=gmErr(e);ftRefresh()});
 }
 /* 設定 */
@@ -6632,7 +6638,7 @@ function localTalkFree(id,o){
   TTS.stop();st.busy=true;st.mode='local';st.phase='rec';st.err='';st.offer=0;st.gm=null;st.live='';lvDrop(st);ftRefresh();
   MIC.start({silenceMs:3000,maxMs:120000,waitMs:8000,level:function(v,heard){const el=$('ftlive-'+id);if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
     if(o.why==='not-allowed')VE.mark();
-    st.busy=false;st.phase='';st.mode='';st.loc=localAnalyse(w,'');S.log[dkey()]=1;save();ftRefresh();
+    st.busy=false;st.phase='';st.mode='';st.loc=localAnalyse(w,'');S.log[dkey()]=1;if(st.loc.st.voiced)pgFree(id,st.loc.st.dur,'',st.loc.st.dur);save();ftRefresh();
   },function(e){st.busy=false;st.phase='';st.mode='';st.err=gmErr(e);ftRefresh()});
 }
 
@@ -6684,6 +6690,241 @@ function uimInit(){
   window.addEventListener('scroll',function(){clearTimeout(uimScrollT);uimScrollT=setTimeout(function(){safe(function(){UIM.keep()},'uim')},200)},{passive:true});
   window.addEventListener('pagehide',function(){try{UIM.keep();localStorage.setItem(UIM.k,JSON.stringify(UIM.d))}catch(e){}});
 }
+
+/* ---------- 每日任務：用真實練習量計進度（唔係撳「完成」就算）＋ 實際學習時間 ----------
+   S.pg.sp：句子 → [最高分, 80 分以上次數, 70 分以上次數]（所有日子累計）
+   S.pg.dd：學習日 n → {s:{句子:當日最高分}, d:{句子:當日聽寫最高 %}}——溫故同複習日要「當日再做」先計
+   q：題目（位元）；ft：自由講 [最長秒, 最多字, 最多句, 累計秒]；wu：造句用到嘅新詞；rp：角色扮演；tpo：換題
+   fc：每日閃卡數；fcn：當日閃卡目標；xl / xr：外部聽 / 讀分鐘；xt：計時中；dn：當日聽寫次數。S.tm：App 內實際練習秒數 */
+function pgInit(){
+  if(!S.pg||typeof S.pg!=='object'||Array.isArray(S.pg))S.pg={};
+  ['sp','dc','q','ft','fc','fcn','xl','xr','dn','dd','wu','rp','tpo'].forEach(function(k){if(!S.pg[k]||typeof S.pg[k]!=='object'||Array.isArray(S.pg[k]))S.pg[k]={}});
+  if(S.pg.xt&&(typeof S.pg.xt!=='object'||!S.pg.xt.k||!(S.pg.xt.t>0)))S.pg.xt=null;
+  if(!S.tm||typeof S.tm!=='object'||Array.isArray(S.tm))S.tm={};if(!S.tm.d||typeof S.tm.d!=='object')S.tm.d={};if(!S.tm.n||typeof S.tm.n!=='object')S.tm.n={};
+}
+function pgH(s){s=String(s||'').toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9' ]+/g,' ').replace(/\s+/g,' ').trim();let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(36)}
+function pgDD(n){pgInit();const k=String(n);let o=S.pg.dd[k];if(!o||typeof o!=='object')o=S.pg.dd[k]={s:{},d:{}};if(!o.s||typeof o.s!=='object')o.s={};if(!o.d||typeof o.d!=='object')o.d={};return o}
+/* 講一句（所有引擎評完分都經呢度）：記低最高分、過關次數，同埋「當前學習日」嘅分數 */
+function pgSay(en,score){if(!en||!(score>=0))return;pgInit();const k=pgH(en),v=S.pg.sp[k]||[0,0,0],sc=Math.round(score);
+  v[0]=Math.max(v[0]||0,sc);if(sc>=80)v[1]=(v[1]||0)+1;if(sc>=70)v[2]=(v[2]||0)+1;S.pg.sp[k]=v;const o=pgDD(S.cur);o.s[k]=Math.max(o.s[k]||0,sc);pgChanged()}
+function pgBest(en){pgInit();const v=S.pg.sp[pgH(en)];return v?(v[0]||0):0}
+function pgPass(en){pgInit();const v=S.pg.sp[pgH(en)];return v?(v[1]||0):0}
+function pgPass70(en){pgInit();const v=S.pg.sp[pgH(en)];return v?(v[2]||0):0}
+function pgBestOn(n,en){pgInit();const o=S.pg.dd[String(n)];return o&&o.s?(o.s[pgH(en)]||0):0}
+function pgDict(en,pct,day){pgInit();const k=pgH(en),p=Math.round(pct),d=day||S.cur;S.pg.dc[k]=Math.max(S.pg.dc[k]||0,p);const o=pgDD(d);o.d[k]=Math.max(o.d[k]||0,p);S.pg.dn[d]=(S.pg.dn[d]||0)+1;pgChanged()}
+function pgDictBest(en){pgInit();return S.pg.dc[pgH(en)]||0}
+function pgDictOn(n,en){pgInit();const o=S.pg.dd[String(n)];return o&&o.d?(o.d[pgH(en)]||0):0}
+function pgQ(key,i){pgInit();S.pg.q[key]=(S.pg.q[key]||0)|(1<<Math.min(30,Math.max(0,i)));pgChanged()}
+function pgQn(key){pgInit();let m=S.pg.q[key]||0,c=0;while(m){c+=m&1;m>>>=1}return c}
+function pgSents(t){return String(t||'').split(/[.!?。！？\n]+/).map(function(s){return s.trim()}).filter(function(s){return s.split(/\s+/).filter(function(w){return /[A-Za-z]/.test(w)}).length>=3}).length}
+function pgWords(t){return String(t||'').split(/\s+/).filter(function(w){return /[A-Za-z]/.test(w)}).length}
+/* 自由講：sec 呢次最長秒數；text 文字（打字／識別）；add 呢次真係講咗幾多秒（累計） */
+function pgFree(id,sec,text,add){pgInit();const v=S.pg.ft[id]||[0,0,0,0];v[0]=Math.max(v[0]||0,Math.round(sec||0));
+  if(text){v[1]=Math.max(v[1]||0,pgWords(text));v[2]=Math.max(v[2]||0,pgSents(text));pgWUse(id,text)}
+  if(add>0)v[3]=Math.min(36000,(v[3]||0)+Math.round(add));S.pg.ft[id]=v;pgChanged()}
+/* 講咗幾耐：取「單次最長」「文字字數（每分鐘約 130 字）」「累計」三者最大 */
+function pgFreeSec(id){pgInit();const v=S.pg.ft[id];return v?Math.max(v[0]||0,Math.round((v[1]||0)/2.2),v[3]||0):0}
+function pgFreeSents(id){pgInit();const v=S.pg.ft[id];return v?(v[2]||0):0}
+/* 系統語音識別：用講嘅時間（扣走最後停頓），但唔超過每個字 1.5 秒 */
+function pgAsrSec(text,t0){const w=pgWords(text),wall=Math.max(0,(Date.now()-t0)/1000-2.5);return Math.max(w/2.2,Math.min(wall,w*1.5))}
+function pgCard(){pgInit();S.pg.fc[S.cur]=(S.pg.fc[S.cur]||0)+1;pgChanged()}
+/* 用新詞造句：認得 -s / -ed / -ing 等變化 */
+const PGRX={};
+function pgRx(w){if(PGRX[w])return PGRX[w];
+  const esc2=function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')};
+  const segs=String(w).toLowerCase().replace(/[’‘]/g,"'").split(/\s*\.\.\.\s*|\s*…\s*/).map(function(seg){return seg.replace(/\.$/,'').trim().split(/\s+/).filter(Boolean)}).filter(function(a){return a.length});
+  const last=segs.length?segs[segs.length-1].pop():'';
+  let tail=esc2(last);
+  if(/^[a-z]+$/.test(last)){
+    if(/e$/.test(last))tail='(?:'+esc2(last)+'(?:s|d|r|rs)?|'+esc2(last.slice(0,-1))+'ing)';
+    else if(/[^aeiou]y$/.test(last))tail='(?:'+esc2(last)+'(?:ing)?|'+esc2(last.slice(0,-1))+'(?:ies|ied))';
+    else if(/(?:s|x|z|ch|sh)$/.test(last))tail=esc2(last)+'(?:es|ed|ing)?';
+    else if(last.length<=4&&/[^aeiou][aeiou][bdgklmnprt]$/.test(last))tail='(?:'+esc2(last)+'(?:s|ed|ing|er|ers)?|'+esc2(last+last.slice(-1))+'(?:ed|ing|er|ers))';
+    else tail=esc2(last)+'(?:s|es|ed|d|ing|er|ers)?';
+  }else if(/\.$/.test(String(w)))tail+='\\.?';
+  const body=segs.map(function(a,i){const words=a.map(esc2);if(i===segs.length-1)words.push(tail);return words.join('\\s+')}).filter(Boolean).join("\\s+(?:[a-z'-]+\\s+){0,3}");
+  PGRX[w]=new RegExp('(?:^|[^a-z0-9])'+body+'(?![a-z0-9])','i');return PGRX[w]}
+function pgHit(w,text){try{return pgRx(w).test(String(text||''))}catch(e){return false}}
+function pgWUse(id,text){const m=/^ws(\d+)$/.exec(id);if(!m)return;const n=+m[1];if(!L[n])return;const u=S.pg.wu[n]||(S.pg.wu[n]=[]);L[n].words.forEach(function(w,i){if(u.indexOf(i)<0&&pgHit(w.en,text))u.push(i)})}
+function pgWUn(n){pgInit();return (S.pg.wu[n]||[]).length}
+/* 角色扮演：每段對話、每個角色演完一輪 */
+function pgRP(day,w,me){pgInit();const o=S.pg.rp[day]||(S.pg.rp[day]={});o[(w===1?1:0)+':'+me]=1;pgChanged()}
+function pgRPKeys(n){const r=[];[0,1].forEach(function(w){const d=dlgOf(n,w),seen={};d.forEach(function(l){if(!seen[l.who]){seen[l.who]=1;r.push(w+':'+l.who)}})});return r}
+function pgSelfN(n){const v=(S.self[n]&&S.self[n].v)||[];let c=0;for(let i=0;i<CHECK.length;i++)if(+v[i]>0)c++;return c}
+/* 間隔重溫：1、3、7、14、30 日前嘅課（核心句型 + 對話頭 4 句） */
+const PG_SPACE=[1,3,7,14,30];
+function spacedDays(n){const out=[];PG_SPACE.forEach(function(o){const d=n-o;if(d>=1&&L[d]&&typeOf(d)==='lesson')out.push({d:d,o:o})});return out}
+function spacedItems(n){const r=[];spacedDays(n).forEach(function(x){const l=L[x.d];l.sents.forEach(function(s){r.push({en:s.en,zh:s.zh,day:x.d,o:x.o})});l.dlg.slice(0,4).forEach(function(s){r.push({en:s.en,zh:s.zh,day:x.d,o:x.o})})});return pgUniq(r)}
+/* 複習日 / 測試日：本週（本階段）內容，太多就固定抽一部分 */
+function rvPick(n,arr,k,seed){return arr.length>k?shuffleSeed(arr,n+seed).slice(0,k):arr}
+function rvSents(n){const out=[];srcDays(n).forEach(function(d){if(L[d])L[d].sents.forEach(function(s){out.push({en:s.en,zh:s.zh,day:d})})});return rvPick(n,pgUniq(out),40,5)}
+function rvEx(n){const out=[];srcDays(n).forEach(function(d){if(L[d])L[d].words.forEach(function(w){if(w.ex)out.push({en:w.ex,zh:w.exzh||'',w:w.en,day:d})})});return rvPick(n,pgUniq(out),30,3)}
+function rvDlg(n){const out=[];srcDays(n).forEach(function(d){if(L[d])L[d].dlg.concat(L[d].dlg2||[]).forEach(function(s){out.push({en:s.en,zh:s.zh,who:s.who,day:d})})});return rvPick(n,pgUniq(out),typeOf(n)==='test'?40:200,17)}
+function rvGram(n){const seen={},r=[];srcDays(n).forEach(function(d){const g=L[d]&&L[d].gram;if(g&&!seen[g.t]){seen[g.t]=1;r.push({t:g.t,day:d})}});return r.slice(0,6)}
+function rvShadow(n){return shuffleSeed(pgUniq(sentsOf(srcDays(n),false)),n+11).slice(0,10)}
+/* 讀本：當日相關章節嘅一張圖（輪流揀） */
+function pgFigFor(n){const id=typeof BOOK_DAY==='object'&&BOOK_DAY[n],ch=id&&bkById(id);if(!ch)return null;const fs=ch.s.filter(function(it){return it[0]==='f'}).map(function(it){return it[1]});if(!fs.length)return null;
+  const days=Object.keys(BOOK_DAY).filter(function(d){return BOOK_DAY[d]===id}).map(Number).sort(function(a,b){return a-b});return fs[Math.max(0,days.indexOf(n))%fs.length]}
+/* 同一句只計一次（例如核心句型同對話有同一句） */
+function pgUniq(arr,key){const seen={},r=[];arr.forEach(function(x){const k=pgH(key?key(x):(typeof x==='string'?x:x.en));if(!seen[k]){seen[k]=1;r.push(x)}});return r}
+function pgCnt(arr,fn){let c=0;arr.forEach(function(x){if(fn(x))c++});return c}
+/* 閃卡目標：今日到期 + 新詞（當日第一次睇到就固定） */
+function pgFcNeed(n){pgInit();if(S.pg.fcn[n])return S.pg.fcn[n];let due=0;try{due=dueInfo().due.length}catch(e){}
+  const v=typeOf(n)==='lesson'?Math.max(40,Math.min(150,due+25)):Math.max(80,Math.min(200,due+40));if(n===S.cur)S.pg.fcn[n]=v;return v}
+/* 話題自由講：頭 30 日用生活話題，之後加入金融面試題 */
+function pgTopic(n){const pool=n<=30?TOPICS.slice(0,16):TOPICS.concat(INTERVIEW);pgInit();return pool[(n*7+(S.pg.tpo[n]||0))%pool.length]}
+/* 每一步嘅目標：t 標題、need 要做幾多、have 做咗幾多、u 單位、m 每單位分鐘（估計時間用） */
+function dayGoals(n){
+  const t=typeOf(n),G={};
+  if(t!=='lesson')return reviewGoals(n);
+  const l=L[n],sp=spacedItems(n),dlg=pgUniq(l.dlg.concat(l.dlg2||[])),ex=pgUniq(l.words.filter(function(w){return w.ex}),function(w){return w.ex}),pts=ptSentences(n),rs=l.read?splitSentences(l.read.p):[],fig=pgFigFor(n),bk=typeof BOOK_DAY==='object'&&BOOK_DAY[n]&&bkById(BOOK_DAY[n]);
+  const sumN=function(arr,k,fn){let s=0;arr.forEach(function(x){s+=Math.min(k,fn(x.en||x))});return s};
+  const offs=spacedDays(n).map(function(x){return x.o}).join('、');
+  G.pron=[{t:'核心句型：每句講 3 次，每次 80 分以上',need:l.sents.length*3,have:sumN(l.sents,3,pgPass),u:'次',m:0.7,go:'sents'},
+    {t:'溫故：'+offs+' 日前嘅句子，今日再講（80 分以上）',need:sp.length,have:pgCnt(sp,function(x){return pgBestOn(n,x.en)>=80}),u:'句',m:0.8,go:'spaced'}];
+  const wu=Math.min(10,l.words.length);
+  G.vocab=[{t:'單詞例句：每句講到 70 分以上',need:ex.length,have:pgCnt(ex,function(w){return pgBest(w.ex)>=70}),u:'句',m:1,go:'words'},
+    {t:'用今日新詞造句（講或寫）',need:wu,have:Math.min(wu,pgWUn(n)),u:'個詞',m:2,go:'wuse'},
+    {t:'閃卡：今日到期複習 + 新詞',need:pgFcNeed(n),have:S.pg.fc[n]||0,u:'張',m:0.2,act:'cards-day'}];
+  G.gram=[{t:'文法練習題',need:(l.gx||[]).length,have:pgQn('g'+n),u:'題',m:1.2,go:'gram'},
+    {t:'文法例句：每句講 2 次，每次 80 分以上',need:l.gram.x.length*2,have:sumN(l.gram.x,2,pgPass),u:'次',m:0.8,go:'gram'},
+    {t:'句型替換：每句講到 70 分以上',need:pts.length,have:pgCnt(pts,function(s){return pgBest(s)>=70}),u:'句',m:0.8,go:'pt'},
+    {t:'用今日文法自己講或寫 8 句',need:8,have:Math.min(8,pgFreeSents('gs'+n)),u:'句',m:2,go:'gown'}];
+  const dp=pgUniq(sentsOf([n],true)),dn=Math.min(24,dp.length),sd=Math.min(15,sp.length);
+  G.listen=[{t:'聽力理解題',need:lqItems('d'+n).length,have:pgQn('l:d'+n),u:'題',m:1.2,go:'lq-d'+n},
+    {t:'聽寫今日句子同對話（80% 以上）',need:dn,have:Math.min(dn,pgCnt(dp,function(x){return pgDictBest(x.en)>=80})),u:'句',m:1.3,act:'dict-day'},
+    {t:'聽寫溫故句子（今日聽寫，80% 以上）',need:sd,have:Math.min(sd,pgCnt(sp,function(x){return pgDictOn(n,x.en)>=80})),u:'句',m:1.3,act:'dict-spaced'},
+    {t:'外部精聽（自己計時）',need:45,have:Math.min(45,S.pg.xl[n]||0),u:'分鐘',m:1,go:'xlisten'}];
+  const rk=pgRPKeys(n),rpd=S.pg.rp[n]||{};
+  G.speak=[{t:'對話：每句台詞講到 75 分以上',need:dlg.length,have:pgCnt(dlg,function(x){return pgBest(x.en)>=75}),u:'句',m:0.8,go:'dlgCard0'},
+    {t:'角色扮演：每段對話、每個角色各演一次',need:rk.length,have:pgCnt(rk,function(k){return !!rpd[k]}),u:'次',m:4,go:'dlgCard0'},
+    {t:'中譯英：講出英文（70 分以上）',need:(l.tr||[]).length,have:pgCnt(l.tr||[],function(x){return pgBest(x.en)>=70}),u:'句',m:1.5,go:'tr-t'+n},
+    {t:'口語任務：累計講夠 4 分鐘',need:240,have:Math.min(240,pgFreeSec('task'+n)),u:'秒',m:1/12,go:'task'},
+    {t:'話題自由講：累計講夠 5 分鐘',need:300,have:Math.min(300,pgFreeSec('tp'+n)),u:'秒',m:1/12,go:'topic'}].concat(fig?[{t:'講圖表：累計講夠 2 分鐘',need:120,have:Math.min(120,pgFreeSec('fs-'+fig)),u:'秒',m:1/12,fig:fig}]:[]);
+  G.read=[{t:'閱讀理解題',need:l.read?l.read.q.length:0,have:pgQn('r:d'+n),u:'題',m:1.5,go:'reading-d'+n},
+    {t:'逐句朗讀文章（75 分以上）',need:rs.length,have:pgCnt(rs,function(s){return pgBest(s)>=75}),u:'句',m:0.8,go:'readaloud'}].concat(bk?[{t:'讀本第 '+bkNum(bk)+' 章：讀完並做練習題',need:1,have:S.quiz['bk-'+bk.id]!=null?1:0,u:'章',m:30,href:'#lib-book-'+bk.id}]:[]).concat([
+    {t:'外部閱讀（自己計時）',need:30,have:Math.min(30,S.pg.xr[n]||0),u:'分鐘',m:1,go:'xread'}]);
+  G.out=[{t:'複述今日內容：累計講夠 3 分鐘',need:180,have:Math.min(180,pgFreeSec('out'+n)),u:'秒',m:1/12,go:'out'},
+    {t:'英文日記：寫 6 句',need:6,have:Math.min(6,pgSents(S.note[n])),u:'句',m:2,go:'diary'},
+    {t:'口語自評：8 項打分',need:CHECK.length,have:pgSelfN(n),u:'項',m:0.6,go:'self'}];
+  Object.keys(G).forEach(function(k){G[k]=G[k].filter(function(g){return g&&g.need>0})});
+  return G;
+}
+function reviewGoals(n){
+  const t=typeOf(n),test=t==='test',G={},sh=rvShadow(n),ws=rvSents(n),wx=rvEx(n),wd=rvDlg(n),gp=rvGram(n),gx=gatherGx(n,test?15:10),tr=gatherTr(n,test?15:10),rd=READ[n],rs=rd?splitSentences(rd.p):[];
+  const on=function(arr,min){return pgCnt(arr,function(x){return pgBestOn(n,x.en)>=min})};
+  G.pron=[{t:'影子跟讀 10 句（今日講，80 分以上）',need:sh.length,have:on(sh,80),u:'句',m:1.5,go:'sents'},
+    {t:(test?'本階段':'本週')+'核心句型：今日再講（80 分以上）',need:ws.length,have:on(ws,80),u:'句',m:0.8,go:'wsents'}];
+  G.vocab=(test?[{t:'階段詞彙測驗（20 題）',need:1,have:S.quiz['t'+n]!=null?1:0,u:'次',m:8,go:'qz-t'+n}]:[]).concat([
+    {t:(test?'本階段':'本週')+'單詞例句：今日再講（70 分以上）',need:wx.length,have:on(wx,70),u:'句',m:1,go:'wex'},
+    {t:'閃卡複習',need:pgFcNeed(n),have:S.pg.fc[n]||0,u:'張',m:0.2,act:'cards-day'}]);
+  G.gram=[{t:'綜合文法練習',need:gx.length,have:pgQn('rg'+n),u:'題',m:1.2,go:'gx-rg'+n},
+    {t:'每個文法點自己講或寫 2 句',need:gp.length*2,have:Math.min(gp.length*2,pgFreeSents('rgs'+n)),u:'句',m:2,go:'rgown'}];
+  G.listen=[{t:'聽力理解題',need:lqItems('w'+n).length,have:pgQn('l:w'+n),u:'題',m:1.2,go:'lq-w'+n},
+    {t:'隨機聽寫',need:20,have:Math.min(20,S.pg.dn[n]||0),u:'句',m:1.3,act:'dict-review'},
+    {t:'外部精聽（自己計時）',need:45,have:Math.min(45,S.pg.xl[n]||0),u:'分鐘',m:1,go:'xlisten'}];
+  const wdn=Math.min(30,wd.length),need=test?360:300;
+  G.speak=[{t:'綜合中譯英（今日講，70 分以上）',need:tr.length,have:on(tr,70),u:'句',m:1.5,go:'tr-rt'+n},
+    {t:(test?'本階段':'本週')+'對話台詞：任揀 '+wdn+' 句今日再講（75 分以上）',need:wdn,have:Math.min(wdn,on(wd,75)),u:'句',m:0.8,go:'wdlg'},
+    {t:(test?'階段口語測試：3 個話題':'本週總結 + 話題')+'，累計講夠 '+(need/60)+' 分鐘',need:need,have:Math.min(need,pgFreeSec('rv'+n)),u:'秒',m:1/12,go:'rspeak'}];
+  G.read=[{t:'閱讀理解題',need:rd?rd.q.length:0,have:pgQn('r:'+n),u:'題',m:1.5,go:'reading-'+n},
+    {t:'逐句朗讀文章（75 分以上）',need:rs.length,have:pgCnt(rs,function(s){return pgBest(s)>=75}),u:'句',m:0.8,go:'readaloud'},
+    {t:'外部閱讀（自己計時）',need:30,have:Math.min(30,S.pg.xr[n]||0),u:'分鐘',m:1,go:'xread'}];
+  G.out=[{t:'複述：累計講夠 3 分鐘',need:180,have:Math.min(180,pgFreeSec('out'+n)),u:'秒',m:1/12,go:'out'},
+    {t:'英文總結：寫 6 句',need:6,have:Math.min(6,pgSents(S.note[n])),u:'句',m:2,go:'diary'},
+    {t:'口語自評：8 項打分',need:CHECK.length,have:pgSelfN(n),u:'項',m:0.6,go:'self'}];
+  Object.keys(G).forEach(function(k){G[k]=G[k].filter(function(g){return g&&g.need>0})});
+  return G;
+}
+function pgStepMin(goals){let m=0;goals.forEach(function(g){m+=g.need*g.m});return Math.round(m)}
+function pgStepLeft(goals){return goals.filter(function(g){return g.have<g.need})}
+function pgStepPct(goals){let need=0,have=0;goals.forEach(function(g){need+=g.need*g.m;have+=Math.min(g.have,g.need)*g.m});return need?Math.round(have/need*100):0}
+function pgDay(n){const G=dayGoals(n);let need=0,have=0,min=0;Object.keys(G).forEach(function(k){G[k].forEach(function(g){need+=g.need*g.m;have+=Math.min(g.have,g.need)*g.m});min+=pgStepMin(G[k])});return {pct:need?Math.min(100,Math.round(have/need*100)):0,min:min,G:G}}
+function pgFmt(m){m=Math.round(m);const h=Math.floor(m/60),r=m%60;return h?(h+' 小時'+(r?' '+r+' 分':'')):(r+' 分鐘')}
+function pgSecFmt(s){s=Math.round(s);return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
+function pgExt(n){pgInit();return (S.pg.xl[n]||0)+(S.pg.xr[n]||0)}
+/* 實際練咗幾耐：App 內計時 + 外部聽讀自己計嘅時間 */
+function pgActual(n){pgInit();return Math.round((S.tm.n[n]||0)/60)+pgExt(n)}
+function pgToday(){pgInit();return Math.round((S.tm.d[dkey()]||0)/60)}
+function pgTotal(){pgInit();let s=0,x=0;Object.keys(S.tm.n).forEach(function(k){s+=S.tm.n[k]||0});Object.keys(S.pg.xl).forEach(function(k){x+=S.pg.xl[k]||0});Object.keys(S.pg.xr).forEach(function(k){x+=S.pg.xr[k]||0});return Math.round(s/60)+x}
+/* 目標清單（喺每一步上面） */
+function pgGoalsHTML(n,k){const G=dayGoals(n)[k]||[];if(!G.length)return '';
+  return '<div class="pgoals" data-day="'+n+'" data-k="'+k+'"><div class="pgh">今日目標 <span>做夠就自動打勾</span></div>'+G.map(function(g){const ok=g.have>=g.need,pc=Math.min(100,Math.round(g.have/g.need*100)),sec=g.u==='秒';
+    let act='';if(!ok){if(g.act)act='<button class="btn ghost pga" data-act="'+g.act+'" data-day="'+n+'">去做 ›</button>';else if(g.fig)act='<button class="btn ghost pga" data-act="fig-say" data-fz="'+esc(g.fig)+'">去做 ›</button>';else if(g.href)act='<a class="btn ghost pga" href="'+g.href+'">去讀 ›</a>';else if(g.go)act='<button class="btn ghost pga" data-act="pg-jump" data-id="'+esc(g.go)+'">去做 ›</button>'}
+    return '<div class="pg'+(ok?' ok':'')+'"><div class="pgt">'+(ok?ICON.check:'')+esc(g.t)+'</div><div class="pgr"><div class="pgb"><i style="width:'+pc+'%"></i></div><b>'+(sec?pgSecFmt(Math.min(g.have,g.need))+' / '+pgSecFmt(g.need):Math.min(g.have,g.need)+' / '+g.need+' '+esc(g.u))+'</b><span>約 '+Math.max(1,Math.round(g.need*g.m))+' 分</span></div>'+act+'</div>'}).join('')+'</div>'}
+function pgPaint(){if(typeof document==='undefined')return;
+  Array.prototype.forEach.call(document.querySelectorAll('.pgoals[data-day]'),function(el){const n=+el.getAttribute('data-day'),k=el.getAttribute('data-k');const w=document.createElement('div');w.innerHTML=pgGoalsHTML(n,k);if(w.firstChild)el.innerHTML=w.firstChild.innerHTML});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-pgday]'),function(el){const n=+el.getAttribute('data-pgday'),d=pgDay(n);el.innerHTML=pgHeroInner(n,d)});
+  const u=document.getElementById('wuse');if(u){const n=+u.getAttribute('data-day'),got=S.pg.wu[n]||[];Array.prototype.forEach.call(u.querySelectorAll('.wc[data-i]'),function(c){c.classList.toggle('on',got.indexOf(+c.getAttribute('data-i'))>=0)})}}
+/* 步驟自動完成之後，就地更新步驟列、標題同底部按鈕（唔重畫成頁，錄音視窗唔會被關） */
+function pgPaintSteps(){if(typeof document==='undefined')return;const rep=function(el,html){if(!el)return;const t=document.createElement('div');t.innerHTML=html;if(t.firstChild)el.parentNode.replaceChild(t.firstChild,el)};
+  const g=document.querySelector('#stephead .pgoals[data-day]');
+  if(g){const n=+g.getAttribute('data-day'),k=g.getAttribute('data-k');let idx=0;BLOCKS.forEach(function(b,i){if(b.k===k)idx=i});rep(document.querySelector('nav.steps'),stepsBar(n,k));rep(document.getElementById('stephead'),stepHead(n,idx));rep(document.querySelector('.stepfoot'),stepFoot(n,idx))}
+  const tt=document.getElementById('tt'),hp=document.querySelector('[data-pgday]');if(tt&&hp)rep(tt,cardTimetable(+hp.getAttribute('data-pgday')))}
+function pgHeroInner(n,d){d=d||pgDay(n);return '<div class="bar"><i style="width:'+d.pct+'%"></i></div><span>任務完成 '+d.pct+'% · 已練 '+pgFmt(pgActual(n))+' · 全部做完約 '+pgFmt(d.min)+'</span>'}
+/* 達標就自動標記完成（用函數屬性存計時器：開機時未行到呢段都唔會出錯） */
+function pgChanged(){clearTimeout(pgChanged.t);pgChanged.t=setTimeout(function(){safe(function(){if(pgAuto(S.cur))pgPaintSteps();pgPaint()},'pg')},250)}
+function pgAuto(n){if(!n||(!L[n]&&typeOf(n)==='lesson'))return false;const G=dayGoals(n),d=S.done[n]||(S.done[n]={});let any=false;
+  BLOCKS.forEach(function(b){const g=G[b.k]||[];if(!g.length||d[b.k])return;if(!pgStepLeft(g).length){d[b.k]=1;any=true;toast('✓ '+b.s+'：今日目標全部達標')}});
+  if(any){S.log[dkey()]=1;S.max=Math.max(S.max,n);save()}return any}
+/* 手動「完成本步」：未達標要撳兩次 */
+function pgConfirm(n,k){const left=pgStepLeft(dayGoals(n)[k]||[]);if(!left.length)return true;pgConfirm.c=pgConfirm.c||{};const key=n+':'+k;if(pgConfirm.c[key]&&Date.now()-pgConfirm.c[key]<60000)return true;pgConfirm.c[key]=Date.now();
+  toast('仲有 '+left.length+' 項未達標：'+left.slice(0,2).map(function(g){return g.t.replace(/（.*?）/g,'').replace(/：.*$/,'')}).join('、')+(left.length>2?'…':'')+'。再撳一次就照樣標記完成。');return false}
+/* 一行句子（顯示今日分數或者最高分） */
+function pgRow(s,score,pass,sub){return '<div class="row"><div class="txt"><div class="en">'+esc(s.en)+(score?' <span class="pill '+(score>=pass?'ok':'grey')+'" style="font-size:11px">'+score+'</span>':'')+'</div>'+(sub?'<div class="zh">'+sub+'</div>':'')+(s.zh?'<div class="zh">'+esc(s.zh)+'</div>':'')+'</div><div class="acts">'+sayBtn(s.en)+micBtn(s.en,s.zh)+'</div></div>'}
+/* 溫故卡（發音步驟） */
+function cardSpaced(n){const days=spacedDays(n);if(!days.length)return '';
+  let h='<section class="card" id="spaced"><h2 class="sec-h">溫故句子 <span class="tag">Spaced review</span></h2><p class="small muted" style="margin:0 0 6px">按記憶曲線：1、3、7、14、30 日前學過嘅句子，今日再講一次。今日講到 80 分以上先計（以前講過唔計）。</p>';
+  const all=spacedItems(n);days.forEach(function(x){const l=L[x.d],items=all.filter(function(s){return s.day===x.d});
+    h+='<h4 class="ch">'+x.o+' 日前 · 第 '+x.d+' 天：'+esc(l.e)+'</h4><div class="rows">'+items.map(function(s){return pgRow(s,pgBestOn(n,s.en),80)}).join('')+'</div>'});
+  return h+'</section>'}
+/* 用新詞造句（單詞步驟） */
+function cardWordUse(n){const ws=L[n].words,got=S.pg.wu[n]||[],need=Math.min(10,ws.length);
+  return '<section class="card" id="wuse" data-day="'+n+'"><h2 class="sec-h">用新詞造句 <span class="tag">Use the words</span></h2><p class="small muted" style="margin:0 0 6px">最少用 '+need+' 個今日新詞，講你自己、工作或者香港。用到嘅詞會變綠。要有文字先數到詞：用系統識別／Gemini 講，或者撳下面「用鍵盤 🎤 講／打字」。</p><div class="wchips">'+ws.map(function(w,i){return '<span class="wc'+(got.indexOf(i)>=0?' on':'')+'" data-i="'+i+'">'+esc(w.en)+'</span>'}).join('')+'</div>'+
+   freeBox('ws'+n,'Make sentences about yourself, your work or Hong Kong using these words: '+ws.map(function(w){return w.en}).join(', '),'')+'</section>'}
+/* 自己講文法句（文法步驟） */
+function cardGramOwn(n){const g=L[n].gram;return '<section class="card" id="gown"><h2 class="sec-h">用今日文法講 8 句 <span class="tag">Your sentences</span></h2><p class="small muted" style="margin:0 0 6px">用「'+esc(g.t)+'」講或者寫 8 句關於你自己、工作或者香港嘅句子。每句最少 3 個字，用句號分開（講嘅時候停一停）。</p>'+freeBox('gs'+n,'Use today\'s grammar ('+g.t+') to make 8 sentences about yourself, work or Hong Kong.','')+'</section>'}
+/* 話題自由講（口語步驟） */
+function cardTopic(n){const q=pgTopic(n),a=typeof ANS==='object'&&ANS[q];
+  return '<section class="card" id="topic"><h2 class="sec-h">話題自由講 <span class="tag">Free talk</span></h2><p class="small muted" style="margin:0 0 6px">每次講 1–2 分鐘，睇完回饋再講一次，累計講夠 5 分鐘。用 PREP：觀點 → 原因 → 例子 → 觀點。</p><div class="row"><div class="txt"><div class="en">'+esc(q)+'</div></div><div class="acts">'+sayBtn(q)+(a?'<button class="btn jade" data-act="ans" data-q="'+esc(q)+'">參考答案</button>':'')+'<button class="btn ghost" data-act="pg-topic" data-day="'+n+'">換一題</button></div></div>'+
+   freeBox('tp'+n,q,a?pplain(a[1]):'')+'</section>'}
+/* 講圖表（口語步驟，第 31 天起） */
+function cardChartSay(n){const fig=pgFigFor(n),f=fig&&FIG[fig],at=fig&&figNum(fig);if(!f||!at)return '';let svg='';try{svg=f.r(fzP(fig))}catch(e){}svg=svg.replace(/ data-hv="[^"]*" tabindex="0"/,'').replace(/<g class="vzh"[^>]*><\/g>/,'').replace(/ id="([^"]+)"/g,' id="c-$1"').replace(/url\(#([^)]+)\)/g,'url(#c-$1)');
+  return '<section class="card" id="chartsay"><h2 class="sec-h">講圖表 <span class="tag">Figure '+esc(at.n)+'</span></h2><p style="margin:0 0 6px"><b>'+esc(f.t)+'</b></p><div class="vzbox vzmini">'+svg+'</div><p class="small muted" style="margin:6px 0 0">先講圖表講咩、最大同最細、趨勢，再講你嘅睇法；累計講夠 2 分鐘。</p><div class="btns"><button class="btn pri" data-act="fig-say" data-fz="'+fig+'">'+ICON.mic+' 講呢張圖</button></div></section>'}
+/* 逐句朗讀（閱讀步驟） */
+function cardReadAloud(r){if(!r||!r.p)return '';const ss=splitSentences(r.p);return '<details class="dd" id="readaloud"><summary>逐句朗讀文章（'+ss.length+' 句，每句 75 分以上）</summary><div class="rows" style="margin-top:6px">'+ss.map(function(s){return pgRow({en:s,zh:''},pgBest(s),75)}).join('')+'</div></details>'}
+/* 複習日：本週核心句型、單詞例句、對話台詞、文法造句 */
+function cardWeekSents(n){const ws=rvSents(n);if(!ws.length)return '';const sc=typeOf(n)==='test'?'本階段':'本週';
+  return '<section class="card" id="wsents"><h2 class="sec-h">'+sc+'核心句型 <span class="tag">'+ws.length+' sentences</span></h2><p class="small muted" style="margin:0 0 6px">'+(typeOf(n)==='test'?'從本階段抽 '+ws.length+' 句，':'')+'今日再講一次，80 分以上先計。</p><div class="rows">'+ws.map(function(s){return pgRow(s,pgBestOn(n,s.en),80,'第 '+s.day+' 天')}).join('')+'</div></section>'}
+function cardWeekEx(n){const wx=rvEx(n);if(!wx.length)return '';
+  return '<section class="card" id="wex"><h2 class="sec-h">單詞例句跟讀 <span class="tag">'+wx.length+' examples</span></h2><p class="small muted" style="margin:0 0 6px">從'+(typeOf(n)==='test'?'本階段':'本週')+'單詞抽 '+wx.length+' 個例句，今日再講，70 分以上先計。</p><div class="rows">'+wx.map(function(s){return pgRow(s,pgBestOn(n,s.en),70,esc(s.w))}).join('')+'</div></section>'}
+function cardWeekDlg(n){const wd=rvDlg(n);if(!wd.length)return '';const by={},order=[];wd.forEach(function(s){if(!by[s.day]){by[s.day]=[];order.push(s.day)}by[s.day].push(s)});
+  return '<section class="card" id="wdlg"><h2 class="sec-h">對話台詞重講 <span class="tag">Dialogues</span></h2><p class="small muted" style="margin:0 0 6px">唔睇中文都講得出就最好。任揀 '+Math.min(30,wd.length)+' 句今日再講，75 分以上先計。</p>'+
+   order.map(function(d){const arr=by[d],c=pgCnt(arr,function(s){return pgBestOn(n,s.en)>=75});return '<details class="dd"><summary>第 '+d+' 天：'+esc(L[d].e)+'（'+c+' / '+arr.length+'）</summary><div class="rows" style="margin-top:6px">'+arr.map(function(s){return pgRow(s,pgBestOn(n,s.en),75,esc(s.who))}).join('')+'</div></details>'}).join('')+'</section>'}
+function cardRvGramOwn(n){const gp=rvGram(n);if(!gp.length)return '';
+  return '<section class="card" id="rgown"><h2 class="sec-h">文法造句 <span class="tag">Your sentences</span></h2><p class="small muted" style="margin:0 0 6px">每個文法點講或者寫 2 句（共 '+(gp.length*2)+' 句）：</p><ul style="margin:0 0 8px;padding-left:20px">'+gp.map(function(g){return '<li>'+esc(g.t)+' <span class="small muted">（第 '+g.day+' 天）</span></li>'}).join('')+'</ul>'+
+   freeBox('rgs'+n,'Make 2 sentences for each grammar point: '+gp.map(function(g){return g.t}).join('; '),'')+'</section>'}
+/* 外部聽 / 讀計時：開始 → 去聽 podcast / 讀新聞 → 返嚟撳停止（用開始時間計，App 喺背景都照計） */
+function pgExtHTML(k,n,res){pgInit();const run=S.pg.xt&&S.pg.xt.k===k&&S.pg.xt.n===n,done=S.pg[k][n]||0,need=k==='xl'?45:30;
+  const el=run?Math.max(0,Math.round((Date.now()-S.pg.xt.t)/60000)):0;
+  return '<div class="pgx" id="pgx-'+k+'"><div class="small muted" style="margin-bottom:6px">'+(k==='xl'?'外部精聽':'外部閱讀')+'：'+esc(res)+'</div><div class="btns" style="margin:0">'+
+    (run?'<button class="btn pri" data-act="pg-x-stop" data-k="'+k+'" data-day="'+n+'">停止計時（已 '+el+' 分鐘）</button>':'<button class="btn jade" data-act="pg-x-start" data-k="'+k+'" data-day="'+n+'">'+ICON.play+' 開始計時</button>')+
+    '<button class="btn ghost" data-act="pg-x-add" data-k="'+k+'" data-day="'+n+'">+10 分鐘</button><span class="small muted">今日 '+done+' / '+need+' 分鐘</span></div></div>'}
+function pgAct(a,ds){
+  if(a==='pg-x-start'){pgInit();const x=S.pg.xt;if(x&&(x.k!==ds.k||x.n!==+ds.day)){const m=Math.min(120,Math.max(0,Math.round((Date.now()-x.t)/60000)));S.pg[x.k][x.n]=(S.pg[x.k][x.n]||0)+m}S.pg.xt={k:ds.k,n:+ds.day,t:Date.now()};save();renderKeep();return true}
+  if(a==='pg-x-stop'){pgInit();const x=S.pg.xt;if(x){const m=Math.min(120,Math.max(0,Math.round((Date.now()-x.t)/60000)));S.pg[x.k][x.n]=(S.pg[x.k][x.n]||0)+m;S.pg.xt=null;toast('記錄咗 '+m+' 分鐘'+(m>=120?'（單次最多計 120 分鐘）':''));pgChanged()}save();renderKeep();return true}
+  if(a==='pg-x-add'){pgInit();const n=+ds.day;S.pg[ds.k][n]=(S.pg[ds.k][n]||0)+10;save();pgChanged();renderKeep();return true}
+  if(a==='pg-jump'){const el=document.getElementById(ds.id);if(el){if(el.tagName==='DETAILS')el.open=true;try{el.scrollIntoView({block:'start',behavior:'smooth'})}catch(e){}}return true}
+  if(a==='pg-topic'){pgInit();const n=+ds.day;S.pg.tpo[n]=(S.pg.tpo[n]||0)+1;save();rerenderCard('topic',function(){return cardTopic(n)});return true}
+  if(a==='dict-spaced'){PR.tab='dict';PR.src='spaced';PR.day=+ds.day||S.cur;DT=null;go('practice');return true}
+  return false}
+/* 實際學習時間：App 喺前台、2 分鐘內有操作（或者錄音／朗讀緊）就計；外部計時進行中就唔重複計 */
+const TMR={last:Date.now(),acc:0,iv:null};
+function tmPing(){TMR.last=Date.now()}
+function tmBusy(){try{return (typeof MIC==='object'&&MIC.on)||(typeof ASR==='object'&&ASR.cur)||(window.speechSynthesis&&window.speechSynthesis.speaking)}catch(e){return false}}
+function tmStart(){if(TMR.iv||typeof document==='undefined')return;
+  ['pointerdown','keydown','input','touchstart','scroll'].forEach(function(ev){document.addEventListener(ev,tmPing,{passive:true,capture:true})});
+  TMR.iv=setInterval(function(){try{if(document.visibilityState!=='visible')return;if(Date.now()-TMR.last>120000&&!tmBusy())return;pgInit();if(S.pg.xt)return;const dk=dkey();S.tm.d[dk]=(S.tm.d[dk]||0)+15;S.tm.n[S.cur]=(S.tm.n[S.cur]||0)+15;TMR.acc+=15;if(TMR.acc>=60){TMR.acc=0;save();pgPaint()}}catch(e){}},15000)}
 
 </script>
 <script>
@@ -7101,7 +7342,7 @@ function bookAct(a,ds){
   case 'kw':{const ch=bkById(ds.c),k=ch&&ch.kw[+ds.i];if(!k)return true;const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),ip=ipaOf(base);TTS.speak(base,{quiet:true});toast(k[0]+(ip?'  /'+ip+'/':'')+'  ·  '+k[1]);return true}
   case 'bk-all':{const ch=bkById(ds.c);if(!ch)return true;const list=[];ch.s.forEach(function(it){if(it[0]==='h'||it[0]==='p')list.push(it[1]);if(it[0]==='b')list.push(it[1]+'. '+it[2])});TTS.chain(list,{slow:ds.slow==='1'});return true}
   case 'bk-ans':{const ch=bkById(ds.c);if(!ch)return true;const st=BKQ[ch.id]||(BKQ[ch.id]={});const qi=+ds.q;if(st[qi]!==undefined)return true;st[qi]=+ds.o;S.log[dkey()]=1;
-    if(Object.keys(st).length===ch.q.length){let r=0;ch.q.forEach(function(q,i){if(st[i]===q[4])r++});S.quiz['bk-'+ch.id]=Math.round(r/ch.q.length*100);S.book[ch.id]=1;toast('練習完成，已標記為已讀')}
+    if(Object.keys(st).length===ch.q.length){let r=0;ch.q.forEach(function(q,i){if(st[i]===q[4])r++});S.quiz['bk-'+ch.id]=Math.round(r/ch.q.length*100);S.book[ch.id]=1;toast('練習完成，已標記為已讀');if(typeof pgChanged==='function')pgChanged()}
     save();rerenderCard('bkq-'+ch.id,function(){return bkQuiz(ch)});return true}
   case 'bks-open':{const c=ds.c,i=+ds.i;closeSheet();openSheet(function(){return bkSayHTML(c,i)});return true}
   case 'bks-done':{if(!S.bks)S.bks={};if(S.bks[ds.k])delete S.bks[ds.k];else{S.bks[ds.k]=1;S.log[dkey()]=1;toast('做得好！')}save();refreshSheet();renderKeep();return true}
