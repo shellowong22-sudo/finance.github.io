@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="30478c4626">
+<meta name="app-ver" content="09c99c4ebb">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -552,6 +552,15 @@ details.coh ol{margin:6px 0 4px;padding-left:20px;line-height:1.7}
 .spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;display:block}
 @keyframes spin{to{transform:rotate(360deg)}}
 .issue.snd b .ipa{font-weight:400}
+/* 本機評分：三條分數條 */
+.meters{display:grid;gap:10px;margin:12px 0 4px}
+.mt .mtl{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}
+.mt .mtl span{font-variant-numeric:tabular-nums;font-weight:700}
+.mtb{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:4px 0 3px}
+.mtb i{display:block;height:100%;border-radius:99px;background:var(--muted)}
+.mtb i.good{background:var(--ok)}.mtb i.mid{background:var(--warn)}.mtb i.low{background:var(--bad)}
+.cres audio{height:40px}
+.issue.good{border-left-color:var(--ok)}.issue.tipw{border-left-color:var(--warn)}
 
 </style>
 </head>
@@ -1039,7 +1048,7 @@ k:"把一段“中文式”彙報（背景先行）改寫為“結論先行”�
 
 D(78,{t:"說服技巧",e:"Persuasion",
 w:"persuade|說服;convince|使相信;argument|論點;evidence|證據;value|價值;proven|經過驗證的;imagine|想像;advantage|優勢;compelling|令人信服的;win-win|雙贏;hassle|麻煩事;paperwork|文書工作;dedicated|專屬的;most importantly|最重要的是;speak for themselves|唔言自明",
-s:["Let me show you why this makes sense.|等我說明點解咁樣做係合理嘅。","Imagine having a steady income after retirement.|想像吓退休後有穩定嘅收入。","The numbers speak for themselves.|數據說明一切。","There are three reasons why this is a good choice.|呢個係個好選擇，有三個理由。","This is a win-win solution.|呢個係一個雙贏嘅方案。","What would it take to get your approval?|要點樣先可以得到你批准？"],
+s:["Let me show you why this makes sense.|等我說明點解咁樣做係合理嘅。","Imagine having a steady income after retirement.|想像吓退休後有穩定嘅收入。","The numbers speak for themselves.|啲數字已經話晒畀你知。","There are three reasons why this is a good choice.|呢個係個好選擇，有三個理由。","This is a win-win solution.|呢個係一個雙贏嘅方案。","What would it take to get your approval?|要點樣先可以得到你批准？"],
 g:["說服三要素與三點法","亞里士多德說服三要素：Logos 邏輯（數據、證據）、Ethos 可信度（經驗、資質）、Pathos 情感（共鳴）。三點法：There are three reasons… First… Second… Most importantly…，聽眾最容易記住。",["First, it's low cost. Second, it's flexible. Most importantly, it's safe.|第一，成本低；第二，靈活；最重要嘅係，安全。","Based on the data, this option is clearly better.|根據數據，呢個方案明顯更好。","I've helped over 100 clients with similar needs.|我幫助過一百多位有類似需求嘅客戶。"]],
 c:["A|I'm not sure about moving my money to your bank.|我唔肯定應唔應該將啲錢轉去你哋銀行。","B|I understand. Let me give you three reasons to consider us.|我理解。等我畀你三個考慮我哋嘅理由。","B|First, our fees are 30% lower. Second, you'll have a dedicated relationship manager. Most importantly, we have a strong track record in Asia.|第一，我哋嘅費用低 30%；第二，你會有專屬客戶經理；最重要嘅係，我哋喺亞洲有好好嘅過往業績。","A|That sounds good, but switching is a hassle.|聽起嚟唔錯，但轉過嚟好麻煩。","B|Don't worry, we'll handle all the paperwork for you.|唔使擔心，所有文書工作我哋都會幫你處理。","A|OK, let's talk details.|好啦，我哋談談細節。"],
 k:"用“三點法 + 數據 + 情感”說服“客戶”把資產轉到你的銀行，2 分鐘，並處理 1 個反對意見。"});
@@ -1081,7 +1090,7 @@ k:"完整模擬一面：自我介紹 + Why finance + Why us + 五年規劃 + 優
 
 D(85,{t:"模擬客戶推介",e:"Mock Client Pitch",
 w:"needs analysis|需求分析;solution|解決方案;fee structure|收費結構;risk disclosure|風險披露;objection|異議;address|處理(問題);close|成交;onboarding|開戶流程;walk through|逐步講解;high-grade|高評級的;target|目標;honesty|誠實;go ahead|開始進行;partnership|合作關係;appreciate|感謝",
-s:["Thank you for your time today.|感謝你今日抽出時間。","Based on what you told me, here's my proposal.|根據你話我知嘅情況，呢個係我嘅方案。","Let me walk you through the fee structure.|等我為你逐項講解收費結構。","I must also explain the key risks.|我都必須說明主要風險。","I understand your concern. Let me address it.|我理解你嘅顧慮，等我嚟解答。","Shall we start the onboarding process?|我哋開始辦理開戶手續啩？"],
+s:["Thank you for your time today.|感謝你今日抽出時間。","Based on what you told me, here's my proposal.|根據你話我知嘅情況，呢個係我嘅方案。","Let me walk you through the fee structure.|等我為你逐項講解收費結構。","I must also explain the key risks.|我都一定要講清楚主要風險。","I understand your concern. Let me address it.|我理解你嘅顧慮，等我嚟解答。","Shall we start the onboarding process?|我哋開始辦理開戶手續啩？"],
 g:["Feel - Felt - Found 處理異議","I understand how you feel（我理解您的感受）→ Many clients felt the same way（很多客戶也有同感）→ But they found…（但他們後來發現…）。推介完整流程：寒暄 → 回顧需求 → 方案 → 好處與數據 → 風險披露（合規必需）→ 處理異議 → 邀約成交。",["I understand how you feel. Many clients felt the same way, but they found the plan very flexible.|我理解你嘅感受，好多客戶都咁覺得，但佢哋後來發現呢個計劃好靈活。","Let me walk you through the numbers.|等我帶你睇吓數字。","Is there anything stopping us from moving forward?|仲有冇咩等我哋唔可以推進嘅？"]],
 c:["A|Based on our last meeting, your main goal is stable income. Is that still right?|根據上次會面，你嘅主要目標係穩定收益，而家定係咪咁樣？","B|Yes.|係。","A|Then I propose a portfolio of high-grade bonds and dividend funds, targeting around 4 to 5% per year.|咁我建議一個由高評級債券同高息基金組成嘅組合，目標年回報約 4% 至 5%。","B|What are the risks?|有咩風險？","A|Returns aren't guaranteed. Bond prices can fall if rates rise, and there's some currency risk.|回報唔保證。利率上升時債券價格可能下跌，都有一定嘅匯率風險。","B|OK, I appreciate your honesty. Let's go ahead.|好，感謝你嘅坦誠，我哋開始啦。"],
 k:"完整演練一次 15 分鐘客戶推介（包含風險披露和 1 次異議處理），錄音後按清單自評。"});
@@ -2677,22 +2686,22 @@ const MEANING=[
 /* 補充語法點（補齊語法體系）：c = GCAT 分類序號；gx 第 0 個選項為正確答案（程式會打亂順序） */
 const GEX=[
  {id:"art",c:0,t:"冠詞 a / an / the 與零冠詞",d:"第一次提到、泛指一個：用 a / an（看發音：元音音素前用 an，如 an hour、an MBA；輔音音素前用 a，如 a university）。雙方都知道指哪一個、獨一無二、前面提過：用 the。泛指複數和不可數名詞、以及大多數公司名、城市名、語言、學科：不用冠詞。",
-  x:["I work at a bank in Central.|我喺中環一間銀行工作。","The bank I work for is HSBC.|我工作嘅嗰間銀行係滙豐。","She has an MBA from a university in London.|佢有倫敦一所大學嘅 MBA 學位。","Inflation is falling, and the HKMA is watching closely.|通脹在下降，金管局在密切關注。"],
+  x:["I work at a bank in Central.|我喺中環一間銀行工作。","The bank I work for is HSBC.|我工作嘅嗰間銀行係滙豐。","She has an MBA from a university in London.|佢有倫敦一所大學嘅 MBA 學位。","Inflation is falling, and the HKMA is watching closely.|通脹喺度回落，金管局密切留意緊。"],
   gx:[["It takes ___ hour to get there.","an|a|the",0,"hour 的 h 不發音，以元音音素開頭，用 an。"],["She studied at ___ university in Hong Kong.","a|an|the",0,"university 以 /j/ 輔音音素開頭，用 a。"],["Please send me ___ report you mentioned.","the|a|an",0,"雙方都知道是哪一份，用 the。"],["___ bonds are usually safer than stocks.","不填|The|A",0,"泛指一類東西的複數，不加冠詞。"],["He works for ___ SFC.","the|a|不填",0,"機構縮寫如 the SFC、the HKMA 要加 the；HSBC 這類公司名不加。"]]},
  {id:"poss",c:0,t:"名詞所有格：'s 與 of",d:"人和機構常用 's：the client's account、HSBC's results。複數以 s 結尾只加 '：the clients' accounts。物和抽象概念常用 of：the end of the year、the size of the deal。時間也常用 's：today's meeting、next week's report。",
-  x:["The client's account was opened yesterday.|客戶嘅戶口尋日開好喇。","Our clients' needs are changing.|我哋客戶嘅需求在變化。","Today's meeting has been moved.|今日嘅會議改時間喇。","At the end of the quarter, we review the portfolio.|季度末我哋會檢視投資組合。"],
+  x:["The client's account was opened yesterday.|客戶嘅戶口尋日開好喇。","Our clients' needs are changing.|我哋客戶嘅需求變緊。","Today's meeting has been moved.|今日嘅會議改時間喇。","At the end of the quarter, we review the portfolio.|季度末我哋會檢視投資組合。"],
   gx:[["Please check ___ documents.（這位客戶的）","the client's|the clients|the client",0,"單個人的所有格：名詞 + 's。"],["All ___ accounts were reviewed.（所有客戶的）","the clients'|the client's|the clients's",0,"以 s 結尾的複數只加撇號。"],["We'll discuss it at ___ meeting.（明天的）","tomorrow's|tomorrow|the tomorrow",0,"時間名詞常用 's。"],["The size ___ the deal is 2 billion dollars.","of|for|from",0,"物的所有關係常用 of。"],["___ results were better than expected.（滙豐的）","HSBC's|HSBCs|The HSBC",0,"公司名的所有格加 's。"]]},
  {id:"agree",c:0,t:"主謂一致",d:"主語是單數，動詞用單數；主語是複數，動詞用複數。容易出錯的情況：the number of + 複數名詞 → 單數動詞；a number of + 複數名詞 → 複數動詞；each / every / everyone → 單數；people、staff（指員工們）→ 複數；information、advice、money → 單數。",
-  x:["The number of clients is growing.|客戶嘅數量在增長。","A number of clients are interested.|有一啲客戶感興趣。","Each account has a monthly fee.|每個戶口都有月費。","The information is confidential.|呢啲資料係機密嘅。"],
+  x:["The number of clients is growing.|客戶嘅數量增加緊。","A number of clients are interested.|有一啲客戶感興趣。","Each account has a monthly fee.|每個戶口都有月費。","The information is confidential.|呢啲資料係機密嘅。"],
   gx:[["The number of complaints ___ falling.","is|are|be",0,"the number of …（……的數量）作主語，謂語用單數。"],["A number of investors ___ worried.","are|is|was",0,"a number of …（許多）後面的謂語用複數。"],["Every client ___ a dedicated adviser.","has|have|having",0,"every 後面接單數名詞，謂語用單數。"],["The money ___ already been transferred.","has|have|are",0,"money 不可數，謂語用單數。"],["People ___ more careful with their savings now.","are|is|does",0,"people 是複數。"]]},
  {id:"freq",c:3,t:"頻度副詞的位置",d:"always、usually、often、sometimes、rarely、never 等放在實義動詞前、be 動詞和助動詞後：I usually take the MTR. / She is always on time. / I have never been to London。sometimes 也可以放句首。",
   x:["I usually check the market at eight.|我通常八點睇市場。","She is always well prepared.|佢成日準備得好充分。","We rarely see such a sharp fall.|我哋好少睇到咁大嘅跌幅。","I have never missed a deadline.|我從來冇錯過截止日期。"],
   gx:[["I ___ the MTR to work.","usually take|take usually|am usually take",0,"頻度副詞放在實義動詞前。"],["He ___ late for meetings.","is never|never is|does never",0,"頻度副詞放在 be 動詞後。"],["We ___ reviewed this before.","have often|often have|have been often",0,"頻度副詞放在助動詞和過去分詞之間。"],["How ___ do you meet the client?","often|much|long",0,"問頻率用 How often。"],["She ___ forgets to follow up.","rarely|rare|rarer",0,"修飾動詞要用副詞 rarely（很少）。"]]},
  {id:"tprep",c:3,t:"時間介詞：for / since / during / by / until",d:"for + 一段時間（for three years）；since + 起點（since 2020），常和現在完成時連用；during + 某個期間（during the meeting）；by + 截止時間點，表示“最晚在……之前”（by Friday）；until + 時間點，表示動作一直持續到那時（until 6 p.m.）。",
-  x:["I've worked here for five years.|我喺呢度工作五年喇。","Rates have stayed high since last year.|從去年起利率一直好高。","Please mute your phone during the meeting.|開會時請將手機靜音。","Please send it by Friday. I'll be in the office until six.|請在星期五前發過嚟。我會喺辦公室留到六點。"],
+  x:["I've worked here for five years.|我喺呢度工作五年喇。","Rates have stayed high since last year.|從去年起利率一直好高。","Please mute your phone during the meeting.|開會時請將手機靜音。","Please send it by Friday. I'll be in the office until six.|請喺星期五前發過嚟。我會喺辦公室留到六點。"],
   gx:[["Please submit the report ___ Friday.","by|until|since",0,"by 表示截止期限：最晚在……之前。"],["I'll wait here ___ she arrives.","until|by|for",0,"until 表示動作一直持續到某個時間。"],["She has lived in Hong Kong ___ 2021.","since|for|from",0,"since + 起點，與現在完成時連用。"],["We've known each other ___ ten years.","for|since|during",0,"for + 一段時間。"],["He took notes ___ the presentation.","during|for|while",0,"during + 名詞：在……期間。"]]},
  {id:"pprep",c:3,t:"地點介詞：in / on / at",d:"in + 大範圍或內部（in Hong Kong、in the office）；on + 表面、樓層、街道（on the 12th floor、on Queen's Road）；at + 具體地點或地址（at the bank、at 1 Queen's Road Central、at the reception）。",
-  x:["Our office is in Central.|我哋嘅辦公室喺中環。","It's on the 25th floor.|在 25 樓。","Let's meet at the reception.|我哋在前台見。","The bank is at 1 Queen's Road Central.|銀行在皇后大道中 1 號。"],
+  x:["Our office is in Central.|我哋嘅辦公室喺中環。","It's on the 25th floor.|喺 25 樓。","Let's meet at the reception.|我哋喺前台見。","The bank is at 1 Queen's Road Central.|銀行喺皇后大道中 1 號。"],
   gx:[["The meeting room is ___ the 12th floor.","on|in|at",0,"樓層用 on。"],["She lives ___ Kowloon.","in|on|at",0,"地區、城市用 in。"],["I'll wait for you ___ the entrance.","at|in|on",0,"具體的點用 at。"],["Our office is ___ Des Voeux Road.","on|in|at",0,"街道名（不含門牌號）用 on。"],["He works ___ a fund house.","at|on|to",0,"在某個工作單位用 at（也可以用 for）。"]]},
  {id:"pfpast",c:1,t:"現在完成時 vs 一般過去時",d:"有明確的過去時間（yesterday、last year、in 2020、two days ago）用一般過去時。沒有具體時間、強調對現在的影響或經歷，用現在完成時：I've finished the report（現在可以給你了）。問“什麼時候”用一般過去時：When did you join?",
   x:["I joined the bank in 2022.|我 2022 年加入呢間銀行。","I've worked here for three years.|我喺呢度工作三年喇。","Have you sent the file? Yes, I sent it this morning.|你發文件咗未？發咗，今日朝早發嘅。","The market has fallen 8 percent this month.|呢個月市場已經跌咗 8%。"],
@@ -2701,7 +2710,7 @@ const GEX=[
   x:["This time next week, I'll be meeting clients in Singapore.|下個星期呢個時候，我會喺新加坡見客戶。","Will you be joining the call later?|你一陣間會唔會參加電話會議？","By the end of the year, we'll have opened three new branches.|到年底，我哋將開設三家新分行。","By 2030, the bond will have matured.|到 2030 年，呢隻債券已經到期喇。"],
   gx:[["At 3 p.m. tomorrow, I ___ a presentation.","will be giving|will have given|give",0,"將來某個時刻正在進行，用將來進行時。"],["By Friday, I ___ the analysis.","will have finished|will be finishing|finish",0,"by + 將來時間，表示之前已完成，用將來完成時。"],["___ you be using the meeting room this afternoon?","Will|Do|Have",0,"禮貌詢問安排：Will you be + -ing？"],["By next month, she ___ here for ten years.","will have worked|will work|works",0,"到將來某時已經持續了多久，用將來完成時。"],["Don't call at nine. I ___ a client then.","will be meeting|will have met|meet",0,"那個時候正在做某事，用將來進行時。"]]},
  {id:"used",c:1,t:"used to / be used to / get used to",d:"used to + 動詞原形：過去常常（現在不了）——I used to work in Shenzhen。be used to + 名詞或 -ing：習慣於——I'm used to working long hours。get used to + 名詞或 -ing：逐漸習慣——I'm getting used to the weather in Hong Kong。",
-  x:["I used to work in a bank in Shenzhen.|我以前喺深圳一間銀行工作。","I'm used to speaking English at work now.|我而家已經習慣在工作中講英文喇。","It took me a month to get used to the fast pace.|我花咗一個月才適應快節奏。","Did you use to live in Guangzhou?|你以前住喺廣州嗎？"],
+  x:["I used to work in a bank in Shenzhen.|我以前喺深圳一間銀行工作。","I'm used to speaking English at work now.|我而家已經習慣喺工作上講英文喇。","It took me a month to get used to the fast pace.|我花咗一個月才適應快節奏。","Did you use to live in Guangzhou?|你以前住喺廣州嗎？"],
   gx:[["I ___ live in Shenzhen, but now I live in Hong Kong.","used to|am used to|get used to",0,"過去常常、現在不再：used to + 動詞原形。"],["She is used to ___ under pressure.","working|work|worked",0,"be used to 中 to 是介詞，後接 -ing。"],["You'll soon get used to ___ English every day.","speaking|speak|spoke",0,"get used to + -ing：逐漸習慣。"],["Did you ___ to work in sales?","use|used|using",0,"疑問句中用 did … use to。"],["I'm not used to ___ so early.","getting up|get up|got up",0,"be used to + -ing。"]]},
  {id:"report",c:5,t:"間接引語（轉述別人的話）",d:"轉述時，時態通常往過去推一步：is → was，will → would，can → could，現在完成時 → 過去完成時。疑問句改為陳述語序：She asked if I was free. 常用動詞：said (that)、told me (that)、asked if / whether、asked me to …",
   x:["The client said that he was happy with the returns.|客戶講佢對回報好滿意。","She told me she would send the documents today.|佢話我知佢今日會將文件發過嚟。","He asked if we could lower the fee.|佢問我哋可以唔可以降低費用。","My manager asked me to call the client back.|經理等我畀客戶回電話。"],
@@ -2713,7 +2722,7 @@ const GEX=[
   x:["I wish I spoke Japanese.|我希望我識講日文。","I wish I had invested earlier.|要係我早點投資就好喇。","If only the market would calm down.|要係市場可以平靜落嚟就好喇。","I wish I had more time to prepare.|我希望有更多時間準備。"],
   gx:[["I wish I ___ more time today.","had|have|will have",0,"對現在的遺憾：wish + 過去式。"],["I wish I ___ that stock last year.","had bought|bought|have bought",0,"對過去的遺憾：wish + had + 過去分詞。"],["If only he ___ listen to my advice.","would|will|is",0,"希望別人改變做法：wish / if only + would。"],["She wishes she ___ in finance earlier.","had started|started|starts",0,"對過去的遺憾。"],["I wish it ___ so humid in Hong Kong.","weren't|isn't|won't be",0,"對現在情況的遺憾，be 動詞常用 were。"]]},
  {id:"caus",c:4,t:"使役結構：have / get something done",d:"不是自己做，而是安排別人做：have / get + 物 + 過去分詞。I had my laptop repaired（我請人修了電腦）。We need to get the documents signed（我們需要讓文件被簽好）。get 比 have 更口語。",
-  x:["I had the report checked by compliance.|我請合規部檢查咗報告。","We need to get these forms signed by Friday.|我哋需要在星期五前將呢啲表格簽好。","She's having her office redecorated.|佢正在請人重新裝修辦公室。","You should get your password changed regularly.|你應該定期更改密碼。"],
+  x:["I had the report checked by compliance.|我請合規部檢查咗報告。","We need to get these forms signed by Friday.|我哋要喺星期五前將呢啲表格簽好。","She's having her office redecorated.|佢請咗人重新裝修緊辦公室。","You should get your password changed regularly.|你應該定期更改密碼。"],
   gx:[["I had my laptop ___ yesterday.","repaired|repair|repairing",0,"have + 物 + 過去分詞：請人做某事。"],["We need to get the contract ___.","signed|sign|to sign",0,"get + 物 + 過去分詞。"],["She ___ her documents translated.","had|made|let",0,"have sth done 表示安排別人做。"],["You should get your eyes ___.","tested|test|testing",0,"物和動作是被動關係，用過去分詞。"],["Can I have the slides ___ by noon?","sent|send|sending",0,"have sth done。"]]},
  {id:"phrasal",c:3,t:"商務常用短語動詞",d:"短語動詞 = 動詞 + 小品詞，意思常常不能從字面猜出來，要整體記。下面是辦公室最常用的一組。賓語是代詞時要放中間：call him back，不說 call back him。",
   x:["I'll follow up with the client tomorrow.|我聽日跟進客戶。","Could you look into this issue?|你可唔可以調查吓呢個問題？","We need to set up a meeting.|我哋需要安排一個會議。","Let's go over the numbers again.|我哋再過一次數字。","The deal fell through.|交易告吹喇。","Please fill in this form.|請填寫呢張表格。"],
@@ -4215,36 +4224,50 @@ function splitSentences(p){return (String(p).match(/[^.!?]+[.!?]+['"]?|[^.!?]+$/
 /* ---------- 語音識別 & 錄音 ---------- */
 const SRClass=window.SpeechRecognition||window.webkitSpeechRecognition||null;
 const ASR={ok:!!SRClass,cur:null,
-  /* opt.interim(text)：一路講一路顯示；opt.continuous：自由講（停 idleMs 毫秒自動結束） */
+  /* opt.interim(text)：一路講一路顯示；opt.continuous：自由講（停 idleMs 毫秒自動結束）
+     有保險：開始唔到（stall）、一直冇結果、停唔到，都會自己結束，唔會卡住 */
   listen(opt){
     opt=opt||{};const self=this;
     return new Promise(function(res,rej){
+      if(self.cur)self.abort();
       let r;try{r=new SRClass()}catch(e){rej('init');return}
       AUD.recStart();self.cur=r;
       r.lang=S.set.accent;r.interimResults=true;r.maxAlternatives=5;r.continuous=!!opt.continuous;
-      const finals=[];let alts=null,interim='',fin=false,tm=null,idle=null;
-      const stopSoon=function(){clearTimeout(idle);idle=setTimeout(function(){try{r.stop()}catch(x){finish()}},opt.idleMs||2500)};
-      const finish=function(){if(fin)return;fin=true;clearTimeout(tm);clearTimeout(idle);AUD.recStop();self.cur=null;
+      const finals=[];let alts=null,interim='',fin=false,tm=null,idle=null,wd=null,nores=null,got=false,alive=false;
+      const clear=function(){clearTimeout(tm);clearTimeout(idle);clearTimeout(wd);clearTimeout(nores)};
+      const finish=function(){if(fin)return;fin=true;clear();AUD.recStop();if(self.cur===r)self.cur=null;
         const text=(finals.join(' ')+' '+interim).replace(/\s+/g,' ').trim();
         if(opt.continuous)res(text?[text]:[]);else res(alts&&alts.length?alts.concat(text&&alts.indexOf(text)<0?[text]:[]):(text?[text]:[]))};
-      r.onresult=function(e){try{interim='';for(let i=e.resultIndex;i<e.results.length;i++){const R=e.results[i];
+      const fail=function(c){if(fin)return;fin=true;clear();AUD.recStop();if(self.cur===r)self.cur=null;rej(c)};
+      /* 叫佢停；1.5 秒內唔停就強制結束 */
+      const halt=function(){try{r.stop()}catch(x){}setTimeout(function(){if(!fin){r.onerror=null;r.onend=null;try{r.abort()}catch(x){}finish()}},1500)};
+      r.__halt=halt;
+      /* 離開／閂咗：唔要結果 */
+      r.__abort=function(){if(fin)return;r.onresult=null;r.onend=null;r.onerror=null;try{r.abort()}catch(x){}fail('aborted')};
+      const up=function(){if(alive)return;alive=true;clearTimeout(wd);
+        if(!got)nores=setTimeout(function(){if(!got&&!fin)halt()},opt.continuous?12000:9000)};
+      r.onstart=up;r.onaudiostart=up;
+      const stopSoon=function(){clearTimeout(idle);idle=setTimeout(halt,opt.idleMs||2500)};
+      r.onresult=function(e){up();got=true;clearTimeout(nores);try{interim='';for(let i=e.resultIndex;i<e.results.length;i++){const R=e.results[i];
           if(R.isFinal){finals.push(R[0].transcript);if(!opt.continuous){alts=[];for(let k=0;k<R.length;k++)if(R[k].transcript)alts.push(R[k].transcript)}}else interim+=R[0].transcript}
         if(opt.interim)opt.interim((finals.join(' ')+' '+interim).replace(/\s+/g,' ').trim());
         if(opt.continuous)stopSoon()}catch(x){}};
-      r.onerror=function(e){const c=(e&&e.error)||'error';if((c==='no-speech'||c==='aborted')&&(finals.length||interim)){finish();return}
-        if(fin)return;fin=true;clearTimeout(tm);clearTimeout(idle);AUD.recStop();self.cur=null;rej(c)};
+      r.onerror=function(e){const c=(e&&e.error)||'error';if((c==='no-speech'||c==='aborted')&&(finals.length||interim)){finish();return}fail(c)};
       r.onend=finish;
-      tm=setTimeout(function(){try{r.stop()}catch(x){finish()}},opt.maxMs||(opt.continuous?120000:15000));
-      try{r.start()}catch(e){fin=true;AUD.recStop();self.cur=null;rej('start')}
+      tm=setTimeout(halt,opt.maxMs||(opt.continuous?120000:15000));
+      /* 撳咗都冇反應（某啲 App 入面會咁）：當開始唔到 */
+      wd=setTimeout(function(){if(!alive&&!fin){try{r.onend=null;r.onerror=null;r.abort()}catch(x){}fail('stall')}},opt.stallMs||9000);
+      try{r.start()}catch(e){fail('start')}
     });
   },
-  stop(){try{if(this.cur)this.cur.stop()}catch(e){}}
+  stop(){try{const r=this.cur;if(r){if(r.__halt)r.__halt();else r.stop()}}catch(e){}},
+  abort(){try{const r=this.cur;if(r){if(r.__abort)r.__abort();else r.abort()}}catch(e){}}
 };
 function asrMsg(code){
   const m={'not-allowed':'未允許用咪高峰。iPhone：設定 → 私隱與安全性 → 麥克風／語音辨識，允許呢個 App 或 Safari；第一次會彈出詢問，請撳「允許」。',
-    'service-not-allowed':'呢個環境唔畀用語音識別（例如某啲 App 入面嘅預覽）。請用 Safari 打開，或者用下面嘅鍵盤 🎤。',
+    'service-not-allowed':'呢度唔畀用系統語音識別，會改用本機錄音評分。',
     'no-speech':'聽唔到你講嘢。撳多一次，靠近啲講、大聲啲。','audio-capture':'搵唔到咪高峰，請檢查耳機或者權限。',
-    'network':'語音識別要上網，請檢查網絡再試。','language-not-supported':'呢部機唔支援英文語音識別，請用鍵盤 🎤。','init':'呢個瀏覽器唔支援語音識別，請用鍵盤 🎤。','start':'語音識別開始唔到，請再撳一次。'};
+    'network':'語音識別要上網，請檢查網絡再試。','language-not-supported':'呢部機唔支援英文語音識別，請用鍵盤 🎤。','init':'呢個瀏覽器唔支援語音識別，請用鍵盤 🎤。','start':'語音識別開始唔到，請再撳一次。','stall':'語音識別冇反應，請再撳一次。'};
   return m[code]||('語音識別出錯（'+code+'），請再試一次，或者用鍵盤 🎤。')}
 
 const REC={ok:!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder),mr:null,stream:null,chunks:[],
@@ -4353,7 +4376,7 @@ function rwStop(id){
   REC.stop().then(function(r){const st=RW[id]||(RW[id]={});st.on=false;if(r){if(st.url)try{URL.revokeObjectURL(st.url)}catch(e){}st.url=r.url;st.blob=r.blob;st.type=r.type}renderKeep();if(SHEET)refreshSheet()});
 }
 function micErr(e){const n=e&&(e.name||e.message)||'';if(/NotAllowed|Permission|denied|Security/i.test(n))return '無法使用麥克風：權限被拒絕，或當前頁面環境（例如嵌入式預覽）不允許錄音。請在瀏覽器中直接打開離線版 HTML 檔案，並允許麥克風權限。';if(/NotFound/i.test(n))return '沒有找到麥克風設備。';return '錄音啟動失敗：'+n}
-function stopMedia(){TTS.stop();ASR.stop();Object.keys(RW).forEach(function(k){if(RW[k].on){RW[k].on=false;REC.stop()}});if(RP.active){RP.active=false}}
+function stopMedia(){TTS.stop();ASR.abort();MIC.abort();Object.keys(RW).forEach(function(k){if(RW[k].on){RW[k].on=false;REC.stop()}});if(RP.active){RP.active=false}}
 
 /* 計時器 */
 const TM={left:0,total:0,iv:null,ctx:null};
@@ -4911,7 +4934,7 @@ const GOPEN={};
 /* ---------- 我的 ---------- */
 /* 一鍵檢查：朗讀有冇開始、用咩聲音、錄音同語音識別支唔支援 */
 function vcEnv(){const ios=isIOS(),sa=isStandalone(),sess=!!(navigator&&navigator.audioSession);
-  return '<ul class="small" style="margin:8px 0 0;padding-left:18px;line-height:1.7"><li>裝置：'+(ios?'iPhone / iPad':'電腦或 Android')+(sa?' · 主屏幕 App':' · 瀏覽器')+'</li><li>英文聲音：'+(TTS.ok?TTS.voices.length+' 個':'唔支援朗讀')+'</li><li>靜音模式補救：'+(sess?'Audio Session（已開啟）':(ios?'無聲音頻（舊版 iOS）':'唔需要'))+'</li><li>錄音：'+(REC.ok?'支援':'唔支援')+'</li><li>講完評分：'+(ASR.ok&&!(ios&&sa)?'可以用語音識別或者鍵盤 🎤':'用鍵盤 🎤 聽寫（最穩定）')+'</li></ul>'}
+  return '<ul class="small" style="margin:8px 0 0;padding-left:18px;line-height:1.7"><li>裝置：'+(ios?'iPhone / iPad':'電腦或 Android')+(sa?' · 主屏幕 App':' · 瀏覽器')+'</li><li>英文聲音：'+(TTS.ok?TTS.voices.length+' 個':'唔支援朗讀')+'</li><li>靜音模式補救：'+(sess?'Audio Session（已開啟）':(ios?'無聲音頻（舊版 iOS）':'唔需要'))+'</li><li>錄音：'+(REC.ok?'支援':'唔支援')+'</li><li>講完評分：'+({gm:'AI 逐字評分',asr:'系統語音識別（逐字）',local:'本機錄音評分（完整度、語速、停頓）'}[vEngine()]||'用鍵盤 🎤 聽寫')+'</li></ul>'}
 function voiceCheck(){
   const box=$('vcRes');if(!box)return;
   let started=false,ended=false,err='';const v=TTS.voice();
@@ -4957,7 +4980,7 @@ function vMe(){
   h+=gmCard();
   h+='<section class="card" id="voiceHelp"><h2 class="sec-h">聲音同語音評分 <span class="tag">Help</span></h2><ol class="small" style="margin:0;padding-left:20px;line-height:1.8">'+
    '<li><b>冇聲：</b>iPhone 開咗靜音模式 🔕 就會冇聲。關閉靜音，再調大音量。</li>'+
-   '<li><b>直接講評分：</b>主屏幕 App 用上面嘅「App 內直接講評分」（免費 Google AI Key）；第一次會問你用唔用咪高峰，撳「允許」。Claude App 入面唔准用咪高峰。</li>'+
+   '<li><b>直接講評分：</b>撳大咪就講，第一次會問你用唔用咪高峰／語音識別，撳「允許」。用唔到系統語音識別嘅地方，App 會自動轉本機錄音評分。Claude App 入面唔准用咪高峰。</li>'+
    '<li><b>聲音唔自然：</b>設定 → 輔助使用 → 朗讀內容 → 聲音 → 英文，下載「Daniel（英國）」或者增強版聲音。</li></ol>'+
    '<div class="btns"><button class="btn jade" data-act="voice-check">'+ICON.spk+' 一鍵檢查聲音同咪</button>'+(AI.ns?'<button class="btn" data-act="ai-auto" aria-pressed="'+(S.set.aiAuto!==false)+'">講完自動 AI 講解：'+(S.set.aiAuto!==false?'開':'關')+'</button>':'')+'</div><div id="vcRes" aria-live="polite"></div></section>';
   h+='<section class="card"><h2 class="sec-h">學習頁面</h2><div class="seg" role="group" aria-label="學習頁面"><button data-act="layout" data-v="step" aria-pressed="'+!S.set.allInOne+'">分步學習（推薦）</button><button data-act="layout" data-v="all" aria-pressed="'+!!S.set.allInOne+'">一頁顯示全部</button></div><p class="small muted" style="margin:8px 0 0">分步學習：一次只顯示當前這一步，做完進入下一步。一頁顯示：當天所有內容在同一頁。</p></section>';
@@ -4965,11 +4988,11 @@ function vMe(){
   const yes='<span class="pill ok">可用</span>',no='<span class="pill warn">不可用</span>';
   h+='<section class="card"><h2 class="sec-h">功能檢測</h2><div class="rows">'+
    '<div class="row"><div class="txt">朗讀（單詞、句子、對話）</div>'+(TTS.ok?yes:no)+'</div>'+
-   '<div class="row"><div class="txt">語音識別打分</div>'+(ASR.ok?yes:no)+'</div>'+
+   '<div class="row"><div class="txt">講完即刻評分</div>'+(voiceReady()?'<span class="pill ok">'+({gm:'AI 逐字',asr:'系統語音識別',local:'本機評分'}[vEngine()]||'可用')+'</span>':no)+'</div>'+
    '<div class="row"><div class="txt">錄音回放</div>'+(REC.ok?yes:no)+'</div>'+
    '<div class="row"><div class="txt">本機儲存進度</div>'+(Store.ok?yes:no)+'</div>'+
    '<div class="row"><div class="txt">雲端同步進度</div>'+(Cloud.status==='on'?yes:'<span class="pill grey">未啟用</span>')+'</div>'+
-  '</div><p class="small muted" style="margin-bottom:0">建議用電腦或手機上的 Chrome / Edge / Safari 直接打開離線版 HTML 檔案：朗讀、錄音、語音識別都能使用。在嵌入式預覽中，麥克風可能被瀏覽器禁止，這時朗讀和其他功能仍可正常使用。</p></section>';
+  '</div><p class="small muted" style="margin-bottom:0">喺 Claude App 入面，麥克風會被禁止；朗讀同其他功能照用得。想講英文評分，請用主屏幕 App 或者 Safari。</p></section>';
   /* 數據 */
   h+='<section class="card"><h2 class="sec-h">進度備份</h2><p class="small muted" style="margin-top:0">進度會自動儲存在這台設備上。建議每週匯出一次備份檔案；換手機、換瀏覽器或清理快取前一定要先匯出。iPhone 上點“匯出備份檔案”會彈出分享選單，選“存儲到‘檔案’”儲存到 iCloud 雲盤；以後在新設備上用“匯入備份檔案”恢復。</p><div class="btns"><button class="btn jade" data-act="export">匯出備份檔案</button><button class="btn" data-act="copy-backup">複製備份代碼</button><label class="btn" for="importFile" style="cursor:pointer">從檔案匯入</label><input type="file" id="importFile" accept=".json,application/json,text/plain" hidden></div>'+
    '<label class="f" for="importTxt">或者粘貼備份代碼</label><textarea id="importTxt" placeholder="把複製的備份代碼粘貼在這裏"></textarea><div class="btns"><button class="btn" data-act="import-txt">匯入粘貼的代碼</button><button class="btn ghost" data-act="reset" style="color:var(--bad)">清空全部進度</button></div></section>';
@@ -5077,7 +5100,7 @@ function act(a,ds,el){
   case 'tts-stop':TTS.stop();break;
   case 'voice-check':voiceCheck();break;
   case 'mic-check':micCheck();break;
-  case 'shadow':{const prev=SHEET&&!SHEET.__shadow?SHEET:null;SP={en:ds.en,zh:ds.zh,host:'sheet',res:null,busy:false,err:''};const f=function(){return (prev?'<button class="btn ghost" data-act="sheet-back" style="margin-bottom:8px">‹ 返回</button>':'')+'<h3>跟讀練習</h3>'+speakBody()};f.__shadow=true;f.__prev=prev;openSheet(f);break}
+  case 'shadow':{ASR.abort();MIC.abort();const prev=SHEET&&!SHEET.__shadow?SHEET:null;SP={en:ds.en,zh:ds.zh,host:'sheet',res:null,busy:false,err:''};const f=function(){return (prev?'<button class="btn ghost" data-act="sheet-back" style="margin-bottom:8px">‹ 返回</button>':'')+'<h3>跟讀練習</h3>'+speakBody()};f.__shadow=true;f.__prev=prev;openSheet(f);break}
   case 'sheet-back':{const pv=SHEET&&SHEET.__prev;stopMedia();if(pv){SHEET=pv;refreshSheet()}else closeSheet();break}
   case 'asr':runAsr();break;
   case 'timer':startTimer(+ds.m);break;
@@ -5104,8 +5127,8 @@ function act(a,ds,el){
   case 'dict-check':case 'dict-skip':{const inp=$('dictIn');DT.input=inp?inp.value:'';const s=DT.list[DT.i];const r=compare(s.en,a==='dict-skip'?'':DT.input);DT.res=r;DT.checked=true;DT.sum+=r.score;DT.n++;S.log[dkey()]=1;misSent(s.en,s.zh,r.score);save();renderKeep();break}
   case 'dict-next':{DT.i++;DT.checked=false;DT.input='';DT.res=null;if(DT.list[DT.i])TTS.speak(DT.list[DT.i].en);renderKeep();break}
   case 'dict-restart':DT=null;render();break;
-  case 'tk-prev':TK.i=(TK.i-1+TK.list.length)%TK.list.length;SP=null;render();break;
-  case 'tk-next':TK.i=(TK.i+1)%TK.list.length;SP=null;render();break;
+  case 'tk-prev':stopMedia();TK.i=(TK.i-1+TK.list.length)%TK.list.length;SP=null;render();break;
+  case 'tk-next':stopMedia();TK.i=(TK.i+1)%TK.list.length;SP=null;render();break;
   case 'topic-new':PR.topic=TOPICS[Math.floor(Math.random()*TOPICS.length)];render();break;
   case 'topic-iv':PR.topic=INTERVIEW[Math.floor(Math.random()*INTERVIEW.length)];render();break;
   case 'iv-go':PR.tab='talk';PR.topic=INTERVIEW[+ds.i]||INTERVIEW[0];go('practice');break;
@@ -5176,7 +5199,7 @@ function boot(){
   window.addEventListener('error',function(e){console.warn('[runtime]',e&&e.message)});
   window.addEventListener('unhandledrejection',function(e){console.warn('[unhandled]',e&&e.reason);try{e.preventDefault()}catch(x){}});
   window.addEventListener('pagehide',function(){stopMedia();if(Cloud.ref)Cloud.flush()});
-  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')safe(function(){Cloud.refresh()},'cloud');else if(Cloud.ref)Cloud.flush()});
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')safe(function(){Cloud.refresh()},'cloud');else{ASR.abort();MIC.abort();if(Cloud.ref)Cloud.flush()}});
   document.addEventListener('focusout',function(){setTimeout(flushDeferred,300)});
   setInterval(flushDeferred,4000);
   safe(favInit,'fav');safe(function(){UIM.resume()},'uim');uimInit();
@@ -5422,37 +5445,50 @@ function coCJK(t){return /[\u3400-\u9fff]/.test(String(t||''))}
 function coCJKWarn(){return '<p class="note warn" style="margin-top:10px"><b>出咗中文字？</b>你用緊中文鍵盤，聽寫就會變中文。撳鍵盤左下角 🌐 轉做 <b>English</b> 鍵盤，再撳 🎤 講。</p>'}
 function coIOSHint(){return isIOS()?'<p class="small muted" style="margin:6px 0 0">冇聲？iPhone 請關閉靜音模式 🔕（側邊開關／控制中心），再調大音量。</p>':''}
 function coDictHelp(){return '<details class="dd coh"><summary>點樣用鍵盤 🎤 講？</summary><ol class="small"><li>撳「🎤 開始講」，鍵盤會彈出嚟。</li><li>用 🌐 切換到<b>英文鍵盤</b>，再撳鍵盤上嘅 🎤（聽寫）。</li><li>用英文講；講完停一停，程式會<b>自動評分</b>。</li></ol><p class="small muted">見唔到 🎤：設定 → 一般 → 鍵盤 → 開啟「啟用聽寫」。</p></details>'}
-/* 一撳就講：直接語音 → 即時評分 → 即時糾正（文法、英文邏輯）→ AI 老師講解（喺 Claude 入面自動） */
-const WEB_URL='https://shellowong22-sudo.github.io/finance.github.io/e90-k9udgvwtys/';
+/* 一撳就講：直接語音 → 即時評分 → 即時糾正（文法、英文邏輯） */
 function inFrame(){try{return window.self!==window.top}catch(e){return true}}
-function iosSafari(){const ua=navigator.userAgent||'';return /Safari\//.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(ua)}
-/* iPhone 只有 Safari 本身准網頁用語音識別；主屏幕 App、其他 App 入面嘅網頁（包括 Claude App）都唔得 */
-function asrBlocked(){return isIOS()&&(isStandalone()||!iosSafari()||inFrame())}
-function asrUsable(){return ASR.ok&&!asrBlocked()}
+/* ---------- 語音引擎：有 AI Key → Gemini；冇就用系統語音識別（逐字）；呢度用唔到就自動轉 App 自己錄音、本機評分 ---------- */
+const VE={K:'hkfe90.asr',miss:0,stall:0,
+  env(){return (isStandalone()?'app':'web')+(inFrame()?'-frame':'')},
+  get(){try{return JSON.parse(localStorage.getItem(this.K)||'{}')||{}}catch(e){return {}}},
+  put(o){try{localStorage.setItem(this.K,JSON.stringify(o))}catch(e){}},
+  bad(){const t=this.get()[this.env()];return !!t&&Date.now()-t<14*864e5},
+  mark(){const o=this.get();o[this.env()]=Date.now();this.put(o)},
+  reset(){const o=this.get();delete o[this.env()];this.put(o);this.miss=0;this.stall=0}
+};
+function asrUsable(){return ASR.ok&&!VE.bad()}
 function gmReady(){return GM.ok()&&MIC.ok()}
-function voiceReady(){return gmReady()||asrUsable()}
-function safariBox(){const url=WEB_URL+'#practice';
-  return '<div class="talk off"><div class="talkst"><b>iPhone 只有 Safari 先可以直接講評分</b><div class="small muted" style="margin-top:2px">撳下面個掣，會用 Safari 打開同一個練習（Safari 版嘅記錄同呢度分開）。</div>'+
-    '<div class="btns" style="margin-top:8px"><a class="btn pri" href="x-safari-'+esc(url)+'" data-copy="'+esc(url)+'">'+ICON.mic+' 用 Safari 打開</a></div></div></div>'}
-function setupBox(){
-  if(!MIC.ok())return asrBlocked()?safariBox():'';
-  const url=WEB_URL+'#practice';
-  return '<div class="talk off"><div class="talkst"><b>想喺 App 入面直接講評分？</b><div class="small muted" style="margin-top:2px">設定一次免費 Google AI，之後撳咪講完，即刻評分、糾正文法同發音。</div>'+
-    '<div class="btns" style="margin-top:8px"><button class="btn pri" data-act="gm-setup">'+ICON.mic+' 設定（免費，1 分鐘）</button>'+(asrBlocked()&&isStandalone()?'<a class="btn ghost" href="x-safari-'+esc(url)+'" data-copy="'+esc(url)+'">或者用 Safari</a>':'')+'</div></div></div>'}
+function voiceReady(){return gmReady()||asrUsable()||MIC.ok()}
+function vEngine(){return gmReady()?'gm':(asrUsable()?'asr':(MIC.ok()?'local':''))}
+/* 系統語音識別失敗：可以轉本機錄音就轉（返回 true） */
+function asrFallback(code){
+  if(!MIC.ok())return false;
+  if(code==='service-not-allowed'||code==='init'||code==='start'||code==='language-not-supported'){VE.mark();toast('呢度用唔到系統語音識別，轉用本機錄音評分：請講');return true}
+  if(code==='stall'){VE.stall++;if(VE.stall>=2)VE.mark();toast('語音識別冇反應，轉用本機錄音評分：請講');return true}
+  if(code==='not-allowed'){toast('未允許語音識別，改用本機錄音評分：請講');return true}
+  if(code==='network'){toast('冇網絡，改用本機錄音評分：請講');return true}
+  return false;
+}
+/* 喺撳掣嗰下準備好錄音（iPhone 要手勢）；Safari 本身用系統語音識別就唔郁佢，免得互相干擾 */
+function vPrime(eng){if(eng!=='asr'||(isIOS()&&(isStandalone()||inFrame())))MIC.prime()}
+/* iPhone 主屏幕 App／App 入面：連續兩次聽唔到 → 之後直接用本機錄音 */
+function asrEmpty(){if(isIOS()&&(isStandalone()||inFrame())){VE.miss++;if(VE.miss>=2)VE.mark()}}
+function setupBox(){return '<p class="note small" style="margin-top:10px">呢個瀏覽器唔支援錄音。可以用下面嘅鍵盤 🎤 講，或者打字。</p>'}
 function talkBox(act,id,busy,live,idle,phase){
   if(!voiceReady())return setupBox();
   const ai=busy&&phase==='ai';
   return '<div class="talk'+(busy?' on':'')+(ai?' ai':'')+'"><button class="micbig'+(busy?' on':'')+(ai?' ai':'')+'" data-act="'+act+'"'+(id?' data-id="'+id+'"':'')+' aria-label="'+(ai?'評分緊':(busy?'停止':'直接講'))+'">'+(ai?'<span class="spin" aria-hidden="true"></span>':(busy?ICON.stop:ICON.mic))+'</button>'+
     '<div class="talkst"><b>'+(ai?'AI 評分緊…':(busy?'聽緊…講完停一停就自動評分':idle))+'</b><div class="live" id="'+(id?'ftlive-'+id:'spLive')+'" aria-live="polite">'+(ai?'':esc(live||''))+'</div></div></div>';
 }
+function vErrHTML(o,act,id){return o.err?'<p class="note warn small" style="margin-top:10px">'+esc(o.err)+(o.offer&&MIC.ok()?'<br><button class="btn ghost" style="margin-top:6px" data-act="'+act+'"'+(id?' data-id="'+id+'"':'')+'>改用本機錄音評分</button>':'')+'</p>':''}
 function kbOpen(){return !voiceReady()}
 function speakBody(){
   const s=SP;
   let h='<div style="margin:8px 0"><div style="font-family:var(--font-display);font-size:21px;font-weight:700;line-height:1.35">'+esc(s.en)+'</div><div class="muted">'+esc(s.zh)+'</div></div>';
   h+='<div class="btns"><button class="btn" data-say="'+esc(s.en)+'">'+ICON.spk+' 原音</button><button class="btn" data-say="'+esc(s.en)+'" data-slow="1">慢速</button></div>';
   h+=talkBox('talk-go','',s.busy,s.live,'撳一下咪，直接用英文講',s.phase);
-  if(s.err)h+='<p class="note warn small" style="margin-top:10px">'+esc(s.err)+'</p>';
-  h+='<div id="spRes">'+(s.gm&&s.input===String(s.gm.heard||'')?gmSentHTML(s.gm,s.en):(s.input?coResHTML(coScore(s.en,s.input),s.en,s.input):''))+'</div>';
+  h+=vErrHTML(s,'local-go','');
+  h+='<div id="spRes">'+(s.loc?localResHTML(s.loc,s.en):(s.gm&&s.input===String(s.gm.heard||'')?gmSentHTML(s.gm,s.en):(s.input?coResHTML(coScore(s.en,s.input),s.en,s.input):'')))+'</div>';
   h+='<details class="dd kb"'+(kbOpen()?' open':'')+'><summary>用鍵盤 🎤 講／打字</summary><p class="small muted" style="margin:6px 0">撳 🌐 轉 English 鍵盤，再撳 🎤 講；講完停一停就自動評分。</p>'+
     '<textarea id="spIn" rows="2" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Speak or type in English">'+esc(s.input||'')+'</textarea>'+
     '<div class="btns"><button class="btn" data-act="sp-check">評分</button><button class="btn ghost" data-act="sp-clear">清除</button></div></details>';
@@ -5460,7 +5496,7 @@ function speakBody(){
 }
 let coT=null;
 function coScoreNow(quiet){
-  if(!SP)return;const el=$('spIn'),said=el?el.value:(SP.input||'');SP.input=said;
+  if(!SP)return;const el=$('spIn'),said=el?el.value:(SP.input||'');SP.input=said;if(el)lvDrop(SP);
   const box=$('spRes');if(!String(said).trim()){if(box)box.innerHTML='';return}
   if(coCJK(said)){if(box)box.innerHTML=coCJKWarn();return}
   const r=coScore(SP.en,said);if(box)box.innerHTML=coResHTML(r,SP.en,said);
@@ -5475,17 +5511,29 @@ function coInput(t){
 function coAuto(){return !!AI.ns&&S.set.aiAuto!==false}
 function talkGo(){
   if(!SP)return;
-  if(gmReady()){gmTalkSentence();return}
-  if(SP.busy){ASR.stop();return}
-  TTS.stop();SP.busy=true;SP.err='';SP.live='';refreshSpeak();
+  if(SP.busy){if(SP.mode==='asr')ASR.stop();else MIC.stop();return}
+  const eng=vEngine();vPrime(eng);
+  if(eng==='gm'){gmTalkSentence();return}
+  if(eng!=='asr'){localTalkSentence();return}
+  TTS.stop();SP.busy=true;SP.mode='asr';SP.phase='';SP.err='';SP.offer=0;SP.live='';SP.gm=null;lvDrop(SP);refreshSpeak();
+  const en=SP.en;
   ASR.listen({interim:function(t){SP.live=t;const el=$('spLive');if(el)el.textContent=t}}).then(function(alts){
-    SP.busy=false;SP.live='';
-    if(!alts.length){SP.err=asrMsg('no-speech');refreshSpeak();return}
+    if(!SP||SP.en!==en)return;
+    SP.busy=false;SP.mode='';SP.live='';
+    if(!alts.length){asrEmpty();SP.err=asrMsg('no-speech');SP.offer=1;refreshSpeak();return}
+    VE.miss=0;VE.stall=0;
     let best=null,said='';alts.forEach(function(a){const r=coScore(SP.en,a);if(!best||r.score>best.score){best=r;said=a}});
     SP.input=said;refreshSpeak();coScoreNow(true);
     if(coAuto())aiRun('aiOut-t',aiPromptT(SP.en,said),'quick');
     const box=$('spRes');if(box)try{box.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
-  },function(code){SP.busy=false;SP.live='';if(code!=='aborted')SP.err=asrMsg(code);refreshSpeak()});
+  },function(code){
+    if(!SP||SP.en!==en)return;
+    SP.busy=false;SP.mode='';SP.live='';
+    if(code==='aborted'){refreshSpeak();return}
+    if(code==='no-speech'){asrEmpty();SP.err=asrMsg(code);SP.offer=1;refreshSpeak();return}
+    if(asrFallback(code)){localTalkSentence({why:code});return}
+    SP.err=asrMsg(code);refreshSpeak();
+  });
 }
 function runAsr(){talkGo()}
 
@@ -5495,41 +5543,50 @@ function ftId(id){return String(id).replace(/[^A-Za-z0-9_-]/g,'_')}
 function freeBox(id,ctx,model,label){
   id=ftId(id);const st=FT[id]||(FT[id]={});if(st.ctx!==undefined&&st.ctx!==ctx)st.input='';st.ctx=ctx;st.model=model||'';
   return '<div class="coach">'+talkBox('ft-talk',id,st.busy,st.live,'撳一下咪，直接用英文講（可以講一兩分鐘）',st.phase)+
-   (st.err?'<p class="note warn small" style="margin-top:8px">'+esc(st.err)+'</p>':'')+
-   '<div id="ftres-'+id+'">'+(st.gm&&st.input===String(st.gm.heard||'')?gmFreeHTML(st.gm):(st.input?coFreeHTML(coFree(st.input,ctx),id):''))+'</div><div id="aiOut-'+id+'"></div>'+
+   vErrHTML(st,'local-ft',id)+
+   '<div id="ftres-'+id+'">'+(st.loc?localFreeHTML(st.loc):(st.gm&&st.input===String(st.gm.heard||'')?gmFreeHTML(st.gm):(st.input?coFreeHTML(coFree(st.input,ctx),id):'')))+'</div><div id="aiOut-'+id+'"></div>'+
    '<details class="dd kb"'+(kbOpen()?' open':'')+'><summary>用鍵盤 🎤 講／打字</summary><p class="small muted" style="margin:6px 0">撳 🌐 轉 English 鍵盤，再撳 🎤 講；講完停一停就自動檢查。</p>'+
    '<textarea id="ft-'+id+'" class="ftIn" data-id="'+id+'" rows="4" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="Speak or type in English">'+esc(st.input||'')+'</textarea>'+
    '<div class="btns"><button class="btn" data-act="ft-check" data-id="'+id+'">檢查</button><button class="btn ghost" data-act="ft-clear" data-id="'+id+'">清除</button></div></details></div>';
 }
 function ftRefresh(){if(SHEET)refreshSheet();else renderKeep()}
 function ftTalk(id){
-  if(gmReady()){gmTalkFree(id);return}
   const st=FT[id]||(FT[id]={});
-  if(st.busy){ASR.stop();return}
+  if(st.busy){if(st.mode==='asr')ASR.stop();else MIC.stop();return}
+  const eng=vEngine();vPrime(eng);
+  if(eng==='gm'){gmTalkFree(id);return}
+  if(eng!=='asr'){localTalkFree(id);return}
   const el=$('ft-'+id);if(el)st.input=el.value;
-  TTS.stop();st.busy=true;st.live='';st.err='';ftRefresh();
+  TTS.stop();st.busy=true;st.mode='asr';st.live='';st.err='';st.offer=0;st.gm=null;lvDrop(st);ftRefresh();
   const base=String(st.input||'').trim();
   ASR.listen({continuous:true,idleMs:2500,interim:function(t){st.live=t;const e=$('ftlive-'+id);if(e)e.textContent=t}}).then(function(alts){
-    st.busy=false;st.live='';const t=String(alts[0]||'').trim();
-    if(!t){st.err=asrMsg('no-speech');ftRefresh();return}
+    st.busy=false;st.mode='';st.live='';const t=String(alts[0]||'').trim();
+    if(!t){asrEmpty();st.err=asrMsg('no-speech');st.offer=1;ftRefresh();return}
+    VE.miss=0;VE.stall=0;
     st.input=(base?base+' ':'')+t;ftRefresh();ftCheck(id,true);
     if(coAuto())aiRun('aiOut-'+id,aiPromptF(st.ctx,st.model,st.input),'quick');
-  },function(code){st.busy=false;st.live='';if(code!=='aborted')st.err=asrMsg(code);ftRefresh()});
+  },function(code){st.busy=false;st.mode='';st.live='';if(code==='aborted'){ftRefresh();return}
+    if(code==='no-speech'){asrEmpty();st.err=asrMsg(code);st.offer=1;ftRefresh();return}
+    if(asrFallback(code)){localTalkFree(id,{why:code});return}
+    st.err=asrMsg(code);ftRefresh()});
 }
-function ftCheck(id,quiet){const st=FT[id];if(!st)return;const el=$('ft-'+id);if(el)st.input=el.value;const box=$('ftres-'+id);if(!box)return;
+function ftCheck(id,quiet){const st=FT[id];if(!st)return;const el=$('ft-'+id);if(el){st.input=el.value;lvDrop(st)}const box=$('ftres-'+id);if(!box)return;
   if(!String(st.input||'').trim()){box.innerHTML='';return}if(coCJK(st.input)){box.innerHTML=coCJKWarn();return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
 function coAct(a,ds){
   if(gmAct(a,ds))return true;
   switch(a){
   case 'talk-go':talkGo();return true;
   case 'ft-talk':ftTalk(ds.id);return true;
+  case 'local-go':if(SP&&!SP.busy){MIC.prime();localTalkSentence()}return true;
+  case 'local-ft':{const st=FT[ds.id];if(!(st&&st.busy)){MIC.prime();localTalkFree(ds.id)}return true}
+  case 'asr-reset':VE.reset();toast('下次撳咪會重新試系統語音識別');renderKeep();return true;
   case 'ai-auto':S.set.aiAuto=!S.set.aiAuto;save();renderKeep();return true;
   case 'sp-focus':{const el=$('spIn');if(el){try{el.focus();el.setSelectionRange(el.value.length,el.value.length)}catch(e){}}return true}
   case 'sp-check':coScoreNow(false);return true;
-  case 'sp-clear':{if(SP){SP.input='';SP.res=null}const el=$('spIn');if(el)el.value='';const b=$('spRes');if(b)b.innerHTML='';const o=$('aiOut-t');if(o)o.innerHTML='';return true}
+  case 'sp-clear':{if(SP){SP.input='';SP.res=null;lvDrop(SP)}const el=$('spIn');if(el)el.value='';const b=$('spRes');if(b)b.innerHTML='';const o=$('aiOut-t');if(o)o.innerHTML='';return true}
   case 'ft-focus':{const el=$('ft-'+ds.id);if(el){try{el.focus();el.setSelectionRange(el.value.length,el.value.length)}catch(e){}}return true}
   case 'ft-check':ftCheck(ds.id,false);return true;
-  case 'ft-clear':{const st=FT[ds.id];if(st)st.input='';const el=$('ft-'+ds.id);if(el)el.value='';const b=$('ftres-'+ds.id);if(b)b.innerHTML='';const o=$('aiOut-'+ds.id);if(o)o.innerHTML='';return true}
+  case 'ft-clear':{const st=FT[ds.id];if(st){st.input='';lvDrop(st)}const el=$('ft-'+ds.id);if(el)el.value='';const b=$('ftres-'+ds.id);if(b)b.innerHTML='';const o=$('aiOut-'+ds.id);if(o)o.innerHTML='';return true}
   case 'ai-coach':{
     if(ds.mode==='t'){if(!SP)return true;const el=$('spIn'),said=(el?el.value:SP.input)||'';if(!said.trim()){toast('先講一句，再撳 AI 老師');return true}aiRun('aiOut-t',aiPromptT(SP.en,said));return true}
     const st=FT[ds.id];if(!st)return true;const el=$('ft-'+ds.id);if(el)st.input=el.value;if(!String(st.input||'').trim()){toast('先講或者打一段英文，再撳 AI 老師');return true}
@@ -5538,31 +5595,37 @@ function coAct(a,ds){
   return false;
 }
 
-/* ---------- App 內直接講評分：程式自己錄音（停一停自動結束）→ Google Gemini 聽錄音 → 評分、糾正、發音、文法、英文邏輯（廣東話） ---------- */
-/* iPhone 主屏幕 App 唔准網頁用語音識別，但准錄音；所以錄音交畀 Gemini 處理。Key 只存喺本機，唔同步、唔匯出。 */
-const MIC={ctx:null,stream:null,src:null,proc:null,buf:[],rate:48000,on:false,stopNow:null,
+/* ---------- App 自己錄音（停一停自動結束）→ 本機評分，或者交畀 Google Gemini 逐字評分（可選） ---------- */
+/* iPhone 主屏幕 App 可能唔准網頁用語音識別，但准錄音。Gemini Key 只存喺本機，唔同步、唔匯出。 */
+const MIC={ctx:null,stream:null,src:null,proc:null,buf:[],rate:48000,on:false,stopNow:null,abortNow:null,gen:0,
   ok(){try{return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&(window.AudioContext||window.webkitAudioContext))}catch(e){return false}},
-  /* 要喺撳掣嗰下調用（iPhone 要用戶手勢先可以開聲音） */
+  /* 喺撳掣嗰下調用（iPhone 要用戶手勢先可以開聲音）；之後就算遲啲先開始錄音都得 */
+  prime(){try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!this.ctx||this.ctx.state==='closed')this.ctx=new AC();if(this.ctx.state!=='running'){const p=this.ctx.resume();if(p&&p.catch)p.catch(function(){})}}catch(e){}},
   start(opt){
     const self=this;opt=opt||{};
     if(!this.ok())return Promise.reject({code:'unsupported'});
-    const AC=window.AudioContext||window.webkitAudioContext;
-    try{if(!self.ctx||self.ctx.state==='closed')self.ctx=new AC();if(self.ctx.state==='suspended')self.ctx.resume()}catch(e){return Promise.reject({code:'unsupported'})}
-    const ctx=self.ctx;AUD.recStart();
+    if(self.on&&self.abortNow)self.abortNow();
+    self.prime();if(!self.ctx)return Promise.reject({code:'unsupported'});
+    const ctx=self.ctx,g=++self.gen;AUD.recStart();
     return navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}}).then(function(stream){
+      /* 等緊權限嗰陣已經閂咗／離開咗 */
+      if(g!==self.gen){try{stream.getTracks().forEach(function(t){t.stop()})}catch(e){}AUD.recStop();throw {code:'aborted'}}
       return new Promise(function(res,rej){
         self.stream=stream;self.buf=[];self.on=true;self.rate=ctx.sampleRate||48000;
         let src,proc;
         try{src=ctx.createMediaStreamSource(stream);proc=(ctx.createScriptProcessor||ctx.createJavaScriptNode).call(ctx,4096,1,1)}catch(e){self.kill();rej({code:'unsupported'});return}
         self.src=src;self.proc=proc;
-        const t0=Date.now();let heard=false,last=0,noise=0,nN=0;
-        const done=function(err){if(!self.on)return;self.on=false;self.stopNow=null;try{proc.onaudioprocess=null;proc.disconnect();src.disconnect()}catch(e){}self.kill();
+        const t0=Date.now();let heard=false,last=0,noise=0,nN=0,frames=0,wd=null,wd2=null,hard=null;
+        const done=function(err){if(!self.on)return;self.on=false;self.stopNow=null;self.abortNow=null;clearTimeout(wd);clearTimeout(wd2);clearTimeout(hard);try{proc.onaudioprocess=null;proc.disconnect();src.disconnect()}catch(e){}self.kill();
           if(err){self.buf=[];rej({code:err});return}res(self.wav())};
-        self.stopNow=function(){done(heard?null:'no-speech')};
-        proc.onaudioprocess=function(e){if(!self.on)return;const d=e.inputBuffer.getChannelData(0);self.buf.push(new Float32Array(d));
+        self.stopNow=function(){done(heard?null:'no-speech')};self.abortNow=function(){done('aborted')};
+        /* 冇收到聲音數據（例如聲音被暫停）：試吓恢復，再唔得就叫用戶再撳一次 */
+        wd=setTimeout(function(){if(self.on&&!frames){try{const p=ctx.resume();if(p&&p.catch)p.catch(function(){})}catch(e){}wd2=setTimeout(function(){if(self.on&&!frames)done('stall')},2500)}},1500);
+        hard=setTimeout(function(){done(heard?null:'no-speech')},(opt.maxMs||15000)+2000);
+        proc.onaudioprocess=function(e){if(!self.on)return;frames++;const d=e.inputBuffer.getChannelData(0);self.buf.push(new Float32Array(d));
           let s=0;for(let i=0;i<d.length;i++)s+=d[i]*d[i];const rms=Math.sqrt(s/d.length),now=Date.now();
           if(now-t0<300){noise+=rms;nN++;return}
-          const thr=Math.max(0.012,(nN?noise/nN:0.004)*2.6);
+          const thr=Math.min(0.05,Math.max(0.012,(nN?noise/nN:0.004)*2.6));
           if(rms>thr){heard=true;last=now}
           if(opt.level)try{opt.level(Math.min(1,rms/(thr*5)),heard)}catch(x){}
           if(heard&&now-last>(opt.silenceMs||1200))done(null);
@@ -5574,6 +5637,7 @@ const MIC={ctx:null,stream:null,src:null,proc:null,buf:[],rate:48000,on:false,st
     },function(e){AUD.recStop();throw {code:'mic',err:e}});
   },
   stop(){if(this.on&&this.stopNow)this.stopNow()},
+  abort(){this.gen++;if(this.on&&this.abortNow)this.abortNow()},
   kill(){try{if(this.stream)this.stream.getTracks().forEach(function(t){t.stop()})}catch(e){}this.stream=null;AUD.recStop()},
   /* 16 kHz 單聲道 WAV（Gemini 一定識讀） */
   wav(){
@@ -5589,28 +5653,35 @@ const MIC={ctx:null,stream:null,src:null,proc:null,buf:[],rate:48000,on:false,st
 };
 function b64(buf){const u=new Uint8Array(buf);let s='';for(let i=0;i<u.length;i+=0x8000)s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(s)}
 
-const GM={K:'hkfe90.gk',M:['gemini-flash-latest','gemini-2.5-flash','gemini-flash-lite-latest','gemini-2.5-flash-lite'],mi:0,
+/* 模型：先用「最新 Flash」；某個模型用唔到（新帳戶用唔到舊型號）就自動試下一個；次數用完就轉 Lite */
+const GM={K:'hkfe90.gk',MK:'hkfe90.gmm',
+  M:['gemini-flash-latest','gemini-3.8-flash','gemini-3.6-flash','gemini-3.5-flash-lite','gemini-flash-lite-latest','gemini-3.1-flash-lite','gemini-2.5-flash','gemini-2.5-flash-lite'],LITE:3,mi:-1,noThink:{},
   key(){try{return localStorage.getItem(this.K)||''}catch(e){return ''}},
-  set(k){try{if(k)localStorage.setItem(this.K,k);else localStorage.removeItem(this.K)}catch(e){}},
+  set(k){try{if(k)localStorage.setItem(this.K,k);else localStorage.removeItem(this.K);localStorage.removeItem(this.MK)}catch(e){}this.mi=-1;this.noThink={}},
   ok(){return !!this.key()},
+  start(){if(this.mi>=0)return this.mi;let m='';try{m=localStorage.getItem(this.MK)||''}catch(e){}const i=this.M.indexOf(m);return i>=0?i:0},
   req(parts,schema){
     const self=this,key=this.key();if(!key)return Promise.reject({code:'nokey'});
-    const go=function(i){const m=self.M[i];
-      const body={contents:[{role:'user',parts:parts}],generationConfig:{temperature:0.2,maxOutputTokens:2048,responseMimeType:'application/json'}};if(schema)body.generationConfig.responseSchema=schema;
+    const go=function(i,quota){const m=self.M[i];
+      const gc={temperature:0.2,maxOutputTokens:4096,responseMimeType:'application/json'};if(schema)gc.responseSchema=schema;
+      /* 唔使諗太耐，快啲出分 */
+      const tc=self.noThink[m]?null:(m==='gemini-2.5-flash'?{thinkingBudget:0}:(m.indexOf('gemini-2.5')===0?null:{thinkingLevel:'low'}));if(tc)gc.thinkingConfig=tc;
+      const body={contents:[{role:'user',parts:parts}],generationConfig:gc};
       let ctl=null,tm=null;try{ctl=new AbortController();tm=setTimeout(function(){try{ctl.abort()}catch(e){}},45000)}catch(e){}
       return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+m+':generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctl?ctl.signal:undefined})
         .then(function(r){clearTimeout(tm);return r.text().then(function(t){let j=null;try{j=JSON.parse(t)}catch(e){}return {r:r,j:j||{}}})},function(e){clearTimeout(tm);throw {code:'net',message:String(e&&e.message||e)}})
         .then(function(x){const r=x.r,j=x.j;
           if(!r.ok){const msg=(j.error&&j.error.message)||('HTTP '+r.status);
-            if((r.status===404||(r.status===400&&/model|not found|not supported|unsupported/i.test(msg)&&!/api key/i.test(msg)))&&i+1<self.M.length)return go(i+1);
-            if(r.status===429&&i<2)return go(2);
+            if(r.status===400&&tc&&/thinking/i.test(msg)){self.noThink[m]=1;return go(i,quota)}
+            if((r.status===404||((r.status===400||r.status===403)&&/model|not found|not supported|unsupported|not available|no longer/i.test(msg)&&!/api key/i.test(msg)))&&i+1<self.M.length)return go(i+1,quota);
+            if(r.status===429&&i<self.LITE)return go(self.LITE,true);
             throw {code:r.status,message:msg}}
-          self.mi=i;
-          const c=j.candidates&&j.candidates[0],txt=c&&c.content&&c.content.parts?c.content.parts.map(function(p){return p.text||''}).join(''):'';
+          if(!quota){self.mi=i;try{localStorage.setItem(self.MK,m)}catch(e){}}
+          const c=j.candidates&&j.candidates[0],txt=c&&c.content&&c.content.parts?c.content.parts.filter(function(p){return !p.thought}).map(function(p){return p.text||''}).join(''):'';
           if(!txt)throw {code:'empty',message:(c&&c.finishReason)||(j.promptFeedback&&j.promptFeedback.blockReason)||'冇回覆'};
           try{return JSON.parse(txt)}catch(e){const mm=txt.match(/\{[\s\S]*\}/);if(mm)try{return JSON.parse(mm[0])}catch(x){}throw {code:'parse',message:'回覆格式唔啱'}}
         })};
-    return go(this.mi||0);
+    return go(this.start(),false);
   },
   ping(){return this.req([{text:'Reply with JSON {"ok": true}.'}],{type:'OBJECT',properties:{ok:{type:'BOOLEAN'}},required:['ok']})}
 };
@@ -5641,8 +5712,10 @@ function gmFree(ctx,model,w){
 function gmErr(e){const c=e&&e.code,m=String(e&&e.message||'');
   if(c==='no-speech')return asrMsg('no-speech');
   if(c==='unsupported')return '呢部機或者呢個瀏覽器唔支援錄音。';
+  if(c==='stall')return '錄音開始唔到，請再撳一次咪。';
   if(c==='mic')return micErr(e.err)+(isIOS()&&inFrame()?' Claude App 入面唔准用咪高峰，請用主屏幕 App。':'');
   if(c==='nokey')return '未設定 API Key。';
+  if(c==='aborted')return '';
   if(c==='net')return '連唔到 Google，請檢查網絡再試。';
   if(c===400&&/api key/i.test(m))return 'API Key 唔啱，請喺「我的 → App 內直接講評分」重新貼上。';
   if(c===403)return '呢個 API Key 用唔到 Gemini（可能未開通或者有限制），請喺 aistudio.google.com 重新建立一個。';
@@ -5682,7 +5755,7 @@ function gmFreeHTML(r){
 function gmTalkSentence(){
   if(!SP)return;
   if(SP.busy){if(SP.phase==='rec')MIC.stop();return}
-  TTS.stop();SP.busy=true;SP.phase='rec';SP.err='';SP.gm=null;refreshSpeak();
+  TTS.stop();SP.busy=true;SP.mode='gm';SP.phase='rec';SP.err='';SP.offer=0;SP.gm=null;lvDrop(SP);refreshSpeak();
   const en=SP.en,zh=SP.zh;
   MIC.start({silenceMs:1100,maxMs:15000,waitMs:7000,level:function(v,heard){const el=$('spLive');if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
     if(!SP||SP.en!==en)throw {code:'aborted'};
@@ -5690,24 +5763,24 @@ function gmTalkSentence(){
     return gmSentence(en,zh,w);
   }).then(function(r){
     if(!SP||SP.en!==en)return;
-    SP.busy=false;SP.phase='';SP.gm=r;SP.input=String(r.heard||'');S.log[dkey()]=1;misSent(en,zh,parseInt(r.score,10)||0);save();refreshSpeak();
+    SP.busy=false;SP.mode='';SP.phase='';SP.gm=r;SP.input=String(r.heard||'');S.log[dkey()]=1;misSent(en,zh,parseInt(r.score,10)||0);save();refreshSpeak();
     const b=$('spRes');if(b)try{b.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
-  },function(e){if(!SP)return;SP.busy=false;SP.phase='';if(!(e&&e.code==='aborted'))SP.err=gmErr(e);refreshSpeak()});
+  },function(e){if(!SP)return;SP.busy=false;SP.mode='';SP.phase='';if(!(e&&e.code==='aborted'))SP.err=gmErr(e);refreshSpeak()});
 }
 /* 自由講：最長 2 分鐘，停 2.5 秒自動結束 */
 function gmTalkFree(id){
   const st=FT[id]||(FT[id]={});
   if(st.busy){if(st.phase==='rec')MIC.stop();return}
-  TTS.stop();st.busy=true;st.phase='rec';st.err='';st.gm=null;ftRefresh();
-  MIC.start({silenceMs:2500,maxMs:120000,waitMs:8000,level:function(v,heard){const el=$('ftlive-'+id);if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
+  TTS.stop();st.busy=true;st.mode='gm';st.phase='rec';st.err='';st.offer=0;st.gm=null;lvDrop(st);ftRefresh();
+  MIC.start({silenceMs:3000,maxMs:120000,waitMs:8000,level:function(v,heard){const el=$('ftlive-'+id);if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
     st.phase='ai';ftRefresh();return gmFree(st.ctx,st.model,w);
-  }).then(function(r){st.busy=false;st.phase='';st.gm=r;st.input=String(r.heard||'');S.log[dkey()]=1;save();ftRefresh()},
-    function(e){st.busy=false;st.phase='';st.err=gmErr(e);ftRefresh()});
+  }).then(function(r){st.busy=false;st.mode='';st.phase='';st.gm=r;st.input=String(r.heard||'');S.log[dkey()]=1;save();ftRefresh()},
+    function(e){st.busy=false;st.mode='';st.phase='';st.err=gmErr(e);ftRefresh()});
 }
 /* 設定 */
 function gmSetupHTML(){const has=GM.ok();
   return (SHEET&&SHEET.__prev?'<button class="btn ghost" data-act="sheet-back" style="margin-bottom:8px">‹ 返回</button>':'')+
-    '<h3>App 內直接講評分</h3><p style="margin:6px 0">用 Google Gemini AI 聽你把聲：講完即刻評分，糾正文法、發音同英文邏輯，全部用廣東話解釋。要一個<b>免費</b>嘅 API Key，設定一次就得。</p>'+
+    '<h3>AI 逐字評分（可選）</h3><p style="margin:6px 0">唔設定都可以直接講：App 會用系統語音識別，或者自己錄音、本機評分。開咗 AI 評分，Google Gemini 會聽你把聲，<b>逐字</b>糾正文法、發音同英文邏輯，全部用廣東話解釋。要一個<b>免費</b>嘅 API Key，設定一次就得。</p>'+
     '<ol class="small" style="line-height:1.8;padding-left:20px;margin:8px 0"><li>打開 <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>，用 Google 帳戶登入。</li><li>撳「Create API key」（建立 API 金鑰），再撳複製。</li><li>返嚟呢度貼上，撳「儲存」。</li></ol>'+
     '<label class="f" for="gmKey">API Key'+(has?'（已設定）':'')+'</label><input id="gmKey" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="'+(has?'已設定；想換就貼上新嘅':'AIza…')+'">'+
     '<div class="btns"><button class="btn pri" data-act="gm-save">儲存</button>'+(has?'<button class="btn ghost" data-act="gm-del">刪除 Key</button>':'')+'</div><div id="gmMsg" aria-live="polite"></div>'+
@@ -5720,15 +5793,150 @@ function gmAct(a,ds){
   case 'gm-save':{const el=$('gmKey'),k=String(el&&el.value||'').trim(),msg=$('gmMsg');
     if(!k){if(msg)msg.innerHTML='<p class="note warn small">請先貼上 API Key。</p>';return true}
     if(k.length<20||/\s/.test(k)){if(msg)msg.innerHTML='<p class="note warn small">呢個唔似 API Key，請重新複製。</p>';return true}
-    const old=GM.key();GM.set(k);GM.mi=0;if(msg)msg.innerHTML='<p class="note small">測試緊…</p>';
-    GM.ping().then(function(){const m=$('gmMsg');if(m)m.innerHTML='<p class="note ok small">✅ 設定成功！而家撳咪就可以直接講評分。</p>';
+    const old=GM.key();GM.set(k);if(msg)msg.innerHTML='<p class="note small">測試緊…</p>';
+    GM.ping().then(function(){const m=$('gmMsg');if(m)m.innerHTML='<p class="note ok small">✅ 設定成功！而家撳咪就會用 AI 逐字評分。</p>';
       setTimeout(function(){if(SHEET&&SHEET.__prev){const pv=SHEET.__prev;SHEET=pv;refreshSheet()}else if(SHEET){closeSheet();renderKeep()}else renderKeep()},900)},
       function(e){const c=e&&e.code;if(c===400||c===403){GM.set(old)}const m=$('gmMsg');if(m)m.innerHTML='<p class="note warn small">'+esc(gmErr(e))+'</p>'});
     return true}
   }
   return false;
 }
-function gmCard(){return '<section class="card" id="gmCard"><h2 class="sec-h">App 內直接講評分 <span class="tag">'+(GM.ok()?'已開啟':'未設定')+'</span></h2><p style="margin:0">'+(GM.ok()?'已經設定好：撳任何一個大咪，講完就即刻評分同糾正。':'iPhone 主屏幕 App 唔准網頁用語音識別。設定一個免費 Google AI Key，就可以喺 App 入面直接講、即刻評分。')+'</p><div class="btns"><button class="btn '+(GM.ok()?'':'pri')+'" data-act="gm-setup">'+(GM.ok()?'更改設定':'設定（免費，大約 1 分鐘）')+'</button></div></section>'}
+function gmCard(){
+  const e=vEngine(),nm={gm:'AI 逐字評分',asr:'系統語音識別',local:'本機錄音評分'}[e]||'用唔到咪';
+  const desc={gm:'撳任何一個大咪，講完即刻逐字評分，糾正文法同發音。',
+    asr:'撳大咪直接講：系統聽寫你講咗乜，即刻逐字評分同糾正（免費）。',
+    local:'呢度用唔到系統語音識別，所以 App 自己錄音、本機評分：完整度、語速、停頓，唔使上網、唔使 Key。想逐字糾正可以開 AI 評分。'}[e]||'呢個瀏覽器唔支援錄音，請用鍵盤 🎤 講。';
+  return '<section class="card" id="gmCard"><h2 class="sec-h">語音評分 <span class="tag">'+nm+'</span></h2><p style="margin:0">'+desc+'</p><div class="btns">'+
+    (MIC.ok()?'<button class="btn'+(e==='local'?' pri':'')+'" data-act="gm-setup">'+(GM.ok()?'AI 評分設定':'開啟 AI 逐字評分（可選，免費）')+'</button>':'')+
+    (ASR.ok&&VE.bad()?'<button class="btn ghost" data-act="asr-reset">重新試系統語音識別</button>':'')+'</div></section>'}
+
+/* ---------- 本機聲音評分：唔使上網、唔使 Key ----------
+   App 自己錄音，分析聲音嘅能量起伏：估計講咗幾多個音節（完整度）、語速、停頓同音量。
+   聽唔到具體每個字；想逐字糾正可以開 AI 評分。 */
+function sylCount(text){
+  const words=String(text||'').toLowerCase().replace(/[^a-z0-9'\s-]/g,' ').split(/[\s-]+/).filter(Boolean);let n=0;
+  words.forEach(function(w){
+    if(/^\d+$/.test(w)){n+=Math.min(5,Math.max(1,w.length));return}
+    w=w.replace(/'/g,'');if(!w)return;
+    if(w==='pm'||w==='am'||w==='ok'||w==='hk'||w==='uk'||w==='us')return void(n+=2);
+    if(!/[aeiouy]/.test(w)){n+=Math.max(1,w.length);return}
+    if(w.length<=3){n+=1;return}
+    let s=(w.match(/[aeiouy]+/g)||[]).length;
+    if(/[^aeiouy]e$/.test(w)&&!/[^aeiouy]le$/.test(w)&&s>1)s--;
+    if(/[^aeiouy]e[sd]$/.test(w)&&!/(t|d)ed$|(s|z|c|g|x|sh|ch)es$/.test(w)&&s>1)s--;
+    n+=Math.max(1,s);
+  });
+  return Math.max(1,Math.round(n));
+}
+/* 二階濾波（RBJ）：hp＝高通、lp＝低通 */
+function lvFilt(x,rate,f,hp){const w=2*Math.PI*f/rate,al=Math.sin(w)/1.414,c=Math.cos(w),b0=hp?(1+c)/2:(1-c)/2,b1=hp?-(1+c):1-c,a0=1+al,a1=-2*c,a2=1-al,y=new Float32Array(x.length);let x1=0,x2=0,y1=0,y2=0;
+  for(let i=0;i<x.length;i++){const v=(b0*x[i]+b1*x1+b0*x2-a1*y1-a2*y2)/a0;x2=x1;x1=x[i];y2=y1;y1=v;y[i]=v}return y}
+/* 分析錄音：用 300–2500 Hz（元音嘅頻段）嘅能量峰數音節；再計停頓、語速同音量 */
+function voiceStats(pcm,rate){
+  const bp=lvFilt(lvFilt(pcm,rate,300,true),rate,2500,false);
+  const hop=Math.round(rate*0.01),win=Math.round(rate*0.02),E=[],B=[];
+  for(let i=0;i+win<=pcm.length;i+=hop){let s=0,b=0;for(let j=i;j<i+win;j++){s+=pcm[j]*pcm[j];b+=bp[j]*bp[j]}E.push(Math.sqrt(s/win));B.push(Math.sqrt(b/win))}
+  if(E.length<15)return {voiced:0};
+  const pct=function(a,p){const t=a.slice().sort(function(x,y){return x-y});return t[Math.min(t.length-1,Math.floor(t.length*p))]};
+  const top=pct(E,0.98),thr=Math.min(top*0.3,Math.max(0.008,pct(E,0.1)*2.5,top*0.12));
+  let first=-1,last=-1;for(let i=0;i<E.length;i++){if(E[i]>thr){if(first<0)first=i;last=i}}
+  if(first<0||last-first<12)return {voiced:0};
+  const btop=pct(B,0.98),bthr=Math.min(btop*0.3,Math.max(0.004,pct(B,0.1)*3,btop*0.12));
+  const sm=B.map(function(_,i){let s=0,c=0;for(let k=i-1;k<=i+1;k++){if(k>=0&&k<B.length){s+=B[k];c++}}return s/c});
+  const peaks=[];
+  for(let i=first;i<=last;i++){const v=sm[i];if(v<bthr)continue;let mx=true;for(let k=i-5;k<=i+5;k++){if(k!==i&&k>=0&&k<sm.length&&sm[k]>v){mx=false;break}}if(!mx)continue;
+    if(peaks.length){const p=peaks[peaks.length-1];
+      if(i-p<8){if(v>sm[p])peaks[peaks.length-1]=i;continue}
+      let mn=Infinity;for(let k=p;k<=i;k++)mn=Math.min(mn,sm[k]);
+      if(mn>Math.min(sm[p],v)*0.9){if(v>sm[p])peaks[peaks.length-1]=i;continue}}
+    peaks.push(i)}
+  let pauses=0,pauseT=0,run=0,vs=0,vc=0;
+  for(let i=first;i<=last;i++){if(E[i]<=thr)run++;else{if(run>=45){pauses++;pauseT+=run}run=0;vs+=E[i];vc++}}
+  const dur=(last-first+1)*0.01;
+  return {voiced:vc*0.01,dur:dur,talk:Math.max(0.3,dur-pauseT*0.01),syl:peaks.length,pauses:pauses,pauseT:pauseT*0.01,loud:vc?vs/vc:0};
+}
+/* 評分：完整度（音節數 vs 句子）、語速、停頓（句子有逗號可以停） */
+function localScore(target,st){
+  const exp=sylCount(target),allow=(String(target||'').match(/[,;:—]/g)||[]).length;
+  if(!st||!st.voiced||!st.syl)return {score:0,exp:exp,c:0,rate:0,sc:0,sp:0,sz:0,extra:0};
+  const c=st.syl/exp,rate=st.syl/st.talk,extra=Math.max(0,st.pauses-allow);
+  const sc=c<0.85?100*Math.pow(Math.max(0,(c-0.35)/0.5),1.2):(c<=1.35?100:Math.max(40,100-(c-1.35)*80));
+  const sp=rate<1.5?30:(rate<2.8?30+70*(rate-1.5)/1.3:(rate<=5.6?100:Math.max(40,100-(rate-5.6)*25)));
+  const sz=Math.max(20,100-extra*20-Math.max(0,st.pauseT-allow*0.6-0.8)*8);
+  return {score:Math.round(Math.max(0,Math.min(100,0.55*sc+0.25*sp+0.2*sz))),exp:exp,c:c,rate:rate,sc:Math.round(sc),sp:Math.round(sp),sz:Math.round(sz),extra:extra};
+}
+function localTips(r,st,free){
+  const t=[];
+  if(free){
+    if(st.dur<20)t.push('講得有啲短：試吓講夠 30 秒至 1 分鐘，用 First… / Also… / So… 串連。');
+    if(st.pauses>Math.max(2,st.dur/7))t.push('停頓多咗（停咗 '+st.pauses+' 次）：諗定下一句先開口；需要時間可以講 Well… / Let me think…，唔好靜晒。');
+  }else{
+    if(r.c<0.75)t.push('似乎漏咗部分內容：句子大約有 '+r.exp+' 個音節，你講咗大約 '+st.syl+' 個。對住句子再講一次，唔好漏字（尤其 a、the、-s、-ed 呢啲細字）。');
+    else if(r.c>1.45)t.push('多咗啲音：可能有重複、「呃」或者「咁」。試吓一口氣講完成句。');
+    if(r.extra>0)t.push('中間停咗 '+r.extra+' 次：先聽原音，跟住佢嘅停頓位置講；冇逗號嘅地方唔好停。');
+  }
+  if(r.rate&&r.rate<2.6)t.push('講得有啲慢：將幾個字連埋一齊講（意群），唔好一個字一個字咁讀。');
+  else if(r.rate>6.2)t.push('講得太快：慢少少，每個字嘅尾音（-s、-t、-d）會清楚啲。');
+  if(st.loud&&st.loud<0.015)t.push('聲音有啲細：靠近咪，講大聲啲、清楚啲。');
+  if(!t.length)return [{t:free?'講得流暢！下一步試吓加一個例子，講長少少。':'完整度同節奏都唔錯！試吓唔睇英文、望住中文再講一次。',ok:1}];
+  return t.map(function(x){return {t:x}});
+}
+function localVerdict(s){return s>=90?'好好！完整又流暢。':(s>=75?'唔錯！睇吓下面嘅建議。':(s>=50?'似乎漏咗啲內容，再講一次。':'聽唔清楚，靠近咪再講一次。'))}
+function meterHTML(label,v,note){return '<div class="mt"><div class="mtl"><b>'+label+'</b><span>'+v+'</span></div><div class="mtb"><i class="'+gmScoreCls(v)+'" style="width:'+Math.max(4,v)+'%"></i></div><div class="small muted">'+note+'</div></div>'}
+function localAudio(w){try{return URL.createObjectURL(new Blob([w.buf],{type:'audio/wav'}))}catch(e){return ''}}
+function lvNone(){return '<p class="note warn" style="margin-top:10px">聽唔到你把聲。靠近咪，撳咪之後即刻講。</p>'}
+function lvTips(arr){return '<h4 class="ch">即時建議</h4><div class="issues">'+arr.map(function(x){return '<div class="issue '+(x.ok?'good':'tipw')+'"><div class="iwhy">'+esc(x.t)+'</div></div>'}).join('')+'</div>'}
+function lvMine(url,label){return url?'<p class="small muted" style="margin:10px 0 4px">'+label+'</p><audio controls playsinline preload="auto" src="'+url+'" style="width:100%"></audio>':''}
+function lvUp(what){return '<p class="small muted" style="margin-top:10px">本機評分聽唔到'+what+'。想逐字糾正：<button class="btn ghost" data-act="gm-setup">開啟 AI 逐字評分（免費）</button></p>'}
+function localResHTML(L0,target){
+  const r=L0.r,st=L0.st;
+  if(!st.voiced)return lvNone();
+  let h='<div class="cres"><div class="cscore"><div class="score '+gmScoreCls(r.score)+'">'+r.score+'</div><div><b>'+localVerdict(r.score)+'</b><div class="small muted">本機評分：完整度、語速、停頓</div></div></div>';
+  h+='<div class="meters">'+meterHTML('完整度',r.sc,'講咗大約 '+st.syl+' 個音節（句子大約 '+r.exp+' 個）')+meterHTML('語速',r.sp,r.rate.toFixed(1)+' 音節／秒（自然大約 3–5）')+meterHTML('停頓',r.sz,r.extra?'多停咗 '+r.extra+' 次':'冇多餘停頓')+'</div>';
+  h+=lvTips(localTips(r,st,false));
+  h+=lvMine(L0.url,'聽返自己，再同原音比較：');
+  h+='<div class="btns"><button class="btn" data-say="'+esc(target)+'">'+ICON.spk+' 原音</button><button class="btn" data-say="'+esc(target)+'" data-slow="1">慢速</button></div>';
+  h+='<h4 class="ch">文法 · 英文邏輯</h4><div class="logic">'+coLogic(target).map(function(x){return '<div class="lg"><b>'+esc(x[0])+'</b> '+esc(x[1])+'</div>'}).join('')+'</div>';
+  return h+lvUp('具體每個字')+'</div>';
+}
+function localFreeScore(st){
+  if(!st||!st.voiced||!st.syl)return {score:0,sp:0,sz:0,len:0,rate:0};
+  const rate=st.syl/st.talk,sp=rate<1.5?30:(rate<2.8?30+70*(rate-1.5)/1.3:(rate<=5.6?100:Math.max(40,100-(rate-5.6)*25)));
+  const sz=Math.max(20,100-Math.max(0,st.pauses-st.dur/7)*12-Math.max(0,st.pauseT-st.dur*0.15)*4),len=Math.min(100,Math.round(st.dur/45*100));
+  return {score:Math.round(0.4*sp+0.35*sz+0.25*len),sp:Math.round(sp),sz:Math.round(sz),len:len,rate:rate};
+}
+function localFreeHTML(L0){
+  const st=L0.st;
+  if(!st.voiced)return lvNone();
+  const f=localFreeScore(st),words=Math.round(st.syl/1.4),wpm=Math.round(words/st.talk*60);
+  let h='<div class="cres"><div class="cscore"><div class="score '+gmScoreCls(f.score)+'">'+f.score+'</div><div><b>本機流利度評分</b><div class="small muted">講咗 '+Math.round(st.dur)+' 秒 · 大約 '+words+' 個字 · 每分鐘大約 '+wpm+' 個字</div></div></div>';
+  h+='<div class="meters">'+meterHTML('語速',f.sp,f.rate.toFixed(1)+' 音節／秒（自然大約 3–5）')+meterHTML('停頓',f.sz,st.pauses?'停咗 '+st.pauses+' 次':'冇明顯停頓')+meterHTML('長度',f.len,'目標：講夠 45 秒')+'</div>';
+  h+=lvTips(localTips({rate:f.rate},st,true));
+  h+=lvMine(L0.url,'聽返自己：');
+  return h+lvUp('內容同文法')+'</div>';
+}
+function localPcm(w){const a=new Int16Array(w.buf,44),f=new Float32Array(a.length);for(let i=0;i<a.length;i++)f[i]=a[i]/32768;return f}
+function localAnalyse(w,target){const st=voiceStats(localPcm(w),16000);return {st:st,r:localScore(target,st),url:localAudio(w)}}
+function lvDrop(o){if(o&&o.loc&&o.loc.url)try{URL.revokeObjectURL(o.loc.url)}catch(e){}if(o)o.loc=null}
+/* 句子：撳咪 → App 自己錄音 → 即刻本機評分（o.why：由系統語音識別轉過嚟嘅原因） */
+function localTalkSentence(o){
+  o=o||{};if(!SP)return;const en=SP.en;
+  TTS.stop();SP.busy=true;SP.mode='local';SP.phase='rec';SP.err='';SP.offer=0;SP.gm=null;SP.input='';SP.live='';lvDrop(SP);refreshSpeak();
+  MIC.start({silenceMs:1100,maxMs:15000,waitMs:7000,level:function(v,heard){const el=$('spLive');if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
+    if(!SP||SP.en!==en)return;
+    if(o.why==='not-allowed')VE.mark();
+    SP.busy=false;SP.phase='';SP.mode='';SP.loc=localAnalyse(w,en);S.log[dkey()]=1;if(SP.loc.st.voiced)misSent(en,SP.zh,SP.loc.r.score);save();refreshSpeak();
+    const b=$('spRes');if(b)try{b.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+  },function(e){if(!SP||SP.en!==en)return;SP.busy=false;SP.phase='';SP.mode='';SP.err=gmErr(e);refreshSpeak()});
+}
+function localTalkFree(id,o){
+  o=o||{};const st=FT[id]||(FT[id]={});
+  TTS.stop();st.busy=true;st.mode='local';st.phase='rec';st.err='';st.offer=0;st.gm=null;st.live='';lvDrop(st);ftRefresh();
+  MIC.start({silenceMs:3000,maxMs:120000,waitMs:8000,level:function(v,heard){const el=$('ftlive-'+id);if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
+    if(o.why==='not-allowed')VE.mark();
+    st.busy=false;st.phase='';st.mode='';st.loc=localAnalyse(w,'');S.log[dkey()]=1;save();ftRefresh();
+  },function(e){st.busy=false;st.phase='';st.mode='';st.err=gmErr(e);ftRefresh()});
+}
 
 /* ---------- 單詞一鍵收藏 ---------- */
 function favKey(en){return String(en||'').trim().toLowerCase()}
