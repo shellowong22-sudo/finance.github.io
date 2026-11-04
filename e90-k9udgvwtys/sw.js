@@ -1,5 +1,5 @@
 /* 離線快取：頁面優先取最新版（4 秒沒響應就用快取），圖標等靜態檔案優先用快取 */
-const CACHE = 'hkfe90-322613b26a';
+const CACHE = 'hkfe90-33b5280e1c';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 
 self.addEventListener('install', (e) => {
