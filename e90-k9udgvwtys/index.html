@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="33b5280e1c">
+<meta name="app-ver" content="30478c4626">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -538,6 +538,20 @@ details.coh ol{margin:6px 0 4px;padding-left:20px;line-height:1.7}
 .talk.off{display:block}
 .kb{margin-top:12px}
 .kb summary{font-size:14px;color:var(--muted)}
+
+/* 收藏 */
+.ic.fav{font-size:18px;line-height:1;color:var(--muted)}
+.ic.fav.on{color:#d39b12;border-color:#e7c46a;background:var(--accent-soft)}
+
+/* 錄音音量、AI 評分中 */
+.lvl{display:inline-block;width:110px;height:8px;border-radius:99px;background:var(--line);vertical-align:middle;overflow:hidden}
+.lvl i{display:block;height:100%;background:var(--muted);border-radius:99px;transition:width .1s}
+.lvl.on i{background:var(--bad)}
+.micbig.ai{background:var(--jade);animation:none}
+.talk.ai{border-color:var(--jade);background:var(--jade-soft)}
+.spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.issue.snd b .ipa{font-weight:400}
 
 </style>
 </head>
@@ -4050,7 +4064,7 @@ function blockDesc(n,k){
 
 /* ---------- 存儲（本機 + 雲端同步，均可失敗降級） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},fav:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -4558,7 +4572,7 @@ function wordRow(w,compact,n){
   const ip=ipaOf(w.en),ex=!compact&&w.ex,f=n&&WMAP[w.en.toLowerCase()],rv=f&&f.day<n?' <span class="rv" title="第 '+f.day+' 天學過，今天在新場景複習">複習</span>':'';
   return '<div class="wrow"><div class="txt"><div class="en">'+esc(w.en)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+rv+'</div><div class="zh">'+esc(w.zh)+'</div>'+
    (ex?'<div class="ex">'+esc(w.ex)+' <span class="zh">'+esc(w.exzh)+'</span></div>':'')+'</div><div class="acts">'+sayBtn(w.en)+
-   (ex?'<button class="ic" data-say="'+esc(w.ex)+'" aria-label="朗讀例句" title="朗讀例句">例</button>':'')+'</div></div>';
+   (ex?'<button class="ic" data-say="'+esc(w.ex)+'" aria-label="朗讀例句" title="朗讀例句">例</button>':'')+favBtn(w.en,w.zh)+'</div></div>';
 }
 function cardWords(n,words,title,tag,compact){
   const hz=S.set.hidezh,hasEx=words.some(function(w){return w.ex});
@@ -4722,21 +4736,23 @@ function vPlan(){
 
 /* ---------- 練習 ---------- */
 function vPractice(){
-  const nm=misCount(),tabs=[['cards','閃卡複習'],['trans','口頭翻譯'],['dict','聽寫'],['num','數字聽力'],['speak','跟讀打分'],['quiz','單詞測驗'],['talk','自由口語'],['mis','錯題本'+(nm?' '+nm:'')]];
+  const nm=misCount(),tabs=[['cards','閃卡複習'],['fav','收藏'+(favKeys().length?' '+favKeys().length:'')],['trans','口頭翻譯'],['dict','聽寫'],['num','數字聽力'],['speak','跟讀打分'],['quiz','單詞測驗'],['talk','自由口語'],['mis','錯題本'+(nm?' '+nm:'')]];
   let h='<section class="hero" style="grid-template-columns:1fr;padding-bottom:0"><div class="htitle"><h1>練習</h1><div class="en">Review · Dictation · Speaking</div></div></section>';
   h+='<div class="tabs" role="tablist">'+tabs.map(function(t){return '<button data-act="ptab" data-tab="'+t[0]+'" aria-pressed="'+(PR.tab===t[0])+'">'+t[1]+'</button>'}).join('')+'</div>';
-  if(PR.tab==='cards')h+=pCards();else if(PR.tab==='dict')h+=pDict();else if(PR.tab==='speak')h+=pSpeak();else if(PR.tab==='quiz')h+=cardQuiz('p',learnedPool(),15,'已學單詞測驗');else if(PR.tab==='trans')h+=pTrans();else if(PR.tab==='num')h+=pNum();else if(PR.tab==='mis')h+=pMis();else h+=pTalk();
+  if(PR.tab==='cards')h+=pCards();else if(PR.tab==='dict')h+=pDict();else if(PR.tab==='speak')h+=pSpeak();else if(PR.tab==='quiz')h+=cardQuiz('p',learnedPool(),15,'已學單詞測驗');else if(PR.tab==='trans')h+=pTrans();else if(PR.tab==='num')h+=pNum();else if(PR.tab==='mis')h+=pMis();else if(PR.tab==='fav')h+=pFav();else h+=pTalk();
   return h;
 }
 function srcBar(kind){
   const opts=[['due','今日到期'],['all','全部已學']];if(PR.day)opts.splice(1,0,['day','第 '+PR.day+' 天']);
   if(kind!=='cards')opts[0]=['cur','當前第 '+S.cur+' 天'];
+  if(kind==='cards'&&favKeys().length)opts.push(['fav','收藏 '+favKeys().length]);
   return '<div class="seg" style="margin:10px 0" role="group" aria-label="內容來源">'+opts.map(function(o){return '<button data-act="psrc" data-kind="'+kind+'" data-src="'+o[0]+'" aria-pressed="'+(PR.src===o[0]||(kind!=='cards'&&PR.src==='due'&&o[0]==='cur'))+'">'+esc(o[1])+'</button>'}).join('')+'</div>';
 }
 function buildCards(){
   const info=dueInfo();let keys;
   if(PR.src==='day'&&PR.day){const days=srcDays(PR.day);keys=wordsOf(days).map(function(w){return w.k})}
   else if(PR.src==='all')keys=shuffle(info.pool.map(function(w){return w.k})).slice(0,60);
+  else if(PR.src==='fav')keys=favKeys();
   else keys=info.due.concat(info.nw.slice(0,20));
   FC={keys:keys,i:0,show:false,again:{},a:0,b:0,c:0};
 }
@@ -4749,7 +4765,7 @@ function pCards(){
   if(FC.i>=FC.keys.length){h+='<div class="flash"><div class="big">完成！</div><p>認識 '+FC.c+' · 模糊 '+FC.b+' · 不認識 '+FC.a+'</p><button class="btn jade" data-act="cards-restart">再來一輪</button></div>';return h+'</section>'}
   const k=FC.keys[FC.i],w=WMAP[k]||{en:k,zh:''};
   const ip=ipaOf(w.en);
-  h+='<p class="small muted" style="margin:0">'+(FC.i+1)+' / '+FC.keys.length+(w.day?' · 來自第 '+w.day+' 天':(w.bk&&bkById(w.bk)?' · 來自讀本第 '+bkNum(bkById(w.bk))+' 章':''))+'</p><div class="flash"><div class="big">'+esc(w.en)+'</div>'+(ip?'<div class="ipa">/'+esc(ip)+'/</div>':'')+'<div>'+sayBtn(w.en)+' '+sayBtn(w.en,true)+'</div>';
+  h+='<p class="small muted" style="margin:0">'+(FC.i+1)+' / '+FC.keys.length+(w.day?' · 來自第 '+w.day+' 天':(w.bk&&bkById(w.bk)?' · 來自讀本第 '+bkNum(bkById(w.bk))+' 章':''))+'</p><div class="flash"><div class="big">'+esc(w.en)+'</div>'+(ip?'<div class="ipa">/'+esc(ip)+'/</div>':'')+'<div>'+sayBtn(w.en)+' '+sayBtn(w.en,true)+' '+favBtn(w.en,w.zh)+'</div>';
   if(FC.show)h+='<div class="ans">'+esc(w.zh)+'</div>'+(w.ex?'<div class="ex" style="max-width:34ch">'+esc(w.ex)+' '+sayBtn(w.ex)+'<div class="zh">'+esc(w.exzh)+'</div></div>':'');
   h+='</div>';
   if(!FC.show)h+='<button class="btn pri" style="width:100%" data-act="cards-show">先想中文意思，再點這裏看答案</button>';
@@ -4938,9 +4954,10 @@ function vMe(){
   h+='<label class="f" for="rate">語速：<span id="rateV">'+S.set.rate.toFixed(2)+'</span>×</label><input type="range" id="rate" min="0.5" max="1.3" step="0.05" value="'+S.set.rate+'">';
   if(TTS.ok&&TTS.voices.length){h+='<label class="f" for="voiceSel">聲音</label><select id="voiceSel"><option value="">自動選擇（推薦）</option>'+TTS.voices.map(function(v){return '<option value="'+esc(v.name)+'"'+(S.set.voice===v.name?' selected':'')+'>'+esc(v.name)+' · '+esc(v.lang)+'</option>'}).join('')+'</select>'}
   h+='<div class="btns"><button class="btn jade" data-say="Good morning. Welcome to Hong Kong. Let\'s get started.">'+ICON.spk+' 試聽</button></div></section>';
+  h+=gmCard();
   h+='<section class="card" id="voiceHelp"><h2 class="sec-h">聲音同語音評分 <span class="tag">Help</span></h2><ol class="small" style="margin:0;padding-left:20px;line-height:1.8">'+
    '<li><b>冇聲：</b>iPhone 開咗靜音模式 🔕 就會冇聲。關閉靜音，再調大音量。</li>'+
-   '<li><b>直接講評分：</b>iPhone 只有 <b>Safari</b> 先准網頁用語音識別；主屏幕 App 同其他 App 入面（包括 Claude）都唔得，所以會有「用 Safari 打開」掣。第一次用要撳「允許」咪高峰，同埋開啟 設定 → 一般 → 鍵盤 →「啟用聽寫」。</li>'+
+   '<li><b>直接講評分：</b>主屏幕 App 用上面嘅「App 內直接講評分」（免費 Google AI Key）；第一次會問你用唔用咪高峰，撳「允許」。Claude App 入面唔准用咪高峰。</li>'+
    '<li><b>聲音唔自然：</b>設定 → 輔助使用 → 朗讀內容 → 聲音 → 英文，下載「Daniel（英國）」或者增強版聲音。</li></ol>'+
    '<div class="btns"><button class="btn jade" data-act="voice-check">'+ICON.spk+' 一鍵檢查聲音同咪</button>'+(AI.ns?'<button class="btn" data-act="ai-auto" aria-pressed="'+(S.set.aiAuto!==false)+'">講完自動 AI 講解：'+(S.set.aiAuto!==false?'開':'關')+'</button>':'')+'</div><div id="vcRes" aria-live="polite"></div></section>';
   h+='<section class="card"><h2 class="sec-h">學習頁面</h2><div class="seg" role="group" aria-label="學習頁面"><button data-act="layout" data-v="step" aria-pressed="'+!S.set.allInOne+'">分步學習（推薦）</button><button data-act="layout" data-v="all" aria-pressed="'+!!S.set.allInOne+'">一頁顯示全部</button></div><p class="small muted" style="margin:8px 0 0">分步學習：一次只顯示當前這一步，做完進入下一步。一頁顯示：當天所有內容在同一頁。</p></section>';
@@ -5001,7 +5018,7 @@ function route(){
   else if(h==='lib'||h.indexOf('lib-')===0){v='lib';arg=h==='lib'?'':h.slice(4)}
   stopMedia();RP.active=false;RP.i=-1;clearInterval(TM.iv);TM.left=0;
   view=v;viewArg=arg;Cloud.deferred=false;render();
-  try{window.scrollTo(0,0)}catch(e){}
+  UIM.restoreScroll();UIM.note();
 }
 function go(hash){if(location.hash==='#'+hash){route()}else{location.hash=hash}}
 
@@ -5076,7 +5093,9 @@ function act(a,ds,el){
   case 'qz-start':{const id=ds.id;const words=id==='p'?learnedPool():wordsOf(srcDays(clampDay(id.slice(1))));QZ[id]=buildQuiz(words,+ds.count||20);renderKeep();break}
   case 'qz-ans':{const q=QZ[ds.id];if(!q||q.pick>=0)break;q.pick=+ds.o;const it=q.items[q.i];if(q.pick===it.ans)q.right++;else if(it.w.k){S.srs[it.w.k]={b:0,d:dnum()};save()}TTS.speak(it.w.en,{quiet:true});renderKeep();break}
   case 'qz-next':{const q=QZ[ds.id];if(!q)break;q.i++;q.pick=-1;if(q.i>=q.items.length){q.done=true;const pct=Math.round(q.right/q.items.length*100);S.quiz[ds.id]=Math.max(S.quiz[ds.id]||0,pct);S.log[dkey()]=1;save()}renderKeep();break}
-  case 'ptab':PR.tab=ds.tab;stopMedia();render();break;
+  case 'ptab':PR.tab=ds.tab;UIM.d.pt=PR.tab;UIM.save();stopMedia();render();break;
+  case 'fav':favToggle(ds.en,ds.zh,el);break;
+  case 'fav-cards':PR.tab='cards';PR.src='fav';FC=null;UIM.d.pt='cards';UIM.save();render();try{window.scrollTo(0,0)}catch(e){}break;
   case 'psrc':PR.src=ds.src==='cur'?'due':ds.src;if(ds.kind==='cards')FC=null;else if(ds.kind==='dict')DT=null;else{TK=null;SP=null}render();break;
   case 'cards-show':FC.show=true;TTS.speak((WMAP[FC.keys[FC.i]]||{}).en||'',{quiet:true});render();break;
   case 'cards-grade':{const g=+ds.g,k=FC.keys[FC.i];gradeWord(k,g);if(g===1){FC.a++;if(!FC.again[k]){FC.again[k]=1;FC.keys.push(k)}}else if(g===2)FC.b++;else FC.c++;FC.i++;FC.show=false;render();break}
@@ -5160,6 +5179,7 @@ function boot(){
   document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')safe(function(){Cloud.refresh()},'cloud');else if(Cloud.ref)Cloud.flush()});
   document.addEventListener('focusout',function(){setTimeout(flushDeferred,300)});
   setInterval(flushDeferred,4000);
+  safe(favInit,'fav');safe(function(){UIM.resume()},'uim');uimInit();
   route();
   safe(registerSW,'sw');
   setTimeout(function(){safe(function(){Cloud.init()},'cloud')},200);
@@ -5409,22 +5429,30 @@ function iosSafari(){const ua=navigator.userAgent||'';return /Safari\//.test(ua)
 /* iPhone 只有 Safari 本身准網頁用語音識別；主屏幕 App、其他 App 入面嘅網頁（包括 Claude App）都唔得 */
 function asrBlocked(){return isIOS()&&(isStandalone()||!iosSafari()||inFrame())}
 function asrUsable(){return ASR.ok&&!asrBlocked()}
+function gmReady(){return GM.ok()&&MIC.ok()}
+function voiceReady(){return gmReady()||asrUsable()}
 function safariBox(){const url=WEB_URL+'#practice';
   return '<div class="talk off"><div class="talkst"><b>iPhone 只有 Safari 先可以直接講評分</b><div class="small muted" style="margin-top:2px">撳下面個掣，會用 Safari 打開同一個練習（Safari 版嘅記錄同呢度分開）。</div>'+
     '<div class="btns" style="margin-top:8px"><a class="btn pri" href="x-safari-'+esc(url)+'" data-copy="'+esc(url)+'">'+ICON.mic+' 用 Safari 打開</a></div></div></div>'}
-function talkBox(act,id,busy,live,idle){
-  if(!asrUsable())return asrBlocked()?safariBox():'';
-  return '<div class="talk'+(busy?' on':'')+'"><button class="micbig'+(busy?' on':'')+'" data-act="'+act+'"'+(id?' data-id="'+id+'"':'')+' aria-label="'+(busy?'停止':'直接講')+'">'+(busy?ICON.stop:ICON.mic)+'</button>'+
-    '<div class="talkst"><b>'+(busy?'聽緊…講完停一停就自動評分':idle)+'</b><div class="live" id="'+(id?'ftlive-'+id:'spLive')+'" aria-live="polite">'+esc(live||'')+'</div></div></div>';
+function setupBox(){
+  if(!MIC.ok())return asrBlocked()?safariBox():'';
+  const url=WEB_URL+'#practice';
+  return '<div class="talk off"><div class="talkst"><b>想喺 App 入面直接講評分？</b><div class="small muted" style="margin-top:2px">設定一次免費 Google AI，之後撳咪講完，即刻評分、糾正文法同發音。</div>'+
+    '<div class="btns" style="margin-top:8px"><button class="btn pri" data-act="gm-setup">'+ICON.mic+' 設定（免費，1 分鐘）</button>'+(asrBlocked()&&isStandalone()?'<a class="btn ghost" href="x-safari-'+esc(url)+'" data-copy="'+esc(url)+'">或者用 Safari</a>':'')+'</div></div></div>'}
+function talkBox(act,id,busy,live,idle,phase){
+  if(!voiceReady())return setupBox();
+  const ai=busy&&phase==='ai';
+  return '<div class="talk'+(busy?' on':'')+(ai?' ai':'')+'"><button class="micbig'+(busy?' on':'')+(ai?' ai':'')+'" data-act="'+act+'"'+(id?' data-id="'+id+'"':'')+' aria-label="'+(ai?'評分緊':(busy?'停止':'直接講'))+'">'+(ai?'<span class="spin" aria-hidden="true"></span>':(busy?ICON.stop:ICON.mic))+'</button>'+
+    '<div class="talkst"><b>'+(ai?'AI 評分緊…':(busy?'聽緊…講完停一停就自動評分':idle))+'</b><div class="live" id="'+(id?'ftlive-'+id:'spLive')+'" aria-live="polite">'+(ai?'':esc(live||''))+'</div></div></div>';
 }
-function kbOpen(){return !asrUsable()}
+function kbOpen(){return !voiceReady()}
 function speakBody(){
   const s=SP;
   let h='<div style="margin:8px 0"><div style="font-family:var(--font-display);font-size:21px;font-weight:700;line-height:1.35">'+esc(s.en)+'</div><div class="muted">'+esc(s.zh)+'</div></div>';
   h+='<div class="btns"><button class="btn" data-say="'+esc(s.en)+'">'+ICON.spk+' 原音</button><button class="btn" data-say="'+esc(s.en)+'" data-slow="1">慢速</button></div>';
-  h+=talkBox('talk-go','',s.busy,s.live,'撳一下咪，直接用英文講');
+  h+=talkBox('talk-go','',s.busy,s.live,'撳一下咪，直接用英文講',s.phase);
   if(s.err)h+='<p class="note warn small" style="margin-top:10px">'+esc(s.err)+'</p>';
-  h+='<div id="spRes">'+(s.input?coResHTML(coScore(s.en,s.input),s.en,s.input):'')+'</div>';
+  h+='<div id="spRes">'+(s.gm&&s.input===String(s.gm.heard||'')?gmSentHTML(s.gm,s.en):(s.input?coResHTML(coScore(s.en,s.input),s.en,s.input):''))+'</div>';
   h+='<details class="dd kb"'+(kbOpen()?' open':'')+'><summary>用鍵盤 🎤 講／打字</summary><p class="small muted" style="margin:6px 0">撳 🌐 轉 English 鍵盤，再撳 🎤 講；講完停一停就自動評分。</p>'+
     '<textarea id="spIn" rows="2" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Speak or type in English">'+esc(s.input||'')+'</textarea>'+
     '<div class="btns"><button class="btn" data-act="sp-check">評分</button><button class="btn ghost" data-act="sp-clear">清除</button></div></details>';
@@ -5447,6 +5475,7 @@ function coInput(t){
 function coAuto(){return !!AI.ns&&S.set.aiAuto!==false}
 function talkGo(){
   if(!SP)return;
+  if(gmReady()){gmTalkSentence();return}
   if(SP.busy){ASR.stop();return}
   TTS.stop();SP.busy=true;SP.err='';SP.live='';refreshSpeak();
   ASR.listen({interim:function(t){SP.live=t;const el=$('spLive');if(el)el.textContent=t}}).then(function(alts){
@@ -5465,15 +5494,16 @@ const FT={};
 function ftId(id){return String(id).replace(/[^A-Za-z0-9_-]/g,'_')}
 function freeBox(id,ctx,model,label){
   id=ftId(id);const st=FT[id]||(FT[id]={});if(st.ctx!==undefined&&st.ctx!==ctx)st.input='';st.ctx=ctx;st.model=model||'';
-  return '<div class="coach">'+talkBox('ft-talk',id,st.busy,st.live,'撳一下咪，直接用英文講（可以講一兩分鐘）')+
+  return '<div class="coach">'+talkBox('ft-talk',id,st.busy,st.live,'撳一下咪，直接用英文講（可以講一兩分鐘）',st.phase)+
    (st.err?'<p class="note warn small" style="margin-top:8px">'+esc(st.err)+'</p>':'')+
-   '<div id="ftres-'+id+'">'+(st.input?coFreeHTML(coFree(st.input,ctx),id):'')+'</div><div id="aiOut-'+id+'"></div>'+
+   '<div id="ftres-'+id+'">'+(st.gm&&st.input===String(st.gm.heard||'')?gmFreeHTML(st.gm):(st.input?coFreeHTML(coFree(st.input,ctx),id):''))+'</div><div id="aiOut-'+id+'"></div>'+
    '<details class="dd kb"'+(kbOpen()?' open':'')+'><summary>用鍵盤 🎤 講／打字</summary><p class="small muted" style="margin:6px 0">撳 🌐 轉 English 鍵盤，再撳 🎤 講；講完停一停就自動檢查。</p>'+
    '<textarea id="ft-'+id+'" class="ftIn" data-id="'+id+'" rows="4" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="Speak or type in English">'+esc(st.input||'')+'</textarea>'+
    '<div class="btns"><button class="btn" data-act="ft-check" data-id="'+id+'">檢查</button><button class="btn ghost" data-act="ft-clear" data-id="'+id+'">清除</button></div></details></div>';
 }
 function ftRefresh(){if(SHEET)refreshSheet();else renderKeep()}
 function ftTalk(id){
+  if(gmReady()){gmTalkFree(id);return}
   const st=FT[id]||(FT[id]={});
   if(st.busy){ASR.stop();return}
   const el=$('ft-'+id);if(el)st.input=el.value;
@@ -5489,6 +5519,7 @@ function ftTalk(id){
 function ftCheck(id,quiet){const st=FT[id];if(!st)return;const el=$('ft-'+id);if(el)st.input=el.value;const box=$('ftres-'+id);if(!box)return;
   if(!String(st.input||'').trim()){box.innerHTML='';return}if(coCJK(st.input)){box.innerHTML=coCJKWarn();return}box.innerHTML=coFreeHTML(coFree(st.input,st.ctx),id);S.log[dkey()]=1;save();if(!quiet)try{box.scrollIntoView({block:'nearest'})}catch(e){}}
 function coAct(a,ds){
+  if(gmAct(a,ds))return true;
   switch(a){
   case 'talk-go':talkGo();return true;
   case 'ft-talk':ftTalk(ds.id);return true;
@@ -5505,6 +5536,247 @@ function coAct(a,ds){
     aiRun('aiOut-'+ds.id,aiPromptF(st.ctx,st.model,st.input));return true}
   }
   return false;
+}
+
+/* ---------- App 內直接講評分：程式自己錄音（停一停自動結束）→ Google Gemini 聽錄音 → 評分、糾正、發音、文法、英文邏輯（廣東話） ---------- */
+/* iPhone 主屏幕 App 唔准網頁用語音識別，但准錄音；所以錄音交畀 Gemini 處理。Key 只存喺本機，唔同步、唔匯出。 */
+const MIC={ctx:null,stream:null,src:null,proc:null,buf:[],rate:48000,on:false,stopNow:null,
+  ok(){try{return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&(window.AudioContext||window.webkitAudioContext))}catch(e){return false}},
+  /* 要喺撳掣嗰下調用（iPhone 要用戶手勢先可以開聲音） */
+  start(opt){
+    const self=this;opt=opt||{};
+    if(!this.ok())return Promise.reject({code:'unsupported'});
+    const AC=window.AudioContext||window.webkitAudioContext;
+    try{if(!self.ctx||self.ctx.state==='closed')self.ctx=new AC();if(self.ctx.state==='suspended')self.ctx.resume()}catch(e){return Promise.reject({code:'unsupported'})}
+    const ctx=self.ctx;AUD.recStart();
+    return navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}}).then(function(stream){
+      return new Promise(function(res,rej){
+        self.stream=stream;self.buf=[];self.on=true;self.rate=ctx.sampleRate||48000;
+        let src,proc;
+        try{src=ctx.createMediaStreamSource(stream);proc=(ctx.createScriptProcessor||ctx.createJavaScriptNode).call(ctx,4096,1,1)}catch(e){self.kill();rej({code:'unsupported'});return}
+        self.src=src;self.proc=proc;
+        const t0=Date.now();let heard=false,last=0,noise=0,nN=0;
+        const done=function(err){if(!self.on)return;self.on=false;self.stopNow=null;try{proc.onaudioprocess=null;proc.disconnect();src.disconnect()}catch(e){}self.kill();
+          if(err){self.buf=[];rej({code:err});return}res(self.wav())};
+        self.stopNow=function(){done(heard?null:'no-speech')};
+        proc.onaudioprocess=function(e){if(!self.on)return;const d=e.inputBuffer.getChannelData(0);self.buf.push(new Float32Array(d));
+          let s=0;for(let i=0;i<d.length;i++)s+=d[i]*d[i];const rms=Math.sqrt(s/d.length),now=Date.now();
+          if(now-t0<300){noise+=rms;nN++;return}
+          const thr=Math.max(0.012,(nN?noise/nN:0.004)*2.6);
+          if(rms>thr){heard=true;last=now}
+          if(opt.level)try{opt.level(Math.min(1,rms/(thr*5)),heard)}catch(x){}
+          if(heard&&now-last>(opt.silenceMs||1200))done(null);
+          else if(!heard&&now-t0>(opt.waitMs||7000))done('no-speech');
+          else if(now-t0>(opt.maxMs||15000))done(heard?null:'no-speech');
+        };
+        src.connect(proc);proc.connect(ctx.destination);
+      });
+    },function(e){AUD.recStop();throw {code:'mic',err:e}});
+  },
+  stop(){if(this.on&&this.stopNow)this.stopNow()},
+  kill(){try{if(this.stream)this.stream.getTracks().forEach(function(t){t.stop()})}catch(e){}this.stream=null;AUD.recStop()},
+  /* 16 kHz 單聲道 WAV（Gemini 一定識讀） */
+  wav(){
+    const inRate=this.rate,outRate=16000,ratio=inRate/outRate;let len=0;this.buf.forEach(function(b){len+=b.length});
+    const all=new Float32Array(len);let o=0;this.buf.forEach(function(b){all.set(b,o);o+=b.length});this.buf=[];
+    const n=Math.max(0,Math.floor(len/ratio)),pcm=new Int16Array(n);
+    for(let i=0;i<n;i++){const a=Math.floor(i*ratio),z=Math.min(len,Math.max(a+1,Math.floor((i+1)*ratio)));let s=0;for(let j=a;j<z;j++)s+=all[j];const v=s/(z-a);pcm[i]=Math.max(-32768,Math.min(32767,Math.round(v*32767)))}
+    const buf=new ArrayBuffer(44+n*2),dv=new DataView(buf),W=function(off,str){for(let i=0;i<str.length;i++)dv.setUint8(off+i,str.charCodeAt(i))};
+    W(0,'RIFF');dv.setUint32(4,36+n*2,true);W(8,'WAVE');W(12,'fmt ');dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,outRate,true);dv.setUint32(28,outRate*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);W(36,'data');dv.setUint32(40,n*2,true);
+    new Int16Array(buf,44).set(pcm);
+    return {buf:buf,sec:n/outRate};
+  }
+};
+function b64(buf){const u=new Uint8Array(buf);let s='';for(let i=0;i<u.length;i+=0x8000)s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(s)}
+
+const GM={K:'hkfe90.gk',M:['gemini-flash-latest','gemini-2.5-flash','gemini-flash-lite-latest','gemini-2.5-flash-lite'],mi:0,
+  key(){try{return localStorage.getItem(this.K)||''}catch(e){return ''}},
+  set(k){try{if(k)localStorage.setItem(this.K,k);else localStorage.removeItem(this.K)}catch(e){}},
+  ok(){return !!this.key()},
+  req(parts,schema){
+    const self=this,key=this.key();if(!key)return Promise.reject({code:'nokey'});
+    const go=function(i){const m=self.M[i];
+      const body={contents:[{role:'user',parts:parts}],generationConfig:{temperature:0.2,maxOutputTokens:2048,responseMimeType:'application/json'}};if(schema)body.generationConfig.responseSchema=schema;
+      let ctl=null,tm=null;try{ctl=new AbortController();tm=setTimeout(function(){try{ctl.abort()}catch(e){}},45000)}catch(e){}
+      return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+m+':generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctl?ctl.signal:undefined})
+        .then(function(r){clearTimeout(tm);return r.text().then(function(t){let j=null;try{j=JSON.parse(t)}catch(e){}return {r:r,j:j||{}}})},function(e){clearTimeout(tm);throw {code:'net',message:String(e&&e.message||e)}})
+        .then(function(x){const r=x.r,j=x.j;
+          if(!r.ok){const msg=(j.error&&j.error.message)||('HTTP '+r.status);
+            if((r.status===404||(r.status===400&&/model|not found|not supported|unsupported/i.test(msg)&&!/api key/i.test(msg)))&&i+1<self.M.length)return go(i+1);
+            if(r.status===429&&i<2)return go(2);
+            throw {code:r.status,message:msg}}
+          self.mi=i;
+          const c=j.candidates&&j.candidates[0],txt=c&&c.content&&c.content.parts?c.content.parts.map(function(p){return p.text||''}).join(''):'';
+          if(!txt)throw {code:'empty',message:(c&&c.finishReason)||(j.promptFeedback&&j.promptFeedback.blockReason)||'冇回覆'};
+          try{return JSON.parse(txt)}catch(e){const mm=txt.match(/\{[\s\S]*\}/);if(mm)try{return JSON.parse(mm[0])}catch(x){}throw {code:'parse',message:'回覆格式唔啱'}}
+        })};
+    return go(this.mi||0);
+  },
+  ping(){return this.req([{text:'Reply with JSON {"ok": true}.'}],{type:'OBJECT',properties:{ok:{type:'BOOLEAN'}},required:['ok']})}
+};
+const GM_FIX={type:'ARRAY',items:{type:'OBJECT',properties:{wrong:{type:'STRING'},right:{type:'STRING'},why:{type:'STRING'}},required:['right','why']}};
+const GM_SND={type:'ARRAY',items:{type:'OBJECT',properties:{word:{type:'STRING'},tip:{type:'STRING'}},required:['word','tip']}};
+const GM_HEAD='你係香港一位專業英文口語老師。學生係香港人，母語係廣東話，準備喺香港金融業用英文工作。所有解釋用香港廣東話（繁體字），英文例子保留英文，講嘢要具體、簡短、友善。';
+function gmSentence(target,zh,w){
+  const prompt=GM_HEAD+'\n附上嘅錄音係學生跟讀呢句英文：\n「'+target+'」'+(zh?'（意思：'+zh+'）':'')+'\n請認真聽錄音，然後：\n'+
+    '- heard：逐字寫低學生實際講咗嘅英文。照錄，保留文法錯誤、漏咗或者多咗嘅字，唔好幫佢改正；完全聽唔到英文就寫空字串。\n'+
+    '- score：0 至 100 分，綜合準確、發音同流暢度。pron：發音分，0 至 100。\n'+
+    '- fixes：每個講錯或者漏咗嘅地方：wrong＝學生講法，right＝正確講法，why＝用一句廣東話解釋（文法、用字或者語序）。全對就畀空陣列。\n'+
+    '- sounds：最多 3 個發音要改善嘅字：word＝個字，tip＝用廣東話講點樣讀（重音、尾音、口形或者舌頭位置）。發音好就畀空陣列。\n'+
+    '- grammar：用一兩句廣東話講呢句嘅文法重點。\n- logic：用一句廣東話講英文思維同廣東話講法嘅分別。\n- praise：一句簡短鼓勵。';
+  return GM.req([{text:prompt},{inline_data:{mime_type:'audio/wav',data:b64(w.buf)}}],
+    {type:'OBJECT',properties:{heard:{type:'STRING'},score:{type:'INTEGER'},pron:{type:'INTEGER'},fixes:GM_FIX,sounds:GM_SND,grammar:{type:'STRING'},logic:{type:'STRING'},praise:{type:'STRING'}},required:['heard','score','pron','fixes','sounds','grammar','logic','praise']});
+}
+function gmFree(ctx,model,w){
+  const prompt=GM_HEAD+'\n題目：'+(ctx||'自由講')+(model?'\n參考答案（只供你參考，唔使學生跟足）：'+model:'')+'\n附上嘅錄音係學生用英文回答。請：\n'+
+    '- heard：逐字寫低學生講咗嘅英文，照錄，保留錯誤，唔好改正。\n'+
+    '- content、grammar_score、vocab、fluency：各 0 至 25 分；total：總分 0 至 100。\n'+
+    '- fixes：最多 6 個錯處（wrong、right、why；why 用一句廣東話）。\n'+
+    '- better：用學生自己嘅意思，改寫成自然、專業嘅英文，長度差唔多。\n'+
+    '- grammar：最多 3 點文法重點（廣東話，一段）。\n- logic：佢嘅結構點樣改善（例如結論先行、PREP、連接詞），廣東話。\n'+
+    '- sounds：最多 3 個發音要改善嘅字（word、tip）。\n- next：一個具體練習建議（廣東話）。';
+  return GM.req([{text:prompt},{inline_data:{mime_type:'audio/wav',data:b64(w.buf)}}],
+    {type:'OBJECT',properties:{heard:{type:'STRING'},content:{type:'INTEGER'},grammar_score:{type:'INTEGER'},vocab:{type:'INTEGER'},fluency:{type:'INTEGER'},total:{type:'INTEGER'},fixes:GM_FIX,better:{type:'STRING'},grammar:{type:'STRING'},logic:{type:'STRING'},sounds:GM_SND,next:{type:'STRING'}},required:['heard','total','fixes','better','grammar','logic','sounds','next']});
+}
+function gmErr(e){const c=e&&e.code,m=String(e&&e.message||'');
+  if(c==='no-speech')return asrMsg('no-speech');
+  if(c==='unsupported')return '呢部機或者呢個瀏覽器唔支援錄音。';
+  if(c==='mic')return micErr(e.err)+(isIOS()&&inFrame()?' Claude App 入面唔准用咪高峰，請用主屏幕 App。':'');
+  if(c==='nokey')return '未設定 API Key。';
+  if(c==='net')return '連唔到 Google，請檢查網絡再試。';
+  if(c===400&&/api key/i.test(m))return 'API Key 唔啱，請喺「我的 → App 內直接講評分」重新貼上。';
+  if(c===403)return '呢個 API Key 用唔到 Gemini（可能未開通或者有限制），請喺 aistudio.google.com 重新建立一個。';
+  if(c===429)return '今日免費次數用完，或者用得太密。等一陣再試；或者喺 Google AI Studio 開通付費（好平）。';
+  return 'AI 評分出錯：'+(m||c)+'。請再試一次。'}
+function gmLvl(v,heard){const p=Math.round(Math.max(4,v*100));return '<span class="lvl'+(heard?' on':'')+'"><i style="width:'+p+'%"></i></span> '+(heard?'講緊…停一停就會評分':'請開始講')}
+function gmScoreCls(s){return s>=85?'good':(s>=65?'mid':'low')}
+function gmList(arr,fn){return (Array.isArray(arr)?arr:[]).filter(Boolean).map(fn).join('')}
+function gmSentHTML(r,target){
+  const sc=Math.max(0,Math.min(100,parseInt(r.score,10)||0)),pr=Math.max(0,Math.min(100,parseInt(r.pron,10)||0)),loc=coScore(target,r.heard||'');
+  let h='<div class="cres"><div class="cscore"><div class="score '+gmScoreCls(sc)+'">'+sc+'</div><div><b>'+coVerdict(sc)+'</b><div class="small muted">發音 '+pr+' · 字詞準確 '+loc.m+' / '+loc.n+'</div></div></div>';
+  h+='<p class="small muted" style="margin:10px 0 2px">你講咗：</p><p class="said">'+(r.heard?esc(r.heard):'（聽唔到英文）')+'</p>';
+  h+='<p class="small muted" style="margin:8px 0 2px">正確句子（紅色 = 漏咗或者講錯）</p><p class="diff">'+loc.html+'</p>';
+  const fx=gmList(r.fixes,function(f){return '<div class="issue"><b>'+esc(f.right||'')+'</b>'+(f.wrong?'<div class="iwhat">你講：「'+esc(f.wrong)+'」</div>':'')+'<div class="iwhy">'+esc(f.why||'')+'</div></div>'});
+  if(fx)h+='<h4 class="ch">即時糾正</h4><div class="issues">'+fx+'</div>';
+  const sd=gmList(r.sounds,function(s){const ip=ipaOf(s.word||'');return '<div class="issue snd"><b>'+esc(s.word||'')+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</b><div class="iwhy">'+esc(s.tip||'')+'</div><div class="btns" style="margin-top:4px">'+sayBtn(s.word||'')+sayBtn(s.word||'',true)+'</div></div>'});
+  if(sd)h+='<h4 class="ch">發音</h4><div class="issues">'+sd+'</div>';
+  if(r.grammar||r.logic)h+='<h4 class="ch">文法 · 英文邏輯</h4><div class="logic">'+(r.grammar?'<div class="lg"><b>文法</b> '+esc(r.grammar)+'</div>':'')+(r.logic?'<div class="lg"><b>英文邏輯</b> '+esc(r.logic)+'</div>':'')+'</div>';
+  if(r.praise)h+='<p class="tip" style="margin-top:10px">'+esc(r.praise)+'</p>';
+  h+='<div class="btns"><button class="btn" data-say="'+esc(target)+'">'+ICON.spk+' 再聽正確讀法</button><button class="btn" data-say="'+esc(target)+'" data-slow="1">慢速</button></div></div>';
+  return h;
+}
+function gmFreeHTML(r){
+  const n=function(v,mx){return Math.max(0,Math.min(mx,parseInt(v,10)||0))},tot=n(r.total,100);
+  let h='<div class="cres"><div class="cscore"><div class="score '+gmScoreCls(tot)+'">'+tot+'</div><div><b>AI 評分</b><div class="small muted">內容 '+n(r.content,25)+' · 文法 '+n(r.grammar_score,25)+' · 用字 '+n(r.vocab,25)+' · 流暢 '+n(r.fluency,25)+'（各 25 分）</div></div></div>';
+  h+='<p class="small muted" style="margin:10px 0 2px">你講咗：</p><p class="said">'+(r.heard?esc(r.heard):'（聽唔到英文）')+'</p>';
+  const fx=gmList(r.fixes,function(f){return '<div class="issue"><b>'+esc(f.right||'')+'</b>'+(f.wrong?'<div class="iwhat">你講：「'+esc(f.wrong)+'」</div>':'')+'<div class="iwhy">'+esc(f.why||'')+'</div></div>'});
+  if(fx)h+='<h4 class="ch">即時糾正</h4><div class="issues">'+fx+'</div>';
+  if(r.better)h+='<h4 class="ch">更自然嘅講法</h4><div class="passage" style="font-size:16px">'+esc(r.better)+'</div><div class="btns"><button class="btn" data-say="'+esc(r.better)+'">'+ICON.spk+' 朗讀</button><button class="btn" data-say="'+esc(r.better)+'" data-slow="1">慢速</button></div>';
+  const sd=gmList(r.sounds,function(s){const ip=ipaOf(s.word||'');return '<div class="issue snd"><b>'+esc(s.word||'')+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</b><div class="iwhy">'+esc(s.tip||'')+'</div></div>'});
+  if(sd)h+='<h4 class="ch">發音</h4><div class="issues">'+sd+'</div>';
+  if(r.grammar||r.logic)h+='<h4 class="ch">文法 · 英文邏輯</h4><div class="logic">'+(r.grammar?'<div class="lg"><b>文法</b> '+esc(r.grammar)+'</div>':'')+(r.logic?'<div class="lg"><b>英文邏輯</b> '+esc(r.logic)+'</div>':'')+'</div>';
+  if(r.next)h+='<p class="tip" style="margin-top:10px"><b>下一步：</b>'+esc(r.next)+'</p>';
+  return h+'</div>';
+}
+/* 句子：撳咪 → 錄音 → AI 評分 */
+function gmTalkSentence(){
+  if(!SP)return;
+  if(SP.busy){if(SP.phase==='rec')MIC.stop();return}
+  TTS.stop();SP.busy=true;SP.phase='rec';SP.err='';SP.gm=null;refreshSpeak();
+  const en=SP.en,zh=SP.zh;
+  MIC.start({silenceMs:1100,maxMs:15000,waitMs:7000,level:function(v,heard){const el=$('spLive');if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
+    if(!SP||SP.en!==en)throw {code:'aborted'};
+    SP.phase='ai';refreshSpeak();
+    return gmSentence(en,zh,w);
+  }).then(function(r){
+    if(!SP||SP.en!==en)return;
+    SP.busy=false;SP.phase='';SP.gm=r;SP.input=String(r.heard||'');S.log[dkey()]=1;misSent(en,zh,parseInt(r.score,10)||0);save();refreshSpeak();
+    const b=$('spRes');if(b)try{b.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+  },function(e){if(!SP)return;SP.busy=false;SP.phase='';if(!(e&&e.code==='aborted'))SP.err=gmErr(e);refreshSpeak()});
+}
+/* 自由講：最長 2 分鐘，停 2.5 秒自動結束 */
+function gmTalkFree(id){
+  const st=FT[id]||(FT[id]={});
+  if(st.busy){if(st.phase==='rec')MIC.stop();return}
+  TTS.stop();st.busy=true;st.phase='rec';st.err='';st.gm=null;ftRefresh();
+  MIC.start({silenceMs:2500,maxMs:120000,waitMs:8000,level:function(v,heard){const el=$('ftlive-'+id);if(el)el.innerHTML=gmLvl(v,heard)}}).then(function(w){
+    st.phase='ai';ftRefresh();return gmFree(st.ctx,st.model,w);
+  }).then(function(r){st.busy=false;st.phase='';st.gm=r;st.input=String(r.heard||'');S.log[dkey()]=1;save();ftRefresh()},
+    function(e){st.busy=false;st.phase='';st.err=gmErr(e);ftRefresh()});
+}
+/* 設定 */
+function gmSetupHTML(){const has=GM.ok();
+  return (SHEET&&SHEET.__prev?'<button class="btn ghost" data-act="sheet-back" style="margin-bottom:8px">‹ 返回</button>':'')+
+    '<h3>App 內直接講評分</h3><p style="margin:6px 0">用 Google Gemini AI 聽你把聲：講完即刻評分，糾正文法、發音同英文邏輯，全部用廣東話解釋。要一個<b>免費</b>嘅 API Key，設定一次就得。</p>'+
+    '<ol class="small" style="line-height:1.8;padding-left:20px;margin:8px 0"><li>打開 <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>，用 Google 帳戶登入。</li><li>撳「Create API key」（建立 API 金鑰），再撳複製。</li><li>返嚟呢度貼上，撳「儲存」。</li></ol>'+
+    '<label class="f" for="gmKey">API Key'+(has?'（已設定）':'')+'</label><input id="gmKey" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="'+(has?'已設定；想換就貼上新嘅':'AIza…')+'">'+
+    '<div class="btns"><button class="btn pri" data-act="gm-save">儲存</button>'+(has?'<button class="btn ghost" data-act="gm-del">刪除 Key</button>':'')+'</div><div id="gmMsg" aria-live="polite"></div>'+
+    '<p class="small muted" style="margin-top:10px">Key 只存喺呢部機，唔會同步，亦唔會匯出。免費版每日有次數限制；Google 可能會用免費版嘅內容改善服務。</p>'}
+function gmOpenSetup(){const prev=SHEET||null;const f=function(){return gmSetupHTML()};f.__prev=prev;openSheet(f)}
+function gmAct(a,ds){
+  switch(a){
+  case 'gm-setup':gmOpenSetup();return true;
+  case 'gm-del':GM.set('');toast('已刪除 API Key');if(SHEET)refreshSheet();else renderKeep();return true;
+  case 'gm-save':{const el=$('gmKey'),k=String(el&&el.value||'').trim(),msg=$('gmMsg');
+    if(!k){if(msg)msg.innerHTML='<p class="note warn small">請先貼上 API Key。</p>';return true}
+    if(k.length<20||/\s/.test(k)){if(msg)msg.innerHTML='<p class="note warn small">呢個唔似 API Key，請重新複製。</p>';return true}
+    const old=GM.key();GM.set(k);GM.mi=0;if(msg)msg.innerHTML='<p class="note small">測試緊…</p>';
+    GM.ping().then(function(){const m=$('gmMsg');if(m)m.innerHTML='<p class="note ok small">✅ 設定成功！而家撳咪就可以直接講評分。</p>';
+      setTimeout(function(){if(SHEET&&SHEET.__prev){const pv=SHEET.__prev;SHEET=pv;refreshSheet()}else if(SHEET){closeSheet();renderKeep()}else renderKeep()},900)},
+      function(e){const c=e&&e.code;if(c===400||c===403){GM.set(old)}const m=$('gmMsg');if(m)m.innerHTML='<p class="note warn small">'+esc(gmErr(e))+'</p>'});
+    return true}
+  }
+  return false;
+}
+function gmCard(){return '<section class="card" id="gmCard"><h2 class="sec-h">App 內直接講評分 <span class="tag">'+(GM.ok()?'已開啟':'未設定')+'</span></h2><p style="margin:0">'+(GM.ok()?'已經設定好：撳任何一個大咪，講完就即刻評分同糾正。':'iPhone 主屏幕 App 唔准網頁用語音識別。設定一個免費 Google AI Key，就可以喺 App 入面直接講、即刻評分。')+'</p><div class="btns"><button class="btn '+(GM.ok()?'':'pri')+'" data-act="gm-setup">'+(GM.ok()?'更改設定':'設定（免費，大約 1 分鐘）')+'</button></div></section>'}
+
+/* ---------- 單詞一鍵收藏 ---------- */
+function favKey(en){return String(en||'').trim().toLowerCase()}
+function favOn(en){return !!(S.fav&&S.fav[favKey(en)])}
+function favKeys(){const f=S.fav||{};return Object.keys(f).sort(function(a,b){return (f[b].t||0)-(f[a].t||0)})}
+function favWmap(k,f){if(!WMAP[k])WMAP[k]={en:f.en,zh:f.zh||'',day:0,ex:'',exzh:'',fav:1}}
+function favBtn(en,zh){const on=favOn(en);
+  return '<button class="ic fav'+(on?' on':'')+'" data-act="fav" data-en="'+esc(en)+'" data-zh="'+esc(zh||'')+'" aria-pressed="'+on+'" aria-label="'+(on?'取消收藏':'收藏')+'" title="'+(on?'取消收藏':'收藏')+'">'+(on?'★':'☆')+'</button>'}
+function favToggle(en,zh,el){
+  if(!S.fav||typeof S.fav!=='object')S.fav={};
+  const k=favKey(en);if(!k)return;
+  if(S.fav[k]){delete S.fav[k];toast('已取消收藏')}
+  else{S.fav[k]={en:String(en).trim(),zh:String(zh||'').trim(),t:Date.now()};favWmap(k,S.fav[k]);toast('★ 已收藏：'+String(en).trim())}
+  save();
+  const on=!!S.fav[k];
+  document.querySelectorAll('button.fav').forEach(function(b){if(favKey(b.getAttribute('data-en'))!==k)return;b.classList.toggle('on',on);b.textContent=on?'★':'☆';b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label',on?'取消收藏':'收藏');b.setAttribute('title',on?'取消收藏':'收藏')});
+  if(view==='practice'&&PR.tab==='fav'&&!on)renderKeep();
+}
+function pFav(){
+  const ks=favKeys();
+  if(!ks.length)return '<section class="card"><h2 class="sec-h">我的收藏</h2><p style="margin:0">未有收藏。喺任何單詞旁邊撳 <b>☆</b>，就會收藏喺呢度，之後可以用閃卡溫習。</p></section>';
+  return '<section class="card"><h2 class="sec-h">我的收藏 <span class="tag">'+ks.length+' 個</span></h2><div class="btns" style="margin-top:0"><button class="btn pri" data-act="fav-cards">用閃卡溫習收藏</button></div><div class="rows">'+
+    ks.map(function(k){const f=S.fav[k],ip=ipaOf(f.en);return '<div class="row"><div class="txt"><div class="en">'+esc(f.en)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+esc(f.zh)+'</div></div><div class="acts">'+sayBtn(f.en)+micBtn(f.en,f.zh)+favBtn(f.en,f.zh)+'</div></div>'}).join('')+'</div></section>';
+}
+function favInit(){try{if(!S.fav||typeof S.fav!=='object'||Array.isArray(S.fav))S.fav={};Object.keys(S.fav).forEach(function(k){favWmap(k,S.fav[k])})}catch(e){}}
+
+/* ---------- 記住上次去到邊：頁面、捲動位置、練習分頁（只存喺本機） ---------- */
+const UIM={k:'hkfe90.ui',d:{h:'',y:{},t:0,pt:''},tm:null,
+  load(){try{const v=JSON.parse(localStorage.getItem(this.k)||'null');if(v&&typeof v==='object'){if(typeof v.h==='string')this.d.h=v.h;if(v.y&&typeof v.y==='object')this.d.y=v.y;if(v.t>0)this.d.t=v.t;if(typeof v.pt==='string')this.d.pt=v.pt}}catch(e){}},
+  save(){const self=this;clearTimeout(this.tm);this.tm=setTimeout(function(){try{localStorage.setItem(self.k,JSON.stringify(self.d))}catch(e){}},300)},
+  cur(){return location.hash||'#today'},
+  note(){const h=this.cur();this.d.h=h;this.d.t=Date.now();this.save()},
+  keep(){const h=this.cur(),y=Math.max(0,Math.round(window.scrollY||0));
+    if(!(h in this.d.y)){const ks=Object.keys(this.d.y);if(ks.length>=40)delete this.d.y[ks[0]]}
+    this.d.y[h]=y;this.d.h=h;this.d.t=Date.now();this.save()},
+  restoreScroll(){const y=this.d.y[this.cur()]||0;try{window.scrollTo(0,y)}catch(e){}
+    if(y)setTimeout(function(){try{if(Math.abs((window.scrollY||0)-y)>40)window.scrollTo(0,y)}catch(e){}},80)},
+  /* 開 App 時：如果打開嘅係首頁，就返去上次嘅頁面 */
+  resume(){this.load();if(this.d.pt)PR.tab=this.d.pt;
+    const h=location.hash;if(h&&h!=='#today')return;
+    const last=this.d.h;if(!last||last==='#today'||Date.now()-this.d.t>45*864e5)return;
+    if(!/^#(day-\d+|plan|practice|me|guide|lib(-[a-z0-9-]+)?)$/.test(last))return;
+    try{history.replaceState(null,'',last)}catch(e){try{location.hash=last}catch(x){}}}
+};
+let uimScrollT=null;
+function uimInit(){
+  window.addEventListener('scroll',function(){clearTimeout(uimScrollT);uimScrollT=setTimeout(function(){safe(function(){UIM.keep()},'uim')},200)},{passive:true});
+  window.addEventListener('pagehide',function(){try{UIM.keep();localStorage.setItem(UIM.k,JSON.stringify(UIM.d))}catch(e){}});
 }
 
 </script>
@@ -5701,7 +5973,7 @@ function searchResults(q){
   if(!total)return '<p class="note" style="margin-top:12px">沒有找到“'+esc(q)+'”。試試更短的關鍵詞，或者換成中文 / 英文。</p>';
   let h='<p class="small muted" style="margin:12px 0 0">共找到 '+total+' 條</p>';
   const lim=30;
-  if(G.w.length)h+='<div class="grp">單詞 · '+G.w.length+'</div><div class="rows">'+G.w.slice(0,lim).map(function(x){const ip=ipaOf(x.en);return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div>'+(x.ex?'<div class="ex">'+hlText(x.ex,q)+'</div>':'')+'</div><div class="acts">'+sayBtn(x.en)+(x.ex?sayBtn(x.ex,true):'')+'</div></div>'}).join('')+'</div>';
+  if(G.w.length)h+='<div class="grp">單詞 · '+G.w.length+'</div><div class="rows">'+G.w.slice(0,lim).map(function(x){const ip=ipaOf(x.en);return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div>'+(x.ex?'<div class="ex">'+hlText(x.ex,q)+'</div>':'')+'</div><div class="acts">'+sayBtn(x.en)+(x.ex?sayBtn(x.ex,true):'')+favBtn(x.en,x.zh)+'</div></div>'}).join('')+'</div>';
   if(G.s.length)h+='<div class="grp">句子 · '+G.s.length+'</div><div class="rows">'+G.s.slice(0,lim).map(function(x){return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div></div><div class="acts">'+sayBtn(x.en)+micBtn(x.en,x.zh)+'</div></div>'}).join('')+'</div>';
   if(G.c.length)h+='<div class="grp">對話 · '+G.c.length+'</div><div class="rows">'+G.c.slice(0,lim).map(function(x){return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+'</div><div class="zh">'+hlText(x.zh,q)+' · <a href="#day-'+x.d+'">第 '+x.d+' 天</a></div></div><div class="acts">'+sayBtn(x.en)+micBtn(x.en,x.zh)+'</div></div>'}).join('')+'</div>';
   if(G.g.length)h+='<div class="grp">語法 · '+G.g.length+'</div><div class="rows">'+G.g.slice(0,lim).map(function(x){return '<div class="row"><div class="txt"><div class="en">'+hlText(x.en,q)+'</div><div class="zh">'+hlText(x.zh.slice(0,80),q)+'…</div></div><div class="acts">'+(x.gx?'<button class="btn" data-act="gex-practice" data-id="'+x.gx+'">練習</button>':'<button class="btn" data-act="gram-practice" data-day="'+x.d+'">練習</button>')+'</div></div>'}).join('')+'</div>';
@@ -5759,7 +6031,7 @@ function partsOf(b){
 function chips(b){const ps=partsOf(b);if(!ps)return '<div class="wnote">'+esc(b)+'</div>';
   return '<div class="eq">'+ps.map(function(p){return '<span class="chip '+p.k+'"><b>'+esc(p.t)+'</b>'+(p.m?'<i>'+esc(p.m)+'</i>':'')+'</span>'}).join('<span class="plus">+</span>')+'</div>'}
 function wordCard(x){const p=x.split('|'),w=p[0],ip=ipaOf(w);
-  return '<div class="wcard"><div class="wtop"><div class="wtxt"><b class="ww">'+esc(w)+'</b>'+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'<div class="wzh">'+esc(p[1])+' '+dayLink(w)+'</div></div>'+sayBtn(pplain(w))+'</div>'+chips(p[2]||'')+'</div>'}
+  return '<div class="wcard"><div class="wtop"><div class="wtxt"><b class="ww">'+esc(w)+'</b>'+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'<div class="wzh">'+esc(p[1])+' '+dayLink(w)+'</div></div>'+sayBtn(pplain(w))+favBtn(pplain(w),p[1])+'</div>'+chips(p[2]||'')+'</div>'}
 function rLegend(){return '<div class="legend2"><span class="chip p sm"><b>前綴</b></span><span>改變意思</span><span class="chip r sm"><b>詞根 / 詞幹</b></span><span>核心意思</span><span class="chip s sm"><b>後綴</b></span><span>決定詞性</span></div>'}
 function affixList(list,kind,exIdx,descIdx){
   let h='<div class="aindex">'+list.map(function(e,i){const lab=e[0].split(' / ')[0].replace(/（.*?）/,''),ex=(e[0].match(/（(.+?)）/)||[])[1];return '<button class="afx '+kind+' sm" data-act="rjump" data-i="'+i+'">'+esc(lab)+(ex?'<small style="font-weight:600;font-size:11px"> '+esc(ex)+'</small>':'')+'</button>'}).join('')+'</div>';
@@ -5889,7 +6161,7 @@ function bookChapter(id){
    '<div class="btns"><button class="btn pri" data-act="bk-all" data-c="'+ch.id+'">'+ICON.play+' 朗讀全章</button><button class="btn" data-act="bk-all" data-c="'+ch.id+'" data-slow="1">慢速</button><button class="btn ghost" data-act="tts-stop">停止</button></div>'+
    '<details class="bksum" open><summary>中文導讀</summary><p>'+esc(ch.sum)+'</p></details></section>';
   h+='<article class="card bk">'+bkBody(ch,'app')+'</article>';
-  h+='<section class="card"><h2 class="sec-h">本章關鍵詞 <span class="tag">Key Words · '+ch.kw.length+'</span></h2><div class="rows">'+ch.kw.map(function(k){const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),ip=ipaOf(base);return '<div class="row"><div class="txt"><div class="en">'+esc(k[0])+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+esc(k[1])+'</div></div><div class="acts">'+sayBtn(base)+'</div></div>'}).join('')+'</div>'+(S.bkw&&S.bkw[ch.id]?'<div class="btns"><span class="pill ok" style="align-self:center">已加入單詞卡</span><button class="btn" data-act="bk-cards-go">去溫習</button></div>':'<div class="btns"><button class="btn jade" data-act="bk-cards" data-c="'+ch.id+'">加入單詞卡（'+ch.kw.length+' 個詞）</button></div>')+'</section>';
+  h+='<section class="card"><h2 class="sec-h">本章關鍵詞 <span class="tag">Key Words · '+ch.kw.length+'</span></h2><div class="rows">'+ch.kw.map(function(k){const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),ip=ipaOf(base);return '<div class="row"><div class="txt"><div class="en">'+esc(k[0])+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+esc(k[1])+'</div></div><div class="acts">'+sayBtn(base)+favBtn(base,k[1])+'</div></div>'}).join('')+'</div>'+(S.bkw&&S.bkw[ch.id]?'<div class="btns"><span class="pill ok" style="align-self:center">已加入單詞卡</span><button class="btn" data-act="bk-cards-go">去溫習</button></div>':'<div class="btns"><button class="btn jade" data-act="bk-cards" data-c="'+ch.id+'">加入單詞卡（'+ch.kw.length+' 個詞）</button></div>')+'</section>';
   h+='<section class="card"><h2 class="sec-h">本章要點 <span class="tag">Key Points</span></h2>'+bkKeyPoints(ch)+'</section>'+bkSpeak(ch)+bkQuiz(ch);
   h+='<div class="stepfoot">'+(prev?'<a class="btn" href="#lib-book-'+prev.id+'">‹ 第 '+(n-1)+' 章</a>':'<a class="btn" href="#lib-book">目錄</a>')+'<button class="btn'+(S.book[ch.id]?'':' gold')+'" data-act="bk-done" data-c="'+ch.id+'">'+(S.book[ch.id]?'✓ 已讀（點此取消）':'標記為已讀')+'</button>'+(next?'<a class="btn" href="#lib-book-'+next.id+'">第 '+(n+1)+' 章 ›</a>':'<a class="btn" href="#lib-book-glossary">詞彙表 ›</a>')+'</div>';
   return h;
@@ -5898,7 +6170,7 @@ function bookGlossary(){
   const all=bkGloss();
   let h=crumb([['金融讀本','lib-book'],['詞彙表']])+pageHero('詞彙表','Glossary · '+all.length+' key terms')+'<section class="card"><div class="rows">';let L0='';
   all.forEach(function(x){const l=x.t.charAt(0).toUpperCase();if(l!==L0){L0=l;h+='<div class="grp">'+esc(l)+'</div>'}const ip=ipaOf(x.base);
-    h+='<div class="row"><div class="txt"><div class="en">'+esc(x.t)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+x.z.map(function(sn){return esc(sn.zh)+' · '+sn.ch.map(function(c){return '<a href="#lib-book-'+c.id+'">第 '+bkNum(c)+' 章</a>'}).join('、')}).join('；')+'</div></div><div class="acts">'+sayBtn(x.base)+'</div></div>'});
+    h+='<div class="row"><div class="txt"><div class="en">'+esc(x.t)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+x.z.map(function(sn){return esc(sn.zh)+' · '+sn.ch.map(function(c){return '<a href="#lib-book-'+c.id+'">第 '+bkNum(c)+' 章</a>'}).join('、')}).join('；')+'</div></div><div class="acts">'+sayBtn(x.base)+favBtn(x.base,x.z[0].zh)+'</div></div>'});
   return h+'</div></section>';
 }
 function cardBookLink(n){const id=BOOK_DAY[n],ch=id&&bkById(id);if(!ch)return '';const num=bkNum(ch);
