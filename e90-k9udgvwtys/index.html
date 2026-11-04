@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="09c99c4ebb">
+<meta name="app-ver" content="bbbf0c5764">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -468,13 +468,17 @@ figure.vzf{margin:8px 0 20px;padding:12px;border:1px solid var(--line);border-ra
 .vzt{font-weight:700;font-size:14.5px;margin-bottom:8px}.vzt span{color:var(--accent-text);margin-right:4px}
 .vzbox{max-width:560px;margin:0 auto}
 .vzc{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.5}
-table.vztable{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed;overflow-wrap:break-word}
+.vztw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.vztable{width:100%;border-collapse:collapse;font-size:13px;overflow-wrap:normal;word-break:normal;-webkit-hyphens:auto;hyphens:auto}
+table.vztable.t4{font-size:12.5px}
+table.vztable .vzsub{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 table.vztable th{text-align:left;color:var(--muted);font-weight:700;border-bottom:2px solid var(--line);padding:6px}
 table.vztable td{border-bottom:1px solid var(--line);padding:7px 6px;vertical-align:top}
 /* SVG 圖表主題 */
-:root{--v1:#1d4e89;--v2:#c8a24c;--v3:#2f8a5b;--v4:#c0392b;--v5:#8a94a6;--v6:#b7791f}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--v1:#5b8fd6;--v2:#d9b860;--v3:#4cb37e;--v4:#e2665a;--v5:#7d8799;--v6:#d69a3c}}
-:root[data-theme="dark"]{--v1:#5b8fd6;--v2:#d9b860;--v3:#4cb37e;--v4:#e2665a;--v5:#7d8799;--v6:#d69a3c}
+/* 圖表配色：已用 dataviz 校驗器檢查（淺色／深色各自通過亮度、彩度、色盲分辨、對比度） */
+:root{--v1:#24589a;--v2:#a8852a;--v3:#1a8a6e;--v4:#d0452a;--v5:#8a94a6;--v6:#c06a1b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--v1:#5b8fd6;--v2:#b48d34;--v3:#1b9b84;--v4:#df5f36;--v5:#7d8799;--v6:#d07a2c}}
+:root[data-theme="dark"]{--v1:#5b8fd6;--v2:#b48d34;--v3:#1b9b84;--v4:#df5f36;--v5:#7d8799;--v6:#d07a2c}
 svg.vz{width:100%;height:auto;display:block;overflow:visible;font-family:var(--font-body)}
 .vz text{fill:var(--muted);font-size:10.5px}
 .vz .tl{fill:var(--ink)}.vz .t-b{font-weight:700}.vz .sm{font-size:9.5px;fill:var(--muted)}
@@ -561,6 +565,38 @@ details.coh ol{margin:6px 0 4px;padding-left:20px;line-height:1.7}
 .mtb i.good{background:var(--ok)}.mtb i.mid{background:var(--warn)}.mtb i.low{background:var(--bad)}
 .cres audio{height:40px}
 .issue.good{border-left-color:var(--ok)}.issue.tipw{border-left-color:var(--warn)}
+/* 讀本互動圖 */
+.vzbox{position:relative}
+svg.vz[data-hv]{touch-action:pan-y;cursor:crosshair;-webkit-tap-highlight-color:transparent}
+svg.vz[data-hv]:focus{outline:none}svg.vz[data-hv]:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.vz .vzh line{stroke:var(--ink);stroke-opacity:.35;stroke-width:1}
+.vz .vzh circle{stroke:var(--surface);stroke-width:2}
+.vztip{position:absolute;top:2px;display:none;pointer-events:none;z-index:2;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;line-height:1.45;box-shadow:0 4px 14px rgba(10,20,40,.14);max-width:62%}
+.vztip .h{color:var(--muted);font-size:11px;margin-bottom:2px}
+.vztip .r{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.vztip .r i{display:inline-block;width:12px;border-top:2px solid;flex:none}
+.vztip .r b{font-variant-numeric:tabular-nums;color:var(--ink)}
+.vztip .r span{color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+.vzi{white-space:nowrap;font-style:normal;font-size:11px;font-weight:700;color:var(--accent-text);background:var(--accent-soft);border-radius:99px;padding:1px 7px;margin-left:4px;vertical-align:1px}
+.vzo{margin:10px 0 0;padding:8px 11px;border-radius:8px;background:var(--surface-2);font-size:14.5px;line-height:1.55}
+.vzo b{color:var(--ink)}
+.vzctl{display:grid;gap:12px;margin:12px 0 4px}
+.vzr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;font-size:13.5px;color:var(--muted)}
+.vzr b{color:var(--ink);font-variant-numeric:tabular-nums}
+.vzr input[type=range]{grid-column:1/-1;width:100%;height:28px;margin:0;accent-color:var(--v1)}
+.vzsg{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13.5px;color:var(--muted)}
+.vzsg .seg{margin:0}
+.vzrs{justify-self:start;min-height:32px;padding:4px 12px;font-size:13px}
+.vzn{font-size:11.5px;color:var(--muted);margin:4px 0 0;font-style:italic}
+@media print{.vzctl,.vztip,.vzi{display:none!important}.vztw{overflow:visible!important}}
+/* 圖表色塊上嘅文字：按色塊深淺揀白字或深色字（淺色模式／深色模式各自校對） */
+:root{--on1:#fff;--on2:#141414;--on3:#fff;--on4:#fff;--on5:#141414;--on6:#141414}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--on1:#141414;--on2:#141414;--on3:#141414;--on4:#141414;--on5:#141414;--on6:#141414}}
+:root[data-theme="dark"]{--on1:#141414;--on2:#141414;--on3:#141414;--on4:#141414;--on5:#141414;--on6:#141414}
+.vz .o1{fill:var(--on1)}.vz .o2{fill:var(--on2)}.vz .o3{fill:var(--on3)}.vz .o4{fill:var(--on4)}.vz .o5{fill:var(--on5)}.vz .o6{fill:var(--on6)}
+.vz .o1,.vz .o2,.vz .o3,.vz .o4,.vz .o5,.vz .o6{font-weight:700;font-size:10px}
+.vz .o1.sm,.vz .o2.sm,.vz .o3.sm,.vz .o4.sm,.vz .o5.sm,.vz .o6.sm{font-size:9px;font-weight:600}
+.vz circle.mk{stroke:var(--surface);stroke-width:2}
 
 </style>
 </head>
@@ -2871,18 +2907,23 @@ const VW=400;
 function vx(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function vsc(d0,d1,r0,r1){return function(v){return d1===d0?r0:r0+(v-d0)/(d1-d0)*(r1-r0)}}
 function vticks(a,b,n){if(a===b){a-=1;b+=1}const raw=(b-a)/(n||5),p=Math.pow(10,Math.floor(Math.log10(raw))),e=raw/p,st=(e>=7.5?10:e>=3.5?5:e>=1.5?2:1)*p,out=[];for(let v=Math.ceil(a/st-1e-9)*st;v<=b+st*1e-6;v+=st)out.push(Math.round(v/st)*st);return out}
-function vfmt(v,f){if(typeof f==='function')return f(v);if(f==='k')return (Math.abs(v)>=1000?Math.round(v/100)/10+'k':String(Math.round(v)));if(f==='%')return (Math.round(v*10)/10)+'%';if(f==='hk')return 'HK$'+(Math.abs(v)>=1000?Math.round(v/100)/10+'k':Math.round(v));if(f==='2')return v.toFixed(2);if(f==='4')return v.toFixed(4);const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?String(Math.round(v*10)/10):String(Math.round(v*100)/100)}
-function vsvg(w,h,body,label){return '<svg class="vz" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+vx(label||'chart')+'" preserveAspectRatio="xMidYMid meet">'+body+'</svg>'}
+function vfmt(v,f){if(typeof f==='function')return f(v);if(f==='k')return (Math.abs(v)>=1000?Math.round(v/100)/10+'k':String(Math.round(v)));if(f==='%')return (Math.round(v*10)/10)+'%';if(f==='hk')return (v<0?'-':'')+'HK$'+(Math.abs(v)>=1e6?Math.round(Math.abs(v)/1e5)/10+'m':(Math.abs(v)>=1000?Math.round(Math.abs(v)/100)/10+'k':Math.round(Math.abs(v))));if(f==='2')return v.toFixed(2);if(f==='4')return v.toFixed(4);const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?String(Math.round(v*10)/10):String(Math.round(v*100)/100)}
+function vsvg(w,h,body,label,hv){return '<svg class="vz" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+vx(label||'chart')+'" preserveAspectRatio="xMidYMid meet"'+(hv?' data-hv="'+vx(JSON.stringify(hv))+'" tabindex="0"':'')+'>'+body+(hv?'<g class="vzh" style="display:none"></g>':'')+'</svg>'}
+/* 觸摸／滑鼠讀數用嘅數據：x 像素、x 標籤、每條線嘅 y 像素同格式化數值（每 step 個點取一個） */
+function vhv(P,W,H,xs,xl,series,step){step=step||1;const o={t:P.t,b:H-P.b,x:[],l:[],s:[]};for(let i=0;i<xs.length;i+=step){o.x.push(Math.round(xs[i]*10)/10);o.l.push(xl[i])}
+  if((xs.length-1)%step){o.x.push(Math.round(xs[xs.length-1]*10)/10);o.l.push(xl[xs.length-1])}
+  series.forEach(function(s){const ys=[],vs=[];const pick=function(i){ys.push(s.y[i]==null?null:Math.round(s.y[i]*10)/10);vs.push(s.y[i]==null?'':s.f[i])};for(let i=0;i<xs.length;i+=step)pick(i);if((xs.length-1)%step)pick(xs.length-1);o.s.push({n:s.n,c:s.c,y:ys,v:vs})});return o}
 function vtext(x,y,t,cls,anchor,extra){return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'"'+(cls?' class="'+cls+'"':'')+(anchor?' text-anchor="'+anchor+'"':'')+(extra||'')+'>'+vx(t)+'</text>'}
 function vline(x1,y1,x2,y2,cls,extra){return '<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" class="'+cls+'"'+(extra||'')+'/>'}
 function vpoly(pts,cls,extra){return '<polyline points="'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ')+'" class="'+cls+'"'+(extra||'')+'/>'}
-function vlegend(items,x,y){let h='',cx=x;items.forEach(function(it){h+='<rect x="'+cx+'" y="'+(y-7)+'" width="14" height="4" rx="2" class="f'+it.c+'"/>'+vtext(cx+18,y-3,it.n,'tl');cx+=24+it.n.length*6.2});return h}
+function vlegend(items,x,y){let h='',cx=x;const ws=items.map(function(it){return 18+it.n.length*5.9}),tot=ws.reduce(function(a,b){return a+b},0),gap=Math.max(5,Math.min(14,(VW-4-x-tot)/Math.max(1,items.length-1)));
+  items.forEach(function(it,i){h+='<rect x="'+cx.toFixed(1)+'" y="'+(y-7)+'" width="14" height="4" rx="2" class="f'+it.c+'"/>'+vtext(cx+18,y-3,it.n,'tl');cx+=ws[i]+gap});return h}
 function vrng(seed){let s=seed%2147483647;if(s<=0)s+=2147483646;return function(){s=s*16807%2147483647;return (s-1)/2147483646}}
 function vncdf(x){const t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2),p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return x>0?1-p:p}
 
 /* 折線 / 曲線圖 */
 function vzLine(c){
-  const W=VW,H=c.h||240,P={l:c.pl||46,r:c.endLabels?78:14,t:c.legend===false?14:26,b:c.xlab?40:28};
+  const W=VW,lg=c.legend!==false&&!c.endLabels,H=(c.h||240)+(lg&&c.ylab?14:0),P={l:c.pl||46,r:c.endLabels?78:14,t:lg?(c.ylab?40:26):(c.ylab?24:14),b:c.xlab?40:28};
   const X=c.x;let ys=[];c.series.forEach(function(s){ys=ys.concat(s.v.filter(function(v){return v!=null}))});
   if(c.band)ys.push(c.band.lo,c.band.hi);(c.hlines||[]).forEach(function(l){ys.push(l.y)});
   let y0=c.ymin!=null?c.ymin:Math.min.apply(null,ys),y1=c.ymax!=null?c.ymax:Math.max.apply(null,ys);
@@ -2896,42 +2937,49 @@ function vzLine(c){
   (c.hlines||[]).forEach(function(l){b+=vline(P.l,sy(l.y),W-P.r,sy(l.y),'l'+(l.c||5)+' dash')+vtext(l.left?P.l+4:W-P.r-2,sy(l.y)+(l.below?13:-4),l.t,'tl',l.left?null:'end')});
   (c.vlines||[]).forEach(function(l){b+=vline(sx(l.x),P.t,sx(l.x),H-P.b,'l'+(l.c||5)+' dash')+vtext(sx(l.x)+4,P.t+10,l.t,'tl')});
   c.series.forEach(function(s){const pts=[];s.v.forEach(function(v,i){if(v!=null)pts.push([sx(X[i]),sy(v)])});b+=vpoly(pts,'l'+(s.c||1)+(s.dash?' dash':''));
-    if(c.endLabels&&pts.length){const lp=pts[pts.length-1];b+=vtext(lp[0]+5,lp[1]+4,s.n,'tl t'+(s.c||1))}});
-  (c.marks||[]).forEach(function(m){b+='<circle cx="'+sx(m.x).toFixed(1)+'" cy="'+sy(m.y).toFixed(1)+'" r="3.5" class="f'+(m.c||2)+'"/>'+vtext(sx(m.x)+(m.dx||6),sy(m.y)+(m.dy||-6),m.t,'tl',m.a||null)});
+    if(c.endLabels&&pts.length){const lp=pts[pts.length-1];b+=vtext(lp[0]+5,lp[1]+4,s.n,'tl')}});
+  (c.marks||[]).forEach(function(m){b+='<circle cx="'+sx(m.x).toFixed(1)+'" cy="'+sy(m.y).toFixed(1)+'" r="4.5" class="mk f'+(m.c||2)+'"/>'+vtext(sx(m.x)+(m.dx||6),sy(m.y)+(m.dy||-6),m.t,'tl',m.a||null)});
   if(c.legend!==false&&!c.endLabels)b+=vlegend(c.series.map(function(s){return {n:s.n,c:s.c||1}}),P.l,12);
   if(c.xlab)b+=vtext((P.l+W-P.r)/2,H-6,c.xlab,'','middle');
-  if(c.ylab)b+=vtext(4,P.t-12+(c.legend===false?6:0),c.ylab,'');
-  return vsvg(W,H,b,c.label);
+  if(c.ylab)b+=vtext(4,P.t-10,c.ylab,'');
+  let hv=null;if(c.hover!==false){const xl=X.map(function(x){return c.hx?c.hx(x):((c.xname?c.xname+' ':'')+(c.xfmt?c.xfmt(x):vfmt(x)))});
+    hv=vhv(P,W,H,X.map(function(x){return sx(x)}),xl,c.series.map(function(s){return {n:s.n,c:s.c||1,y:s.v.map(function(v){return v==null?null:sy(v)}),f:s.v.map(function(v){return v==null?'':vfmt(v,c.hfmt||c.yfmt)})}}),Math.max(1,Math.ceil(X.length/90)))}
+  return vsvg(W,H,b,c.label,hv);
 }
 /* 柱狀圖（可分組；signColor：正綠負紅） */
 function vzBars(c){
   const W=VW,H=c.h||220,P={l:42,r:10,t:c.series.length>1?26:16,b:c.rot?54:30};
-  let ys=[0];c.series.forEach(function(s){ys=ys.concat(s.v)});let y0=Math.min.apply(null,ys),y1=Math.max.apply(null,ys);const pd=(y1-y0)*0.12||1;if(y0<0)y0-=pd;y1+=pd;
+  let ys=[0];c.series.forEach(function(s){ys=ys.concat(s.v)});let y0=Math.min.apply(null,ys),y1=Math.max.apply(null,ys);const pd=(y1-y0)*0.12||1;if(y0<0)y0-=pd;y1+=pd;if(c.ymin!=null)y0=Math.min(c.ymin,y0);if(c.ymax!=null)y1=Math.max(c.ymax,y1);
   const T=vticks(y0,y1,4),sy=vsc(y0,y1,H-P.b,P.t),n=c.cats.length,g=(W-P.l-P.r)/n,bw=Math.min(34,g*0.7/c.series.length);let b='';
   T.forEach(function(t){if(t<y0||t>y1)return;b+=vline(P.l,sy(t),W-P.r,sy(t),'grid')+vtext(P.l-5,sy(t)+4,vfmt(t,c.yfmt),'','end')});
   b+=vline(P.l,sy(0),W-P.r,sy(0),'axis');
   c.cats.forEach(function(cat,i){const cx=P.l+g*i+g/2;
-    c.series.forEach(function(s,j){const v=s.v[i],x=cx-bw*c.series.length/2+bw*j,ya=sy(Math.max(v,0)),yb=sy(Math.min(v,0));const cl=c.signColor?(v>=0?3:4):(s.c||1);
+    c.series.forEach(function(s,j){const v=s.v[i],x=cx-bw*c.series.length/2+bw*j,ya=sy(Math.max(v,0)),yb=sy(Math.min(v,0));const cl=c.signColor?(v>=0?3:4):(c.colors?c.colors[i]:(s.c||1));
       b+='<rect x="'+x.toFixed(1)+'" y="'+ya.toFixed(1)+'" width="'+(bw-2).toFixed(1)+'" height="'+Math.max(1,yb-ya).toFixed(1)+'" rx="2" class="f'+cl+'"/>';
       if(c.vals!==false)b+=vtext(x+bw/2-1,(v>=0?ya-4:yb+11),vfmt(v,c.vfmt||c.yfmt),'tl','middle')});
     b+=c.rot?'<text x="'+cx.toFixed(1)+'" y="'+(H-P.b+12)+'" text-anchor="end" transform="rotate(-30 '+cx.toFixed(1)+' '+(H-P.b+12)+')">'+vx(cat)+'</text>':vtext(cx,H-P.b+15,cat,'','middle')});
+  (c.hlines||[]).forEach(function(l){b+=vline(P.l,sy(l.y),W-P.r,sy(l.y),'l'+(l.c||5)+' dash')+vtext(W-P.r-2,sy(l.y)-4,l.t,'tl el','end')});
   if(c.series.length>1)b+=vlegend(c.series.map(function(s){return {n:s.n,c:s.c||1}}),P.l,12);
   if(c.ylab)b+=vtext(4,10+(c.series.length>1?0:0),c.ylab,'');
   return vsvg(W,H,b,c.label);
 }
 /* 橫向柱狀圖 */
-function vzHBars(c){const W=VW,rowH=26,P={l:c.pl||110,r:44,t:8,b:8},H=P.t+P.b+rowH*c.rows.length,mx=Math.max.apply(null,c.rows.map(function(r){return r.v})),sx=vsc(0,mx,P.l,W-P.r);let b='';
-  c.rows.forEach(function(r,i){const y=P.t+i*rowH;b+=vtext(P.l-8,y+16,r.n,'tl','end')+'<rect x="'+P.l+'" y="'+(y+5)+'" width="'+(sx(r.v)-P.l).toFixed(1)+'" height="15" rx="3" class="f'+(r.c||1)+'"/>'+vtext(sx(r.v)+5,y+17,vfmt(r.v,c.vfmt),'tl')});
+function vzHBars(c){const W=VW,rowH=26,P={l:c.pl||110,r:c.pr||44,t:8,b:8},H=P.t+P.b+rowH*c.rows.length,mx=c.max||Math.max.apply(null,c.rows.map(function(r){return r.v})),sx=vsc(0,mx,P.l,W-P.r);let b='';
+  if(c.sep!=null){const y=P.t+rowH*c.sep+1;b+=vline(8,y,W-8,y,'l5 dash');if(c.sepT)b+=vtext(W-8,y-4,c.sepT[0],'sm','end')+vtext(W-8,y+11,c.sepT[1],'sm','end')}
+  c.rows.forEach(function(r,i){const y=P.t+i*rowH;b+=vtext(P.l-8,y+16,r.n,'tl','end')+'<rect x="'+P.l+'" y="'+(y+5)+'" width="'+(sx(r.v)-P.l).toFixed(1)+'" height="15" rx="3" class="f'+(r.c||1)+'"/>'+vtext(sx(r.v)+5,y+17,r.lab||vfmt(r.v,c.vfmt),'tl')});
   return vsvg(W,H,b,c.label)}
 /* 100% 橫向堆疊（資產配置） */
 function vzStack(c){const W=VW,rowH=34,P={l:c.pl||84,r:8,t:24,b:8},H=P.t+P.b+rowH*c.rows.length;let b=vlegend(c.parts.map(function(p,i){return {n:p,c:c.cls[i]}}),P.l,12);
   c.rows.forEach(function(r,i){const y=P.t+i*rowH;let x=P.l;const tot=r.v.reduce(function(a,v){return a+v},0);b+=vtext(P.l-8,y+19,r.n,'tl t-b','end');
-    r.v.forEach(function(v,j){const w=(W-P.r-P.l)*v/tot;b+='<rect x="'+x.toFixed(1)+'" y="'+(y+4)+'" width="'+Math.max(0,w-1.5).toFixed(1)+'" height="22" class="f'+c.cls[j]+'"/>';if(w>26)b+=vtext(x+w/2,y+19,v+'%',c.cls[j]===2?'tk':'tw','middle');x+=w})});
+    r.v.forEach(function(v,j){const w=(W-P.r-P.l)*v/tot;b+='<rect x="'+x.toFixed(1)+'" y="'+(y+4)+'" width="'+Math.max(0,w-1.5).toFixed(1)+'" height="22" class="f'+c.cls[j]+'"/>';if(w>26)b+=vtext(x+w/2,y+19,v+'%','o'+c.cls[j],'middle');x+=w})});
   return vsvg(W,H,b,c.label)}
 /* 縱向堆疊柱（資產負債表） */
-function vzCols(c){const W=VW,H=c.h||250,P={l:20,r:20,t:12,b:26};const mx=Math.max.apply(null,c.cols.map(function(col){return col.segs.reduce(function(a,s){return a+s.v},0)})),sy=vsc(0,mx,H-P.b,P.t),cw=110,gap=(W-P.l-P.r-cw*c.cols.length)/(c.cols.length+1);let b='';
+function vzCols(c){const W=VW,H=c.h||250,P={l:20,r:20,t:12,b:26};const mx=c.max||Math.max.apply(null,c.cols.map(function(col){return col.segs.reduce(function(a,s){return a+s.v},0)})),sy=vsc(0,mx,H-P.b,P.t),cw=110,gap=(W-P.l-P.r-cw*c.cols.length)/(c.cols.length+1);let b='';
   c.cols.forEach(function(col,i){const x=P.l+gap*(i+1)+cw*i;let acc=0;b+=vtext(x+cw/2,H-8,col.n,'tl t-b','middle');
-    col.segs.forEach(function(s){const ya=sy(acc+s.v),yb=sy(acc);b+='<rect x="'+x+'" y="'+ya.toFixed(1)+'" width="'+cw+'" height="'+Math.max(1,yb-ya-1.5).toFixed(1)+'" rx="3" class="f'+s.c+'"/>'+vtext(x+cw/2,(ya+yb)/2+1,s.n,s.c===2?'tk':'tw','middle')+vtext(x+cw/2,(ya+yb)/2+14,vfmt(s.v,c.vfmt),(s.c===2?'tk':'tw')+' sm','middle');acc+=s.v});
+    col.segs.forEach(function(s){if(!(s.v>0))return;const ya=sy(acc+s.v),yb=sy(acc);b+='<rect x="'+x+'" y="'+ya.toFixed(1)+'" width="'+cw+'" height="'+Math.max(1,yb-ya-1.5).toFixed(1)+'" rx="3" class="f'+s.c+'"/>';
+      if(yb-ya>=30)b+=vtext(x+cw/2,(ya+yb)/2+1,s.n,'o'+s.c,'middle')+vtext(x+cw/2,(ya+yb)/2+14,vfmt(s.v,c.vfmt),'o'+s.c+' sm','middle');
+      else if(yb-ya>=15)b+=vtext(x+cw/2,(ya+yb)/2+3.5,s.n+' '+vfmt(s.v,c.vfmt),'o'+s.c+' sm','middle');
+      else b+=vtext(i===c.cols.length-1?x+cw+5:x-5,(ya+yb)/2+3.5,s.n+' '+vfmt(s.v,c.vfmt),'sm',i===c.cols.length-1?null:'end');acc+=s.v});
     if(i<c.cols.length-1&&c.sign)b+=vtext(x+cw+gap/2,H/2,c.sign[i],'tl big','middle')});
   return vsvg(W,H,b,c.label)}
 /* 環形圖 */
@@ -2956,17 +3004,19 @@ function vzPayoff(c){
   (c.strikes||[]).forEach(function(k){b+=vline(sx(k.x),P.t,sx(k.x),H-P.b,'l5 dash')+vtext(sx(k.x),P.t+8,k.t,'tl','middle')});
   Y.forEach(function(y,j){const ln=c.lines[j];b+=vpoly(xs.map(function(x,i){return [sx(x),sy(y[i])]}),'l'+(ln.c||1)+(ln.dash?' dash':''))});
   if(c.be!==false){const y=Y[0];for(let i=1;i<N;i++){if((y[i-1]<0&&y[i]>=0)||(y[i-1]>0&&y[i]<=0)){const x=xs[i-1]+(xs[i]-xs[i-1])*(-y[i-1])/(y[i]-y[i-1]);b+='<circle cx="'+sx(x).toFixed(1)+'" cy="'+sy(0).toFixed(1)+'" r="3.5" class="f2"/>'+vtext(sx(x),sy(0)+(y[i]>y[i-1]?14:-7),'BE '+vfmt(x),'tl t-b','middle')}}}
-  (c.notes||[]).forEach(function(n){b+=vtext(sx(n.x),sy(n.y),n.t,'tl'+(n.c?' t'+n.c:''),n.a||'middle')});
+  (c.notes||[]).forEach(function(n){b+=vtext(sx(n.x),sy(n.y),n.t,'tl el',n.a||'middle')});
   if(c.lines.length>1)b+=vlegend(c.lines.map(function(l){return {n:l.n,c:l.c||1}}),P.l,12);
   b+=vtext((P.l+W-P.r)/2,H-6,c.xlab||'Price of the underlying at expiry','','middle')+vtext(4,P.t-4,c.ylab||'Profit / loss','');
-  return vsvg(W,H,b,c.label);
+  const sg=function(v){const r=Math.round(v*10)/10;return (r>0?'+':'')+vfmt(r)};
+  const hv=vhv(P,W,H,xs.map(function(x){return sx(x)}),xs.map(function(x){return (c.hxname||'Price')+' '+vfmt(Math.round(x*10)/10)}),Y.map(function(y,j){const ln=c.lines[j];return {n:ln.n||'Profit / loss',c:ln.c||1,y:y.map(function(v){return sy(v)}),f:y.map(sg)}}),2);
+  return vsvg(W,H,b,c.label,hv);
 }
 /* K 線圖（可選均線、支撐阻力、RSI） */
 function vohlc(n,seed,start,vol,shape){const r=vrng(seed);let c=start;const out=[];for(let i=0;i<n;i++){const o=c,d=(shape?shape(i/n):0)+vol*(r()+r()+r()-1.5)*1.1;c=Math.max(1,o*(1+d));out.push({o:o,c:c,h:Math.max(o,c)*(1+vol*r()*0.7),l:Math.min(o,c)*(1-vol*r()*0.7)})}return out}
 function vsma(a,k){return a.map(function(_,i){if(i<k-1)return null;let s=0;for(let j=i-k+1;j<=i;j++)s+=a[j];return s/k})}
 function vrsi(a,k){const out=[null];let g=0,l=0;for(let i=1;i<a.length;i++){const d=a[i]-a[i-1];if(i<=k){g+=Math.max(d,0)/k;l+=Math.max(-d,0)/k;out.push(i<k?null:100-100/(1+g/(l||1e-9)))}else{g=(g*(k-1)+Math.max(d,0))/k;l=(l*(k-1)+Math.max(-d,0))/k;out.push(100-100/(1+g/(l||1e-9)))}}return out}
 function vzCandle(c){
-  const d=vohlc(c.n||50,c.seed||7,c.start||50,c.vol||0.018,c.shape),W=VW,PH=c.rsi?190:(c.h||220),RH=c.rsi?70:0,H=PH+RH+(c.rsi?12:0),P={l:40,r:c.levels?44:10,t:c.ma?26:12,b:24};
+  const d=vohlc(c.n||50,c.seed||7,c.start||50,c.vol||0.018,c.shape),W=VW,PH=c.rsi?190:(c.h||220),RH=c.rsi?70:0,VH=c.volume?58:0,H=PH+RH+(c.rsi?12:0)+VH,P={l:40,r:c.levels?44:10,t:c.ma?26:12,b:24};
   const cl=d.map(function(x){return x.c});let lo=Math.min.apply(null,d.map(function(x){return x.l})),hi=Math.max.apply(null,d.map(function(x){return x.h}));const pd=(hi-lo)*0.06;lo-=pd;hi+=pd;
   const n=d.length,g=(W-P.l-P.r)/n,sy=vsc(lo,hi,PH-P.b,P.t),cx=function(i){return P.l+g*i+g/2};let b='';
   vticks(lo,hi,4).forEach(function(t){if(t<lo||t>hi)return;b+=vline(P.l,sy(t),W-P.r,sy(t),'grid')+vtext(P.l-5,sy(t)+4,vfmt(t),'','end')});
@@ -2977,6 +3027,8 @@ function vzCandle(c){
   [0,Math.floor(n/2),n-1].forEach(function(i){b+=vtext(cx(i),PH-P.b+14,'Day '+(i+1),'','middle')});
   if(c.rsi){const r=vrsi(cl,14),y0=PH+12,ry=vsc(0,100,y0+RH-4,y0+4);b+='<rect x="'+P.l+'" y="'+y0+'" width="'+(W-P.r-P.l)+'" height="'+RH+'" class="panel"/>'+vline(P.l,ry(70),W-P.r,ry(70),'l4 dash')+vline(P.l,ry(30),W-P.r,ry(30),'l3 dash')+vtext(P.l-5,ry(70)+4,'70','','end')+vtext(P.l-5,ry(30)+4,'30','','end')+vtext(P.l+4,y0+12,'RSI (14)','tl t-b');
     const pts=[];r.forEach(function(v,i){if(v!=null)pts.push([cx(i),ry(v)])});b+=vpoly(pts,'l1')}
+  if(c.volume){const vr=vrng((c.seed||7)+99),vs=d.map(function(x,i){const mv=Math.abs(x.c-x.o)/x.o;return (0.6+vr()*0.5)*(1+mv*60)*(c.volBoost?c.volBoost(i/d.length):1)}),vm=Math.max.apply(null,vs),y0=PH+RH+(c.rsi?12:0)+4,vy=vsc(0,vm,y0+VH-8,y0+4);
+    b+=vtext(P.l+4,y0+10,'Volume','sm');d.forEach(function(x,i){const up=x.c>=x.o;b+='<rect x="'+(cx(i)-g*0.32).toFixed(1)+'" y="'+vy(vs[i]).toFixed(1)+'" width="'+(g*0.64).toFixed(1)+'" height="'+Math.max(1,y0+VH-8-vy(vs[i])).toFixed(1)+'" class="'+(up?'cu':'cd')+' soft"/>'})}
   return vsvg(W,H,b,c.label);
 }
 /* K 線結構示意 */
@@ -2988,9 +3040,9 @@ function vzCandleParts(){const W=VW,H=220;let b='';
   return vsvg(W,H,b,'Candlestick anatomy')}
 /* 買賣盤 */
 function vzOrderBook(c){const W=VW,rowH=22,rows=c.asks.length+c.bids.length,H=40+rowH*rows+18,mid=150,mx=Math.max.apply(null,c.asks.concat(c.bids).map(function(r){return r.q})),bw=vsc(0,mx,0,190);let b=vtext(mid-12,16,'Price','tl t-b','end')+vtext(mid+8,16,'Shares waiting','tl t-b');
-  c.asks.forEach(function(r,i){const y=26+i*rowH;b+=vtext(mid-12,y+15,vfmt(r.p,'2'),'tl t4','end')+'<rect x="'+(mid+8)+'" y="'+(y+4)+'" width="'+bw(r.q).toFixed(1)+'" height="14" rx="2" class="f4 soft"/>'+vtext(mid+14+bw(r.q),y+15,r.q.toLocaleString('en-US'),'tl')});
-  const sy=26+c.asks.length*rowH;b+=vline(20,sy+2,W-10,sy+2,'l2 dash')+vtext(20,sy-3,'Ask (sellers)','tl t4')+vtext(20,sy+14,'Bid (buyers)','tl t3')+vtext(W-12,sy-3,'Spread = '+vfmt(c.asks[c.asks.length-1].p-c.bids[0].p,'2'),'tl t2','end');
-  c.bids.forEach(function(r,i){const y=sy+6+i*rowH;b+=vtext(mid-12,y+15,vfmt(r.p,'2'),'tl t3','end')+'<rect x="'+(mid+8)+'" y="'+(y+4)+'" width="'+bw(r.q).toFixed(1)+'" height="14" rx="2" class="f3 soft"/>'+vtext(mid+14+bw(r.q),y+15,r.q.toLocaleString('en-US'),'tl')});
+  c.asks.forEach(function(r,i){const y=26+i*rowH;b+=vtext(mid-12,y+15,vfmt(r.p,'2'),'tl','end')+'<rect x="'+(mid+8)+'" y="'+(y+4)+'" width="'+bw(r.q).toFixed(1)+'" height="14" rx="2" class="f4 soft"/>'+vtext(mid+14+bw(r.q),y+15,r.q.toLocaleString('en-US'),'tl')});
+  const sy=26+c.asks.length*rowH;b+=vline(20,sy+2,W-10,sy+2,'l2 dash')+'<rect x="20" y="'+(sy-12)+'" width="10" height="10" rx="2" class="f4 soft"/>'+vtext(34,sy-3,'Ask (sellers)','tl')+'<rect x="20" y="'+(sy+5)+'" width="10" height="10" rx="2" class="f3 soft"/>'+vtext(34,sy+14,'Bid (buyers)','tl')+vtext(W-12,sy-3,'Spread = '+vfmt(c.asks[c.asks.length-1].p-c.bids[0].p,'2'),'tl t-b','end');
+  c.bids.forEach(function(r,i){const y=sy+6+i*rowH;b+=vtext(mid-12,y+15,vfmt(r.p,'2'),'tl','end')+'<rect x="'+(mid+8)+'" y="'+(y+4)+'" width="'+bw(r.q).toFixed(1)+'" height="14" rx="2" class="f3 soft"/>'+vtext(mid+14+bw(r.q),y+15,r.q.toLocaleString('en-US'),'tl')});
   return vsvg(W,H,b,'Order book')}
 /* 流程圖 / 結構圖：nodes [{id,x,y,w,h,t,s,c}]，edges [{a,b,t}] */
 function vzFlow(c){const W=c.w||VW,H=c.h||220,id='ah'+(c.id||'x'),N={};c.nodes.forEach(function(n){N[n.id]=n});
@@ -3004,7 +3056,7 @@ function vzFlow(c){const W=c.w||VW,H=c.h||220,id='ah'+(c.id||'x'),N={};c.nodes.f
   return vsvg(W,H,b,c.label)}
 /* 豎向步驟流程（長流程在手機上更清楚） */
 function vzSteps(c){const W=VW,rowH=46,H=12+rowH*c.steps.length;let b='';
-  c.steps.forEach(function(s,i){const y=8+i*rowH;b+='<circle cx="26" cy="'+(y+16)+'" r="13" class="f'+(i===c.steps.length-1?2:1)+'"/>'+vtext(26,y+20,String(i+1),(i===c.steps.length-1?'tk':'tw')+' t-b','middle')+vtext(50,y+14,s[0],'tl t-b')+vtext(50,y+30,s[1],'sm');
+  c.steps.forEach(function(s,i){const y=8+i*rowH;b+='<circle cx="26" cy="'+(y+16)+'" r="13" class="f'+(i===c.steps.length-1?2:1)+'"/>'+vtext(26,y+20,String(i+1),'o'+(i===c.steps.length-1?2:1)+' t-b','middle')+vtext(50,y+14,s[0],'tl t-b')+vtext(50,y+30,s[1],'sm');
     if(i<c.steps.length-1)b+=vline(26,y+30,26,y+rowH+2,'l5')});
   return vsvg(W,H,b,c.label)}
 /* 正態分佈 */
@@ -3034,15 +3086,15 @@ function vzCycle(c){const W=VW,H=214,P={l:18,r:18,t:22,b:56},N=200,sx=vsc(0,1,P.
   return vsvg(W,H,b,c.label||'Business cycle')}
 /* 風險金字塔 */
 function vzPyramid(c){const W=VW,H=220,n=c.levels.length,top=14,bot=206,cx=170,hw=150;let b='';
-  c.levels.forEach(function(l,i){const y1=top+(bot-top)*i/n,y2=top+(bot-top)*(i+1)/n,w1=hw*(i)/n,w2=hw*(i+1)/n;b+='<polygon points="'+(cx-w1).toFixed(1)+','+y1.toFixed(1)+' '+(cx+w1).toFixed(1)+','+y1.toFixed(1)+' '+(cx+w2).toFixed(1)+','+(y2-2).toFixed(1)+' '+(cx-w2).toFixed(1)+','+(y2-2).toFixed(1)+'" class="f'+l.c+' soft2"/>'+vtext(cx,(y1+y2)/2+4,l.t,'tl t-b','middle')});
+  c.levels.forEach(function(l,i){const y1=top+(bot-top)*i/n,y2=top+(bot-top)*(i+1)/n,w1=hw*(i)/n,w2=hw*(i+1)/n;b+='<polygon points="'+(cx-w1).toFixed(1)+','+y1.toFixed(1)+' '+(cx+w1).toFixed(1)+','+y1.toFixed(1)+' '+(cx+w2).toFixed(1)+','+(y2-2).toFixed(1)+' '+(cx-w2).toFixed(1)+','+(y2-2).toFixed(1)+'" class="'+(c.ordinal?'f'+(c.hue||1)+'" style="opacity:'+(0.16+0.5*(n-1-i)/Math.max(1,n-1)).toFixed(2):'f'+l.c+' soft2')+'"/>'+vtext(cx,(y1+y2)/2+4,l.t,'tl t-b','middle')});
   b+='<defs><marker id="ahpy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrowhead"/></marker></defs><line x1="350" y1="200" x2="350" y2="22" class="edge" marker-end="url(#ahpy)"/>'+vtext(362,110,'Higher risk','tl','middle',' transform="rotate(-90 362 110)"')+vtext(338,110,'and potential return','sm','middle',' transform="rotate(-90 338 110)"');
   return vsvg(W,H,b,'Risk pyramid')}
 /* 貨幣報價結構 */
 function vzFx(){const W=VW,H=196;let b=vtext(200,52,'USD / HKD  7.8125','tl xl','middle');
-  b+=vline(96,62,148,62,'l1')+vline(122,62,122,74,'l1')+vtext(122,88,'Base currency','tl t1','middle')+vtext(122,101,'1 US dollar','sm','middle');
-  b+=vline(170,62,226,62,'l2')+vline(198,62,198,108,'l2')+vtext(198,122,'Quote currency','tl t2','middle')+vtext(198,135,'priced in HK dollars','sm','middle');
-  b+=vline(248,62,312,62,'l3')+vline(280,62,280,74,'l3')+vtext(290,88,'Exchange rate','tl t3','middle')+vtext(290,101,'HK$7.8125 per US$1','sm','middle');
-  b+='<rect x="60" y="152" width="280" height="34" rx="8" class="panel"/>'+vtext(130,174,'Bid 7.8120','tl t3','middle')+vtext(200,174,'|','tl','middle')+vtext(270,174,'Ask 7.8130','tl t4','middle');
+  b+=vline(96,62,148,62,'l1')+vline(122,62,122,74,'l1')+vtext(122,88,'Base currency','tl t-b','middle')+vtext(122,101,'1 US dollar','sm','middle');
+  b+=vline(170,62,226,62,'l2')+vline(198,62,198,108,'l2')+vtext(198,122,'Quote currency','tl t-b','middle')+vtext(198,135,'priced in HK dollars','sm','middle');
+  b+=vline(248,62,312,62,'l3')+vline(280,62,280,74,'l3')+vtext(290,88,'Exchange rate','tl t-b','middle')+vtext(290,101,'HK$7.8125 per US$1','sm','middle');
+  b+='<rect x="60" y="152" width="280" height="34" rx="8" class="panel"/>'+vtext(130,174,'Bid 7.8120','tl','middle')+vtext(200,174,'|','tl','middle')+vtext(270,174,'Ask 7.8130','tl','middle');
   return vsvg(W,H,b,'Reading a currency quote')}
 /* 價內價外 */
 function vzMoney(){const W=VW,H=150,P={l:30,r:20},sx=vsc(80,120,P.l,W-P.r);let b='';
@@ -3052,10 +3104,99 @@ function vzMoney(){const W=VW,H=150,P={l:30,r:20},sx=vsc(80,120,P.l,W-P.r);let b
   [80,90,100,110,120].forEach(function(t){b+=vtext(sx(t),H-14,String(t),'','middle')});b+=vtext(W/2,H-1,'Share price','sm','middle');
   return vsvg(W,H,b,'Moneyness')}
 /* 表格型圖 */
-function vzTable(c){return '<table class="vztable"><thead><tr>'+c.head.map(function(h){return '<th>'+vx(h)+'</th>'}).join('')+'</tr></thead><tbody>'+c.rows.map(function(r){return '<tr>'+r.map(function(x){return '<td>'+vx(x)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>'}
+function vzCell(x){const p=String(x).split('\n');return vx(p[0])+(p.length>1?'<span class="vzsub">'+p.slice(1).map(vx).join('<br>')+'</span>':'')}
+function vzTable(c){return '<div class="vztw"><table class="vztable'+(c.head.length>3?' t4':'')+'" lang="en"><thead><tr>'+c.head.map(function(h){return '<th>'+vx(h)+'</th>'}).join('')+'</tr></thead><tbody>'+c.rows.map(function(r){return '<tr>'+r.map(function(x){return '<td>'+vzCell(x)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'}
 /* Black-Scholes 認購期權價值（用於時間價值示意） */
 function vbs(S,K,T,r,s){if(T<=0)return Math.max(S-K,0);const d1=(Math.log(S/K)+(r+s*s/2)*T)/(s*Math.sqrt(T)),d2=d1-s*Math.sqrt(T);return S*vncdf(d1)-K*Math.exp(-r*T)*vncdf(d2)}
 function vrange(a,b,st){const o=[];for(let v=a;v<=b+1e-9;v+=st)o.push(Math.round(v*1000)/1000);return o}
+/* 瀑布圖：由收入一步步減到淨利（t:'total' 由 0 起；其餘係加減） */
+function vzWaterfall(c){const W=VW,H=c.h||236,P={l:38,r:8,t:16,b:44},n=c.steps.length,g=(W-P.l-P.r)/n,bw=Math.min(30,g*0.62);let run=0,ys=[0];
+  const bars=c.steps.map(function(s){let a,z;if(s.t==='total'){a=0;z=s.v!=null?s.v:run;run=z}else{a=run;z=run+s.v;run=z}ys.push(a,z);return {a:a,z:z,s:s}});
+  const y0=Math.min.apply(null,ys),y1=Math.max.apply(null,ys)*1.1,sy=vsc(Math.min(0,y0),y1,H-P.b,P.t);let b='';
+  vticks(Math.min(0,y0),y1,4).forEach(function(t){b+=vline(P.l,sy(t),W-P.r,sy(t),'grid')+vtext(P.l-5,sy(t)+4,vfmt(t,c.yfmt),'','end')});b+=vline(P.l,sy(0),W-P.r,sy(0),'axis');
+  bars.forEach(function(x,i){const cx=P.l+g*i+g/2,top=sy(Math.max(x.a,x.z)),bot=sy(Math.min(x.a,x.z)),tot=x.s.t==='total',cl=tot?1:(x.z>=x.a?3:4);
+    b+='<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+top.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.max(1,bot-top).toFixed(1)+'" rx="2" class="f'+cl+'"/>';
+    if(i<n-1){const nx=P.l+g*(i+1)+g/2;b+=vline(cx+bw/2,sy(x.z),nx-bw/2,sy(x.z),'l5')}
+    const val=tot?x.z:x.s.v;b+=vtext(cx,top-4,(val>0&&!tot?'+':'')+vfmt(val,c.vfmt||c.yfmt),'tl t-b','middle');
+    String(x.s.n).split('\n').forEach(function(l,k){b+=vtext(cx,H-P.b+13+k*11,l,'sm','middle')})});
+  return vsvg(W,H,b,c.label)}
+/* 方塊圖：n 粒方塊（可以有小數），每行 per 粒 */
+function vzBlocks(c){const per=c.per||10,n=Math.max(0,c.n),full=Math.floor(n),part=n-full,rows=Math.max(1,Math.ceil(n/per)),sz=c.size||22,gp=5,W=VW,P={l:(W-per*(sz+gp)+gp)/2,t:8},H=P.t+rows*(sz+gp)+(c.note?18:6);let b='';
+  for(let i=0;i<Math.ceil(n);i++){const r=Math.floor(i/per),k=i%per,x=P.l+k*(sz+gp),y=P.t+r*(sz+gp),w=(i<full?1:part)*sz;
+    b+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+sz+'" height="'+sz+'" rx="4" class="f'+(c.c||1)+' soft2"/>'+'<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+Math.max(0,w).toFixed(1)+'" height="'+sz+'" rx="4" class="f'+(c.c||1)+'"/>';
+    if((i+1)%per===0||i===Math.ceil(n)-1)b+=vtext(x+sz+6,y+sz/2+4,String(Math.min(i+1,Math.round(n*10)/10)),'sm')}
+  if(c.note)b+=vtext(W/2,H-4,c.note,'sm','middle');
+  return vsvg(W,H,b,c.label)}
+/* 四象限 */
+function vzQuad(c){const W=VW,H=c.h||250,P={l:30,r:10,t:10,b:30},mx=(P.l+W-P.r)/2,my=(P.t+H-P.b)/2;let b='<defs><marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrowhead"/></marker></defs>';
+  const cell=function(q,x,y,w,h){if(!q)return;b+='<rect x="'+(x+2)+'" y="'+(y+2)+'" width="'+(w-4)+'" height="'+(h-4)+'" rx="8" class="f'+(q.c||5)+'" style="opacity:'+(q.o||0.12)+'"/>'+vtext(x+w/2,y+h/2-4,q.t,'tl t-b','middle')+(q.s?String(q.s).split('\n').map(function(l,i){return vtext(x+w/2,y+h/2+11+i*12,l,'sm','middle')}).join(''):'')};
+  cell(c.q[0],P.l,P.t,mx-P.l,my-P.t);cell(c.q[1],mx,P.t,W-P.r-mx,my-P.t);cell(c.q[2],P.l,my,mx-P.l,H-P.b-my);cell(c.q[3],mx,my,W-P.r-mx,H-P.b-my);
+  b+='<line x1="'+P.l+'" y1="'+(H-P.b)+'" x2="'+(W-P.r)+'" y2="'+(H-P.b)+'" class="edge" marker-end="url(#ahq)"/><line x1="'+P.l+'" y1="'+(H-P.b)+'" x2="'+P.l+'" y2="'+P.t+'" class="edge" marker-end="url(#ahq)"/>';
+  b+=vtext((P.l+W-P.r)/2,H-8,c.xlab,'','middle')+'<text x="14" y="'+my+'" text-anchor="middle" transform="rotate(-90 14 '+my+')">'+vx(c.ylab)+'</text>';
+  return vsvg(W,H,b,c.label)}
+/* 矩陣：rows × cols，cell(r,c) 回傳 {c:顏色,o:透明度,t:文字} */
+function vzMatrix(c){const n=c.rows.length,m=c.cols.length,P={l:c.pl||92,t:30,r:6,b:28},W=VW,cw=(W-P.l-P.r)/m,ch=c.ch||30,H=P.t+n*ch+P.b;let b='';
+  c.cols.forEach(function(x,j){b+=vtext(P.l+cw*j+cw/2,P.t-8,x,'sm','middle')});
+  c.rows.forEach(function(rw,i){b+=vtext(P.l-8,P.t+ch*i+ch/2+4,rw,'tl','end');
+    c.cols.forEach(function(_,j){const q=c.cell(i,j);b+='<rect x="'+(P.l+cw*j+1).toFixed(1)+'" y="'+(P.t+ch*i+1)+'" width="'+(cw-2).toFixed(1)+'" height="'+(ch-2)+'" rx="4" class="f'+q.c+'" style="opacity:'+(q.o||0.85)+'"/>'+(q.t?vtext(P.l+cw*j+cw/2,P.t+ch*i+ch/2+4,q.t,'tl t-b','middle'):'')})});
+  if(c.xlab)b+=vtext(P.l+(W-P.l-P.r)/2,H-8,c.xlab,'','middle');if(c.ylab)b+=vtext(4,14,c.ylab,'sm');
+  return vsvg(W,H,b,c.label)}
+
+/* 讀本互動圖：滑杆／切換即時重畫、觸摸讀數（手指喺圖上左右拉就見到每條線嘅數值） */
+const FZ={};
+function fzP(id){const f=FIG[id],p={};((f&&f.ctl)||[]).forEach(function(c){p[c.k]=c.v});const s=FZ[id];if(s)for(const k in s)p[k]=s[k];return p}
+function fzFmt(c,v){return c.f?c.f(v):String(v)}
+function fzCtl(id,f,p){
+  return '<div class="vzctl">'+f.ctl.map(function(c){
+    if(c.opts)return '<div class="vzsg"><span>'+vx(c.t)+'</span><div class="seg" role="group" aria-label="'+vx(c.t)+'">'+c.opts.map(function(o){return '<button type="button" data-act="fz-seg" data-fz="'+id+'" data-k="'+c.k+'" data-v="'+vx(o[0])+'" aria-pressed="'+(String(p[c.k])===String(o[0]))+'">'+vx(o[1])+'</button>'}).join('')+'</div></div>';
+    return '<label class="vzr"><span>'+vx(c.t)+'</span><b id="fv-'+id+'-'+c.k+'">'+vx(fzFmt(c,p[c.k]))+'</b><input type="range" min="'+c.min+'" max="'+c.max+'" step="'+(c.step||1)+'" value="'+p[c.k]+'" data-fz="'+id+'" data-k="'+c.k+'" aria-valuetext="'+vx(fzFmt(c,p[c.k]))+'"></label>'}).join('')+
+    '<button type="button" class="btn ghost vzrs" data-act="fz-reset" data-fz="'+id+'">Reset</button></div>'}
+function fzRender(id){const f=FIG[id];if(!f)return;const p=fzP(id),box=document.getElementById('fz-'+id);
+  if(box)try{box.innerHTML=f.r(p)}catch(e){box.innerHTML='<p class="small muted">Chart unavailable.</p>'}
+  const o=document.getElementById('fo-'+id);if(o&&f.out)try{o.innerHTML=f.out(p)}catch(e){}
+  (f.ctl||[]).forEach(function(c){const el=document.getElementById('fv-'+id+'-'+c.k);if(el)el.textContent=fzFmt(c,p[c.k])})}
+let fzRaf=0,fzQ={};
+function fzInput(t){const id=t.getAttribute('data-fz'),k=t.getAttribute('data-k'),f=FIG[id];if(!f)return;const v=Number(t.value);(FZ[id]||(FZ[id]={}))[k]=v;
+  const c=(f.ctl||[]).filter(function(x){return x.k===k})[0];if(c)t.setAttribute('aria-valuetext',fzFmt(c,v));
+  fzQ[id]=1;const go=function(){fzRaf=0;const q=fzQ;fzQ={};Object.keys(q).forEach(fzRender)};
+  if(!fzRaf)fzRaf=(typeof requestAnimationFrame==='function'?requestAnimationFrame(go):setTimeout(go,16))}
+function fzAct(a,ds,el){
+  if(a==='fz-seg'){const id=ds.fz,f=FIG[id];if(!f)return true;const c=(f.ctl||[]).filter(function(x){return x.k===ds.k})[0];let v=ds.v;if(c&&c.opts&&typeof c.opts[0][0]==='number')v=Number(v);
+    (FZ[id]||(FZ[id]={}))[ds.k]=v;const g=el&&el.parentNode;if(g)Array.prototype.forEach.call(g.querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-v')===String(ds.v)))});fzRender(id);return true}
+  if(a==='fz-reset'){const id=ds.fz;if(!FIG[id])return true;delete FZ[id];const fig=document.getElementById('fg-'+id),p=fzP(id);
+    if(fig){Array.prototype.forEach.call(fig.querySelectorAll('input[data-fz]'),function(i){i.value=p[i.getAttribute('data-k')]});
+      Array.prototype.forEach.call(fig.querySelectorAll('button[data-act="fz-seg"]'),function(b){b.setAttribute('aria-pressed',String(String(p[b.getAttribute('data-k')])===b.getAttribute('data-v')))})}
+    fzRender(id);return true}
+  return false}
+/* 觸摸讀數 */
+const VZH=typeof WeakMap!=='undefined'?new WeakMap():null;
+function vzhData(svg){let d=VZH?VZH.get(svg):svg.__vzd;if(!d){try{d=JSON.parse(svg.getAttribute('data-hv'))}catch(e){d=null}if(d){if(VZH)VZH.set(svg,d);else svg.__vzd=d}}return d}
+function vzhShow(svg,i){const d=vzhData(svg);if(!d||!d.x.length)return;i=Math.max(0,Math.min(d.x.length-1,i));svg.__vzi=i;
+  const g=svg.querySelector('g.vzh'),box=svg.parentNode;if(!g||!box)return;const x=d.x[i];
+  let h='<line x1="'+x+'" x2="'+x+'" y1="'+d.t+'" y2="'+d.b+'"/>';d.s.forEach(function(s){if(s.y[i]!=null)h+='<circle cx="'+x+'" cy="'+s.y[i]+'" r="4" class="f'+s.c+'"/>'});
+  g.innerHTML=h;g.style.display='';
+  let tip=box.querySelector('.vztip');if(!tip){tip=document.createElement('div');tip.className='vztip';tip.setAttribute('aria-hidden','true');box.appendChild(tip)}
+  tip.textContent='';const hd=document.createElement('div');hd.className='h';hd.textContent=d.l[i];tip.appendChild(hd);
+  d.s.forEach(function(s){if(s.v[i]==='')return;const r=document.createElement('div');r.className='r';const k=document.createElement('i');k.style.borderTopColor='var(--v'+s.c+')';
+    const b=document.createElement('b');b.textContent=s.v[i];r.appendChild(k);r.appendChild(b);if(s.n){const n=document.createElement('span');n.textContent=s.n;r.appendChild(n)}tip.appendChild(r)});
+  tip.style.display='block';const sr=svg.getBoundingClientRect(),br=box.getBoundingClientRect(),vbw=(svg.viewBox&&svg.viewBox.baseVal&&svg.viewBox.baseVal.width)||400;
+  const px=sr.left-br.left+x/vbw*sr.width,tw=tip.offsetWidth;let left=px+12;if(left+tw>br.width)left=px-12-tw;tip.style.left=Math.max(0,left)+'px'}
+function vzhHide(svg){if(!svg)return;const g=svg.querySelector('g.vzh');if(g)g.style.display='none';const tip=svg.parentNode&&svg.parentNode.querySelector('.vztip');if(tip)tip.style.display='none';svg.__vzi=null}
+function vzhAt(svg,clientX){const d=vzhData(svg);if(!d||!d.x.length)return;const r=svg.getBoundingClientRect(),vbw=(svg.viewBox&&svg.viewBox.baseVal&&svg.viewBox.baseVal.width)||400,x=(clientX-r.left)*vbw/r.width;
+  let lo=0,hi=d.x.length-1;while(hi-lo>1){const m=(lo+hi)>>1;if(d.x[m]<x)lo=m;else hi=m}vzhShow(svg,Math.abs(d.x[lo]-x)<=Math.abs(d.x[hi]-x)?lo:hi)}
+function vzhSvg(t){return t&&t.closest?t.closest('svg.vz[data-hv]'):null}
+function vzhInit(){if(typeof document==='undefined'||vzhInit.done)return;vzhInit.done=1;
+  const on=function(e){const svg=vzhSvg(e.target);if(!svg){if(e.type==='pointerdown')Array.prototype.forEach.call(document.querySelectorAll('svg.vz[data-hv]'),function(s){if(s.__vzi!=null)vzhHide(s)});return}vzhAt(svg,e.clientX)};
+  document.addEventListener('pointermove',on,{passive:true});document.addEventListener('pointerdown',on,{passive:true});
+  document.addEventListener('pointerout',function(e){if(e.pointerType==='touch'||e.pointerType==='pen')return;const svg=vzhSvg(e.target);if(svg&&!svg.contains(e.relatedTarget))vzhHide(svg)},{passive:true});
+  document.addEventListener('keydown',function(e){const svg=e.target;if(!svg||!svg.matches||!svg.matches('svg.vz[data-hv]'))return;const d=vzhData(svg);if(!d)return;
+    let i=svg.__vzi==null?d.x.length-1:svg.__vzi;const st=Math.max(1,Math.round(d.x.length/20));
+    if(e.key==='ArrowRight')i+=st;else if(e.key==='ArrowLeft')i-=st;else if(e.key==='Escape'){vzhHide(svg);return}else return;e.preventDefault();vzhShow(svg,i)});
+  document.addEventListener('focusin',function(e){const svg=e.target;if(svg&&svg.matches&&svg.matches('svg.vz[data-hv]')&&svg.__vzi==null){const d=vzhData(svg);if(d)vzhShow(svg,d.x.length-1)}});
+  document.addEventListener('focusout',function(e){const svg=e.target;if(svg&&svg.matches&&svg.matches('svg.vz[data-hv]'))vzhHide(svg)});
+  document.addEventListener('input',function(e){const t=e.target;if(t&&t.getAttribute&&t.getAttribute('data-fz'))fzInput(t)});
+}
+if(typeof document!=='undefined')vzhInit();
 
 /* 金融英文讀本：圖表定義。示意性數據均在說明中標註 Illustrative */
 const FIG={
@@ -3096,7 +3237,7 @@ const FIG={
  'risk-return':{t:'Risk and return of major asset classes',cap:'Illustrative long-run averages. Higher expected return usually comes with higher volatility.',r:function(){return vzScatter({pts:[{n:'Cash',x:0.5,y:2,c:5},{n:'Government bonds',x:5,y:3.5,c:1},{n:'Corporate bonds',x:7,y:4.5,c:1},{n:'Balanced fund',x:10,y:6,c:2},{n:'Global stocks',x:16,y:8,c:3},{n:'Emerging markets',x:23,y:9.5,c:4,dx:-8,a:'end'}]})}},
  'diversify':{t:'Diversification reduces risk — up to a point',cap:'Illustrative. Company-specific risk falls as you add stocks; market risk remains.',r:function(){const x=[1,2,3,5,8,10,15,20,30,40,50];return vzLine({x:x,yfmt:'%',ymin:0,series:[{n:'Portfolio risk',c:1,v:x.map(function(n){return 16+19/Math.sqrt(n)*Math.sqrt(1-0.9*(1-1/n))})}],hlines:[{y:16,t:'market risk (cannot be diversified away)',c:4,below:true}],legend:false,xlab:'Number of stocks in the portfolio',xticks:[1,10,20,30,40,50]})}},
  'bell':{t:'Volatility: the range of likely returns',cap:'If a fund returns 7% a year on average with 15% volatility, about two years in three fall between −8% and +22%. Illustrative.',r:function(){return vzBell({mu:7,sd:15,fmt:'%',xlab:'Annual return'})}},
- 'pyramid':{t:'The risk pyramid',cap:'Build from the base: most investors need a safe foundation before taking higher risk.',r:function(){return vzPyramid({levels:[{t:'Derivatives, leverage',c:4},{t:'Individual stocks',c:6},{t:'Stock & balanced funds',c:2},{t:'Bonds & bond funds',c:1},{t:'Cash & deposits',c:3}]})}},
+ 'pyramid':{t:'The risk pyramid',cap:'Build from the base: most investors need a safe foundation before taking higher risk.',r:function(){return vzPyramid({ordinal:true,hue:1,levels:[{t:'Derivatives, leverage',c:4},{t:'Individual stocks',c:6},{t:'Stock & balanced funds',c:2},{t:'Bonds & bond funds',c:1},{t:'Cash & deposits',c:3}]})}},
  'models':{t:'Three model portfolios',cap:'Illustrative allocations. The right mix depends on goals, time horizon and risk tolerance.',r:function(){return vzStack({parts:['Stocks','Bonds','Cash'],cls:[1,2,3],rows:[{n:'Conservative',v:[20,60,20]},{n:'Balanced',v:[50,40,10]},{n:'Growth',v:[80,15,5]}]})}},
  'frontier':{t:'The efficient frontier',cap:'Mixing assets that do not move together can give a better return for the same risk. Illustrative.',r:function(){const curve=[];for(let w=0;w<=1.0001;w+=0.05){const sb=5,ss=16,rb=3.5,rs=8,rho=0.1,s=Math.sqrt(Math.pow((1-w)*sb,2)+Math.pow(w*ss,2)+2*(1-w)*w*sb*ss*rho);curve.push([s,(1-w)*rb+w*rs])}return vzScatter({curve:curve,pts:[{n:'All bonds',x:5,y:3.5,c:1},{n:'All stocks',x:16,y:8,c:4,dx:-8,a:'end'},{n:'60/40 mix',x:Math.sqrt(Math.pow(0.4*5,2)+Math.pow(0.6*16,2)+2*0.4*0.6*5*16*0.1),y:0.4*3.5+0.6*8,c:2}]})}},
  'life':{t:'Financial planning through life',cap:'Typical priorities at each stage; everyone’s plan is different.',r:function(){return vzSteps({steps:[['20s: build the base','emergency fund, insurance, start investing'],['30s: protect and grow','home, family protection, regular savings'],['40s: peak earning years','children’s education, retirement savings'],['50s: reduce risk','pay down debt, shift towards bonds'],['60s and beyond: income','MPF withdrawal from 65, steady income']]})}},
@@ -3107,8 +3248,12 @@ const FIG={
  'regulators':{t:'Who regulates what in Hong Kong',cap:'Each regulator supervises a different part of the financial system.',r:function(){return vzFlow({id:'rg',h:236,nodes:[{id:'gov',x:120,y:4,w:160,h:40,t:'HKSAR Government',s:'financial policy',c:5},{id:'sfc',x:4,y:76,w:124,h:56,t:'SFC',s:'securities, futures,\nasset managers'},{id:'hkma',x:138,y:76,w:124,h:56,t:'HKMA',s:'banks, HK dollar,\nfinancial stability',c:2},{id:'ia',x:272,y:76,w:124,h:56,t:'Insurance Authority',s:'insurers, agents\nand brokers',c:3},{id:'mpfa',x:60,y:168,w:124,h:56,t:'MPFA',s:'MPF schemes',c:6},{id:'hkex',x:216,y:168,w:124,h:56,t:'HKEX',s:'runs the exchange,\nlisting rules',c:5}],edges:[{a:'gov',b:'sfc'},{a:'gov',b:'hkma'},{a:'gov',b:'ia'},{a:'sfc',b:'hkex',t:'supervises',dash:true,tx:10}]})}},
  'kyc':{t:'Know Your Customer (KYC) in practice',cap:'KYC is not a one-time form: client information must be kept up to date.',r:function(){return vzSteps({steps:[['Identify','name, ID, address, contact details'],['Verify','check documents against reliable sources'],['Source of funds and wealth','where the money comes from'],['Risk profile','goals, experience, risk tolerance'],['Suitability','recommend only suitable products'],['Ongoing monitoring','review regularly, report anything suspicious']]})}}
 };
-function figHTML(id,num){const f=FIG[id];if(!f)return '';let svg='';try{svg=f.r()}catch(e){svg='<p class="small muted">Chart unavailable.</p>'}
-  return '<figure class="vzf"><figcaption class="vzt"><span>Figure '+vx(num)+'</span> '+vx(f.t)+'</figcaption><div class="vzbox">'+svg+'</div><p class="vzc">'+vx(f.cap)+'</p></figure>'}
+/* 圖：App 版有滑杆／切換同即時讀數；PDF 版用預設值（全英文） */
+function figHTML(id,num,mode){const f=FIG[id];if(!f)return '';const app=mode==='app',p=fzP(id);let svg='';try{svg=f.r(p)}catch(e){svg='<p class="small muted">Chart unavailable.</p>'}
+  let out='';if(f.out)try{out=f.out(p)}catch(e){out=''}
+  return '<figure class="vzf'+(f.ctl?' vzia':'')+'" id="fg-'+id+'"><figcaption class="vzt"><span>Figure '+vx(num)+'</span> '+vx(f.t)+(f.ctl&&app?' <em class="vzi">Interactive</em>':'')+'</figcaption>'+
+    '<div class="vzbox" id="fz-'+id+'">'+svg+'</div>'+(out?'<p class="vzo" id="fo-'+id+'" aria-live="polite">'+out+'</p>':'')+(f.ctl&&app?fzCtl(id,f,p):'')+
+    '<p class="vzc">'+vx(f.cap)+'</p>'+(f.ctl&&!app?'<p class="vzn">Interactive in the app: drag the sliders to try your own numbers.</p>':'')+'</figure>'}
 
 /* 讀本補充章節的圖表 */
 function vbsDelta(S,K,T,r,s){if(T<=0)return S>K?1:0;const d1=(Math.log(S/K)+(r+s*s/2)*T)/(s*Math.sqrt(T));return vncdf(d1)}
@@ -3129,6 +3274,354 @@ FIG['value-fn']={t:'Loss aversion: losses hurt more than gains please',cap:'The 
 FIG['biases']={t:'Common investor biases',cap:'Recognising a bias is the first step to avoiding it.',r:function(){return vzTable({head:['Bias','What happens','Typical mistake'],rows:[['Loss aversion','Losses hurt more than gains please','Holding losers too long'],['Overconfidence','Overrating our own skill','Trading too often'],['Anchoring','Relying on the first number','Fixating on the purchase price'],['Herding','Following the crowd','Buying near the top'],['Confirmation bias','Seeing only supporting evidence','Ignoring warning signs'],['Mental accounting','Treating money by its label','Taking extra risk with a bonus']]})}};
 FIG['offices']={t:'Front, middle and back office',cap:'A trade starts in the front office, is checked by the middle office and is settled by the back office.',r:function(){return vzFlow({id:'offices',h:150,nodes:[{id:'f',x:0,y:30,w:108,h:90,t:'Front office',s:'sales, traders,\nrelationship\nmanagers',c:1},{id:'m',x:146,y:30,w:108,h:90,t:'Middle office',s:'risk, compliance,\nlegal,\nproduct control',c:2},{id:'b',x:292,y:30,w:108,h:90,t:'Back office',s:'operations,\nsettlement,\nfinance, IT',c:3}],edges:[{a:'f',b:'m'},{a:'m',b:'b'}]})}};
 FIG['hk-licence']={t:'The path to a licensed role in Hong Kong',cap:'A simplified path for securities roles. Insurance and MPF roles have their own exams and regulators.',r:function(){return vzSteps({steps:[['Pass the HKSI exams','Paper 1 plus the papers for your activity'],['Join a licensed firm','the firm supports your application'],['SFC approval','the fit and proper test'],['Start work','as a licensed representative'],['Keep learning','continuous professional training every year']]})}};
+
+/* 讀本新圖（第 1–9 章：利息、銀行、央行、報表、股票、估值、債券、貸款、基金）。數據除特別註明外均為示意 Illustrative */
+function bfHK(v,d){const a=Math.abs(v);return (v<0?'-':'')+'HK$'+a.toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})}
+function bfHKc(v){const a=Math.abs(v),s=v<0?'-':'';if(a>=1e9)return s+'HK$'+(Math.round(a/1e8)/10)+'bn';if(a>=1e6)return s+'HK$'+(Math.round(a/1e4)/100)+'m';if(a>=1e4)return s+'HK$'+(Math.round(a/100)/10)+'k';return s+'HK$'+Math.round(a).toLocaleString('en-US')}
+function bfPct(v){return (Math.round(v*100)/100)+'%'}
+function bfYrs(v){return v+(v===1?' year':' years')}
+function bfPmt(r,n,pv){return r===0?pv/n:pv*r/(1-Math.pow(1+r,-n))}
+function bfBond(c,n,y){let p=0;for(let t=1;t<=n;t++)p+=c/Math.pow(1+y/100,t);return p+100/Math.pow(1+y/100,n)}
+
+/* ---------- 第 1 章 ---------- */
+FIG['fv-compound']={t:'Simple interest vs compound interest',
+  cap:'Start with an amount and earn the same rate every year. Compound interest earns interest on the interest you have already received; simple interest does not. No fees or tax.',
+  ctl:[{k:'a',t:'Amount',min:1000,max:100000,step:1000,v:10000,f:bfHK},{k:'r',t:'Interest rate per year',min:0.5,max:12,step:0.5,v:5,f:bfPct},{k:'n',t:'Years',min:1,max:40,step:1,v:30,f:bfYrs}],
+  r:function(p){const x=vrange(0,p.n,1);return vzLine({x:x,ymin:0,yfmt:'hk',hfmt:bfHK,xname:'Year',xlab:'Years',
+    series:[{n:'Compound',c:1,v:x.map(function(t){return p.a*Math.pow(1+p.r/100,t)})},{n:'Simple',c:5,dash:true,v:x.map(function(t){return p.a*(1+p.r/100*t)})}]})},
+  out:function(p){const c=p.a*Math.pow(1+p.r/100,p.n),s=p.a*(1+p.r/100*p.n);return 'After '+bfYrs(p.n)+': compound <b>'+bfHK(c)+'</b>, simple <b>'+bfHK(s)+'</b>. At '+p.r+'% your money doubles in about <b>'+(Math.log(2)/Math.log(1+p.r/100)).toFixed(1)+' years</b> (rule of 72: '+(72/p.r).toFixed(1)+').'}};
+FIG['real-return']={t:'Nominal return, inflation and real return',
+  cap:'Real return is the gain in purchasing power: (1 + nominal return) ÷ (1 + inflation) − 1, which is close to nominal return minus inflation.',
+  ctl:[{k:'n',t:'Nominal return (e.g. a deposit rate)',min:0,max:10,step:0.25,v:3,f:bfPct},{k:'i',t:'Inflation',min:0,max:8,step:0.25,v:2.5,f:bfPct}],
+  r:function(p){const real=((1+p.n/100)/(1+p.i/100)-1)*100;return vzBars({cats:['Nominal return','Inflation','Real return'],series:[{n:'Rate',v:[p.n,p.i,real]}],colors:[1,5,real>=0?3:4],ymin:-6,ymax:10,yfmt:'%',vfmt:function(v){return v.toFixed(2)+'%'}})},
+  out:function(p){const real=((1+p.n/100)/(1+p.i/100)-1)*100;return 'Real return: <b>'+real.toFixed(2)+'%</b> a year. '+(real<0?'Your money <b>loses</b> purchasing power.':'Your purchasing power grows.')}};
+FIG['pv-discount']={t:'What future money is worth today',
+  cap:'Present value = future amount ÷ (1 + discount rate) ^ years. The line shows today’s value growing back to the full amount by the payment date.',
+  ctl:[{k:'f',t:'Amount received in the future',min:10000,max:1000000,step:10000,v:100000,f:bfHK},{k:'r',t:'Discount rate',min:0.5,max:12,step:0.5,v:5,f:bfPct},{k:'n',t:'Years until you receive it',min:1,max:30,step:1,v:10,f:bfYrs}],
+  r:function(p){const x=vrange(0,p.n,1),pv=p.f/Math.pow(1+p.r/100,p.n);return vzLine({x:x,ymin:0,ymax:p.f*1.08,yfmt:'hk',hfmt:bfHK,legend:false,xlab:'Years from today',
+    hx:function(t){return t===0?'Today':'Year '+t},series:[{n:'Value',c:1,v:x.map(function(t){return p.f/Math.pow(1+p.r/100,p.n-t)})}],
+    marks:[{x:0,y:pv,t:'Today '+bfHKc(pv),c:1,dx:7,dy:16},{x:p.n,y:p.f,t:bfHKc(p.f),c:2,a:'end',dx:-7,dy:-8}]})},
+  out:function(p){const pv=p.f/Math.pow(1+p.r/100,p.n);return '<b>'+bfHK(p.f)+'</b> in '+bfYrs(p.n)+' is worth <b>'+bfHK(pv)+'</b> today at '+p.r+'% a year.'}};
+
+/* ---------- 第 2 章 ---------- */
+FIG['accounts']={t:'Common types of bank account',cap:'Typical features. Each bank sets its own terms and rates.',
+  r:function(){return vzTable({head:['Account','Access and interest','Best for'],rows:[['Savings','Any time\nlow interest that can change','Everyday savings'],['Current','Any time, with cheques\nusually no interest','Paying bills and suppliers'],['Time deposit','Locked for a fixed term\nhigher, fixed interest','Money you will not need for months'],['Multi-currency','Any time\ninterest depends on the currency','Holding USD, RMB and others']]})}};
+FIG['bank-bs']={t:'Capital is the bank’s cushion',
+  cap:'A simple bank with HK$100bn of assets. When borrowers fail to repay, the losses come out of the bank’s capital first. Depositors are safe until capital runs out. Illustrative, HK$ billion.',
+  ctl:[{k:'l',t:'Loans that go bad',min:0,max:20,step:1,v:0,f:function(v){return v+'% of loans'}}],
+  r:function(p){const L=70*p.l/100,cap=10-L;return vzCols({max:100,h:262,vfmt:function(v){return (Math.round(v*10)/10)+'bn'},sign:['='],
+    cols:[{n:'Assets',segs:[{n:'Loans',v:70-L,c:1},{n:'Securities',v:20,c:2},{n:'Cash',v:10,c:5}]},{n:'Liabilities + capital',segs:[{n:'Deposits',v:80,c:6},{n:'Other borrowing',v:10,c:5},{n:'Capital',v:Math.max(0,cap),c:3}]}]})},
+  out:function(p){const L=70*p.l/100,cap=10-L;return cap>0?'Losses <b>HK$'+(Math.round(L*10)/10)+'bn</b>. Capital left: <b>HK$'+(Math.round(cap*10)/10)+'bn</b> ('+(cap/(100-L)*100).toFixed(1)+'% of assets).':'Losses of <b>HK$'+(Math.round(L*10)/10)+'bn</b> are bigger than the HK$10bn of capital: the bank is <b>insolvent</b> and depositors are at risk.'}};
+
+/* ---------- 第 3 章 ---------- */
+FIG['h-plan']={t:'A HIBOR mortgage with a cap',
+  cap:'Illustrative plan: 1-month HIBOR + 1.3%, capped at prime − 1.75% (prime = 5.5%, so the cap is 3.75%). The payment is for a HK$5 million, 30-year loan. Each bank sets its own terms.',
+  ctl:[{k:'h',t:'1-month HIBOR',min:0,max:6,step:0.05,v:2,f:function(v){return v.toFixed(2)+'%'}}],
+  r:function(p){const x=vrange(0,6,0.05),cap=3.75;return vzLine({x:x,ymin:0,ymax:7.5,yfmt:function(v){return v+'%'},hfmt:function(v){return v.toFixed(2)+'%'},
+    hx:function(h){return 'HIBOR '+h.toFixed(2)+'%'},xlab:'1-month HIBOR (%)',ylab:'Your mortgage rate',xticks:[0,1,2,3,4,5,6],xfmt:function(v){return v+'%'},
+    series:[{n:'H + 1.3% (no cap)',c:5,dash:true,v:x.map(function(h){return h+1.3})},{n:'Your rate (with cap)',c:1,v:x.map(function(h){return Math.min(h+1.3,cap)})}],
+    hlines:[{y:cap,t:'cap = P − 1.75% = 3.75%',c:2,left:true}],marks:[{x:p.h,y:Math.min(p.h+1.3,cap),t:Math.min(p.h+1.3,cap).toFixed(2)+'%',c:1,dx:6,dy:16}]})},
+  out:function(p){const rt=Math.min(p.h+1.3,3.75),pay=bfPmt(rt/1200,360,5e6);return 'HIBOR '+p.h.toFixed(2)+'% → your rate <b>'+rt.toFixed(2)+'%</b>'+(p.h+1.3>3.75?' (capped)':'')+'. Monthly payment on HK$5m over 30 years: <b>'+bfHK(pay)+'</b>.'}};
+FIG['rate-winners']={t:'Who gains and who loses when rates move',cap:'Typical effects. Real outcomes also depend on the economy and on how long rates stay at the new level.',
+  r:function(){return vzTable({head:['','When rates rise','When rates fall'],rows:[['Savers','Earn more on deposits','Earn less'],['Mortgage borrowers','Pay more each month','Pay less each month'],['Bond holders','Bond prices fall','Bond prices rise'],['Property market','Usually cools','Usually supported'],['Shares','Often under pressure','Often supported']]})}};
+
+/* ---------- 第 4 章 ---------- */
+FIG['income-wf']={t:'From revenue to net profit',cap:'A simple income statement, HK$ million: interest of 3, then tax of about 16.5% (Hong Kong profits tax) on the profit before tax of 15. Illustrative.',
+  r:function(){return vzWaterfall({vfmt:function(v){return String(Math.round(v*10)/10)},steps:[{n:'Revenue',v:100,t:'total'},{n:'Cost of\nsales',v:-58},{n:'Gross\nprofit',t:'total'},{n:'Operating\nexpenses',v:-24},{n:'Operating\nprofit',t:'total'},{n:'Interest\n& tax',v:-5.5},{n:'Net\nprofit',t:'total'}]})}};
+FIG['cf-sections']={t:'The three parts of the cash flow statement',cap:'A healthy company usually earns cash from its operations, spends some on investment, and uses some to repay debt or pay dividends. Illustrative, HK$ million.',
+  r:function(){return vzBars({cats:['Operating','Investing','Financing','Net change in cash'],series:[{n:'Cash flow',v:[18,-10,-5,3]}],signColor:true,vfmt:function(v){return (v>0?'+':'')+v}})}};
+FIG['profit-cash']={t:'Warning sign: profit up, cash down',cap:'Illustrative, HK$ million. If profits keep rising while operating cash flow falls, sales may be booked before customers actually pay.',
+  r:function(){const x=[1,2,3,4,5];return vzLine({x:x,ymin:0,xname:'Year',xlab:'Year',xticks:x,endLabels:true,hfmt:function(v){return 'HK$'+v+'m'},series:[{n:'Net profit',c:1,v:[10,13,16,20,25]},{n:'Operating cash',c:4,v:[11,12,10,7,3]}]})}};
+
+/* ---------- 第 5 章 ---------- */
+FIG['ownership']={t:'New shares dilute existing owners',cap:'Illustrative. Issuing new shares raises money for the company, but each existing owner now holds a smaller share of a bigger company.',
+  r:function(){return vzStack({parts:['Founders','Early investors','New shareholders'],cls:[1,2,3],rows:[{n:'Before IPO',v:[80,20,0]},{n:'After IPO',v:[60,15,25]}]})}};
+FIG['trade-cost']={t:'What it costs to buy Hong Kong shares',
+  cap:'Each side of a trade pays stamp duty 0.1%, a trading fee 0.00565%, the SFC levy 0.0027% and the AFRC levy 0.00015% (rates at the time of writing), plus the broker’s commission and a small settlement fee. Commissions shown are examples only.',
+  ctl:[{k:'v',t:'Value of the purchase',min:5000,max:500000,step:5000,v:100000,f:bfHK},{k:'b',t:'Broker',opts:[['online','Online broker'],['bank','Bank']],v:'online'}],
+  r:function(p){const V=p.v,cm=p.b==='bank'?Math.max(100,V*0.0025):Math.max(3,V*0.0003),rows=[{n:'Stamp duty',v:Math.ceil(V*0.001),c:1},{n:'Commission',v:cm,c:2},{n:'Trading fee',v:V*0.0000565,c:5},{n:'SFC levy',v:V*0.000027,c:5},{n:'AFRC levy',v:V*0.0000015,c:5}];
+    return vzHBars({pl:96,pr:70,rows:rows,vfmt:function(x){return bfHK(x,x<100?2:0)}})},
+  out:function(p){const V=p.v,cm=p.b==='bank'?Math.max(100,V*0.0025):Math.max(3,V*0.0003),tot=Math.ceil(V*0.001)+cm+V*(0.0000565+0.000027+0.0000015);
+    return 'Total cost to buy: <b>'+bfHK(tot,2)+'</b> = <b>'+(tot/V*100).toFixed(3)+'%</b> of the trade. Buying and selling costs about <b>'+(tot/V*200).toFixed(2)+'%</b> in total. ('+(p.b==='bank'?'Example bank commission: 0.25%, minimum HK$100.':'Example online commission: 0.03%, minimum HK$3.')+')'}};
+FIG['connect']={t:'Stock Connect: two-way access through Hong Kong',cap:'International investors buy mainland A-shares through Hong Kong (northbound). Mainland investors buy eligible Hong Kong shares (southbound).',
+  r:function(){return vzFlow({id:'sc',h:236,nodes:[{id:'m',x:110,y:4,w:180,h:50,t:'Mainland China',s:'Shanghai & Shenzhen markets'},{id:'h',x:110,y:94,w:180,h:50,t:'Hong Kong',s:'HKEX and HK brokers',c:2},{id:'g',x:110,y:184,w:180,h:48,t:'International investors'}],
+    edges:[{a:'h',b:'m',t:'northbound: buy A-shares',o:-44,tx:-50},{a:'m',b:'h',t:'southbound: buy HK shares',o:44,tx:50},{a:'g',b:'h',t:'trade via Hong Kong',both:true,tx:-60}]})}};
+
+/* ---------- 第 6 章 ---------- */
+FIG['pe-play']={t:'What a P/E ratio really means',
+  cap:'P/E = share price ÷ earnings per share. Each block is one year of today’s earnings: with a P/E of 15 you pay for 15 years of current profit.',
+  ctl:[{k:'p',t:'Share price',min:5,max:200,step:1,v:60,f:function(v){return 'HK$'+v}},{k:'e',t:'Earnings per share (EPS)',min:0.5,max:10,step:0.1,v:4,f:function(v){return 'HK$'+v.toFixed(1)}}],
+  r:function(p){return vzBlocks({n:Math.min(60,p.p/p.e),per:10,c:1,note:'1 block = 1 year of today’s earnings'+(p.p/p.e>60?' (showing 60)':'')})},
+  out:function(p){const pe=p.p/p.e;return 'P/E = '+p.p+' ÷ '+p.e.toFixed(1)+' = <b>'+pe.toFixed(1)+'</b>. Earnings yield = <b>'+(100/pe).toFixed(1)+'%</b> a year.'}};
+FIG['growth-value']={t:'Growth stocks and value stocks',cap:'A simple way to place a stock: how fast profits are expected to grow, and how much the market is paying for them.',
+  r:function(){return vzQuad({xlab:'Valuation (P/E) →',ylab:'Expected profit growth →',q:[{t:'Hidden gems',s:'growing but cheap\n(rare)',c:3},{t:'Growth stocks',s:'fast growth,\nhigh P/E',c:1},{t:'Value stocks',s:'slow growth,\nlow P/E',c:2},{t:'Danger zone',s:'expensive and slow',c:4}]})}};
+
+/* ---------- 第 7 章 ---------- */
+FIG['price-yield']={t:'When yields rise, bond prices fall',
+  cap:'Bonds with a 5% coupon, priced per 100 of face value. When the market yield equals the coupon, the price is 100 (par). Longer bonds move more.',
+  ctl:[{k:'y',t:'Market yield',min:1,max:10,step:0.25,v:6,f:bfPct}],
+  r:function(p){const x=vrange(1,10,0.25);return vzLine({x:x,yfmt:function(v){return String(Math.round(v))},hfmt:function(v){return v.toFixed(1)},hx:function(y){return 'Yield '+y+'%'},xlab:'Market yield (%)',ylab:'Price',xticks:[1,2,4,6,8,10],xfmt:function(v){return v+'%'},
+    series:[{n:'2-year',c:5,v:x.map(function(y){return bfBond(5,2,y)})},{n:'10-year',c:1,v:x.map(function(y){return bfBond(5,10,y)})},{n:'30-year',c:2,v:x.map(function(y){return bfBond(5,30,y)})}],
+    hlines:[{y:100,t:'par',c:5}],vlines:[{x:p.y,t:p.y+'%'}]})},
+  out:function(p){return 'At a <b>'+p.y+'%</b> yield: 2-year <b>'+bfBond(5,2,p.y).toFixed(1)+'</b>, 10-year <b>'+bfBond(5,10,p.y).toFixed(1)+'</b>, 30-year <b>'+bfBond(5,30,p.y).toFixed(1)+'</b>.'}};
+FIG['duration-bars']={t:'Longer bonds lose more when yields rise',cap:'Price change of bonds with a 4% coupon when market yields rise from 4% to 5%.',
+  r:function(){const m=[2,5,10,30];return vzBars({cats:m.map(function(n){return n+'-year'}),series:[{n:'Price change',v:m.map(function(n){return Math.round((bfBond(4,n,5)-100)*10)/10})}],signColor:true,vfmt:function(v){return v+'%'},yfmt:'%'})}};
+FIG['ratings']={t:'Lower ratings pay higher yields',cap:'Illustrative extra yield (credit spread) over government bonds, by credit rating. Investors want more to compensate for a higher risk of default.',
+  r:function(){return vzHBars({pl:56,pr:50,sep:4,sepT:['investment grade ↑','high yield ↓'],vfmt:function(v){return '+'+v+'%'},rows:[{n:'AAA',v:0.5,c:1},{n:'AA',v:0.7,c:1},{n:'A',v:1.0,c:1},{n:'BBB',v:1.6,c:1},{n:'BB',v:2.9,c:6},{n:'B',v:4.3,c:6},{n:'CCC',v:9.0,c:6}]})}};
+
+/* ---------- 第 8 章（貸款） ---------- */
+FIG['amort']={t:'Where your mortgage payments go',
+  cap:'Equal monthly payments: early payments are mostly interest, later payments mostly repay the loan (principal).',
+  ctl:[{k:'p',t:'Loan amount',min:1e6,max:1e7,step:1e5,v:5e6,f:bfHKc},{k:'r',t:'Mortgage rate',min:1,max:7,step:0.05,v:3.5,f:function(v){return v.toFixed(2)+'%'}},{k:'n',t:'Years',min:5,max:30,step:1,v:30,f:bfYrs}],
+  r:function(p){const r=p.r/1200,n=p.n*12,pay=bfPmt(r,n,p.p);let bal=p.p;const I=[],Pr=[];for(let y=1;y<=p.n;y++){let i=0,pr=0;for(let m=0;m<12;m++){const it=bal*r;i+=it;pr+=pay-it;bal-=pay-it}I.push(i);Pr.push(pr)}
+    const x=vrange(1,p.n,1);return vzLine({x:x,ymin:0,yfmt:'hk',hfmt:bfHK,xname:'Year',xlab:'Year of the loan',series:[{n:'Interest paid',c:4,v:I},{n:'Principal repaid',c:1,v:Pr}]})},
+  out:function(p){const r=p.r/1200,n=p.n*12,pay=bfPmt(r,n,p.p);return 'Monthly payment <b>'+bfHK(pay)+'</b>. Total interest over '+bfYrs(p.n)+': <b>'+bfHK(pay*n-p.p)+'</b>.'}};
+FIG['ltv']={t:'Loan-to-value and negative equity',
+  cap:'Illustrative HK$8 million flat. Your equity is the property value minus the loan. If prices fall by more than your deposit, you owe more than the flat is worth: negative equity.',
+  ctl:[{k:'l',t:'Loan-to-value (LTV)',min:50,max:90,step:5,v:70,f:function(v){return v+'%'}},{k:'d',t:'Change in property price',min:-50,max:30,step:5,v:0,f:function(v){return (v>0?'+':'')+v+'%'}}],
+  r:function(p){const V=8*(1+p.d/100),L=8*p.l/100,E=V-L;return vzBars({cats:['Property value','Loan','Your equity'],series:[{n:'HK$m',v:[V,L,E]}],colors:[1,5,E>=0?3:4],ymin:-4,ymax:11,vfmt:function(v){return (Math.round(v*100)/100)+'m'},yfmt:function(v){return v+'m'}})},
+  out:function(p){const V=8e6*(1+p.d/100),L=8e6*p.l/100,E=V-L;return E>=0?'Equity <b>'+bfHKc(E)+'</b>. Prices can fall <b>'+(100-p.l)+'%</b> before you reach negative equity.':'<b>Negative equity</b> of '+bfHKc(-E)+': the loan is bigger than the flat’s value.'}};
+FIG['five-cs']={t:'The five Cs of credit',cap:'Lenders look at all five before deciding whether to lend, how much, and at what rate.',
+  r:function(){return vzFlow({id:'fc',h:224,nodes:[{id:'d',x:141,y:90,w:118,h:46,t:'Lending\ndecision',c:2},{id:'a',x:141,y:2,w:118,h:46,t:'Character',s:'track record'},{id:'b',x:0,y:62,w:112,h:46,t:'Capacity',s:'cash to repay'},{id:'c',x:288,y:62,w:112,h:46,t:'Capital',s:'owner’s own money'},{id:'e',x:30,y:172,w:120,h:46,t:'Collateral',s:'assets pledged'},{id:'f',x:250,y:172,w:120,h:46,t:'Conditions',s:'purpose, economy'}],
+    edges:[{a:'a',b:'d'},{a:'b',b:'d'},{a:'c',b:'d'},{a:'e',b:'d'},{a:'f',b:'d'}]})}};
+
+/* ---------- 第 9 章（基金） ---------- */
+FIG['fee-drag']={t:'How fees reduce long-term returns',
+  cap:'HK$100,000 invested for 30 years. The fee is taken every year, so its cost compounds just like returns do. Illustrative.',
+  ctl:[{k:'f',t:'Annual fee',min:0,max:3,step:0.1,v:1.5,f:function(v){return v.toFixed(1)+'%'}},{k:'r',t:'Return before fees',min:2,max:10,step:0.5,v:7,f:bfPct}],
+  r:function(p){const x=vrange(0,30,1);return vzLine({x:x,ymin:0,yfmt:'hk',hfmt:bfHK,xname:'Year',xlab:'Years',series:[{n:'No fees',c:5,dash:true,v:x.map(function(t){return 1e5*Math.pow(1+p.r/100,t)})},{n:'After a '+p.f.toFixed(1)+'% fee',c:1,v:x.map(function(t){return 1e5*Math.pow(1+(p.r-p.f)/100,t)})}]})},
+  out:function(p){const a=1e5*Math.pow(1+p.r/100,30),b=1e5*Math.pow(1+(p.r-p.f)/100,30);return 'After 30 years: <b>'+bfHK(b)+'</b> instead of '+bfHK(a)+'. Fees cost <b>'+bfHK(a-b)+'</b>, or <b>'+((a-b)/a*100).toFixed(0)+'%</b> of the final value.'}};
+FIG['active-passive']={t:'Few active funds beat their index for long',cap:'Illustrative pattern. Long-term studies such as S&P’s SPIVA reports find that most actively managed funds trail their benchmark index over 10 years or more, mainly because of fees.',
+  r:function(){return vzBars({cats:['1 year','5 years','10 years','15 years'],series:[{n:'Share of active funds that beat the index',c:1,v:[40,22,15,10]}],ymax:50,vfmt:function(v){return v+'%'},yfmt:'%'})}};
+FIG['etf-flow']={t:'How an ETF works',cap:'Investors trade ETF units on the exchange. Market makers keep the price close to the value of the shares inside the fund by creating or redeeming units with the manager.',
+  r:function(){return vzFlow({id:'etf',h:190,nodes:[{id:'i',x:0,y:14,w:104,h:48,t:'Investors',s:'buy & sell units'},{id:'x',x:148,y:14,w:104,h:48,t:'Exchange',s:'trades all day',c:2},{id:'m',x:296,y:14,w:104,h:48,t:'Market maker',s:'quotes prices'},{id:'e',x:296,y:132,w:104,h:52,t:'ETF manager',s:'creates or\nredeems units'},{id:'b',x:148,y:132,w:104,h:52,t:'Basket of shares',s:'tracks the index',c:3}],
+    edges:[{a:'i',b:'x',both:true},{a:'x',b:'m',both:true},{a:'m',b:'e',t:'creation / redemption',tx:-58,both:true},{a:'e',b:'b',t:'holds'}]})}};
+FIG['reit-flow']={t:'How a REIT pays its investors',cap:'Tenants pay rent to the REIT. In Hong Kong a REIT must distribute at least 90% of its distributable income each year, so it suits investors who want regular income.',
+  r:function(){return vzFlow({id:'reit',h:176,nodes:[{id:'i',x:0,y:58,w:96,h:56,t:'Investors',s:'own REIT units'},{id:'r',x:152,y:58,w:96,h:56,t:'REIT',s:'listed trust',c:2},{id:'p',x:304,y:8,w:96,h:52,t:'Properties',s:'malls, offices'},{id:'t',x:304,y:116,w:96,h:52,t:'Tenants',s:'shops, firms'}],
+    edges:[{a:'i',b:'r',t:'buy units',o:-12},{a:'r',b:'i',t:'payouts',o:12,ty:16},{a:'r',b:'p',t:'owns',tx:-6},{a:'t',b:'r',t:'rent',tx:-6,ty:12}]})}};
+
+/* 讀本新圖（第 10–18 章：另類投資、外匯、期貨、期權、策略、希臘字母、掉期與結構性產品、基本分析、技術分析）。數據除特別註明外均為示意 */
+function bfPhi(x){return Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)}
+function bfGamma(S,K,T,r,s){const d1=(Math.log(S/K)+(r+s*s/2)*T)/(s*Math.sqrt(T));return bfPhi(d1)/(S*s*Math.sqrt(T))}
+function bfSign(v,d){const r=Math.round(v*Math.pow(10,d||0))/Math.pow(10,d||0);return (r>0?'+':'')+r}
+
+/* ---------- 另類投資 ---------- */
+FIG['two-twenty']={t:'“2 and 20”: what the manager keeps',
+  cap:'A HK$100 million hedge fund charging a 2% management fee and a 20% performance fee on profit after the management fee. Simplified: no hurdle rate or high-water mark. HK$ million.',
+  ctl:[{k:'g',t:'Fund return before fees',min:-10,max:30,step:1,v:15,f:function(v){return (v>0?'+':'')+v+'%'}}],
+  r:function(p){const G=p.g,M=2,F=Math.max(0,0.2*(G-M)),N=G-M-F;return vzBars({cats:['Gross gain','Management fee','Performance fee','Investors keep'],series:[{n:'HK$m',v:[G,-M,-F,N]}],colors:[1,5,6,N>=0?3:4],ymin:-14,ymax:32,vfmt:function(v){return bfSign(v,1)},yfmt:function(v){return v+'m'}})},
+  out:function(p){const G=p.g,M=2,F=Math.max(0,0.2*(G-M)),N=G-M-F;return 'Gross '+bfSign(G)+'% → investors keep <b>'+bfSign(N,1)+'%</b>; the manager earns <b>HK$'+(M+F).toFixed(1)+'m</b>'+(G>0?' ('+((M+F)/G*100).toFixed(0)+'% of the gain).':' even in a losing year.')}};
+FIG['liquidity-ladder']={t:'How quickly can you get your money back?',cap:'Typical time to turn each investment into cash (log scale). It varies by product: read the dealing terms before you invest.',
+  r:function(){return vzHBars({pl:118,pr:96,max:4.8,rows:[{n:'Bank deposit',v:1,c:1,lab:'same day'},{n:'Listed shares',v:1.3,c:1,lab:'about 2 days'},{n:'Bond or stock fund',v:1.7,c:1,lab:'a few days'},{n:'Hedge fund',v:2.95,c:1,lab:'1–3 months'},{n:'Private equity fund',v:4.56,c:1,lab:'often 10 years'}]})}};
+
+/* ---------- 外匯 ---------- */
+FIG['fx-drivers']={t:'What tends to move a currency',cap:'Tendencies, not rules: markets often move on expectations before the news arrives.',
+  r:function(){return vzTable({head:['Driver','Effect on the currency'],rows:[['Higher interest rates','Often stronger: deposits earn more'],['Higher inflation','Often weaker: money buys less'],['Strong growth and exports','Often stronger'],['Large trade deficit','Can weaken over time'],['Fear in markets','Safe havens (USD, JPY, CHF) often stronger']]})}};
+FIG['fx-hedge']={t:'Hedging with a forward contract',
+  cap:'A Hong Kong exporter will receive EUR 1 million in three months and sells it forward today at 8.80 HKD per EUR. Illustrative rates.',
+  ctl:[{k:'s',t:'EUR/HKD spot rate in three months',min:8,max:9.6,step:0.05,v:8.4,f:function(v){return v.toFixed(2)}}],
+  r:function(p){const x=vrange(8,9.6,0.05);return vzLine({x:x,ymin:7.8,ymax:9.8,yfmt:function(v){return v.toFixed(1)+'m'},hfmt:function(v){return 'HK$'+v.toFixed(2)+'m'},hx:function(s){return 'EUR/HKD '+s.toFixed(2)},xlab:'EUR/HKD spot rate in three months',xticks:[8,8.4,8.8,9.2,9.6],xfmt:function(v){return v.toFixed(1)},
+    series:[{n:'Not hedged',c:4,v:x},{n:'Hedged at 8.80',c:1,v:x.map(function(){return 8.8})}],vlines:[{x:p.s,t:p.s.toFixed(2)}]})},
+  out:function(p){const d=8.8-p.s;return 'Spot '+p.s.toFixed(2)+': not hedged <b>HK$'+p.s.toFixed(2)+'m</b>, hedged <b>HK$8.80m</b>. '+(d>=0?'The hedge protected <b>HK$'+d.toFixed(2)+'m</b>.':'Without the hedge you would have had <b>HK$'+(-d).toFixed(2)+'m</b> more: the price of certainty.')}};
+FIG['cnh-cny']={t:'Onshore and offshore renminbi',cap:'The same currency trades in two markets. Hong Kong is the largest offshore renminbi centre; the two rates are usually close but not identical.',
+  r:function(){return vzFlow({id:'rmb',h:130,nodes:[{id:'a',x:0,y:22,w:128,h:84,t:'Onshore CNY',s:'mainland China\ndaily central parity\ncapital controls'},{id:'m',x:150,y:36,w:100,h:56,t:'Links',s:'Connect schemes\ntrade settlement',c:5},{id:'b',x:272,y:22,w:128,h:84,t:'Offshore CNH',s:'Hong Kong and others\ntrades freely\nRMB deposits, bonds',c:2}],
+    edges:[{a:'a',b:'m',both:true},{a:'m',b:'b',both:true}]})}};
+
+/* ---------- 期貨 ---------- */
+FIG['leverage-play']={t:'Leverage: small moves, big results',
+  cap:'With futures you only put down margin, a fraction of the contract’s value. Gains and losses are calculated on the full value, so they are magnified.',
+  ctl:[{k:'m',t:'Margin (share of the contract value)',min:5,max:50,step:1,v:10,f:function(v){return v+'%'}},{k:'x',t:'Price move',min:-15,max:15,step:0.5,v:3,f:function(v){return (v>0?'+':'')+v+'%'}}],
+  r:function(p){const R=p.x/p.m*100;return vzBars({cats:['Price move','Return on your margin'],series:[{n:'%',v:[p.x,R]}],signColor:true,ymin:-100,ymax:100,vfmt:function(v){return bfSign(v,1)+'%'},yfmt:'%'})},
+  out:function(p){const R=p.x/p.m*100;return 'A '+bfSign(p.x,1)+'% price move = <b>'+bfSign(R,0)+'%</b> on your margin ('+(100/p.m).toFixed(1)+'× leverage). A <b>'+p.m+'%</b> fall wipes out your margin completely.'}};
+FIG['hedge-oil']={t:'An airline hedges its fuel cost',cap:'The airline buys oil futures at US$80 a barrel. If oil rises, the futures gain pays for the higher fuel bill; if oil falls, the futures loss offsets the cheaper fuel. Illustrative, per barrel.',
+  r:function(){const x=vrange(50,110,1);return vzLine({x:x,yfmt:function(v){return (v<0?'-$':'$')+Math.abs(v)},hfmt:function(v){return (v<0?'-US$':'US$')+Math.abs(v)},hx:function(s){return 'Oil at US$'+s},xlab:'Oil price at delivery (US$ per barrel)',xticks:[50,60,70,80,90,100,110],
+    series:[{n:'Fuel bill',c:4,v:x},{n:'Futures gain / loss',c:2,v:x.map(function(s){return s-80})},{n:'Net cost',c:1,v:x.map(function(){return 80})}],hlines:[{y:0,t:'',c:5}]})}};
+
+/* ---------- 期權入門 ---------- */
+FIG['opt-play']={t:'Try it: option payoffs at expiry',
+  cap:'Profit or loss at expiry for one option on one share. Buyers pay the premium and risk only that; sellers collect the premium but can lose much more.',
+  ctl:[{k:'t',t:'Option',opts:[['call','Call'],['put','Put']],v:'call'},{k:'q',t:'Position',opts:[[1,'Buy'],[-1,'Sell']],v:1},{k:'k',t:'Strike price',min:80,max:120,step:1,v:100,f:function(v){return String(v)}},{k:'p',t:'Premium',min:1,max:15,step:0.5,v:5,f:function(v){return String(v)}}],
+  r:function(p){return vzPayoff({smin:60,smax:140,lines:[{n:(p.q>0?'Long ':'Short ')+p.t,legs:[{t:p.t,k:p.k,p:p.p,q:p.q}]}],strikes:[{x:p.k,t:'strike '+p.k}]})},
+  out:function(p){const be=p.t==='call'?p.k+p.p:p.k-p.p,buy=p.q>0;let mx,ml;
+    if(p.t==='call'){mx=buy?'unlimited':String(p.p);ml=buy?String(p.p):'unlimited'}else{mx=buy?String(p.k-p.p):String(p.p);ml=buy?String(p.p):String(p.k-p.p)}
+    return (buy?'Buy':'Sell')+' a '+p.t+': breakeven <b>'+be+'</b> · max profit <b>'+mx+'</b> · max loss <b>'+ml+'</b>.'}};
+FIG['cbbc']={t:'A bull CBBC is knocked out',cap:'Illustrative bull CBBC with a call price of 95. When the share touches 95, the CBBC is called early and stops trading; the later rebound does not help its holders.',
+  r:function(){const v=[104,103.2,102.5,101.1,100.4,99,98.1,97.2,96.4,95.6,95.2,94.6,95.5,96.8,98,99.6,100.4,101.8,102.5,103.9,104.6,105.2,106.1,106.8,107.2,107.9,108.3,108.8,109.4,109,109.6],x=vrange(0,30,1);
+    return vzLine({x:x,ymin:90,ymax:112,legend:false,xname:'Day',xlab:'Trading days',xticks:[0,5,10,15,20,25,30],series:[{n:'Share price',c:1,v:v}],hlines:[{y:95,t:'call price 95',c:4,left:true,below:true}],vlines:[{x:11,t:'knocked out',c:4}],marks:[{x:11,y:94.6,t:'',c:4},{x:30,y:109.6,t:'rebound: too late',c:1,a:'end',dx:-8,dy:-8}]})}};
+
+/* ---------- 期權策略 ---------- */
+FIG['strategy-table']={t:'Four strategies at a glance',cap:'Simplified, at expiry, ignoring dividends and trading costs.',
+  r:function(){return vzTable({head:['Strategy and view','Best case','Worst case'],rows:[['Covered call\nflat or slightly up','Premium + gain up to the strike','Share falls (cushioned by the premium)'],['Protective put\nup, but want insurance','Unlimited, minus the premium','Loss limited by the put’s strike'],['Bull call spread\nmoderately up','Gap between the strikes − net cost','The net premium paid'],['Long straddle\na big move, either way','Unlimited','Both premiums, if the price does not move']]})}};
+
+/* ---------- 期權定價 ---------- */
+FIG['bs-play']={t:'What an option is worth before expiry',
+  cap:'Black–Scholes value of a call with strike 100 (interest rate 3%). More time or higher volatility adds time value; at expiry only the intrinsic value is left.',
+  ctl:[{k:'v',t:'Volatility',min:10,max:80,step:1,v:25,f:function(v){return v+'%'}},{k:'d',t:'Days to expiry',min:1,max:365,step:1,v:90,f:function(v){return v+(v===1?' day':' days')}}],
+  r:function(p){const x=vrange(60,140,1),T=p.d/365,s=p.v/100;return vzLine({x:x,ymin:0,ymax:45,yfmt:function(v){return String(v)},hfmt:function(v){return v.toFixed(2)},xname:'Share price',xlab:'Share price',ylab:'Option value',xticks:[60,80,100,120,140],
+    series:[{n:'Option value',c:1,v:x.map(function(S){return vbs(S,100,T,0.03,s)})},{n:'Value at expiry',c:5,dash:true,v:x.map(function(S){return Math.max(S-100,0)})}],vlines:[{x:100,t:'strike'}]})},
+  out:function(p){const v=vbs(100,100,p.d/365,0.03,p.v/100);return 'At a share price of 100 the call is worth <b>'+v.toFixed(2)+'</b>, all of it time value. At 110 it is worth <b>'+vbs(110,100,p.d/365,0.03,p.v/100).toFixed(2)+'</b> (10 intrinsic).'}};
+FIG['iv-smile']={t:'The volatility smile',cap:'Illustrative implied volatility of options with the same expiry. Options with low strikes (crash protection) often trade at higher implied volatility: the market prices in sharp falls.',
+  r:function(){const x=vrange(80,120,1);return vzLine({x:x,ymin:15,ymax:32,legend:false,yfmt:function(v){return v+'%'},hfmt:function(v){return v.toFixed(1)+'%'},xname:'Strike',xlab:'Strike price (share price = 100)',ylab:'Implied volatility',xticks:[80,90,100,110,120],
+    series:[{n:'Implied volatility',c:1,v:x.map(function(K){return 22+0.012*(K-100)*(K-100)-0.12*(K-100)})}],vlines:[{x:100,t:'at the money'}]})}};
+FIG['gamma']={t:'Gamma is highest at the money, near expiry',cap:'Gamma of a call with strike 100 and volatility 25%. Close to expiry, delta changes very quickly around the strike, so hedges must be adjusted often.',
+  r:function(){const x=vrange(70,130,1);return vzLine({x:x,ymin:0,yfmt:function(v){return v.toFixed(2)},hfmt:function(v){return v.toFixed(3)},xname:'Share price',xlab:'Share price',ylab:'Gamma',xticks:[70,80,90,100,110,120,130],
+    series:[{n:'6 months to expiry',c:1,v:x.map(function(S){return bfGamma(S,100,0.5,0.03,0.25)})},{n:'2 weeks to expiry',c:2,v:x.map(function(S){return bfGamma(S,100,14/365,0.03,0.25)})}],vlines:[{x:100,t:'strike'}]})}};
+
+/* ---------- 掉期與結構性產品 ---------- */
+FIG['swap-net']={t:'Net payments under an interest rate swap',cap:'A company with a HIBOR loan swaps it into a fixed 3.5%. Each year it receives HIBOR and pays 3.5% on the swap. Positive = the bank pays the company. Its total borrowing cost stays at 3.5% plus the loan margin. Illustrative HIBOR path.',
+  r:function(){const h=[2.6,3.6,4.6,3.9,3.1];return vzBars({cats:['Year 1','Year 2','Year 3','Year 4','Year 5'],series:[{n:'Net swap payment',v:h.map(function(x){return Math.round((x-3.5)*10)/10})}],signColor:true,ymin:-1.5,ymax:1.5,vfmt:function(v){return bfSign(v,1)+'%'},yfmt:'%'})}};
+FIG['sp-anatomy']={t:'Inside a principal-protected note',cap:'Illustrative HK$100 note: HK$92 buys a zero-coupon bond that grows back to HK$100 at maturity, HK$6 buys an option and HK$2 goes to the bank’s fees and margin. “Protected” still depends on the issuer being able to pay.',
+  r:function(){return vzStack({pl:90,parts:['Zero-coupon bond','Option','Fees and bank margin'],cls:[1,2,5],rows:[{n:'HK$100 note',v:[92,6,2]}]})}};
+FIG['minibond']={t:'The Lehman minibond story',cap:'A summary of the events in Hong Kong. The main lesson: understand what a product is linked to, not only who sells it.',
+  r:function(){return vzSteps({steps:[['Sold widely through banks','many buyers saw them as a safe deposit alternative'],['Linked to Lehman Brothers','repayment depended on Lehman and other credit'],['Lehman collapses (September 2008)','the notes lost most of their value'],['Complaints and investigations','many buyers had not understood the risk'],['Buyback deal (2009)','banks agreed to repurchase notes from eligible customers'],['Stricter selling rules','suitability checks and recorded sales']]})}};
+
+/* ---------- 基本分析 ---------- */
+FIG['health-table']={t:'A quick financial health check',cap:'Rules of thumb only. Banks, utilities and property companies normally carry more debt than other businesses.',
+  r:function(){return vzTable({head:['Measure','Formula','Comfortable level'],rows:[['Debt-to-equity','total debt ÷ equity','below about 1'],['Interest cover','operating profit ÷ interest','above about 3 times'],['Current ratio','current assets ÷ current liabilities','above about 1.2'],['Free cash flow','operating cash flow − capital spending','positive and growing']]})}};
+FIG['dcf']={t:'Discounting future cash flows',
+  cap:'A business that earns HK$100m next year. Each year’s cash is discounted back to today; after year 5 we assume 2% growth forever (the terminal value). HK$ million, illustrative.',
+  ctl:[{k:'g',t:'Growth for years 1–5',min:0,max:15,step:0.5,v:5,f:bfPct},{k:'r',t:'Discount rate',min:6,max:15,step:0.5,v:10,f:bfPct}],
+  r:function(p){const g=p.g/100,r=p.r/100,cf=[],pv=[];for(let t=1;t<=5;t++){const c=100*Math.pow(1+g,t-1);cf.push(Math.round(c*10)/10);pv.push(Math.round(c/Math.pow(1+r,t)*10)/10)}
+    const tv=cf[4]*1.02/(r-0.02)/Math.pow(1+r,5),s5=pv.reduce(function(a,b){return a+b},0),tot=s5+tv,pc=Math.round(s5/tot*100);
+    return vzBars({cats:['Year 1','Year 2','Year 3','Year 4','Year 5'],series:[{n:'Future cash flow',c:5,v:cf},{n:'Value today',c:1,v:pv}],ymax:200,vals:false})+vzStack({pl:84,parts:['Years 1–5','After year 5'],cls:[1,2],rows:[{n:'Total value',v:[pc,100-pc]}]})},
+  out:function(p){const g=p.g/100,r=p.r/100;let s5=0,c5=0;for(let t=1;t<=5;t++){const c=100*Math.pow(1+g,t-1);s5+=c/Math.pow(1+r,t);c5=c}const tv=c5*1.02/(r-0.02)/Math.pow(1+r,5);
+    return 'Value of the business: <b>HK$'+Math.round(s5+tv).toLocaleString('en-US')+'m</b>, of which <b>'+Math.round(tv/(s5+tv)*100)+'%</b> comes after year 5.'}};
+FIG['margin-safety']={t:'Margin of safety',
+  cap:'You estimate the share is worth HK$100. Buying well below your estimate leaves room for mistakes in the estimate.',
+  ctl:[{k:'p',t:'Market price',min:40,max:140,step:1,v:70,f:function(v){return 'HK$'+v}}],
+  r:function(p){return vzHBars({pl:118,pr:60,max:150,rows:[{n:'Your value estimate',v:100,c:1,lab:'HK$100'},{n:'Market price',v:p.p,c:p.p<=70?3:(p.p<100?2:4),lab:'HK$'+p.p}]})},
+  out:function(p){const m=(100-p.p)/100*100;return m>0?'Margin of safety: <b>'+m.toFixed(0)+'%</b>'+(m>=30?' — a comfortable cushion.':' — a thin cushion.'):'<b>No margin of safety</b>: the price is '+(-m).toFixed(0)+'% above your estimate.'}};
+
+/* ---------- 技術分析 ---------- */
+FIG['ma-play']={t:'Short and long moving averages',
+  cap:'Illustrative daily prices. A short moving average follows the price closely but gives many false signals; a long one is smoother but turns later.',
+  ctl:[{k:'m',t:'Moving average length',min:5,max:60,step:1,v:20,f:function(v){return v+' days'}}],
+  r:function(p){return vzCandle({n:90,seed:11,start:40,vol:0.016,ma:[p.m],shape:function(t){return t<0.4?0.004:t<0.65?-0.005:0.003}})},
+  out:function(p){return 'A <b>'+p.m+'-day</b> average '+(p.m<=10?'hugs the price and gives many false signals.':(p.m>=40?'is smooth but turns late.':'balances smoothness and speed.'))}};
+FIG['volume-chart']={t:'Volume confirms a breakout',cap:'Illustrative. The price breaks above its recent range on rising volume: many traders are taking part, so the move is more likely to last.',
+  r:function(){return vzCandle({n:60,seed:14,start:30,vol:0.014,volume:true,levels:true,shape:function(t){return t<0.7?0:0.012},volBoost:function(t){return t<0.7?1:2.2}})}};
+
+const BKFIG_MORE=[
+ ['c25','Fees and liquidity','two-twenty'],['c25','Fees and liquidity','liquidity-ladder'],
+ ['c9','What moves exchange rates?','fx-drivers'],['c9','Spot, forward and hedging','fx-hedge'],['c9','Hong Kong and the renminbi','cnh-cny'],
+ ['c10','Leverage: a double-edged sword','leverage-play'],['c10','Hedging and speculation','hedge-oil'],
+ ['c11','Buying a put','opt-play'],['c11','Warrants and CBBCs in Hong Kong','cbbc'],
+ ['c12','Why combine options?','strategy-table'],
+ ['c23','What drives an option\'s price?','bs-play'],['c23','Implied volatility','iv-smile'],['c23','Gamma: how fast delta changes','gamma'],
+ ['c13','Interest rate swaps','swap-net'],['c13','What is a structured product?','sp-anatomy'],['c13','Lessons from the Lehman minibonds','minibond'],
+ ['c14','Financial health','health-table'],['c14','Margin of safety','margin-safety'],
+ ['c15','Moving averages','ma-play'],['c15','Volume','volume-chart']
+];
+
+/* 讀本新圖（第 19–27 章：經濟、風險回報、組合、行為金融、財富管理、投行、金融科技、監管、職場）。數據除特別註明外均為示意 */
+function bfPath(seed,n,f,noise){const r=vrng(seed),o=[];for(let t=0;t<=n;t++)o.push(f(t)*(1+(t===0||t===n?0:(r()-0.5)*noise)));return o}
+
+/* ---------- 經濟與市場 ---------- */
+FIG['indicators']={t:'Key economic indicators',cap:'Markets react most when a number differs from what economists expected, not to the number itself.',
+  r:function(){return vzTable({head:['Indicator','What it measures','How often'],rows:[['GDP','size and growth of the economy','quarterly'],['CPI','consumer price inflation','monthly'],['Unemployment rate','share of the workforce without a job','monthly'],['PMI','business activity\nabove 50 = growing','monthly'],['Retail sales','consumer spending','monthly']]})}};
+FIG['policy-tools']={t:'Fiscal policy and monetary policy',cap:'Both aim at growth, jobs and stable prices. In Hong Kong, interest rates follow the US because of the currency peg, so fiscal policy does more of the local work.',
+  r:function(){return vzFlow({id:'pol',h:200,nodes:[{id:'f',x:0,y:6,w:184,h:72,t:'Fiscal policy',s:'the government\ntaxes and spending\n(the annual Budget)'},{id:'m',x:216,y:6,w:184,h:72,t:'Monetary policy',s:'the central bank\ninterest rates, money supply\n(HK follows the US Fed)',c:2},{id:'e',x:100,y:132,w:200,h:56,t:'The economy',s:'spending, jobs, inflation',c:3}],
+    edges:[{a:'f',b:'e'},{a:'m',b:'e'}]})}};
+FIG['hk-hub']={t:'Hong Kong as a gateway',cap:'Goods and money flow between mainland China and the rest of the world through Hong Kong: trade and re-exports, listings, bonds, loans and investment.',
+  r:function(){return vzFlow({id:'hub',h:120,nodes:[{id:'m',x:0,y:30,w:96,h:58,t:'Mainland',s:'China'},{id:'h',x:152,y:30,w:96,h:58,t:'Hong Kong',s:'finance, trade,\nlogistics',c:2},{id:'w',x:304,y:30,w:96,h:58,t:'Rest of',s:'the world'}],
+    edges:[{a:'m',b:'h',both:true,o:-14,t:'goods'},{a:'h',b:'w',both:true,o:-14,t:'goods'},{a:'m',b:'h',both:true,o:14,dash:true,t:'money',ty:16},{a:'h',b:'w',both:true,o:14,dash:true,t:'money',ty:16}]})}};
+
+/* ---------- 風險與回報 ---------- */
+FIG['drawdown']={t:'Maximum drawdown',cap:'Illustrative portfolio. The maximum drawdown is the biggest fall from a peak to a later low. It shows the pain an investor must be ready to sit through.',
+  r:function(){const v=bfPath(4,48,function(t){return t<=20?100+2.5*t:(t<=30?150-4.8*(t-20):102+33*(t-30)/18)},0.025),x=vrange(0,48,1);v[20]=150;v[30]=102;
+    return vzLine({x:x,ymin:80,ymax:165,legend:false,xname:'Month',xlab:'Months',xticks:[0,12,24,36,48],hfmt:function(v){return v.toFixed(0)},series:[{n:'Portfolio value',c:1,v:v}],
+      marks:[{x:20,y:150,t:'peak 150',c:1,dy:-9},{x:30,y:102,t:'low 102: drawdown −32%',c:4,dx:8,dy:14}]})}};
+FIG['sharpe']={t:'Return per unit of risk',cap:'Sharpe ratio = (return − risk-free rate) ÷ volatility, here with a 2% risk-free rate. Fund B earns less but is rewarded better for each unit of risk.',
+  r:function(){return vzHBars({pl:176,pr:70,max:0.7,rows:[{n:'Fund A: 9% return, 18% risk',v:(9-2)/18,c:1,lab:'Sharpe 0.39'},{n:'Fund B: 6% return, 7% risk',v:(6-2)/7,c:3,lab:'Sharpe 0.57'}]})}};
+FIG['diversify']={t:'Diversification reduces risk — up to a point',
+  cap:'Each stock has 35% volatility. Adding stocks removes company-specific risk, but risk the stocks share (measured by correlation) remains: that is market risk.',
+  ctl:[{k:'n',t:'Number of stocks',min:1,max:50,step:1,v:10,f:function(v){return String(v)}},{k:'c',t:'Correlation between stocks',min:0,max:0.9,step:0.05,v:0.3,f:function(v){return v.toFixed(2)}}],
+  r:function(p){const x=vrange(1,50,1),risk=function(n){return 35*Math.sqrt(1/n+(1-1/n)*p.c)};return vzLine({x:x,ymin:0,ymax:38,legend:false,yfmt:'%',hfmt:function(v){return v.toFixed(1)+'%'},hx:function(n){return n+(n===1?' stock':' stocks')},xlab:'Number of stocks in the portfolio',ylab:'Portfolio risk',xticks:[1,10,20,30,40,50],
+    series:[{n:'Portfolio risk',c:1,v:x.map(risk)}],hlines:[{y:35*Math.sqrt(p.c),t:'market risk '+(35*Math.sqrt(p.c)).toFixed(1)+'%',c:4,below:true}],marks:[{x:p.n,y:risk(p.n),t:risk(p.n).toFixed(1)+'%',c:1,dx:6,dy:-8}]})},
+  out:function(p){const r=35*Math.sqrt(1/p.n+(1-1/p.n)*p.c);return 'With <b>'+p.n+'</b> '+(p.n===1?'stock':'stocks')+', risk is <b>'+r.toFixed(1)+'%</b> (one stock: 35%). It can never fall below <b>'+(35*Math.sqrt(p.c)).toFixed(1)+'%</b> at this correlation.'}};
+
+/* ---------- 投資組合 ---------- */
+FIG['alloc-play']={t:'Choosing a mix of stocks and bonds',
+  cap:'Assumed: stocks 7% expected return and 16% volatility; bonds 3% and 5%; correlation 0.2. A “bad year” is two standard deviations below the average (about 1 year in 40). Illustrative.',
+  ctl:[{k:'w',t:'Share in stocks',min:0,max:100,step:10,v:60,f:function(v){return v+'% stocks / '+(100-v)+'% bonds'}}],
+  r:function(p){const w=p.w/100,e=7*w+3*(1-w),s=Math.sqrt(w*w*256+(1-w)*(1-w)*25+2*w*(1-w)*0.2*16*5);
+    return vzBars({cats:['Bad year','Expected','Good year'],series:[{n:'Return',v:[e-2*s,e,e+2*s]}],signColor:true,ymin:-28,ymax:42,vfmt:function(v){return bfSign(v,1)+'%'},yfmt:'%'})},
+  out:function(p){const w=p.w/100,e=7*w+3*(1-w),s=Math.sqrt(w*w*256+(1-w)*(1-w)*25+2*w*(1-w)*0.2*16*5);return 'Expected <b>'+e.toFixed(1)+'%</b> a year, volatility <b>'+s.toFixed(1)+'%</b>. In a bad year: <b>'+bfSign(e-2*s,1)+'%</b>.'}};
+FIG['rebalance']={t:'Rebalancing back to the target',cap:'After a strong year for stocks, the portfolio drifts from 60/40 to 70/30. Rebalancing sells some stocks and buys bonds: it locks in gains and brings risk back to the target.',
+  r:function(){return vzStack({pl:118,parts:['Stocks','Bonds'],cls:[1,2],rows:[{n:'Target',v:[60,40]},{n:'After a rally',v:[70,30]},{n:'Rebalanced',v:[60,40]}]})}};
+FIG['dca']={t:'Regular investing buys more when prices are low',cap:'HK$1,000 invested every month for a year. The same money buys more units when the price is low, so the average cost (HK$9.50) is below the average price (HK$9.75). Illustrative.',
+  r:function(){const pr=[10,9,8,7,8,9,10,11,10,12,11,12],x=vrange(1,12,1);return vzLine({x:x,h:170,ymin:5,ymax:13,legend:false,xname:'Month',xlab:'Month',xticks:[1,3,6,9,12],hfmt:function(v){return 'HK$'+v},ylab:'Price (HK$)',series:[{n:'Price',c:1,v:pr}]})+
+    vzBars({h:150,cats:x.map(function(m){return String(m)}),series:[{n:'Units bought',c:2,v:pr.map(function(p){return Math.round(1000/p)})}],vals:false,ylab:'Units bought with HK$1,000'})}};
+
+/* ---------- 行為金融 ---------- */
+FIG['anchor']={t:'Anchoring on the price you paid',cap:'Illustrative. The investor bought at 100 and waits to “get back to 100”. But the purchase price says nothing about what the share is worth today.',
+  r:function(){const v=bfPath(9,24,function(t){return t<=8?100-5*t:60+3*Math.sin(t/2)},0.03),x=vrange(0,24,1);return vzLine({x:x,ymin:40,ymax:110,legend:false,xname:'Month',xlab:'Months after buying',xticks:[0,6,12,18,24],hfmt:function(v){return v.toFixed(0)},series:[{n:'Share price',c:1,v:v}],
+    hlines:[{y:100,t:'your purchase price (the anchor)',c:5},{y:55,t:'value of the business today',c:2,left:true,below:true}]})}};
+FIG['herding']={t:'Herding: how bubbles grow and burst',cap:'Illustrative. Rising prices attract more buyers, which pushes prices higher still, until there are no new buyers left. Then the same crowd rushes for the exit.',
+  r:function(){const v=bfPath(12,36,function(t){return t<=24?100*Math.exp(0.051*t):340*Math.exp(-0.0868*(t-24))},0.03),x=vrange(0,36,1);v[24]=340;
+    return vzLine({x:x,ymin:0,ymax:380,legend:false,xname:'Month',xlab:'Months',xticks:[0,6,12,18,24,30,36],hfmt:function(v){return v.toFixed(0)},series:[{n:'Price index',c:1,v:v}],
+      marks:[{x:10,y:v[10],t:'early buyers',c:1,dx:-6,dy:-10,a:'end'},{x:24,y:340,t:'“everyone is buying”',c:2,dx:-8,dy:-6,a:'end'},{x:31,y:v[31],t:'panic selling',c:4,dx:6,dy:-8}]})}};
+FIG['adviser-steps']={t:'Five habits that beat our biases',cap:'Rules decided in calm times protect investors from decisions made in a panic or a rush of excitement.',
+  r:function(){return vzSteps({steps:[['Write down a plan','goals, time horizon, target mix'],['Set rules in advance','for example, rebalance once a year'],['Automate regular investing','no need to pick the “right” day'],['Review on a schedule','not every time the market moves'],['Keep a decision diary','why you bought or sold, and what happened']]})}};
+
+/* ---------- 財富管理與退休 ---------- */
+FIG['wm-process']={t:'The wealth management process',cap:'A cycle, not a one-off sale: plans are reviewed when markets or the client’s life change.',
+  r:function(){return vzSteps({steps:[['Know the client','goals, time horizon, risk profile'],['Analyse','cash flow, assets, protection gaps'],['Recommend a plan','asset allocation, products, insurance'],['Implement','open accounts, invest, arrange cover'],['Review regularly','at least once a year, or after life changes']]})}};
+FIG['protect-first']={t:'Build from the base: protection before growth',cap:'Most people should secure the lower levels before moving up.',
+  r:function(){return vzPyramid({ordinal:true,hue:1,levels:[{t:'Legacy planning'},{t:'Higher-risk investments'},{t:'Long-term investments'},{t:'Retirement: MPF and savings'},{t:'Emergency fund and insurance'}]})}};
+FIG['mpf-grow']={t:'How your MPF can grow',
+  cap:'Employee and employer each pay 5% of monthly income, capped at HK$1,500 each (income above HK$30,000); employees earning less than HK$7,100 pay nothing themselves. Ignores pay rises and fees. Rules at the time of writing.',
+  ctl:[{k:'s',t:'Monthly income',min:8000,max:60000,step:1000,v:25000,f:bfHK},{k:'n',t:'Years of contributions',min:5,max:40,step:1,v:30,f:bfYrs},{k:'r',t:'Investment return per year',min:0,max:8,step:0.5,v:4,f:bfPct}],
+  r:function(p){const ee=p.s<7100?0:Math.min(1500,p.s*0.05),er=Math.min(1500,p.s*0.05),m=ee+er,rr=p.r/1200,x=vrange(0,p.n,1);let bal=0;const B=[0],C=[0];
+    for(let y=1;y<=p.n;y++){for(let k=0;k<12;k++)bal=bal*(1+rr)+m;B.push(bal);C.push(m*12*y)}
+    return vzLine({x:x,ymin:0,yfmt:'hk',hfmt:bfHK,xname:'Year',xlab:'Years',series:[{n:'MPF balance',c:1,v:B},{n:'Money paid in',c:5,dash:true,v:C}]})},
+  out:function(p){const ee=p.s<7100?0:Math.min(1500,p.s*0.05),er=Math.min(1500,p.s*0.05),m=ee+er,rr=p.r/1200;let bal=0;for(let k=0;k<p.n*12;k++)bal=bal*(1+rr)+m;
+    return 'Contributions <b>'+bfHK(m)+'</b> a month → about <b>'+bfHK(bal)+'</b> after '+bfYrs(p.n)+' (paid in '+bfHK(m*12*p.n)+').'}};
+FIG['estate-flow']={t:'Two ways to pass wealth on',cap:'A will works through probate after death. A trust can hold assets during life and pass them on without waiting for probate.',
+  r:function(){return vzFlow({id:'est',h:176,nodes:[{id:'w',x:0,y:8,w:88,h:48,t:'Will'},{id:'x',x:104,y:8,w:88,h:48,t:'Executor'},{id:'p',x:208,y:8,w:88,h:48,t:'Probate',s:'court grant'},{id:'h',x:312,y:8,w:88,h:48,t:'Heirs',c:3},{id:'t',x:0,y:118,w:120,h:50,t:'Trust',s:'set up during life',c:2},{id:'e',x:140,y:118,w:120,h:50,t:'Trustee',s:'holds the assets'},{id:'b',x:280,y:118,w:120,h:50,t:'Beneficiaries',s:'no probate needed',c:3}],
+    edges:[{a:'w',b:'x'},{a:'x',b:'p'},{a:'p',b:'h'},{a:'t',b:'e'},{a:'e',b:'b'}]})}};
+
+/* ---------- 投資銀行與上市 ---------- */
+FIG['ib-divisions']={t:'What the main parts of an investment bank do',cap:'Large banks combine all of these; smaller “boutiques” may focus on advice only.',
+  r:function(){return vzTable({head:['Division','What it does'],rows:[['Equity capital markets (ECM)','raises money by selling shares: IPOs, placings'],['Debt capital markets (DCM)','raises money through bonds and loans'],['M&A advisory','advises on buying, selling and merging companies'],['Sales and trading','buys and sells securities for clients'],['Research','analyses companies, sectors and markets']]})}};
+FIG['bookbuild']={t:'Bookbuilding: setting the IPO price',cap:'Illustrative. Banks collect orders at different prices. Demand covers the deal up to HK$9.5; the price is set at HK$9.0, with orders for about three times the shares on offer, so trading can start well.',
+  r:function(){return vzBars({cats:['HK$8.0','HK$8.5','HK$9.0','HK$9.5','HK$10.0'],series:[{n:'Times covered',v:[4.7,3.8,3.0,1.8,0.9]}],colors:[1,1,2,1,1],ymax:5.4,hlines:[{y:1,t:'fully covered (1×)',c:4}],vfmt:function(v){return v+'×'},yfmt:function(v){return v+'×'}})}};
+FIG['ma-types']={t:'Three kinds of merger',cap:'The type of deal shapes why it is done and what regulators look at.',
+  r:function(){return vzTable({head:['Type','Example','Usual aim'],rows:[['Horizontal','two banks merge','bigger scale, lower costs'],['Vertical','a carmaker buys a battery maker','control of the supply chain'],['Conglomerate','unrelated businesses join','spread risk across industries']]})}};
+
+/* ---------- 金融科技 ---------- */
+FIG['blockchain']={t:'How a blockchain links records',cap:'Each block stores the fingerprint (hash) of the block before it. Changing an old record changes every later fingerprint, so tampering is easy to spot.',
+  r:function(){return vzFlow({id:'bc',h:112,nodes:[{id:'a',x:0,y:18,w:112,h:76,t:'Block 101',s:'transactions\nfingerprint of 100'},{id:'b',x:144,y:18,w:112,h:76,t:'Block 102',s:'transactions\nfingerprint of 101',c:2},{id:'c',x:288,y:18,w:112,h:76,t:'Block 103',s:'transactions\nfingerprint of 102'}],edges:[{a:'a',b:'b'},{a:'b',b:'c'}]})}};
+FIG['tokenise']={t:'Tokenising a real asset',cap:'A custodian holds the real asset; tokens on a blockchain record who owns it. Tokens can be split into small units and settle quickly, but investors still rely on the custodian and the law.',
+  r:function(){return vzFlow({id:'tk',h:170,nodes:[{id:'a',x:0,y:8,w:100,h:56,t:'Real asset',s:'bond, building,\nfund'},{id:'t',x:150,y:8,w:100,h:56,t:'Tokens',s:'on a blockchain',c:2},{id:'i',x:300,y:8,w:100,h:56,t:'Investors',s:'own small units'},{id:'c',x:0,y:108,w:100,h:54,t:'Custodian',s:'keeps the asset\nsafe'}],
+    edges:[{a:'a',b:'t',t:'issued'},{a:'t',b:'i',t:'traded',both:true},{a:'c',b:'a',t:'holds',tx:22}]})}};
+FIG['ai-uses']={t:'Where banks use AI — and what can go wrong',cap:'Regulators expect banks to test models, explain decisions and keep humans responsible.',
+  r:function(){return vzTable({head:['Use','Example','Risk to manage'],rows:[['Customer service','chatbots answer account questions','wrong answers'],['Fraud detection','spots unusual card payments','false alarms'],['Credit scoring','faster loan decisions','unfair bias'],['KYC checks','reads ID documents','data privacy'],['Research','summarises reports','errors that look convincing']]})}};
+
+/* ---------- 監管與合規 ---------- */
+FIG['aml-stages']={t:'The three stages of money laundering',cap:'Banks look for red flags at every stage: cash just below reporting levels, transfers with no business reason, and buyers who cannot explain their wealth.',
+  r:function(){return vzSteps({steps:[['Placement','dirty money enters the system: many small cash deposits'],['Layering','money is moved around to hide where it came from'],['Integration','it returns looking legal: property, luxury goods, “business income”']]})}};
+FIG['suitability']={t:'Matching product risk to the client',cap:'A product is normally suitable only if its risk rating is no higher than the client’s risk profile. Advisers must also check knowledge, experience and concentration.',
+  r:function(){return vzMatrix({pl:112,rows:['Product risk 5','Product risk 4','Product risk 3','Product risk 2','Product risk 1'],cols:['Client 1','Client 2','Client 3','Client 4','Client 5'],xlab:'Client risk profile (1 = very cautious, 5 = aggressive)',
+    cell:function(i,j){const pr=5-i,cl=j+1;return pr<=cl?{c:3,o:0.55,t:'✓'}:{c:4,o:0.18,t:'✗'}}})}};
+FIG['misconduct']={t:'Market misconduct in Hong Kong',cap:'Main types under the Securities and Futures Ordinance. They can lead to criminal prosecution or proceedings before the Market Misconduct Tribunal.',
+  r:function(){return vzTable({head:['Misconduct','What it means'],rows:[['Insider dealing','trading on price-sensitive information that is not public'],['False trading','creating a false picture of trading activity or prices'],['Price rigging','pushing a price up or down artificially'],['Stock market manipulation','trades meant to move a price and attract others'],['False or misleading information','spreading news that is untrue to move a price']]})}};
+
+/* ---------- 香港金融業工作 ---------- */
+FIG['jd-decode']={t:'Reading between the lines of a job advert',cap:'Common phrases and what employers usually mean by them.',
+  r:function(){return vzTable({head:['The advert says','It usually means'],rows:[['Fast-paced environment','heavy workload and tight deadlines'],['Strong communication skills','you will write and present in English'],['Detail-oriented','accuracy matters: numbers, documents, compliance'],['Team player','you will work across front, middle and back office'],['Licensed, or able to obtain a licence','pass the HKSI exams for SFC licensing']]})}};
+
+BKFIG_MORE.push(
+ ['c16','Key economic indicators','indicators'],['c16','Fiscal policy and monetary policy','policy-tools'],['c16','Hong Kong\'s open economy','hk-hub'],
+ ['c17','Measuring risk','drawdown'],['c17','Return per unit of risk','sharpe'],
+ ['c18','Asset allocation comes first','alloc-play'],['c18','Rebalancing','rebalance'],['c18','Regular investing','dca'],
+ ['c26','Overconfidence and anchoring','anchor'],['c26','Herding and confirmation bias','herding'],['c26','What advisers can do','adviser-steps'],
+ ['c19','The wealth management process','wm-process'],['c19','Protection comes before growth','protect-first'],['c19','The Mandatory Provident Fund','mpf-grow'],['c19','Passing wealth on','estate-flow'],
+ ['c20','What do investment banks do?','ib-divisions'],['c20','The IPO process','bookbuild'],['c20','Mergers and acquisitions','ma-types'],
+ ['c21','Blockchain, tokenisation and virtual assets','blockchain'],['c21','Blockchain, tokenisation and virtual assets','tokenise'],['c21','AI and automation','ai-uses'],
+ ['c22','Know your customer and anti-money laundering','aml-stages'],['c22','Suitability and fair treatment','suitability'],['c22','Market misconduct','misconduct'],
+ ['c27','Reading a job description','jd-decode']
+);
 
 /* 金融英文讀本 Finance in English — 第 1-6 章 */
 const BOOK_TITLE={en:"Finance in English",sub:"A Practical Guide to Markets, Products and the Hong Kong Industry",zh:"金融英文讀本：市場、產品與香港金融業實用指南"};
@@ -3895,6 +4388,34 @@ c27:[["In an interview, you are asked: 'Why do you want to work in Hong Kong fin
 ["The report is about…% done.","I'm waiting for…, which should…","I'll send you a draft by…"]]]
 };
 
+/* 讀本新圖放喺邊：[章節 id, 小標題, 圖 id, 位置]；位置 'end'＝該小節最尾（預設），'p1'＝該小節第一段之後 */
+const BKFIG_PLACE=[
+ ['c1','Inflation and real return','real-return'],['c1','Present value and future value','pv-discount'],
+ ['c2','Types of accounts','accounts'],['c2','Liquidity, reserves and capital','bank-bs'],
+ ['c3','HIBOR, prime rate and your mortgage','h-plan'],['c3','What it means for clients','rate-winners'],
+ ['c4','The income statement','income-wf'],['c4','The cash flow statement','cf-sections'],['c4','Red flags to watch','profit-cash'],
+ ['c5','Why companies issue shares','ownership'],['c5','Costs and connections','trade-cost'],['c5','Costs and connections','connect'],
+ ['c6','The price-to-earnings ratio','pe-play'],['c6','Growth stocks and value stocks','growth-value'],
+ ['c7','Interest rate risk and duration','duration-bars'],['c7','Credit risk and ratings','ratings'],
+ ['c24','Mortgages and repayment','ltv'],['c24','Credit analysis: the five Cs','five-cs'],
+ ['c8','Active and passive investing','active-passive'],['c8','Exchange-traded funds','etf-flow'],['c8','REITs','reit-flow']
+];
+const BKFIG_MISS=[];
+/* 互動圖冇傳參數時用預設值（舊代碼直接 FIG[id].r() 都得） */
+Object.keys(FIG).forEach(function(id){const f=FIG[id];if(!f.ctl||f.__w)return;const r0=f.r,o0=f.out;f.__w=1;f.r=function(p){return r0(p||fzP(id))};if(o0)f.out=function(p){return o0(p||fzP(id))}});
+(function(){
+  if(typeof BKFIG_MORE!=='undefined')BKFIG_MORE.forEach(function(x){BKFIG_PLACE.push(x)});
+  BKFIG_PLACE.forEach(function(x){const ch=BOOK.filter(function(c){return c.id===x[0]})[0];
+    if(!ch||!FIG[x[2]]){BKFIG_MISS.push(x.join(' | '));return}
+    if(ch.s.some(function(it){return it[0]==='f'&&it[1]===x[2]}))return;
+    let hi=-1;for(let i=0;i<ch.s.length;i++){if(ch.s[i][0]==='h'&&ch.s[i][1]===x[1]){hi=i;break}}
+    if(hi<0){BKFIG_MISS.push(x.join(' | '));return}
+    let at=hi+1;
+    if(x[3]==='p1'){while(at<ch.s.length&&ch.s[at][0]!=='p')at++;at++}
+    else while(at<ch.s.length&&ch.s[at][0]!=='h')at++;
+    ch.s.splice(at,0,['f',x[2]])});
+})();
+
 /* 金融英文讀本：章節渲染（App 和 PDF 共用） */
 const BK_SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
 /* 章節次序（補充章節插入相關部分；章節 id 不變，閱讀進度不受影響） */
@@ -3925,7 +4446,7 @@ function bkBody(ch,mode){
   ch.s.forEach(function(it){
     if(it[0]==='h')h+='<h3 class="bh">'+vx(it[1])+'</h3>';
     else if(it[0]==='p')h+='<p class="bp">'+bkMark(it[1],terms,used,mode,ch.id)+(mode==='app'?' <button class="ic bsay" data-say="'+vx(it[1])+'" aria-label="朗讀這一段" title="朗讀這一段">'+BK_SPK+'</button>':'')+'</p>';
-    else if(it[0]==='f'){fi++;h+=figHTML(it[1],n+'.'+fi)}
+    else if(it[0]==='f'){fi++;h+=figHTML(it[1],n+'.'+fi,mode)}
     else if(it[0]==='b')h+='<aside class="bbox"><b>'+vx(it[1])+'</b><p>'+bkMark(it[2],terms,used,mode,ch.id)+'</p></aside>';
   });
   return h;
@@ -6202,6 +6723,7 @@ function libSearchInput(v){SRQ=v;clearTimeout(srT);srT=setTimeout(function(){con
 
 /* 資料庫相關操作 */
 function libAct(a,ds,el,n){
+  if(fzAct(a,ds,el))return;
   if(bookAct(a,ds))return;
   if(libAct2(a,ds))return;
   switch(a){
