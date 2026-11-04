@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="bbbf0c5764">
+<meta name="app-ver" content="6c85a996bd">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -597,6 +597,14 @@ svg.vz[data-hv]:focus{outline:none}svg.vz[data-hv]:focus-visible{outline:2px sol
 .vz .o1,.vz .o2,.vz .o3,.vz .o4,.vz .o5,.vz .o6{font-weight:700;font-size:10px}
 .vz .o1.sm,.vz .o2.sm,.vz .o3.sm,.vz .o4.sm,.vz .o5.sm,.vz .o6.sm{font-size:9px;font-weight:600}
 .vz circle.mk{stroke:var(--surface);stroke-width:2}
+/* 講圖表 */
+.vzft{margin-top:8px}.vzsay{min-height:34px;padding:5px 12px;font-size:13.5px}.vzsay svg{width:16px;height:16px}
+.vzmini{max-width:420px}
+.ctg{margin:4px 0 10px}.ctp{font-size:14px;line-height:1.55;margin:4px 0}.ctp span{color:var(--muted)}
+@media print{.vzft{display:none!important}}
+button.row.bkrow{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);border-radius:0;font:inherit;color:inherit;cursor:pointer;padding-left:0;padding-right:0}
+button.row.bkrow:first-child{border-top:0}
+button.row.bkrow .en{font-weight:600}
 
 </style>
 </head>
@@ -3253,7 +3261,7 @@ function figHTML(id,num,mode){const f=FIG[id];if(!f)return '';const app=mode==='
   let out='';if(f.out)try{out=f.out(p)}catch(e){out=''}
   return '<figure class="vzf'+(f.ctl?' vzia':'')+'" id="fg-'+id+'"><figcaption class="vzt"><span>Figure '+vx(num)+'</span> '+vx(f.t)+(f.ctl&&app?' <em class="vzi">Interactive</em>':'')+'</figcaption>'+
     '<div class="vzbox" id="fz-'+id+'">'+svg+'</div>'+(out?'<p class="vzo" id="fo-'+id+'" aria-live="polite">'+out+'</p>':'')+(f.ctl&&app?fzCtl(id,f,p):'')+
-    '<p class="vzc">'+vx(f.cap)+'</p>'+(f.ctl&&!app?'<p class="vzn">Interactive in the app: drag the sliders to try your own numbers.</p>':'')+'</figure>'}
+    '<p class="vzc">'+vx(f.cap)+'</p>'+(app?'<div class="vzft"><button type="button" class="btn ghost vzsay" data-act="fig-say" data-fz="'+id+'">'+ICON.mic+' Describe this chart</button></div>':'')+(f.ctl&&!app?'<p class="vzn">Interactive in the app: drag the sliders to try your own numbers.</p>':'')+'</figure>'}
 
 /* 讀本補充章節的圖表 */
 function vbsDelta(S,K,T,r,s){if(T<=0)return S>K?1:0;const d1=(Math.log(S/K)+(r+s*s/2)*T)/(s*Math.sqrt(T));return vncdf(d1)}
@@ -4463,6 +4471,175 @@ function bkGloss(){const m={},out=[];BOOK.forEach(function(c){c.kw.forEach(funct
 
 /* 每天課程 → 推薦章節 */
 const BOOK_DAY={31:'c1',32:'c1',33:'c2',34:'c2',36:'c3',37:'c3',38:'c3',39:'c6',40:'c2',41:'c5',43:'c8',44:'c8',45:'c24',46:'c24',47:'c4',48:'c4',50:'c6',51:'c6',52:'c7',53:'c9',54:'c27',55:'c22',57:'c17',58:'c17',59:'c18',61:'c19',62:'c19',64:'c5',65:'c25',66:'c20',67:'c4',68:'c17',69:'c16',71:'c21',72:'c15',73:'c26',74:'c19',75:'c10',76:'c14',78:'c11',79:'c12',80:'c21',81:'c22',82:'c13',83:'c27',85:'c18',86:'c23',87:'c9',88:'c15',89:'c27'};
+
+/* 讀本：講圖表（Describe the chart）——每張圖一段示範講法、圖表常用語、口語練習頁 */
+const FIG_SAY={
+ 'fv-compound':'This chart compares simple and compound interest on HK$10,000 at 5% a year. For the first few years the two lines are close, but after 30 years compound interest gives about HK$43,000, against HK$25,000 with simple interest. The longer you invest, the more compounding matters.',
+ 'inflation':'This chart shows what HK$100 can buy if prices rise by 3% a year. After ten years it buys only about HK$74 of today’s goods, and after thirty years about HK$41. So cash that earns nothing slowly loses its value.',
+ 'real-return':'Here you can see why real return matters. A deposit paying 3% sounds fine, but with inflation at 2.5% the real return is only about half a percent. If inflation is higher than the interest rate, the real return turns negative.',
+ 'pv-discount':'This chart shows what future money is worth today. HK$100,000 that you will receive in ten years is worth about HK$61,000 today if the discount rate is 5%. The further away the money, and the higher the rate, the lower its present value.',
+ 'bank-flow':'This diagram shows how a bank makes money. It takes deposits from savers and pays them, say, 2%, then lends the money to borrowers at around 6%. The difference, the spread, is the bank’s main source of income.',
+ 'accounts':'This table compares four common bank accounts. Savings and current accounts give you access at any time, while a time deposit locks your money for a fixed term in return for a higher rate. A multi-currency account is useful for holding US dollars or renminbi.',
+ 'bank-bs':'This chart shows a simple bank balance sheet. Loans make up most of the assets, and capital is only ten per cent of the total. If loans go bad, the losses come out of capital first, so a bank with too little capital can quickly become insolvent.',
+ 'rate-chain':'This diagram shows how a rate rise works through the economy. Funding costs go up first, then loans and mortgages become more expensive, so people borrow and spend less. In the end inflation slows, but this usually takes six to eighteen months.',
+ 'peg-band':'This chart shows the Linked Exchange Rate System. The US dollar rate must stay between 7.75 and 7.85 Hong Kong dollars. If it reaches either side, the HKMA steps in, so the rate moves only within this narrow band.',
+ 'h-plan':'This chart shows a HIBOR mortgage with a cap. Your rate is HIBOR plus 1.3%, so it rises with HIBOR, but it can never go above the cap of 3.75%. With HIBOR at 2%, the rate is 3.3% and the monthly payment on a five-million-dollar loan is about HK$21,900.',
+ 'rate-winners':'This table shows who gains and who loses when interest rates move. When rates rise, savers earn more, but borrowers pay more and bond prices fall. When rates fall, the effects are the opposite.',
+ 'income-wf':'This waterfall chart walks through an income statement. Revenue of 100 million falls to a gross profit of 42 after the cost of sales, then to an operating profit of 18. After interest and tax, the company keeps a net profit of 12.5 million.',
+ 'balance':'This chart shows the balance sheet equation. On the left are the company’s assets, and on the right are its liabilities plus shareholders’ equity. The two sides always balance: what the company owns equals what it owes plus what belongs to its owners.',
+ 'three-statements':'This diagram shows how the three financial statements connect. Profit from the income statement adds to equity on the balance sheet, and the cash flow statement explains why the cash balance changed. You need all three to see the full picture.',
+ 'cf-sections':'This chart shows the three parts of the cash flow statement. The company earns 18 million from operations, spends 10 million on investment and 5 million on financing, such as dividends. Overall, its cash rises by 3 million.',
+ 'profit-cash':'This chart shows a warning sign. Net profit rises every year, from 10 to 25 million, but operating cash flow falls from 11 to only 3 million. When profit and cash move apart like this, an analyst should ask whether customers are really paying.',
+ 'ownership':'This chart shows how an IPO dilutes the existing owners. Before the listing, the founders own 80% of the company. After new shares are sold, they own 60%, but of a bigger company with more money to grow.',
+ 'order-book':'This is an order book. Buyers wait at the bid prices on one side and sellers wait at the ask prices on the other. The gap between the best bid and the best ask is the spread, and a market order trades at the best price available.',
+ 'candle-parts':'This diagram explains how to read a candlestick. The body shows the opening and closing prices, and the thin lines show the high and the low. A green candle means the price closed higher than it opened; a red one means it closed lower.',
+ 'candles':'This is a candlestick chart of an illustrative stock over forty trading days. Each candle shows one day’s open, high, low and close, so you can see at a glance which days were strong and how much the price moved.',
+ 'trade-cost':'This chart breaks down the cost of buying Hong Kong shares. On a HK$100,000 purchase, stamp duty of 0.1% is the biggest cost, and the other fees are tiny. A minimum commission makes small trades much more expensive in percentage terms.',
+ 'connect':'This diagram shows how Stock Connect works. International investors buy mainland A-shares through Hong Kong, which is called northbound trading, and mainland investors buy Hong Kong shares southbound. Hong Kong sits in the middle as the gateway.',
+ 'pe-bars':'This chart compares typical price-to-earnings ratios by sector. Banks trade at about 7 times earnings, while technology companies trade at around 26 times, because investors expect faster growth. That is why you should compare a P/E with similar companies.',
+ 'pe-play':'This chart explains what a P/E ratio means. A share price of 60 and earnings of 4 dollars a share give a P/E of 15, so you are paying for fifteen years of today’s profit. The earnings yield is the same idea upside down: about 6.7% a year.',
+ 'ratios':'This table summarises the key valuation ratios: P/E, price to book and dividend yield. Each one compares the share price with something the company produces or owns. They are most useful when you compare them with peers and with the company’s own history.',
+ 'growth-value':'This chart places stocks on two scales: how fast profits are expected to grow and how expensive the shares are. Growth stocks sit at the top right and value stocks at the bottom left. The danger zone is a stock that is expensive but growing slowly.',
+ 'bond-cash':'This chart shows the cash flows of a five-year bond. You pay 100 today, receive a 5% coupon every year, and get your 100 back at maturity together with the last coupon. That is why a bond is called fixed income.',
+ 'price-yield':'This chart shows that bond prices move opposite to yields. At a 5% yield, a 5% coupon bond is worth exactly 100. If yields rise to 6%, the 10-year bond falls to about 93 and the 30-year bond to about 86, so longer bonds move much more.',
+ 'duration-bars':'This chart shows interest rate risk. If yields rise by one percentage point, a 2-year bond loses about 2%, but a 30-year bond loses more than 15%. This sensitivity is what we call duration.',
+ 'ratings':'This chart compares credit ratings with the extra yield investors demand. Triple-A bonds pay only about half a percent more than government bonds, while CCC bonds pay around 9% more. Below BBB, bonds are called high yield, or junk.',
+ 'yield-curves':'This chart shows three shapes of the yield curve. Normally, long-term bonds pay more than short-term ones. When the curve turns flat or inverted, with short rates above long rates, markets often expect a slowdown or even a recession.',
+ 'amort':'This chart shows where mortgage payments go. On a five-million-dollar loan at 3.5% over thirty years, the monthly payment is about HK$22,500. In the early years most of it is interest; later, most of it repays the loan.',
+ 'ltv':'This chart shows loan-to-value and negative equity. With a 70% loan on an eight-million-dollar flat, your equity is 2.4 million. If the price falls by more than 30%, the loan is bigger than the flat’s value, and you are in negative equity.',
+ 'five-cs':'This diagram shows the five Cs of credit. Before lending, a bank looks at the borrower’s character, capacity to repay, capital, collateral and conditions. Together they decide whether to lend, how much and at what rate.',
+ 'lc':'This diagram shows how a letter of credit works, step by step. The buyer’s bank promises to pay the seller once the right shipping documents are presented. The seller relies on the bank’s promise, and the banks check documents, not the goods.',
+ 'active-passive':'This chart shows how few active funds beat their index over time. Over one year, perhaps four in ten do, but over fifteen years only about one in ten. The main reason is that higher fees eat into returns year after year.',
+ 'etf-flow':'This diagram explains how an ETF works. Investors buy and sell units on the exchange, and market makers keep the price close to the value of the shares inside the fund. They do this by creating or redeeming units with the manager.',
+ 'reit-flow':'This diagram shows how a REIT pays its investors. Investors buy units, the REIT owns malls and offices, and tenants pay rent. In Hong Kong a REIT must pay out at least 90% of its distributable income, so it suits income investors.',
+ 'fee-drag':'This chart shows how fees reduce long-term returns. HK$100,000 growing at 7% becomes about HK$760,000 in thirty years, but with a 1.5% annual fee it is only about HK$500,000. The fee costs more than a third of the final value.',
+ 'fund-mix':'This chart shows what is inside a balanced fund. More than half is in global stocks, about a third is in bonds, and the rest is cash and other assets. Always check the fact sheet, because the real mix changes over time.',
+ 'alts':'This table lists the main types of alternative investment, from private equity to real estate and commodities. They can add diversification, but most of them are hard to sell quickly, so investors must read the liquidity terms carefully.',
+ 'jcurve':'This chart shows the J-curve of a private equity fund. In the first years the return is negative, because fees are paid and companies are being bought. Later, as the companies are sold, the return climbs and finishes well above zero.',
+ 'two-twenty':'This chart shows what “2 and 20” means. If a fund makes 15% before fees, the manager takes a 2% management fee and 20% of the remaining profit. Investors keep about 10.4%, and the manager earns almost a third of the gain.',
+ 'liquidity-ladder':'This chart compares how quickly you can turn investments into cash. A bank deposit is available the same day and listed shares in about two days, but a hedge fund may take months and a private equity fund can lock your money up for ten years.',
+ 'fx-quote':'This diagram explains how to read a currency quote. In USD/HKD 7.8125, the US dollar is the base currency and the Hong Kong dollar is the quote currency. It means one US dollar costs about 7.81 Hong Kong dollars.',
+ 'fx-drivers':'This table shows what tends to move a currency. Higher interest rates and strong growth usually make a currency stronger, while high inflation and a large trade deficit make it weaker. When markets are afraid, safe havens like the US dollar often rise.',
+ 'fx-hedge':'This chart shows how an exporter hedges with a forward contract. The company will receive one million euros and sells them forward at 8.80. Without the hedge, its income would move with the exchange rate; with it, the company receives 8.8 million Hong Kong dollars whatever happens.',
+ 'cnh-cny':'This diagram compares onshore and offshore renminbi. CNY trades in mainland China under capital controls, while CNH trades freely in Hong Kong. The two are linked through the Connect schemes and trade settlement, so their rates are close but not identical.',
+ 'futures-pay':'This chart shows the profit and loss of a futures contract agreed at 100. If the price rises to 110, the buyer gains 10 and the seller loses 10. Every gain for one side is an equal loss for the other.',
+ 'margin':'This chart shows mark-to-market. Futures gains and losses are settled every day, so the margin account goes up and down. If it falls below the maintenance level, the trader gets a margin call and must add money.',
+ 'leverage-play':'This chart shows how leverage magnifies results. With a 10% margin, a 3% rise in the price gives a 30% gain on your money. But it works both ways: a 10% fall wipes out your margin completely.',
+ 'hedge-oil':'This chart shows how an airline hedges its fuel cost with futures bought at 80 dollars a barrel. If oil rises, the futures gain pays for the higher fuel bill; if oil falls, the futures loss offsets the cheaper fuel. Either way, the net cost stays at 80.',
+ 'call':'This chart shows the payoff of buying a call with a strike of 100 and a premium of 5. Below 100, you lose the premium, and that is the most you can lose. Above 105, you make a profit, and the profit keeps growing as the price rises.',
+ 'put':'This chart shows the payoff of buying a put with a strike of 100. The put gains value when the share price falls below the strike, so it works like insurance. The most you can lose is the premium you paid.',
+ 'opt-play':'This chart lets you build an option position. Buying a call at a strike of 100 for a premium of 5 gives a breakeven of 105. Your maximum loss is the premium, but your potential profit is unlimited. Selling the same option turns these numbers around.',
+ 'moneyness':'This diagram explains in, at and out of the money. A call is in the money when the share price is above the strike, and a put is in the money when the price is below it. Near the strike, both are at the money.',
+ 'time-value':'This chart shows that an option is worth more than its intrinsic value before expiry. The gap between the two lines is time value. It is largest when the share price is close to the strike and it disappears at expiry.',
+ 'cbbc':'This chart shows how a bull CBBC is knocked out. The share price falls and touches the call price of 95 on day eleven, so the CBBC is called early. The price then recovers to almost 110, but the holders get no benefit.',
+ 'strategy-table':'This table compares four option strategies. A covered call earns income, a protective put buys insurance, a bull call spread is a cheaper bet on a rise, and a long straddle profits from a big move in either direction.',
+ 'covered-call':'This chart shows a covered call. You own the share at 100 and sell a 110 call for 3. You earn extra income and lose a little less if the price falls, but you give up any gains above 110.',
+ 'protective-put':'This chart shows a protective put. You own the share at 100 and buy a 95 put for 3. However far the price falls, your loss is limited to 8, just like an insurance policy with a small premium.',
+ 'bull-spread':'This chart shows a bull call spread. You buy a 100 call for 6 and sell a 110 call for 2, so the net cost is only 4. The trade-off is that your maximum profit is capped at 6.',
+ 'straddle':'This chart shows a long straddle. You buy both a call and a put at 100 for a total of 9. You lose money if the price stays close to 100, but you profit from a big move in either direction.',
+ 'bs-play':'This chart shows what a call option is worth before expiry. With 90 days to go and 25% volatility, an at-the-money call is worth about 5.3, all of it time value. More time or more volatility makes the option more valuable.',
+ 'iv-smile':'This chart shows the volatility smile. Options with the same expiry trade at different implied volatilities: low strikes, which protect against a crash, are the most expensive. The market is paying extra for protection against sharp falls.',
+ 'greeks-delta':'This chart shows the delta of a call option. Delta tells you how much the option price moves when the share moves by one dollar. Close to expiry, delta jumps quickly from zero to one around the strike.',
+ 'gamma':'This chart shows gamma, which measures how fast delta changes. Gamma is highest when the option is at the money and expiry is near. That is when traders must adjust their hedges most often.',
+ 'greeks-theta':'This chart shows time decay. An at-the-money option loses value slowly at first and much faster in the last few weeks before expiry. That loss of value each day is called theta.',
+ 'swap':'This diagram explains an interest rate swap. The company pays HIBOR plus 1% on its loan, pays a fixed 3.5% to the swap bank and receives HIBOR back. The two HIBOR payments cancel out, so the company’s cost is fixed at about 4.5%.',
+ 'swap-net':'This chart shows the net payments under a swap. In years when HIBOR is above the fixed rate of 3.5%, the bank pays the company; when it is below, the company pays the bank. Overall, the company’s borrowing cost stays fixed.',
+ 'sp-anatomy':'This chart shows what is inside a principal-protected note. Of every 100 dollars, 92 buy a zero-coupon bond, 6 buy an option and 2 go to the bank’s fees. The protection is only as good as the issuer’s ability to pay.',
+ 'accumulator':'This chart shows the risk of an accumulator. If the share price rises above 105, the contract ends early with a small gain. But below the strike of 90, the investor must buy twice as many shares, so losses grow quickly.',
+ 'minibond':'This diagram tells the Lehman minibond story. The notes were sold through banks as a safe alternative to deposits, but they were linked to Lehman Brothers. When Lehman collapsed in 2008, investors lost most of their money, and Hong Kong tightened its selling rules.',
+ 'health-table':'This table is a quick financial health check. It looks at debt to equity, interest cover, the current ratio and free cash flow. These are rules of thumb, because banks and utilities normally carry more debt than other companies.',
+ 'dcf':'This chart shows a discounted cash flow valuation. Each future year’s cash flow is worth less today, and about 70% of the total value comes after year five. That is why a DCF is very sensitive to the growth and discount rates you choose.',
+ 'margin-safety':'This chart shows the margin of safety. You estimate the share is worth 100, and the market price is 70, so you have a 30% cushion. If your estimate is too optimistic, the cushion protects you.',
+ 'ta':'This chart shows the main tools of technical analysis. You can see the trend, the 20-day and 50-day moving averages, and support and resistance levels. The RSI panel at the bottom shows when the stock looks overbought or oversold.',
+ 'ma-play':'This chart compares moving averages. A 20-day average follows the price fairly closely and balances speed and smoothness. A shorter average gives more false signals, and a longer one is smoother but turns later.',
+ 'volume-chart':'This chart shows a breakout confirmed by volume. The price moves sideways in a range, then breaks above resistance, and at the same time trading volume jumps. Strong volume suggests that many traders support the move.',
+ 'indicators':'This table lists the key economic indicators: GDP, CPI, the unemployment rate, PMI and retail sales. Most are released monthly, and markets react most when a number is very different from what economists expected.',
+ 'cycle':'This chart shows the business cycle. The economy expands, reaches a peak, contracts and then hits a trough before growing again. The long-term trend is up, but the timing of each cycle is different.',
+ 'phases':'This table shows which assets often do well in each phase of the cycle. Stocks tend to lead in early expansion, commodities later, and bonds when the economy contracts. These are only tendencies, not rules.',
+ 'policy-tools':'This diagram compares fiscal and monetary policy. Fiscal policy is about government taxes and spending; monetary policy is about interest rates and the money supply. In Hong Kong, rates follow the US because of the peg, so fiscal policy does more of the work.',
+ 'hk-hub':'This diagram shows Hong Kong as a gateway between mainland China and the rest of the world. Goods pass through it as trade and re-exports, and money flows through it as listings, bonds, loans and investment.',
+ 'bell':'This chart shows volatility as a range of likely returns. A fund that returns 7% on average with 15% volatility will return between minus 8% and plus 22% in about two years out of three. Higher volatility means a wider range.',
+ 'drawdown':'This chart shows the maximum drawdown of a portfolio. The value rises to a peak of 150 and then falls to 102 before recovering. That 32% fall from peak to trough is what an investor must be ready to live through.',
+ 'risk-return':'This chart compares the risk and return of major asset classes. Cash has the lowest risk and the lowest return, while stocks and emerging markets offer higher returns with much more volatility. Higher expected return usually comes with higher risk.',
+ 'diversify':'This chart shows how diversification reduces risk. One stock has 35% volatility, but with ten stocks the risk falls to about 21%. Adding more stocks helps less and less, because market risk cannot be diversified away.',
+ 'pyramid':'This diagram shows the risk pyramid. Cash, deposits and bonds form the base, and riskier investments such as individual stocks and derivatives sit at the top. Most investors should build a solid base before climbing higher.',
+ 'sharpe':'This chart compares two funds using the Sharpe ratio. Fund A returns more, but with much higher risk. Fund B returns less, yet it earns more for each unit of risk, with a Sharpe ratio of 0.57 against 0.39.',
+ 'alloc-play':'This chart shows how the mix of stocks and bonds changes the outcome. With 60% in stocks, the expected return is about 5.4% a year, but in a bad year the portfolio could lose around 15%. More stocks means higher returns and deeper falls.',
+ 'models':'This chart compares three model portfolios. The conservative one holds mostly bonds, the balanced one is about half stocks, and the growth portfolio is 80% in stocks. The right choice depends on the client’s goals, time horizon and risk tolerance.',
+ 'frontier':'This chart shows the efficient frontier. By mixing stocks and bonds, which do not move together, you can get a better return for the same risk than holding either one alone. The best portfolios lie along the curve.',
+ 'rebalance':'This chart shows rebalancing. The target is 60% stocks and 40% bonds, but after a rally the mix drifts to 70/30. Selling some stocks and buying bonds brings the portfolio back to its target risk.',
+ 'dca':'This chart shows regular investing. Investing HK$1,000 every month buys more units when the price is low and fewer when it is high. As a result, the average cost of 9.50 is below the average price of 9.75.',
+ 'value-fn':'This chart shows loss aversion. The curve is steeper for losses than for gains, so losing 100 dollars feels about twice as bad as winning 100 dollars feels good. That is why many investors hold on to losing positions too long.',
+ 'anchor':'This chart shows anchoring. The investor bought at 100 and waits for the price to get back there, even though the business is now worth about 55. The purchase price tells you nothing about the value today.',
+ 'herding':'This chart shows how a bubble grows and bursts. Rising prices attract more and more buyers, until the index reaches 340. When no new buyers are left, the same crowd rushes to sell and the price collapses.',
+ 'biases':'This table lists common investor biases, such as loss aversion, overconfidence, anchoring and herding. Each one leads to a typical mistake, for example trading too often or buying near the top. Recognising a bias is the first step to avoiding it.',
+ 'adviser-steps':'This diagram lists five habits that protect investors from their own biases: write a plan, set rules in advance, automate regular investing, review on a schedule and keep a decision diary. Rules made in calm times stop decisions made in a panic.',
+ 'life':'This diagram shows financial planning through life. In your twenties you build the base, in your thirties and forties you protect and grow, and as retirement comes closer you reduce risk. Everyone’s plan is different, but the order is similar.',
+ 'wm-process':'This diagram shows the wealth management process. The adviser gets to know the client, analyses their situation, recommends a plan, puts it in place and reviews it regularly. It is a cycle, not a one-off sale.',
+ 'protect-first':'This diagram shows that protection comes before growth. The base is an emergency fund and insurance, then retirement savings, then long-term and higher-risk investments. Legacy planning sits at the very top.',
+ 'mpf':'This chart shows monthly MPF contributions. Employees and employers each pay 5% of income, so on HK$20,000 a month each pays HK$1,000. Above HK$30,000 the contribution is capped at HK$1,500 each.',
+ 'mpf-grow':'This chart shows how an MPF account can grow. On a monthly income of HK$25,000, contributions are HK$2,500 a month. After thirty years at 4% a year, the balance reaches about 1.7 million dollars, almost twice what was paid in.',
+ 'estate-flow':'This diagram compares two ways to pass on wealth. A will goes to an executor and through probate before the heirs receive anything. A trust holds the assets during your life, so the beneficiaries do not need to wait for probate.',
+ 'ib-divisions':'This table shows the main parts of an investment bank. Equity and debt capital markets help companies raise money, M&A advisers handle deals, sales and trading serve investors, and research analyses companies and markets.',
+ 'ipo':'This diagram shows the IPO process in Hong Kong. The company appoints sponsors, goes through due diligence, files its application, passes the listing hearing and builds the book before trading begins. The whole process usually takes six to twelve months.',
+ 'bookbuild':'This chart shows how an IPO price is set through bookbuilding. Demand is almost five times the shares on offer at 8 dollars, but falls as the price rises. The banks set the price at 9 dollars, where the deal is about three times covered.',
+ 'ma-types':'This table compares three kinds of merger. A horizontal merger joins two companies in the same business, a vertical merger joins a supplier and a customer, and a conglomerate merger joins unrelated businesses.',
+ 'fps':'This diagram shows an instant payment with FPS. The payer’s bank or e-wallet sends the money through the Faster Payment System, and the payee receives it within seconds, 24 hours a day. You only need a phone number, an email address or an FPS ID.',
+ 'ai-uses':'This table shows where banks use AI and what can go wrong. AI answers customer questions, spots fraud, scores credit and checks ID documents. The risks include wrong answers, false alarms, unfair bias and data privacy.',
+ 'blockchain':'This diagram shows how a blockchain links records. Each block stores a fingerprint of the block before it, so if anyone changes an old record, every later fingerprint stops matching. That makes tampering easy to detect.',
+ 'tokenise':'This diagram shows how a real asset is tokenised. A custodian holds the asset, and tokens on a blockchain record who owns it. Investors can buy small units and settle quickly, but they still depend on the custodian and the law.',
+ 'esg':'This diagram shows the three pillars of ESG: environmental, social and governance. Investors use these factors to spot long-term risks, such as carbon emissions or weak management, that the financial statements may not show.',
+ 'regulators':'This diagram shows who regulates what in Hong Kong. The HKMA supervises banks, the SFC covers securities and futures, the Insurance Authority oversees insurers, and the MPFA is responsible for the MPF.',
+ 'kyc':'This diagram shows Know Your Customer in practice. The bank identifies and verifies the client, checks the source of funds, builds a risk profile and only then recommends suitable products. The information must be kept up to date.',
+ 'aml-stages':'This diagram shows the three stages of money laundering. First, dirty money is placed into the system; then it is layered through many transfers to hide its source; finally, it is integrated into assets that look legal.',
+ 'suitability':'This chart shows how product risk is matched to the client. A product is normally suitable only if its risk rating is no higher than the client’s risk profile. So a cautious client should only be offered low-risk products.',
+ 'misconduct':'This table lists the main types of market misconduct in Hong Kong, such as insider dealing, false trading and price rigging. All of them distort the market, and they can lead to criminal prosecution.',
+ 'offices':'This diagram shows the front, middle and back office. The front office deals with clients and trades, the middle office controls risk and compliance, and the back office settles trades and keeps the records.',
+ 'hk-licence':'This diagram shows the path to a licensed role in Hong Kong. You pass the HKSI exams, join a licensed firm, get approval from the SFC and start work, and then you keep learning through continuous training every year.',
+ 'jd-decode':'This table explains common phrases in finance job adverts. “Fast-paced” usually means a heavy workload, “strong communication skills” means you will write and present in English, and “licensed” means you need to pass the HKSI exams.'
+};
+/* 圖表常用語：[講法, 例句] */
+const CHART_TALK=[
+ ['Introducing a chart',[['This chart shows …','This chart shows how fees reduce long-term returns.'],['Here you can see …','Here you can see the three parts of the cash flow statement.'],['The horizontal axis shows … and the vertical axis shows …','The horizontal axis shows the years and the vertical axis shows the value.'],['Each bar / line represents …','Each bar represents one year of cash flow.']]],
+ ['Going up',[['rise / increase / go up','Net profit rose from 10 to 25 million.'],['climb steadily','The value climbs steadily for twenty years.'],['jump / soar','Volume jumped when the price broke out.'],['reach a peak of …','The index reached a peak of 340.']]],
+ ['Going down',[['fall / drop / decline','Operating cash flow fell to only 3 million.'],['slip / ease','The rate eased slightly in the second year.'],['plunge / collapse','When the buyers left, the price collapsed.'],['hit a low of …','The portfolio hit a low of 102.']]],
+ ['Little change',[['stay flat / remain stable','The net cost stays flat at 80 dollars.'],['level off','After 20 stocks, the risk levels off.'],['fluctuate within a range','The rate fluctuates between 7.75 and 7.85.']]],
+ ['Comparing',[['… is higher / lower than …','The 30-year bond falls more than the 2-year bond.'],['twice as … as / three times …','The offer was about three times covered.'],['the gap between … and …','The gap between the two lines is time value.'],['by far the biggest …','Stamp duty is by far the biggest cost.']]],
+ ['Cause and effect',[['because of … / due to …','Prices fall because of higher yields.'],['as a result, …','As a result, the average cost is lower.'],['which means …','The curve is steeper for losses, which means losses hurt more.'],['the more …, the more …','The longer you invest, the more compounding matters.']]],
+ ['Approximate numbers',[['about / around / roughly','The fee costs about a third of the final value.'],['just over / just under','Capital is just over 6% of assets.'],['almost / nearly','The balance nearly doubles what was paid in.']]],
+ ['The takeaway',[['The key point is …','The key point is that fees compound.'],['What this means for clients is …','What this means for clients is that a hedge removes uncertainty.'],['In short, …','In short, longer bonds carry more interest rate risk.']]]
+];
+function figKind(id){const f=FIG[id];let s='';try{s=f.r(fzP(id))}catch(e){}if(s.indexOf('vztable')>=0)return 'table';if(/marker id=/.test(s))return 'process';if(s.indexOf('data-hv')>=0)return 'trend';return 'compare'}
+const FIG_TALK_KIND={trend:['Introducing a chart','Going up','Going down','The takeaway'],compare:['Introducing a chart','Comparing','Approximate numbers','The takeaway'],process:['Introducing a chart','Cause and effect','The takeaway'],table:['Introducing a chart','Comparing','The takeaway']};
+function figNum(id){for(let i=0;i<BOOK.length;i++){let n=0;for(let j=0;j<BOOK[i].s.length;j++){const it=BOOK[i].s[j];if(it[0]==='f'){n++;if(it[1]===id)return {ch:BOOK[i],n:(i+1)+'.'+n}}}}return null}
+function chartTalkHTML(names,mode){return CHART_TALK.filter(function(g){return !names||names.indexOf(g[0])>=0}).map(function(g){
+  return '<div class="ctg"><h4 class="ch">'+vx(g[0])+'</h4>'+g[1].map(function(x){return '<div class="ctp"><b>'+vx(x[0])+'</b> <span>'+vx(x[1])+'</span>'+(mode==='app'?' <button class="ic bsay" data-say="'+vx(x[1])+'" aria-label="Read aloud">'+BK_SPK+'</button>':'')+'</div>'}).join('')+'</div>'}).join('')}
+/* 講圖表：彈出畫面 */
+function figSayHTML(id){const f=FIG[id],at=figNum(id);if(!f||!at)return '<p>Figure not found.</p>';const p=fzP(id),model=FIG_SAY[id]||f.cap;let svg='';try{svg=f.r(p)}catch(e){}
+  svg=svg.replace(/ data-hv="[^"]*" tabindex="0"/,'').replace(/<g class="vzh"[^>]*><\/g>/,'').replace(/ id="([^"]+)"/g,' id="s-$1"').replace(/url\(#([^)]+)\)/g,'url(#s-$1)');
+  return (SHEET&&SHEET.__prev?'<button class="btn ghost" data-act="sheet-back" style="margin-bottom:8px">‹ Back</button>':'')+
+    '<h3>Describe Figure '+vx(at.n)+'</h3><p class="muted" style="margin:2px 0 8px">'+vx(f.t)+'</p><div class="vzbox vzmini">'+svg+'</div>'+
+    '<p class="tip" style="margin-top:10px"><b>Your task:</b> describe this chart to a client in 30–60 seconds. ① What it shows → ② the main pattern → ③ one number → ④ why it matters.</p>'+
+    freeBox('fs-'+id,'Describe the chart: '+f.t,model)+
+    '<details class="dd" style="margin-top:12px"><summary>Model answer</summary><div class="passage" style="font-size:16px;margin-top:8px">'+vx(model)+'</div><div class="btns"><button class="btn pri" data-say="'+vx(model)+'">'+ICON.spk+' Listen</button><button class="btn" data-say="'+vx(model)+'" data-slow="1">Slow</button></div></details>'+
+    '<details class="dd"><summary>Useful phrases</summary>'+chartTalkHTML(FIG_TALK_KIND[figKind(id)],'app')+'</details>'+
+    '<div class="btns" style="margin-top:12px"><button class="btn ghost" data-act="fig-go" data-fz="'+id+'">Open in Chapter '+vx(at.n.split('.')[0])+'</button></div>'}
+/* 附錄 D：講圖表 */
+function bookChartTalk(){
+  let h=crumb([['金融讀本','lib-book'],['講圖表']])+pageHero('Talking about charts','Appendix D · '+Object.keys(FIG).length+' figures to describe');
+  h+='<section class="card"><p style="margin:0">In finance you explain charts all the time: to clients, in meetings and in reports. Pick any figure, describe it out loud, then compare with the model answer.</p></section>';
+  const inter=[];BOOK.forEach(function(c){c.s.forEach(function(it){if(it[0]==='f'&&FIG[it[1]]&&FIG[it[1]].ctl)inter.push(it[1])})});
+  h+='<section class="card"><h2 class="sec-h">Interactive charts <span class="tag">'+inter.length+'</span></h2><div class="rows">'+inter.map(function(k){const at=figNum(k);return at?'<button class="row bkrow" data-act="fig-go" data-fz="'+k+'"><span class="bkn">'+vx(at.n)+'</span><div class="txt"><div class="en">'+vx(FIG[k].t)+'</div></div></button>':''}).join('')+'</div></section>';
+  h+='<section class="card"><h2 class="sec-h">Useful phrases</h2>'+chartTalkHTML(null,'app')+'</section>';
+  BOOK.forEach(function(c,ci){const ids=c.s.filter(function(it){return it[0]==='f'}).map(function(it){return it[1]});if(!ids.length)return;
+    h+='<section class="card"><h2 class="sec-h">Chapter '+(ci+1)+'</h2><p class="small muted" style="margin:-4px 0 6px">'+vx(c.t)+'</p><div class="rows">'+ids.map(function(k,j){return '<button class="row bkrow" data-act="fig-say" data-fz="'+k+'"><span class="bkn">'+(ci+1)+'.'+(j+1)+'</span><div class="txt"><div class="en">'+vx(FIG[k].t)+'</div></div><span class="ic" aria-hidden="true">'+ICON.mic+'</span></button>'}).join('')+'</div></section>'});
+  return h}
+function chartAct(a,ds){
+  if(a==='fig-say'){const id=ds.fz;if(!FIG[id])return true;const prev=SHEET||null;const fn=function(){return figSayHTML(id)};fn.__prev=prev;openSheet(fn);return true}
+  if(a==='fig-go'){const id=ds.fz,at=figNum(id);if(!at)return true;if(SHEET){SHEET=null;stopMedia();refreshSheet()}
+    const go=function(){const el=document.getElementById('fg-'+id);if(el)try{el.scrollIntoView({block:'start'})}catch(e){}};
+    if(location.hash==='#lib-book-'+at.ch.id)go();else{location.hash='#lib-book-'+at.ch.id;setTimeout(go,120);setTimeout(go,400)}return true}
+  return false}
 
 </script>
 <script>
@@ -6555,6 +6732,7 @@ function vLib(arg){
     if(arg==='email')return emailPage();
     if(arg==='book')return bookHome();
     if(arg==='book-glossary')return bookGlossary();
+    if(arg==='book-talk')return bookChartTalk();
     if(arg.indexOf('book-')===0)return bookChapter(arg.slice(5));
     if(arg.indexOf('pron-')===0){const m=pronModule(arg.slice(5));if(m)return pronPage(arg.slice(5),m)}
     if(arg==='gram')return gramPage();
@@ -6724,6 +6902,7 @@ function libSearchInput(v){SRQ=v;clearTimeout(srT);srT=setTimeout(function(){con
 /* 資料庫相關操作 */
 function libAct(a,ds,el,n){
   if(fzAct(a,ds,el))return;
+  if(chartAct(a,ds))return;
   if(bookAct(a,ds))return;
   if(libAct2(a,ds))return;
   switch(a){
@@ -6874,7 +7053,7 @@ function bookHome(){
   BOOK_PARTS.forEach(function(p,pi){const chs=BOOK.filter(function(c){return c.part===pi});if(!chs.length)return;
     h+='<section class="card"><h2 class="sec-h">'+esc(p[0])+' <span class="tag">'+esc(p[1])+'</span></h2><div class="rows">'+chs.map(function(c){const n=bkNum(c),q=S.quiz['bk-'+c.id];
       return '<a class="row bkrow" href="#lib-book-'+c.id+'"><span class="bkn">'+n+'</span><div class="txt"><div class="en">'+esc(c.t)+'</div><div class="zh">'+esc(c.zh)+' · '+esc(c.lv)+' · 約 '+bkMins(c)+' 分鐘'+(q!=null?' · 練習 '+q+'%':'')+'</div></div>'+(S.book[c.id]?'<span class="pill ok">已讀</span>':'<span class="bkgo">›</span>')+'</a>'}).join('')+'</div></section>'});
-  h+='<section class="card"><h2 class="sec-h">附錄 <span class="tag">Appendix</span></h2><div class="rows"><a class="row bkrow" href="#lib-book-glossary"><span class="bkn">A</span><div class="txt"><div class="en">Glossary of key terms</div><div class="zh">全書 '+st.k+' 個關鍵詞，中英對照，按字母排序</div></div><span class="bkgo">›</span></a></div></section>';
+  h+='<section class="card"><h2 class="sec-h">附錄 <span class="tag">Appendix</span></h2><div class="rows"><a class="row bkrow" href="#lib-book-glossary"><span class="bkn">A</span><div class="txt"><div class="en">Glossary of key terms</div><div class="zh">全書 '+st.k+' 個關鍵詞，中英對照，按字母排序</div></div><span class="bkgo">›</span></a><a class="row bkrow" href="#lib-book-talk"><span class="bkn">D</span><div class="txt"><div class="en">Talking about charts</div><div class="zh">Phrases, model answers and speaking practice for all '+Object.keys(FIG).length+' figures</div></div><span class="bkgo">›</span></a></div></section>';
   return h;
 }
 function bkQuiz(ch){const st=BKQ[ch.id]||(BKQ[ch.id]={});let right=0,done=0;
