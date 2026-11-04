@@ -1,5 +1,5 @@
-/* 离线缓存：页面优先取最新版（4 秒没响应就用缓存），图标等静态文件优先用缓存 */
-const CACHE = 'hkfe90-e242f018f4';
+/* 離線快取：頁面優先取最新版（4 秒沒響應就用快取），圖標等靜態檔案優先用快取 */
+const CACHE = 'hkfe90-97caded878';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 
 self.addEventListener('install', (e) => {

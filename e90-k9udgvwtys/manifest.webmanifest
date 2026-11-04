@@ -1,7 +1,7 @@
 {
-  "name": "90天香港金融英语",
-  "short_name": "金融英语90天",
-  "description": "零基础 90 天香港金融英语口语学习程序",
+  "name": "90天香港金融英文",
+  "short_name": "金融英文90天",
+  "description": "零基礎 90 天香港金融英文口語學習程式",
   "start_url": "./#today",
   "scope": "./",
   "display": "standalone",
