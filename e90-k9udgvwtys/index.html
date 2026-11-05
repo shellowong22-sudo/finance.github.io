@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="325a106e79">
+<meta name="app-ver" content="da7a6af4a7">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -1938,7 +1938,7 @@ const GUIDE=[
 <h4>每天怎麼用</h4>
 <ol>
 <li>打開 <b>今日</b>：一天分成 7 步（發音、單詞、文法、聽力、口語、閱讀、復盤），一次只顯示當前這一步。每一步上面有 <b>今日目標</b>，例如核心句型每句講 3 次、每次 80 分以上，溫故句子要當日重新講、重新聽寫。目標按你真正做咗嘅練習計，做夠就自動打勾；未做夠都可以撳 <b>完成本步</b>，不過要撳兩次。喜歡一次看完全部內容，可以點步驟欄最右邊的 <b>一頁顯示</b>。</li>
-<li>頂部會顯示 <b>任務完成 %、已練幾耐、全部做完約幾耐</b>。「已練」係真實時間：App 喺前台、2 分鐘內有操作先計；外部 podcast 同閱讀用 <b>開始計時</b> 記錄。普通課日全部做完約 6–7½ 小時，複習日約 5½–6 小時。</li>
+<li>頂部會顯示 <b>任務完成 %、已練幾耐、全部做完約幾耐</b>。「已練」係真實時間：App 喺前台、2 分鐘內有操作先計；外部 podcast 同閱讀用 <b>開始計時</b> 記錄。普通課日全部做完約 6–8 小時，複習日約 5½–6 小時。</li>
 <li><b>資料庫</b> 裏有發音系統課、語法總表、場景句庫和全局搜尋，隨時可以查、隨時可以練。</li>
 <li>每個單詞、句子、對話都可以點 🔊 聽原音；點 <b>慢</b> 用慢速聽。</li>
 <li>口語練習時點 <b>🎙 跟讀</b> → <b>開始講（鍵盤 🎤）</b>：用 iPhone 鍵盤嘅聽寫講英文，講完停一停就<b>即刻評分</b>，仲會標出講錯嘅字、即時糾正，並解釋文法同英文邏輯。想要更詳細嘅批改，撳 <b>AI 老師</b>。</li><li>聽唔到朗讀？iPhone 開咗靜音模式（🔕）網頁朗讀會冇聲，記得關咗佢。詳情見 <b>我的 → 聲音、講嘢評分疑難</b>。</li><li><b>資料庫 → 金融英文讀本</b>：27 章金融英文，每章有圖表、關鍵詞、口語任務同練習；第 31 日起每日「閱讀」會推薦相關章節。</li>
@@ -5619,7 +5619,7 @@ function refreshSpeak(){if(!SP)return;if(SP.host==='sheet')refreshSheet();else r
 function vGuide(){
   let h='<section class="hero" style="grid-template-columns:1fr;padding-top:8px"><div class="htitle"><h1>學習方法與技巧</h1><div class="en">Think, learn and speak like a professional</div></div></section><p class="small muted" style="margin:0 0 6px">點擊帶底色的英文可以聽發音。</p>';
   const gen={
-    schedule:{t:'每日學習安排與任務',h:'<p>每一步上面都有「今日目標」，例如核心句型每句講 3 次、每次 80 分以上；溫故句子要喺當日重新講、重新聽寫。目標係按你真正做咗嘅練習計，做夠先自動打勾，唔係撳「完成」就算。</p><p>按目標估計：普通課日全部做完約 6–7½ 小時（第 1 週較少，因為要溫嘅舊內容未多；第 31 天起多咗讀本章節同講圖表），複習日約 5½–6 小時，階段測試日約 6 小時。外部精聽 45 分鐘同課外閱讀 30 分鐘要用計時器記錄。「我的學習」顯示嘅係你實際練習嘅時間：App 喺前台、2 分鐘內有操作先計。</p><p>下面係建議時間表（香港時間），口語相關練習（發音、口語實戰、輸出復盤）約佔 3 小時 45 分鐘，接近一半。</p><table><tr><th>時間</th><th>內容</th><th>時長</th></tr>'+BLOCKS.map(function(b){return '<tr><td style="white-space:nowrap">'+b.time+'</td><td>'+esc(b.t)+'</td><td>'+b.min+' 分鐘</td></tr>'}).join('')+'</table><p>每學 50 分鐘休息 10 分鐘；午飯後可以小睡 20 分鐘。週末如果需要休息，可以把複習日安排在週日，強度減半。</p>'},
+    schedule:{t:'每日學習安排與任務',h:'<p>每一步上面都有「今日目標」，例如核心句型每句講 3 次、每次 80 分以上；溫故句子要喺當日重新講、重新聽寫。目標係按你真正做咗嘅練習計，做夠先自動打勾，唔係撳「完成」就算。</p><p>按目標估計：普通課日全部做完約 6–8 小時（第 1 週約 6 小時，因為要溫嘅舊內容未多；第 31 天起多咗讀本章節同講圖表，約 7½ 小時），複習日約 5½–6 小時，階段測試日約 6 小時。外部精聽 45 分鐘同課外閱讀 30 分鐘要用計時器記錄。「我的學習」顯示嘅係你實際練習嘅時間：App 喺前台、2 分鐘內有操作先計。</p><p>下面係建議時間表（香港時間），口語相關練習（發音、口語實戰、輸出復盤）約佔 3 小時 45 分鐘，接近一半。</p><table><tr><th>時間</th><th>內容</th><th>時長</th></tr>'+BLOCKS.map(function(b){return '<tr><td style="white-space:nowrap">'+b.time+'</td><td>'+esc(b.t)+'</td><td>'+b.min+' 分鐘</td></tr>'}).join('')+'</table><p>每學 50 分鐘休息 10 分鐘；午飯後可以小睡 20 分鐘。週末如果需要休息，可以把複習日安排在週日，強度減半。</p>'},
     pron:{t:'發音入門：字母、音標與難點',h:'<h4>26 個字母</h4><div class="letters">'+LETTERS.map(function(l){return '<button data-say="'+l+'" aria-label="朗讀字母 '+l+'">'+l+'</button>'}).join('')+'</div><h4>44 個音素（點擊聽例詞）</h4><p class="small muted">國內教材常說 48 個音標，多出的是 tr、dr、ts、dz 四個輔音組合。</p><div class="ipa">'+IPA.map(function(p){return '<button data-say="'+esc(p[2])+'"><b>/'+esc(p[1])+'/</b><span>'+esc(p[2])+'</span><small>'+esc(p[0])+'</small></button>'}).join('')+'</div><h4>中國學習者的 6 個發音難點</h4><table><tr><th>難點</th><th>例詞</th><th>要領</th></tr>'+PRON_TIPS.map(function(t){return '<tr><td><b>'+esc(t[0])+'</b></td><td><i class="say">'+esc(t[1])+'</i></td><td>'+esc(t[2])+'</td></tr>'}).join('')+'</table><h4>13 周發音重點</h4><ol>'+PRON.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ol>'},
     interview:{t:'香港金融面試高頻 30 題',h:'<p>每題用 1-2 分鐘作答：觀點題用 PREP，經歷題用 STAR。先自己說一遍，再點“參考答案”看結構和範例，最後逐句跟讀。點“練習”會把題目帶到自由口語頁，配合計時和錄音。</p><ol class="qlist">'+INTERVIEW.map(function(q,i){return '<li><span class="t">'+esc(q)+'</span>'+sayBtn(q)+'<button class="btn jade" data-act="ans" data-q="'+esc(q)+'">參考答案</button><button class="btn" data-act="iv-go" data-i="'+i+'">練習</button></li>'}).join('')+'</ol>'}
   };
