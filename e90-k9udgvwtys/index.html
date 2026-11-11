@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="零基礎 90 天香港金融英文口語學習程式：單詞、句型、文法、對話、聽力、閱讀、口語練習">
 <title>90天香港金融英文</title>
-<meta name="app-ver" content="8e18f3b516">
+<meta name="app-ver" content="904215c731">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f2747">
@@ -641,6 +641,38 @@ details.rsp .card{margin:8px 0 0}
 .allh .no{flex-shrink:0;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;background:var(--accent);color:var(--accent-ink)}
 .allh+.pgoals{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:12px 14px;margin-top:10px}
 
+/* 長按收藏生詞 */
+mark.fw{background:linear-gradient(transparent 58%,var(--accent-soft) 58%);color:inherit;text-decoration:underline dotted var(--accent);text-decoration-thickness:2px;text-underline-offset:4px;cursor:pointer;padding:0 1px;border-radius:2px}
+@media (hover:none),(pointer:coarse){.bp,.bbox p,.bh,.passage,.txt .en,.ex{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:pointer;-webkit-tap-highlight-color:transparent}}
+.rdlg{margin:10px 0 6px}
+.rwho{display:inline-block;min-width:1.5em;font-family:var(--font-body);font-size:13px;font-weight:800;color:var(--accent-text)}
+.lpw-hint{font-size:13px;color:var(--muted);background:var(--surface-2);border:1px dashed var(--line);border-radius:9px;padding:7px 10px;margin:0 0 12px;max-width:68ch}
+.lpw-hint b{color:var(--accent-text)}
+.lpw-pop{position:fixed;z-index:58;left:12px;top:12px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 36px rgba(6,12,22,.28);padding:12px 14px;max-height:72vh;overflow:auto;overscroll-behavior:contain}
+.lpw-pop[hidden]{display:none}
+.lpw-top{display:flex;align-items:center;gap:8px}
+.lpw-wd{flex:1;min-width:0;line-height:1.25}
+.lpw-wd b{font-family:var(--font-display);font-size:22px;overflow-wrap:anywhere}
+.lpw-zh{font-size:17px;font-weight:700;margin:6px 0 2px}
+.lpw-src{font-size:11.5px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 7px;vertical-align:2px;margin-left:4px;white-space:nowrap}
+.lpw-note{font-size:13.5px;color:var(--muted);margin:2px 0 4px;line-height:1.5}
+.lpw-note.warn{color:var(--warn)}
+.lpw-ex{font-family:var(--font-display);font-size:14.5px;line-height:1.55;background:var(--surface-2);border-radius:8px;padding:8px 10px;margin:8px 0 0}
+.lpw-ex b{color:var(--accent-text);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.lpw-edit{display:flex;gap:6px;margin-top:8px}
+.lpw-edit input{flex:1;min-width:0;padding:8px 10px}
+.lpw-ph{display:flex;align-items:center;gap:8px;font-size:14px;border-top:1px dashed var(--line);padding-top:8px;margin-top:10px}
+.lpw-pht{flex:1;min-width:0}
+.lpw-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.lpw-acts .btn{min-height:38px;padding:7px 12px}
+.lpw-tip{font-size:12.5px;color:var(--ok);margin:8px 0 0}
+.favstat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0}
+.favstat div{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px 6px;text-align:center}
+.favstat b{display:block;font-size:22px;font-family:var(--font-display);line-height:1.2}
+.favstat span{font-size:12.5px;color:var(--muted)}
+.pill.xs{font-size:11px;padding:1px 7px;vertical-align:1px}
+.favrow .ex{font-family:var(--font-display);color:var(--muted)}
+.favrow .ex b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -4838,7 +4870,7 @@ const Cloud={ref:null,status:'off',busy:false,pending:false,timer:null,tries:0,u
     let remote=null;
     try{if(snap&&snap.exists){const d=snap.data();if(d&&typeof d.state==='string')remote=JSON.parse(d.state)}}catch(e){remote=null}
     if(!remote||!((remote.updatedAt||0)>(S.updatedAt||0)))return false;
-    S=migrate(remote);
+    S=migrate(remote);try{favInit()}catch(e){}
     try{window.localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
     FC=null;
     if(!quiet&&Date.now()-this.lastToast>8000){this.lastToast=Date.now();toast('已同步另一台設備的最新進度')}
@@ -5167,8 +5199,10 @@ function blocksDone(n){const d=S.done[n]||{};return BLOCKS.filter(function(b){re
 function totalMinutes(){return pgTotal()}
 function finCount(){return Object.keys(S.fin).filter(function(k){return S.fin[k]}).length}
 function streak(){let n=0;const d=new Date();if(!S.log[dkey(d)])d.setDate(d.getDate()-1);while(S.log[dkey(d)]&&n<400){n++;d.setDate(d.getDate()-1)}return n}
-function learnedPool(){const r=wordsOf(lessonDaysIn(1,S.max));if(!S.bkw||!Object.keys(S.bkw).length)return r;const seen={};r.forEach(function(w){seen[w.k]=1});
-  BOOK.forEach(function(c){if(!S.bkw[c.id])return;c.kw.forEach(function(k){const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),key=base.toLowerCase();if(!seen[key]){seen[key]=1;r.push({en:base,zh:k[1],bk:c.id,k:key})}})});return r}
+function learnedPool(){const r=wordsOf(lessonDaysIn(1,S.max)),seen={};r.forEach(function(w){seen[w.k]=1});
+  if(S.bkw&&Object.keys(S.bkw).length)BOOK.forEach(function(c){if(!S.bkw[c.id])return;c.kw.forEach(function(k){const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),key=base.toLowerCase();if(!seen[key]){seen[key]=1;r.push({en:base,zh:k[1],bk:c.id,k:key})}})});
+  try{favKeys().forEach(function(k){if(seen[k])return;seen[k]=1;const f=S.fav[k];r.push({en:f.en,zh:f.zh||'',k:k,fav:1})})}catch(e){}
+  return r}
 function masteredCount(){let c=0;Object.keys(S.srs).forEach(function(k){if(S.srs[k]&&S.srs[k].b>=3)c++});return c}
 const IV=[0,1,2,4,7,15,30];
 function gradeWord(k,g){const today=dnum();const c=S.srs[k]||{b:0,d:today};if(g===1){c.b=0;c.d=today}else if(g===2){c.d=today+1}else{c.b=Math.min(6,(c.b||0)+1);c.d=today+IV[c.b]}S.srs[k]={b:c.b,d:c.d};S.log[dkey()]=1;save()}
@@ -5241,8 +5275,8 @@ function cardPronFocus(n){
   return '<section class="card" id="pfocus"><h2 class="sec-h">本週發音課 <span class="tag">Week '+w+'</span></h2>'+(S.set.allInOne||typeOf(n)!=='lesson'?'<p style="margin:0 0 8px">'+esc(PRON[w-1]||PRON[PRON.length-1])+'</p>':'')+
    (m?'<p style="margin:0">對應模塊：<b>'+esc(m.t)+'</b>。先用 10 分鐘練這個模塊，再用下面的句子做影子跟讀：聽一句 → 暫停 → 模仿 → 錄音對比。</p><div class="btns"><a class="btn pri" href="#lib-pron-'+link+'">進入發音課 ›</a><a class="btn" href="#lib-pron-pairs">易混音聽辨</a></div>':'')+'</section>'}
 function pronModule(id){try{const p=id.split('-'),key=p.slice(1).join('-');if(p[0]==='hk'){for(let i=0;i<HKERR.length;i++)if(HKERR[i].id===key)return HKERR[i]}if(p[0]==='rh'){for(let j=0;j<RHYTHM.length;j++)if(RHYTHM[j].id===key)return RHYTHM[j]}}catch(e){}return null}
-function cardDue(){const info=dueInfo();
-  return '<section class="card" id="due"><h2 class="sec-h">閃卡複習 <span class="tag">Spaced Review</span></h2><p style="margin:0">今日到期 <b>'+info.due.length+'</b> 個 · 還沒學的新詞 <b>'+info.nw.length+'</b> 個 · 已掌握 <b>'+masteredCount()+'</b> 個</p><div class="btns"><button class="btn pri" data-act="go-cards">去刷今日到期的閃卡</button></div></section>'}
+function cardDue(){const info=dueInfo(),fd=favDue().length;
+  return '<section class="card" id="due"><h2 class="sec-h">閃卡複習 <span class="tag">Spaced Review</span></h2><p style="margin:0">今日到期 <b>'+info.due.length+'</b> 個'+(fd?'（其中收藏生詞 <b>'+fd+'</b> 個）':'')+' · 還沒學的新詞 <b>'+info.nw.length+'</b> 個 · 已掌握 <b>'+masteredCount()+'</b> 個</p><div class="btns"><button class="btn pri" data-act="go-cards">去刷今日到期的閃卡</button>'+(fd?'<button class="btn" data-act="fav-cards">只溫收藏（'+fd+'）</button>':'')+'</div></section>'}
 function cardShadowWeek(n){const list=rvShadow(n);
   return '<section class="card" id="sents"><h2 class="sec-h">影子跟讀 '+list.length+' 句 <span class="tag">Shadowing</span></h2><p class="small muted" style="margin:0 0 6px">從'+(typeOf(n)==='test'?'本階段':'本週')+'句子中抽取。每句先聽、再跟、最後點麥克風打分。</p><div class="rows">'+list.map(rowSent).join('')+'</div></section>'}
 function cardDictReview(n){
@@ -5323,7 +5357,7 @@ function cardDlg(n,w){
 }
 function cardTask(n){return '<section class="card" id="task"><h2 class="sec-h">口語任務 <span class="tag">Speaking</span></h2><p>'+esc(L[n].task)+'</p>'+freeBox('task'+n,L[n].task+'（第 '+n+' 天：'+L[n].e+'）','')+'</section>'}
 function cardListen(n){const sp=spacedItems(n);return '<section class="card" id="listen"><h2 class="sec-h">聽寫 <span class="tag">Dictation</span></h2><p>用本課 '+pgUniq(sentsOf([n],true)).length+' 個句子做聽寫：只聽不看，寫低聽到嘅內容，程式會逐詞標出對錯。今日句子要 90% 以上，溫故句子 85% 以上先計。</p><div class="btns"><button class="btn jade" data-act="dict-day" data-day="'+n+'">聽寫今日句子</button>'+(sp.length?'<button class="btn" data-act="dict-spaced" data-day="'+n+'">聽寫溫故句子</button>':'')+'</div></section>'}
-function cardRead(n){return '<section class="card" id="read"><h2 class="sec-h">閱讀 <span class="tag">Reading</span></h2><p>先把今天的對話當作閱讀材料：遮住中文讀懂每一句，再大聲朗讀 3 遍。</p><p class="small muted">本週的閱讀理解文章在複習日（每 7 天一次）。</p></section>'}
+function cardRead(n){const d=dlgOf(n,0).concat(dlgOf(n,1));return '<section class="card" id="read"><h2 class="sec-h">閱讀 <span class="tag">Reading</span></h2><p>先把今天的對話當作閱讀材料：遮住中文讀懂每一句，再大聲朗讀 3 遍。</p>'+(d.length?lpwHintHTML()+'<div class="rdlg">'+d.map(function(l){return '<p class="passage" style="margin:0 0 8px"><b class="rwho">'+esc(l.who)+'</b> '+esc(l.en)+'</p>'}).join('')+'</div>':'')+'<p class="small muted">本週的閱讀理解文章在複習日（每 7 天一次）。</p></section>'}
 function cardReviewOverview(n){
   const days=srcDays(n);
   let h='<section class="card" id="overview"><h2 class="sec-h">'+(typeOf(n)==='test'?'本階段內容':'本週內容')+' <span class="tag">'+days.length+' 課</span></h2><div class="rows">';
@@ -5338,7 +5372,7 @@ function readCard(key,r,title){
   let h='<section class="card" id="reading-'+esc(key)+'"><h2 class="sec-h">'+esc(title)+' <span class="tag">Reading · '+r.p.split(/\s+/).length+' 詞</span></h2><h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:8px">'+esc(r.t)+'</h3>';
   const hideTxt=S.set.lfirst&&!RDV[key]&&Object.keys(st).length<r.q.length;
   h+='<div class="btns" style="margin:0 0 10px"><button class="btn" data-act="read-say" data-key="'+esc(key)+'">'+ICON.play+' 朗讀全文</button><button class="btn ghost" data-act="read-say" data-key="'+esc(key)+'" data-slow="1">慢速朗讀</button><button class="btn ghost" data-act="tts-stop">停止</button><button class="btn ghost" data-act="lfirst" aria-pressed="'+!!S.set.lfirst+'">'+(S.set.lfirst?'✓ 先聽後看':'先聽後看')+'</button></div>';
-  h+=hideTxt?'<div class="hidden-text"><b>先聽後看：原文已隱藏</b><br><span class="small">先點“朗讀全文”聽 1-2 遍，憑聽力回答下面的問題，答完自動顯示原文。</span><div class="btns" style="justify-content:center"><button class="btn" data-act="read-reveal" data-key="'+esc(key)+'">現在顯示原文</button></div></div>':'<p class="passage">'+esc(r.p)+'</p>';
+  h+=hideTxt?'<div class="hidden-text"><b>先聽後看：原文已隱藏</b><br><span class="small">先點“朗讀全文”聽 1-2 遍，憑聽力回答下面的問題，答完自動顯示原文。</span><div class="btns" style="justify-content:center"><button class="btn" data-act="read-reveal" data-key="'+esc(key)+'">現在顯示原文</button></div></div>':lpwHintHTML()+'<p class="passage">'+esc(r.p)+'</p>';
   r.q.forEach(function(q,qi){
     const pick=st[qi];
     h+='<div style="margin-top:14px"><b>'+(qi+1)+'. '+esc(q[0])+'</b><div class="opts">';
@@ -5463,14 +5497,15 @@ function vPractice(){
 function srcBar(kind){
   const opts=[['due','今日到期'],['all','全部已學']];if(PR.day)opts.splice(1,0,['day','第 '+PR.day+' 天']);
   if(kind!=='cards')opts[0]=['cur','當前第 '+S.cur+' 天'];
-  if(kind==='cards'&&favKeys().length)opts.push(['fav','收藏 '+favKeys().length]);
-  return '<div class="seg" style="margin:10px 0" role="group" aria-label="內容來源">'+opts.map(function(o){return '<button data-act="psrc" data-kind="'+kind+'" data-src="'+o[0]+'" aria-pressed="'+(PR.src===o[0]||(kind!=='cards'&&PR.src==='due'&&o[0]==='cur'))+'">'+esc(o[1])+'</button>'}).join('')+'</div>';
+  if(kind==='cards'&&favKeys().length)opts.push(['fav','收藏到期 '+favDue().length]);
+  return '<div class="seg" style="margin:10px 0" role="group" aria-label="內容來源">'+opts.map(function(o){return '<button data-act="psrc" data-kind="'+kind+'" data-src="'+o[0]+'" aria-pressed="'+(PR.src===o[0]||(o[0]==='fav'&&PR.src==='favall')||(kind!=='cards'&&PR.src==='due'&&o[0]==='cur'))+'">'+esc(o[1])+'</button>'}).join('')+'</div>';
 }
 function buildCards(){
   const info=dueInfo();let keys;
   if(PR.src==='day'&&PR.day){const days=srcDays(PR.day);keys=wordsOf(days).map(function(w){return w.k})}
   else if(PR.src==='all')keys=shuffle(info.pool.map(function(w){return w.k})).slice(0,60);
-  else if(PR.src==='fav')keys=favKeys();
+  else if(PR.src==='fav')keys=favDue();
+  else if(PR.src==='favall')keys=favKeys();
   else keys=info.due.concat(info.nw.slice(0,20));
   FC={keys:keys,i:0,show:false,again:{},a:0,b:0,c:0};
 }
@@ -5479,12 +5514,13 @@ function pCards(){
   const info=dueInfo();
   let h=srcBar('cards')+'<p class="small muted" style="margin:0">已學 '+info.pool.length+' 詞 · 今日到期 '+info.due.length+' · 未學 '+info.nw.length+' · 已掌握 '+masteredCount()+'</p>';
   h+='<section class="card">';
+  if(!FC.keys.length&&(PR.src==='fav'||PR.src==='favall')){const nf=favKeys().length;h+='<div class="flash"><div class="ans">'+(nf?'收藏嘅生詞今日都溫完喇！':'未有收藏。')+'</div><p class="muted">'+(nf?'聽日再嚟；想加深印象可以全部過一遍。':'喺讀本或閱讀文章長按唔識嘅字，就會收藏喺度。')+'</p>'+(nf?'<button class="btn jade" data-act="fav-all-cards">全部收藏過一遍</button>':'<a class="btn jade" href="#lib-book">去讀金融讀本</a>')+'</div>';return h+'</section>'}
   if(!FC.keys.length){h+='<div class="flash"><div class="ans">今天沒有到期的單詞。</div><p class="muted">可以切換到“全部已學”繼續鞏固，或者去學習今天的新詞。</p></div>';return h+'</section>'}
   if(FC.i>=FC.keys.length){h+='<div class="flash"><div class="big">完成！</div><p>認識 '+FC.c+' · 模糊 '+FC.b+' · 不認識 '+FC.a+'</p><button class="btn jade" data-act="cards-restart">再來一輪</button></div>';return h+'</section>'}
-  const k=FC.keys[FC.i],w=WMAP[k]||{en:k,zh:''};
+  const k=FC.keys[FC.i],w=WMAP[k]||(S.fav&&S.fav[k])||{en:k,zh:''};
   const ip=ipaOf(w.en);
-  h+='<p class="small muted" style="margin:0">'+(FC.i+1)+' / '+FC.keys.length+(w.day?' · 來自第 '+w.day+' 天':(w.bk&&bkById(w.bk)?' · 來自讀本第 '+bkNum(bkById(w.bk))+' 章':''))+'</p><div class="flash"><div class="big">'+esc(w.en)+'</div>'+(ip?'<div class="ipa">/'+esc(ip)+'/</div>':'')+'<div>'+sayBtn(w.en)+' '+sayBtn(w.en,true)+' '+favBtn(w.en,w.zh)+'</div>';
-  if(FC.show)h+='<div class="ans">'+esc(w.zh)+'</div>'+(w.ex?'<div class="ex" style="max-width:34ch">'+esc(w.ex)+' '+sayBtn(w.ex)+'<div class="zh">'+esc(w.exzh)+'</div></div>':'');
+  h+='<p class="small muted" style="margin:0">'+(FC.i+1)+' / '+FC.keys.length+(w.day?' · 來自第 '+w.day+' 天':(w.bk&&bkById(w.bk)?' · 來自讀本第 '+bkNum(bkById(w.bk))+' 章':''))+(S.fav&&S.fav[k]?' · ★ 收藏':'')+'</p><div class="flash"><div class="big">'+esc(w.en)+'</div>'+(ip?'<div class="ipa">/'+esc(ip)+'/</div>':'')+'<div>'+sayBtn(w.en)+' '+sayBtn(w.en,true)+' '+favBtn(w.en,w.zh)+'</div>';
+  if(FC.show)h+='<div class="ans">'+(w.zh?esc(w.zh):'<span class="muted" style="font-size:15px">（未有中文解釋，可以喺「收藏」頁補上）</span>')+'</div>'+(S.fav&&S.fav[k]&&S.fav[k].note?'<div class="small muted" style="max-width:34ch">'+esc(S.fav[k].note)+'</div>':'')+(w.ex?'<div class="ex" style="max-width:34ch">'+esc(w.ex)+' '+sayBtn(w.ex)+'<div class="zh">'+esc(w.exzh)+'</div></div>':'');
   h+='</div>';
   if(!FC.show)h+='<button class="btn pri" style="width:100%" data-act="cards-show">先想中文意思，再點這裏看答案</button>';
   else h+='<div class="grade"><button class="btn b1" data-act="cards-grade" data-g="1">不認識<small>今天再來</small></button><button class="btn b2" data-act="cards-grade" data-g="2">模糊<small>明天複習</small></button><button class="btn b3" data-act="cards-grade" data-g="3">認識<small>延後複習</small></button></div>';
@@ -5764,6 +5800,7 @@ function act(a,ds,el){
   const n=ds.day?clampDay(ds.day):S.cur;
   if(coAct(a,ds))return;
   if(pgAct(a,ds))return;
+  if(lpwAct(a,ds))return;
   switch(a){
   case 'sheet-close':closeSheet();break;
   case 'blk':{const d=S.done[n]||(S.done[n]={});if(!d[ds.k]&&!pgConfirm(n,ds.k))break;d[ds.k]=d[ds.k]?0:1;if(d[ds.k]){S.log[dkey()]=1;S.max=Math.max(S.max,n)}save();renderKeep();
@@ -5899,7 +5936,7 @@ function boot(){
   document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')safe(function(){Cloud.refresh()},'cloud');else{ASR.abort();MIC.abort();if(Cloud.ref)Cloud.flush()}});
   document.addEventListener('focusout',function(){setTimeout(flushDeferred,300)});
   setInterval(flushDeferred,4000);
-  safe(favInit,'fav');safe(function(){UIM.resume()},'uim');uimInit();safe(tmStart,'tm');
+  safe(favInit,'fav');safe(lpwInit,'lpw');safe(function(){UIM.resume()},'uim');uimInit();safe(tmStart,'tm');
   route();
   safe(registerSW,'sw');
   setTimeout(function(){safe(function(){Cloud.init()},'cloud')},200);
@@ -6644,26 +6681,31 @@ function localTalkFree(id,o){
 function favKey(en){return String(en||'').trim().toLowerCase()}
 function favOn(en){return !!(S.fav&&S.fav[favKey(en)])}
 function favKeys(){const f=S.fav||{};return Object.keys(f).sort(function(a,b){return (f[b].t||0)-(f[a].t||0)})}
-function favWmap(k,f){if(!WMAP[k])WMAP[k]={en:f.en,zh:f.zh||'',day:0,ex:'',exzh:'',fav:1}}
+function favWmap(k,f){const w=WMAP[k];if(w&&!w.fav)return;const bk=/^c\d+$/.test(f.src||'')?f.src:'',dm=/^d(\d+)$/.exec(f.src||'');WMAP[k]={en:f.en,zh:f.zh||'',day:dm?+dm[1]:0,bk:bk,ex:f.ex||'',exzh:'',fav:1}}
 function favBtn(en,zh){const on=favOn(en);
   return '<button class="ic fav'+(on?' on':'')+'" data-act="fav" data-en="'+esc(en)+'" data-zh="'+esc(zh||'')+'" aria-pressed="'+on+'" aria-label="'+(on?'取消收藏':'收藏')+'" title="'+(on?'取消收藏':'收藏')+'">'+(on?'★':'☆')+'</button>'}
 function favToggle(en,zh,el){
-  if(!S.fav||typeof S.fav!=='object')S.fav={};
   const k=favKey(en);if(!k)return;
-  if(S.fav[k]){delete S.fav[k];toast('已取消收藏')}
-  else{S.fav[k]={en:String(en).trim(),zh:String(zh||'').trim(),t:Date.now()};favWmap(k,S.fav[k]);toast('★ 已收藏：'+String(en).trim())}
-  save();
-  const on=!!S.fav[k];
-  document.querySelectorAll('button.fav').forEach(function(b){if(favKey(b.getAttribute('data-en'))!==k)return;b.classList.toggle('on',on);b.textContent=on?'★':'☆';b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label',on?'取消收藏':'收藏');b.setAttribute('title',on?'取消收藏':'收藏')});
-  if(view==='practice'&&PR.tab==='fav'&&!on)renderKeep();
+  if(S.fav&&S.fav[k]){favRemove(k);toast('已取消收藏')}
+  else{const w=WMAP[k]||{};favAdd({en:String(en).trim(),zh:String(zh||'').trim()||w.zh||'',ex:w.ex||'',src:w.bk||(w.day?'d'+w.day:'')});toast('★ 已收藏：'+String(en).trim()+'（已排入複習）')}
+  if(view==='practice'&&PR.tab==='fav')renderKeep();
 }
+function favRowHTML(k,t){const f=S.fav[k],ip=f.ipa||ipaOf(f.en),c=S.srs[k],src=favSrcLink(f.src);
+  const st=!c||c.d<=t?'<span class="pill red xs">今日溫</span>':'<span class="pill grey xs">'+(c.d-t)+' 日後</span>';
+  return '<div class="row favrow"><div class="txt"><div class="en">'+esc(f.en)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+' '+st+'</div><div class="zh">'+(f.zh?esc(f.zh):'<span class="muted">未有解釋 · 撳 ✎ 補上</span>')+'</div>'+(f.ex?'<div class="ex">'+favExHTML(f.ex,f)+'</div>':'')+(src?'<div class="small muted">來自'+src+'</div>':'')+'</div><div class="acts">'+sayBtn(f.en)+'<button class="ic" data-act="fav-edit" data-k="'+esc(k)+'" aria-label="編輯解釋" title="編輯解釋">✎</button>'+favBtn(f.en,f.zh)+'</div></div>'}
 function pFav(){
   const ks=favKeys();
-  if(!ks.length)return '<section class="card"><h2 class="sec-h">我的收藏</h2><p style="margin:0">未有收藏。喺任何單詞旁邊撳 <b>☆</b>，就會收藏喺呢度，之後可以用閃卡溫習。</p></section>';
-  return '<section class="card"><h2 class="sec-h">我的收藏 <span class="tag">'+ks.length+' 個</span></h2><div class="btns" style="margin-top:0"><button class="btn pri" data-act="fav-cards">用閃卡溫習收藏</button></div><div class="rows">'+
-    ks.map(function(k){const f=S.fav[k],ip=ipaOf(f.en);return '<div class="row"><div class="txt"><div class="en">'+esc(f.en)+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+esc(f.zh)+'</div></div><div class="acts">'+sayBtn(f.en)+micBtn(f.en,f.zh)+favBtn(f.en,f.zh)+'</div></div>'}).join('')+'</div></section>';
+  if(!ks.length)return '<section class="card"><h2 class="sec-h">我的收藏 <span class="tag">生詞本</span></h2><p style="margin:0">未有收藏。收藏方法：</p><ul class="small" style="margin:8px 0 0;padding-left:20px;line-height:1.7"><li>喺<b>金融讀本、閱讀文章、對話、例句</b>入面，<b>長按</b>任何唔識嘅英文單詞（電腦可撳右鍵），即刻收藏。</li><li>喺單詞旁邊撳 <b>☆</b> 都得。</li><li>收藏咗嘅詞會按記憶曲線（當日 → 1 → 2 → 4 → 7 → 15 → 30 日）提你複習。</li></ul><div class="btns"><a class="btn pri" href="#lib-book">去讀金融讀本</a></div></section>';
+  const t=dnum(),due=favDue(),mst=ks.filter(function(k){return S.srs[k]&&S.srs[k].b>=3}).length,noZh=ks.filter(function(k){return !S.fav[k].zh}).length;
+  let h='<section class="card"><h2 class="sec-h">我的收藏 <span class="tag">生詞本 · '+ks.length+' 個</span></h2>'+
+    '<div class="favstat"><div><b>'+due.length+'</b><span>今日要溫</span></div><div><b>'+mst+'</b><span>已記熟</span></div><div><b>'+ks.length+'</b><span>總數</span></div></div>'+
+    '<div class="btns">'+(due.length?'<button class="btn pri" data-act="fav-cards">複習今日到期（'+due.length+'）</button>':'<span class="pill ok" style="align-self:center">今日要溫嘅收藏已經溫完</span>')+'<button class="btn" data-act="fav-all-cards">全部過一遍</button>'+
+    (noZh&&AI.ns?'<button class="btn ghost" data-act="fav-ai-fill"'+(FAVAI.busy?' disabled':'')+'>'+(FAVAI.busy?'AI 補緊解釋…':'AI 補齊 '+noZh+' 個解釋')+'</button>':'')+'</div>'+
+    '<p class="small muted" style="margin:10px 0 0">喺讀本、閱讀文章<b>長按單詞</b>即收藏。閃卡揀「認識」會隔耐啲再考，揀「不認識」今日再嚟，直到記熟為止。</p></section>';
+  h+='<section class="card"><div class="rows">'+ks.map(function(k){return favRowHTML(k,t)}).join('')+'</div></section>';
+  return h;
 }
-function favInit(){try{if(!S.fav||typeof S.fav!=='object'||Array.isArray(S.fav))S.fav={};Object.keys(S.fav).forEach(function(k){favWmap(k,S.fav[k])})}catch(e){}}
+function favInit(){try{if(!S.fav||typeof S.fav!=='object'||Array.isArray(S.fav))S.fav={};const t=dnum();Object.keys(S.fav).forEach(function(k){const f=S.fav[k];if(!f||typeof f!=='object'||!f.en){delete S.fav[k];return}favWmap(k,f);if(!S.srs[k])S.srs[k]={b:0,d:t}});FWV++}catch(e){}}
 
 /* ---------- 記住上次去到邊：頁面、捲動位置、練習分頁（只存喺本機） ---------- */
 const UIM={k:'hkfe90.ui',d:{h:'',y:{},t:0,pt:''},tm:null,
@@ -7369,7 +7411,7 @@ function bookChapter(id){
   h+='<section class="bkhead"><div class="k">Chapter '+n+' · '+esc(BOOK_PARTS[ch.part][0])+'</div><h1>'+esc(ch.t)+'</h1><p class="bzh">'+esc(ch.zh)+'</p><div class="bkmeta"><span class="pill">'+esc(ch.lv)+'</span><span>約 '+bkMins(ch)+' 分鐘</span><span>'+bkWords(ch)+' 詞</span></div>'+
    '<div class="btns"><button class="btn pri" data-act="bk-all" data-c="'+ch.id+'">'+ICON.play+' 朗讀全章</button><button class="btn" data-act="bk-all" data-c="'+ch.id+'" data-slow="1">慢速</button><button class="btn ghost" data-act="tts-stop">停止</button></div>'+
    '<details class="bksum" open><summary>中文導讀</summary><p>'+esc(ch.sum)+'</p></details></section>';
-  h+='<article class="card bk">'+bkBody(ch,'app')+'</article>';
+  h+='<article class="card bk">'+lpwHintHTML()+bkBody(ch,'app')+'</article>';
   h+='<section class="card"><h2 class="sec-h">本章關鍵詞 <span class="tag">Key Words · '+ch.kw.length+'</span></h2><div class="rows">'+ch.kw.map(function(k){const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),ip=ipaOf(base);return '<div class="row"><div class="txt"><div class="en">'+esc(k[0])+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+esc(k[1])+'</div></div><div class="acts">'+sayBtn(base)+favBtn(base,k[1])+'</div></div>'}).join('')+'</div>'+(S.bkw&&S.bkw[ch.id]?'<div class="btns"><span class="pill ok" style="align-self:center">已加入單詞卡</span><button class="btn" data-act="bk-cards-go">去溫習</button></div>':'<div class="btns"><button class="btn jade" data-act="bk-cards" data-c="'+ch.id+'">加入單詞卡（'+ch.kw.length+' 個詞）</button></div>')+'</section>';
   h+='<section class="card"><h2 class="sec-h">本章要點 <span class="tag">Key Points</span></h2>'+bkKeyPoints(ch)+'</section>'+bkSpeak(ch)+bkQuiz(ch);
   h+='<div class="stepfoot">'+(prev?'<a class="btn" href="#lib-book-'+prev.id+'">‹ 第 '+(n-1)+' 章</a>':'<a class="btn" href="#lib-book">目錄</a>')+'<button class="btn'+(S.book[ch.id]?'':' gold')+'" data-act="bk-done" data-c="'+ch.id+'">'+(S.book[ch.id]?'✓ 已讀（點此取消）':'標記為已讀')+'</button>'+(next?'<a class="btn" href="#lib-book-'+next.id+'">第 '+(n+1)+' 章 ›</a>':'<a class="btn" href="#lib-book-glossary">詞彙表 ›</a>')+'</div>';
@@ -7410,6 +7452,402 @@ function bookAct(a,ds){
   case 'bk-done':{if(S.book[ds.c])delete S.book[ds.c];else{S.book[ds.c]=1;S.log[dkey()]=1}save();renderKeep();return true}
   }
   return false;
+}
+
+
+/* ---------- 長按收藏生詞：讀本、閱讀文章、對話、例句 ---------- */
+/* 長按（手機）或右鍵 / 撳住滑鼠（電腦）任何英文單詞 → 即刻收藏，彈出生詞卡（意思、音標、原句）。
+   收藏咗嘅詞會喺文章入面用金色底線標出，撳一下就睇返意思；同時排入記憶曲線複習。 */
+const LPW={SEL:'.bp,.bbox p,.bh,.passage,.txt .en,.ex',FW:'.bp,.bbox p,.passage,.ln .en',
+  t:null,x:0,y:0,pt:'',firedAt:0,swallow:false,cur:null,rect:null,sy:0,ctl:null,dict:null};
+let FWV=1;
+const FAVAI={busy:false};
+
+function lpwHintHTML(){return '<p class="lpw-hint">唔識嘅字：<b>撳一下</b>睇意思，<b>長按</b>直接收藏（電腦可撳右鍵）。收藏過嘅字有金色底線。</p>'}
+
+/* 本機詞典：讀本關鍵詞 → 金融義 → 課程單詞 → 詞族 / 詞根例字 */
+function lpwDict(){
+  if(LPW.dict)return LPW.dict;const m={};
+  const add=function(en,zh,bk){if(!en||!zh)return;const e=String(en).replace(/\s*\([^)]*\)/g,'').trim(),k=e.toLowerCase().replace(/’/g,"'");if(!k||m[k])return;m[k]={en:e,zh:String(zh).trim(),bk:!!bk}};
+  try{Object.keys(BKW).forEach(function(k){add(BKW[k].en,BKW[k].zh,1)})}catch(e){}
+  try{MEANING.forEach(function(x){add(x[0],x[2]+'（日常：'+x[1]+'）')})}catch(e){}
+  try{Object.keys(WMAP).forEach(function(k){const w=WMAP[k];if(w&&!w.fav)add(w.en,w.zh)})}catch(e){}
+  try{FAMILY.forEach(function(x){(x[1]||[]).forEach(function(s){const p=String(s).split('|');add(p[0],p[1])})})}catch(e){}
+  try{[PREFIX,SUFFIX,ROOT].forEach(function(g){g.forEach(function(e){e.forEach(function(x){if(Array.isArray(x))x.forEach(function(s){if(typeof s==='string'&&s.indexOf('|')>0){const p=s.split('|');add(p[0],p[1])}})})})})}catch(e){}
+  LPW.dict=m;return m;
+}
+/* 簡單還原詞形：hedged → hedge、companies → company、trading → trade */
+function lpwForms(w){
+  const x=String(w||'').toLowerCase().replace(/’/g,"'").replace(/'s$/,'').replace(/s'$/,'s'),out=[x];
+  const push=function(s){if(s&&s.length>=2&&out.indexOf(s)<0)out.push(s)};
+  if(/ies$/.test(x))push(x.slice(0,-3)+'y');
+  if(/(ses|xes|zes|ches|shes|oes)$/.test(x))push(x.slice(0,-2));
+  if(/s$/.test(x)&&!/ss$/.test(x))push(x.slice(0,-1));
+  if(/ied$/.test(x))push(x.slice(0,-3)+'y');
+  if(/ed$/.test(x)){push(x.slice(0,-1));push(x.slice(0,-2));if(/([^aeiou])\1ed$/.test(x))push(x.slice(0,-3))}
+  if(/ing$/.test(x)){push(x.slice(0,-3)+'e');push(x.slice(0,-3));if(/([^aeiou])\1ing$/.test(x))push(x.slice(0,-4))}
+  return out;
+}
+function lpwLookup(w){const d=lpwDict(),fs=lpwForms(w);for(let i=0;i<fs.length;i++){const x=d[fs[i]];if(x)return {en:x.en,zh:x.zh,bk:x.bk,exact:i===0}}return null}
+function lpwFavKeyOf(w){
+  const f=S.fav||{},lw=String(w||'').toLowerCase().replace(/’/g,"'");if(f[lw])return lw;
+  const fs=lpwForms(w);for(let i=0;i<fs.length;i++)if(f[fs[i]])return fs[i];
+  const ks=Object.keys(f);for(let i=0;i<ks.length;i++){const x=f[ks[i]];if(x&&x.w&&String(x.w).toLowerCase()===lw)return ks[i]}
+  return '';
+}
+/* 原文寫法 → 收藏用寫法：縮寫保留大寫（HKMA、IPO），其餘轉細楷 */
+function lpwSurface(w){w=String(w).replace(/’/g,"'").replace(/'s$/i,'');return (/^[A-Z0-9&\-]{2,8}s?$/.test(w)&&/[A-Z]{2}/.test(w))?w:w.toLowerCase()}
+function lpwSrc(){try{if(SHEET)return '';if(view==='lib'&&viewArg&&/^book-c\d+$/.test(viewArg))return viewArg.slice(5);if(view==='today')return 'd'+S.cur;if(view==='day'&&viewArg)return 'd'+viewArg}catch(e){}return ''}
+
+/* 搵手指 / 滑鼠位置下面嘅英文單詞 */
+function lpwHit(host,x,y){
+  const wk=document.createTreeWalker(host,NodeFilter.SHOW_TEXT,null),rg=document.createRange(),re=/[A-Za-z][A-Za-z'’\-]*[A-Za-z]|[A-Za-z]/g;let n,base=0;
+  while((n=wk.nextNode())){
+    const len=n.data.length,b0=base;base+=len;
+    const p=n.parentElement;if(p&&p.closest('button,.ipa,svg'))continue;
+    rg.selectNodeContents(n);const b=rg.getBoundingClientRect();if(!b||y<b.top-4||y>b.bottom+4||x<b.left-4||x>b.right+4)continue;
+    re.lastIndex=0;let m;
+    while((m=re.exec(n.data))){rg.setStart(n,m.index);rg.setEnd(n,m.index+m[0].length);const rs=rg.getClientRects();
+      for(let i=0;i<rs.length;i++){const r=rs[i];if(x>=r.left-2&&x<=r.right+2&&y>=r.top-3&&y<=r.bottom+3)return {word:m[0],g:b0+m.index,len:m[0].length,T:host.textContent||'',rect:r}}}
+  }
+  return null;
+}
+/* 取單詞所在嘅整句，做例句 */
+function lpwSentence(T,g,len){
+  const abbr=/\b(e\.g|i\.e|etc|vs|Mr|Ms|Mrs|Dr|Inc|Ltd|Co|No|U\.S)\.$/i,stop=/[㐀-鿿\n]/;let s=g,e=g+len;
+  while(s>0){const c=T.charAt(s-1);if(stop.test(c))break;if(/[.!?]/.test(c)&&/\s/.test(T.charAt(s)||' ')&&!abbr.test(T.slice(Math.max(0,s-6),s)))break;s--}
+  while(e<T.length){const c=T.charAt(e);if(stop.test(c))break;e++;if(/[.!?]/.test(c)&&/\s/.test(T.charAt(e)||' ')&&!abbr.test(T.slice(Math.max(0,e-6),e)))break}
+  let out=T.slice(s,e).replace(/\s+/g,' ').trim();
+  if(out.length>220){const at=Math.max(0,g-s-100);out=(at>0?'…':'')+out.slice(at,at+200).trim()+'…'}
+  return out;
+}
+/* 單詞有冇組成已知詞組（例如 interest rate、initial public offering） */
+function lpwPhrase(T,g){
+  const d=lpwDict(),f=S.fav||{},toks=[],re=/[A-Za-z][A-Za-z'’\-]*[A-Za-z]|[A-Za-z]/g;let m;
+  while((m=re.exec(T)))toks.push([m.index,m.index+m[0].length,m[0]]);
+  let i=-1;for(let j=0;j<toks.length;j++)if(toks[j][0]<=g&&toks[j][1]>g){i=j;break}
+  if(i<0)return null;
+  for(let n=4;n>=2;n--)for(let s=Math.max(0,i-n+1);s<=i;s++){const e=s+n-1;if(e>=toks.length)continue;let ok=true;
+    for(let j=s;j<e;j++){if(!/^[  ]+$/.test(T.slice(toks[j][1],toks[j+1][0]))){ok=false;break}}if(!ok)continue;
+    const ws=toks.slice(s,e+1).map(function(t){return t[2].toLowerCase().replace(/’/g,"'")}),head=ws.slice(0,-1).join(' '),fs=lpwForms(ws[n-1]);
+    for(let q=0;q<fs.length;q++){const k=head+' '+fs[q],hit=f[k]||d[k];if(hit)return {en:hit.en,zh:hit.zh||''}}}
+  return null;
+}
+
+/* ---------- 收藏資料 ---------- */
+function favDue(){const t=dnum();return favKeys().filter(function(k){const c=S.srs[k];return !c||c.d<=t})}
+function favSyncBtns(k){const on=!!(S.fav&&S.fav[k]);
+  document.querySelectorAll('button.fav').forEach(function(b){if(favKey(b.getAttribute('data-en'))!==k)return;b.classList.toggle('on',on);b.textContent=on?'★':'☆';b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label',on?'取消收藏':'收藏');b.setAttribute('title',on?'取消收藏':'收藏')})}
+function favAdd(o){
+  if(!S.fav||typeof S.fav!=='object'||Array.isArray(S.fav))S.fav={};
+  const en=String(o.en||'').trim(),k=favKey(en);if(!k)return '';
+  const f=S.fav[k]||{en:en,zh:'',t:Date.now()};
+  if(!f.zh&&o.zh)f.zh=String(o.zh).trim();
+  if(!f.ex&&o.ex)f.ex=String(o.ex).slice(0,240);
+  if(!f.src&&o.src)f.src=o.src;
+  if(!f.w&&o.w&&favKey(o.w)!==k)f.w=String(o.w);
+  if(!f.ipa&&o.ipa&&!ipaOf(en))f.ipa=o.ipa;
+  if(!f.note&&o.note)f.note=o.note;
+  S.fav[k]=f;
+  if(!S.srs[k])S.srs[k]={b:0,d:dnum()};
+  favWmap(k,f);FWV++;FC=null;save();favSyncBtns(k);fwSchedule();
+  return k;
+}
+function favRemove(k){
+  if(!S.fav||!S.fav[k])return;delete S.fav[k];
+  if(S.srs[k]&&(!WMAP[k]||WMAP[k].fav))delete S.srs[k];
+  FWV++;FC=null;save();favSyncBtns(k);fwSchedule();
+}
+/* AI 話原形唔同（hedged → hedge），就改用原形收藏 */
+function favRekey(oldK,newEn){
+  const nk=favKey(newEn);if(!nk||nk===oldK||!S.fav||!S.fav[oldK])return oldK;
+  const f=S.fav[oldK];delete S.fav[oldK];
+  if(S.fav[nk]){const g=S.fav[nk];if(!g.ex&&f.ex)g.ex=f.ex;if(!g.w)g.w=f.w||f.en;if(!g.zh&&f.zh)g.zh=f.zh}
+  else{f.w=f.w||f.en;f.en=String(newEn).trim();S.fav[nk]=f}
+  const c=S.srs[oldK];if(c&&!S.srs[nk])S.srs[nk]=c;if(c&&(!WMAP[oldK]||WMAP[oldK].fav))delete S.srs[oldK];
+  favWmap(nk,S.fav[nk]);FWV++;FC=null;return nk;
+}
+function favSrcLink(src){
+  src=String(src||'');let m;
+  if(/^c\d+$/.test(src)){const ch=bkById(src);if(ch)return '<a href="#lib-book-'+src+'">讀本第 '+bkNum(ch)+' 章</a>'}
+  if((m=/^d(\d+)$/.exec(src)))return '<a href="#day-'+m[1]+'">第 '+m[1]+' 天</a>';
+  return '';
+}
+/* 收藏詞喺文章入面嘅寫法（允許 -s / -ed / -ing） */
+function fwSrc(s){
+  s=String(s||'').trim();if(s.length<3)return '';
+  const e=s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/\s+/g,'\\s+');
+  if(/\s/.test(s))return e+'(?:s|es)?';
+  if(/[^aeiou]y$/i.test(s))return e.slice(0,-1)+'(?:y|ies|ied)';
+  if(/e$/i.test(s))return e+'(?:s|d)?|'+e.slice(0,-1)+'ing';
+  return e+'(?:s|es|ed|ing)?';
+}
+function favExHTML(ex,o){
+  let h=esc(ex);const ws=[o.w,o.en].filter(Boolean).map(String).sort(function(a,b){return b.length-a.length});
+  for(let i=0;i<ws.length;i++){const src=fwSrc(ws[i]);if(!src)continue;let hit=false;
+    h=h.replace(new RegExp('(^|[^A-Za-z])('+src+')(?![A-Za-z])','i'),function(m0,p,w){hit=true;return p+'<b>'+w+'</b>'});if(hit)break}
+  return h;
+}
+
+/* ---------- 文章入面標出已收藏嘅字 ---------- */
+function fwRx(){
+  if(fwRx.v===FWV)return fwRx.r;fwRx.v=FWV;
+  const parts=[];favKeys().forEach(function(k){const f=S.fav[k];[f.en,f.w].forEach(function(s){const x=fwSrc(s);if(x&&parts.indexOf(x)<0)parts.push(x)})});
+  parts.sort(function(a,b){return b.length-a.length});
+  fwRx.r=parts.length?new RegExp('(^|[^A-Za-z])('+parts.slice(0,800).join('|')+')(?![A-Za-z])','gi'):null;
+  return fwRx.r;
+}
+function fwPaintHost(h){
+  h.__fwv=FWV;
+  const old=h.querySelectorAll('mark.fw');for(let i=0;i<old.length;i++){const m=old[i];m.parentNode.replaceChild(document.createTextNode(m.textContent),m)}
+  if(old.length)h.normalize();
+  const rx=fwRx();if(!rx)return;
+  const wk=document.createTreeWalker(h,NodeFilter.SHOW_TEXT,null),list=[];let n;
+  while((n=wk.nextNode())){const p=n.parentElement;if(p&&p.closest('button,mark,.ipa,svg'))continue;list.push(n)}
+  list.forEach(function(n){const s=n.data;rx.lastIndex=0;let m,pos=0,frag=null;
+    while((m=rx.exec(s))){const st=m.index+m[1].length,en=st+m[2].length;if(!m[0].length){rx.lastIndex++;continue}
+      if(!frag)frag=document.createDocumentFragment();if(st>pos)frag.appendChild(document.createTextNode(s.slice(pos,st)));
+      const mk=document.createElement('mark');mk.className='fw';mk.textContent=s.slice(st,en);frag.appendChild(mk);pos=en}
+    if(frag){if(pos<s.length)frag.appendChild(document.createTextNode(s.slice(pos)));n.parentNode.replaceChild(frag,n)}});
+}
+function fwPaintAll(){try{const hs=document.querySelectorAll(LPW.FW);for(let i=0;i<hs.length;i++)if(hs[i].__fwv!==FWV)fwPaintHost(hs[i])}catch(e){console.warn('[fw]',e)}}
+function fwSchedule(){if(fwSchedule.p)return;fwSchedule.p=1;(window.requestAnimationFrame||setTimeout)(function(){fwSchedule.p=0;fwPaintAll()})}
+
+/* ---------- 生詞卡（彈出） ---------- */
+function lpwHTML(o){
+  const k=favKey(o.en),on=!!(S.fav&&S.fav[k]),ip=o.ipa||ipaOf(o.en);
+  let h='<div class="lpw-top"><div class="lpw-wd"><b lang="en">'+esc(o.en)+'</b>'+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div>'+sayBtn(o.en)+'<button class="ic" data-act="lpw-close" aria-label="關閉">✕</button></div>';
+  if(o.w&&favKey(o.w)!==k)h+='<div class="small muted">原文：<span lang="en">'+esc(o.w)+'</span></div>';
+  h+='<div class="lpw-zh">'+(o.zh?esc(o.zh)+(o.from?' <span class="lpw-src">'+(o.from==='ai'?'AI 按語境':'詞典')+'</span>':''):(o.busy?'<span class="muted">AI 查緊意思…</span>':'<span class="muted">未有中文解釋</span>'))+'</div>';
+  if(o.busy&&o.zh)h+='<div class="lpw-note">AI 按句子語境核對緊…</div>';
+  if(o.note)h+='<div class="lpw-note">'+esc(o.note)+'</div>';
+  if(o.err)h+='<div class="lpw-note warn">'+esc(o.err)+'</div>';
+  if(o.ex)h+='<div class="lpw-ex" lang="en">'+favExHTML(o.ex,o)+'</div>';
+  if(!o.zh&&!o.busy)h+='<div class="lpw-edit"><input type="text" id="lpwIn" placeholder="自己寫中文意思…" autocomplete="off"><button class="btn" data-act="lpw-zh">儲存</button></div>';
+  if(o.ph&&favKey(o.ph.en)!==k){const pon=!!(S.fav&&S.fav[favKey(o.ph.en)]);
+    h+='<div class="lpw-ph"><span class="pill grey xs">詞組</span><div class="lpw-pht"><b lang="en">'+esc(o.ph.en)+'</b> <span class="muted">'+esc(o.ph.zh)+'</span></div><button class="ic fav'+(pon?' on':'')+'" data-act="lpw-fav-ph" data-en="'+esc(o.ph.en)+'" aria-pressed="'+pon+'" aria-label="'+(pon?'取消收藏詞組':'收藏詞組')+'">'+(pon?'★':'☆')+'</button></div>'}
+  h+='<div class="lpw-acts">'+(on?'<button class="btn gold" data-act="lpw-fav" aria-pressed="true">★ 已收藏</button>':'<button class="btn pri" data-act="lpw-fav" aria-pressed="false">☆ 收藏</button>')+
+    (AI.ns&&!o.busy?'<button class="btn ghost" data-act="lpw-ai">AI 按語境解釋</button>':'')+
+    (!AI.ns&&!o.zh?'<button class="btn ghost" data-act="lpw-claude">問 Claude</button>':'')+'</div>';
+  if(on&&o.added)h+='<p class="lpw-tip">已收藏到「練習 → 收藏」，會按記憶曲線提你複習。再撳「已收藏」可以取消。</p>';
+  return h;
+}
+function lpwPlace(){
+  const el=$('lpwPop'),r=LPW.rect;if(!el||el.hidden)return;
+  const vw=window.innerWidth||360,vh=window.innerHeight||640,W=Math.min(360,vw-24),bot=vw<1000?84:12;
+  el.style.width=W+'px';
+  const cx=r?(r.left+r.right)/2:vw/2;el.style.left=Math.round(Math.max(12,Math.min(vw-W-12,cx-W/2)))+'px';
+  const h=el.offsetHeight;let top=r?r.bottom+10:(vh-h)/2;
+  if(r&&top+h>vh-bot){const up=r.top-h-10;top=up>=12?up:vh-bot-h}
+  el.style.top=Math.round(Math.max(12,top))+'px';
+}
+function lpwRefresh(){
+  const el=$('lpwPop'),o=LPW.cur;if(!el||!o||el.hidden)return;
+  const a=document.activeElement,keep=a&&a.id==='lpwIn'?a.value:null;
+  el.innerHTML=lpwHTML(o);
+  if(keep!==null){const i=$('lpwIn');if(i){i.value=keep;try{i.focus()}catch(e){}}}
+  lpwPlace();
+}
+function lpwShow(o){
+  LPW.cur=o;LPW.sy=window.scrollY||0;let el=$('lpwPop');
+  if(!el){el=document.createElement('div');el.id='lpwPop';el.className='lpw-pop';el.setAttribute('role','dialog');el.setAttribute('aria-label','生詞卡');document.body.appendChild(el)}
+  el.hidden=false;lpwRefresh();
+}
+function lpwClose(){const el=$('lpwPop');if(el&&!el.hidden){el.hidden=true;el.innerHTML=''}LPW.cur=null}
+
+/* 長按（save=true）：即刻收藏；撳一下（save=false）：只彈出生詞卡，再撳「收藏」 */
+function lpwFire(host,x,y,save){
+  const hit=lpwHit(host,x,y);if(!hit)return false;
+  const word=hit.word.replace(/^['’\-]+|['’\-]+$/g,'');if(word.length<2)return false;
+  if(save){LPW.firedAt=Date.now();LPW.swallow=true;try{if(navigator.vibrate)navigator.vibrate(12)}catch(e){}}
+  const ex=lpwSentence(hit.T,hit.g,hit.len),ph=lpwPhrase(hit.T,hit.g),fk=lpwFavKeyOf(word);let o;
+  if(fk){const f=S.fav[fk];if(!f.ex&&ex){f.ex=ex;save()}
+    o={en:f.en,zh:f.zh||'',ipa:f.ipa||'',note:f.note||'',ex:f.ex||ex,w:f.w||word,ph:ph,src:f.src||'',dict:true}}
+  else{const d=lpwLookup(word),en=d?d.en:lpwSurface(word);
+    o={en:en,zh:d?d.zh:'',from:d?'dict':'',ipa:'',note:'',ex:ex,w:word,ph:ph,src:lpwSrc(),dict:!!d,sure:!!(d&&d.bk&&d.exact),added:!!save};
+    if(save)favAdd(o)}
+  LPW.rect=hit.rect;lpwShow(o);
+  if(!save){try{TTS.speak(o.en,{quiet:true})}catch(e){}}
+  /* 讀本關鍵詞完全吻合就信詞典；其餘交畀 AI 按句子語境核對（例如 asks 唔係「賣出價」） */
+  if(AI.ns&&(fk?!o.zh:!o.sure))lpwAsk(o,!fk&&!!o.zh);
+  return true;
+}
+/* 撳文章入面已收藏（金色底線）嘅字 */
+function lpwOpenMark(m){
+  const word=m.textContent||'',k=(S.fav&&S.fav[favKey(word)])?favKey(word):lpwFavKeyOf(word);
+  const f=k&&S.fav[k];if(!f)return;
+  const host=m.closest(LPW.SEL),T=host?host.textContent:'';let g=0;
+  if(host){const r=document.createRange();try{r.setStart(host,0);r.setEnd(m,0);g=r.toString().length}catch(e){g=0}}
+  const o={en:f.en,zh:f.zh||'',ipa:f.ipa||'',note:f.note||'',ex:f.ex||(host?lpwSentence(T,g,word.length):''),w:f.w||word,ph:null,src:f.src||'',dict:true};
+  LPW.rect=m.getBoundingClientRect();lpwShow(o);
+  try{TTS.speak(f.en,{quiet:true})}catch(e){}
+}
+
+/* ---------- AI 按語境解釋（要喺 Claude 入面打開先用到） ---------- */
+function lpwJson(prompt,opt){
+  if(AI.ns&&typeof AI.ns.json==='function')return AI.ns.json(prompt,opt);
+  return AI.ns(prompt,opt).then(function(r){const t=String(r&&r.text||''),a=t.search(/[\[{]/),b=Math.max(t.lastIndexOf('}'),t.lastIndexOf(']'));if(a<0||b<a)throw {code:'invalid_json'};return JSON.parse(t.slice(a,b+1))});
+}
+function lpwErr(e){const c=e&&e.code;if(c==='cancelled')return '';
+  if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c)>=0){AI.ns=null;return '未有授權使用 AI，可以自己寫中文意思。'}
+  if(c==='rate_limited')return 'AI 用得太密，等一陣再試。';if(c==='invalid_json')return 'AI 回覆格式有誤，可以再撳一次。';return 'AI 暫時用唔到，可以自己寫中文意思。'}
+function lpwPrompt(word,ex){return '你係香港金融英文老師。香港學生（母語粵語）讀金融英文時唔識呢個詞，請按句子語境解釋。\n\n詞：'+word+'\n句子：'+(ex||'（冇）')+
+  '\n\n只回覆一個 JSON 物件：{"base":"呢個詞嘅原形（英文，例如 hedged → hedge；本身係原形就照寫）","ipa":"英式國際音標，唔使斜線","pos":"詞性，例如 n. / v. / adj. / adv.","zh":"喺呢句入面嘅中文意思（繁體中文，最多 12 個字）","note":"用香港粵語口語一句講清楚喺金融語境點用（最多 30 個字）"}'}
+function lpwPlausible(base,w){base=String(base||'').trim();w=String(w||'').toLowerCase();return /^[A-Za-z][A-Za-z '\-]{0,40}$/.test(base)&&base.toLowerCase().slice(0,3)===w.slice(0,3)}
+function lpwAsk(o,force){
+  if(!AI.ns){o.err='呢度用唔到內置 AI。';lpwRefresh();return}
+  if(LPW.ctl){try{LPW.ctl.abort()}catch(e){}}
+  let ctl=null;try{ctl=new AbortController()}catch(e){}LPW.ctl=ctl;
+  o.busy=true;o.err='';lpwRefresh();
+  const opt={modelTier:'quick'};if(ctl)opt.signal=ctl.signal;
+  lpwJson(lpwPrompt(o.w||o.en,o.ex),opt).then(function(r){
+    o.busy=false;if(!r||typeof r!=='object'||Array.isArray(r))throw {code:'invalid_json'};
+    const zh=String(r.zh||'').trim().slice(0,40),pos=String(r.pos||'').trim().slice(0,8),ipa=String(r.ipa||'').replace(/\//g,'').trim().slice(0,60),note=String(r.note||'').trim().slice(0,90),base=String(r.base||'').trim();
+    let k=favKey(o.en);const saved=!!(S.fav&&S.fav[k]);
+    if(!o.dict&&base&&favKey(base)!==k&&lpwPlausible(base,o.w||o.en)){if(saved){k=favRekey(k,base);o.en=S.fav[k].en}else o.en=base}
+    const zz=zh?((pos&&zh.indexOf(pos)!==0?pos+' ':'')+zh):'';
+    if(zz){if(force||!o.zh){o.zh=zz;o.from='ai'}o.note=note}
+    if(ipa&&!ipaOf(o.en))o.ipa=ipa;
+    if(S.fav&&S.fav[k]){const f=S.fav[k];if(o.zh&&(force||!f.zh))f.zh=o.zh;if(o.note)f.note=o.note;if(o.ipa&&!ipaOf(f.en))f.ipa=o.ipa;favWmap(k,f);save();fwSchedule();if(view==='practice'&&PR.tab==='fav'&&!SHEET)renderKeep()}
+    if(LPW.cur===o)lpwRefresh();
+  },function(e){o.busy=false;o.err=lpwErr(e);if(LPW.cur===o)lpwRefresh()});
+}
+function lpwSaveZh(){
+  const o=LPW.cur,i=$('lpwIn');if(!o||!i)return;const v=String(i.value||'').trim().slice(0,60);if(!v){try{i.focus()}catch(e){}return}
+  o.zh=v;o.from='';o.err='';const k=favKey(o.en);
+  if(S.fav&&S.fav[k]){S.fav[k].zh=v;favWmap(k,S.fav[k]);save()}else{favAdd(o);o.added=true}
+  try{i.blur()}catch(e){}lpwRefresh();toast('已儲存意思');
+}
+
+/* ---------- 收藏頁：編輯、AI 補齊 ---------- */
+function favEditHTML(k){
+  const f=S.fav&&S.fav[k];if(!f)return '<p>搵唔到呢個詞，可能已經移除咗。</p>';
+  const c=S.srs[k],t=dnum(),src=favSrcLink(f.src);
+  return '<h3>編輯收藏：<span lang="en">'+esc(f.en)+'</span> '+sayBtn(f.en)+'</h3>'+
+   (f.ex?'<p class="lpw-ex" lang="en">'+favExHTML(f.ex,f)+' '+sayBtn(f.ex)+'</p>':'')+
+   '<p class="small muted" style="margin:0">'+(src?'來自'+src+' · ':'')+(c?(c.d<=t?'今日要溫':'下次複習：'+(c.d-t)+' 日後')+' · 記憶等級 '+(c.b||0)+'/6':'未開始複習')+'</p>'+
+   '<label class="f" for="favZh">中文意思</label><input type="text" id="favZh" value="'+esc(f.zh||'')+'" placeholder="例如：v. 對沖" autocomplete="off">'+
+   '<label class="f" for="favNote">筆記（可選）</label><textarea id="favNote" rows="2" style="min-height:64px">'+esc(f.note||'')+'</textarea>'+
+   '<div id="favAiOut"></div>'+
+   '<div class="btns"><button class="btn pri" data-act="fav-save" data-k="'+esc(k)+'">儲存</button>'+(AI.ns?'<button class="btn" data-act="fav-ai" data-k="'+esc(k)+'">AI 按原句解釋</button>':'')+'<button class="btn ghost" data-act="fav-del" data-k="'+esc(k)+'">移除收藏</button></div>';
+}
+function favAiOne(k){
+  const f=S.fav&&S.fav[k],out=$('favAiOut');if(!f||!AI.ns)return;
+  if(out)out.innerHTML='<p class="small muted">AI 查緊意思…</p>';
+  lpwJson(lpwPrompt(f.w||f.en,f.ex),{modelTier:'quick'}).then(function(r){
+    const zh=String(r&&r.zh||'').trim().slice(0,40),pos=String(r&&r.pos||'').trim().slice(0,8),note=String(r&&r.note||'').trim().slice(0,90),ipa=String(r&&r.ipa||'').replace(/\//g,'').trim().slice(0,60);
+    const zi=$('favZh'),ni=$('favNote');
+    if(zh&&zi)zi.value=(pos&&zh.indexOf(pos)!==0?pos+' ':'')+zh;if(note&&ni&&!String(ni.value||'').trim())ni.value=note;
+    if(ipa&&!ipaOf(f.en)&&!f.ipa){f.ipa=ipa;save()}
+    const o=$('favAiOut');if(o)o.innerHTML='<p class="small" style="color:var(--ok)">已填好，睇吓啱唔啱，再撳「儲存」。</p>';
+  },function(e){const o=$('favAiOut');if(o)o.innerHTML='<p class="note warn small">'+esc(lpwErr(e)||'已取消')+'</p>'});
+}
+function favAiFill(){
+  if(!AI.ns||FAVAI.busy)return;
+  const ks=favKeys().filter(function(k){return !S.fav[k].zh}).slice(0,40);if(!ks.length){toast('全部收藏都有解釋喇');return}
+  FAVAI.busy=true;renderKeep();
+  const prompt='你係香港金融英文老師。以下係香港學生收藏咗嘅英文生詞，每個附原句。請逐個按原句語境解釋。\n\n'+
+    ks.map(function(k,i){const f=S.fav[k];return (i+1)+'. '+f.en+(f.ex?' —— '+String(f.ex).slice(0,160):'')}).join('\n')+
+    '\n\n只回覆一個 JSON 陣列，次序同上面一樣，每項：{"w":"原本個詞","pos":"n. / v. / adj. / adv.","zh":"中文意思（繁體，最多 12 個字）","ipa":"英式國際音標，唔使斜線"}';
+  lpwJson(prompt,{modelTier:'quick'}).then(function(arr){
+    FAVAI.busy=false;let n=0;
+    if(Array.isArray(arr))arr.forEach(function(r,i){if(!r||typeof r!=='object')return;let k=favKey(r.w);if(!S.fav[k])k=ks[i];const f=k&&S.fav[k];if(!f||f.zh)return;
+      const zh=String(r.zh||'').trim().slice(0,40),pos=String(r.pos||'').trim().slice(0,8),ipa=String(r.ipa||'').replace(/\//g,'').trim().slice(0,60);
+      if(zh){f.zh=(pos&&zh.indexOf(pos)!==0?pos+' ':'')+zh;n++}if(ipa&&!f.ipa&&!ipaOf(f.en))f.ipa=ipa;favWmap(k,f)});
+    if(n)save();renderKeep();toast(n?'已補齊 '+n+' 個詞嘅解釋':'AI 冇畀到解釋，可以再試');
+  },function(e){FAVAI.busy=false;renderKeep();toast(lpwErr(e)||'已取消')});
+}
+
+function lpwAct(a,ds){
+  switch(a){
+  case 'lpw-close':lpwClose();return true;
+  case 'lpw-fav':{const o=LPW.cur;if(!o)return true;const k=favKey(o.en);
+    if(S.fav&&S.fav[k]){favRemove(k);o.added=false;toast('已取消收藏')}else{favAdd(o);o.added=true}
+    lpwRefresh();if(view==='practice'&&PR.tab==='fav')renderKeep();return true}
+  case 'lpw-fav-ph':{const o=LPW.cur;if(!o||!o.ph)return true;const k=favKey(o.ph.en);
+    if(S.fav&&S.fav[k]){favRemove(k);toast('已取消收藏詞組')}else{favAdd({en:o.ph.en,zh:o.ph.zh,ex:o.ex,src:o.src||lpwSrc()});toast('★ 已收藏詞組：'+o.ph.en)}
+    lpwRefresh();return true}
+  case 'lpw-ai':if(LPW.cur)lpwAsk(LPW.cur,true);return true;
+  case 'lpw-zh':lpwSaveZh();return true;
+  case 'lpw-claude':{const o=LPW.cur;if(o)aiOpenClaude(lpwPrompt(o.w||o.en,o.ex).replace(/\n\n只回覆[\s\S]*$/,'\n\n請用香港粵語簡單講：中文意思、詞性、喺呢句點用，再畀一句金融例句。'));return true}
+  case 'fav-cards':case 'fav-all-cards':{PR.tab='cards';PR.src=a==='fav-cards'?'fav':'favall';FC=null;try{UIM.d.pt='cards';UIM.save()}catch(e){}lpwClose();stopMedia();
+    if(view!=='practice')go('practice');else{render();try{window.scrollTo(0,0)}catch(e){}}return true}
+  case 'fav-edit':{const k=ds.k;lpwClose();openSheet(function(){return favEditHTML(k)});return true}
+  case 'fav-save':{const k=ds.k,f=S.fav&&S.fav[k];if(!f){closeSheet();return true}
+    const zi=$('favZh'),ni=$('favNote');f.zh=String(zi&&zi.value||'').trim().slice(0,60);f.note=String(ni&&ni.value||'').trim().slice(0,300);
+    favWmap(k,f);save();closeSheet();renderKeep();toast('已儲存');return true}
+  case 'fav-del':{favRemove(ds.k);closeSheet();renderKeep();toast('已移除收藏');return true}
+  case 'fav-ai':favAiOne(ds.k);return true;
+  case 'fav-ai-fill':favAiFill();return true;
+  }
+  return false;
+}
+
+function lpwInit(){
+  if(lpwInit.done)return;lpwInit.done=1;
+  const cancel=function(){if(LPW.t){clearTimeout(LPW.t);LPW.t=null}};
+  const SKIP='button,input,textarea,select,a[href],#lpwPop,.acts';
+  const outside=function(t){const pop=$('lpwPop');if(pop&&!pop.hidden&&!(t&&t.closest&&t.closest('#lpwPop')))lpwClose()};
+  const start=function(t,x,y){
+    if(!t||!t.closest||t.closest(SKIP))return;
+    const host=t.closest(LPW.SEL);if(!host)return;
+    LPW.x=x;LPW.y=y;cancel();
+    LPW.t=setTimeout(function(){LPW.t=null;try{lpwFire(host,LPW.x,LPW.y,true)}catch(err){console.warn('[lpw]',err)}},450);
+  };
+  /* 滑鼠 / 觸控筆：pointer 事件 */
+  document.addEventListener('pointerdown',function(e){
+    LPW.swallow=false;LPW.pt=e.pointerType||'';
+    if(e.pointerType==='touch')return;
+    outside(e.target);
+    if(e.button>0||e.isPrimary===false)return;
+    start(e.target,e.clientX,e.clientY);
+  },true);
+  document.addEventListener('pointermove',function(e){if(e.pointerType!=='touch'&&LPW.t&&(Math.abs(e.clientX-LPW.x)>8||Math.abs(e.clientY-LPW.y)>8))cancel()},true);
+  document.addEventListener('pointerup',function(e){if(e.pointerType!=='touch')cancel()},true);
+  /* 手機：touch 事件。系統手勢會發 pointercancel / touchcancel，唔好因此取消長按；郁手指或者捲動先取消 */
+  document.addEventListener('touchstart',function(e){
+    LPW.swallow=false;LPW.pt='touch';outside(e.target);
+    const tt=e.touches&&e.touches[0];if(!tt||e.touches.length!==1){cancel();return}
+    start(e.target,tt.clientX,tt.clientY);
+  },{capture:true,passive:true});
+  document.addEventListener('touchmove',function(e){const tt=e.touches&&e.touches[0];if(LPW.t&&tt&&(Math.abs(tt.clientX-LPW.x)>10||Math.abs(tt.clientY-LPW.y)>10))cancel()},{capture:true,passive:true});
+  document.addEventListener('touchend',cancel,{capture:true,passive:true});
+  document.addEventListener('dragstart',cancel,true);
+  /* Android 長按會發 contextmenu；電腦右鍵都係呢個：當長按處理 */
+  document.addEventListener('contextmenu',function(e){
+    const t=e.target;if(!t||!t.closest||t.closest(SKIP))return;
+    const host=t.closest(LPW.SEL);if(!host)return;
+    e.preventDefault();cancel();
+    if(Date.now()-LPW.firedAt<1500)return;
+    try{lpwFire(host,e.clientX,e.clientY,true)}catch(err){console.warn('[lpw]',err)}
+  });
+  document.addEventListener('click',function(e){
+    const t=e.target;if(!t||!t.closest)return;const inPop=!!t.closest('#lpwPop');
+    if(LPW.swallow&&!inPop){LPW.swallow=false;e.preventDefault();e.stopPropagation();return}
+    if(inPop)return;
+    const m=t.closest('mark.fw');
+    if(m){e.preventDefault();e.stopPropagation();try{lpwOpenMark(m)}catch(err){console.warn('[lpw]',err)}return}
+    /* 撳一下單詞：彈出生詞卡（未收藏，卡上撳「收藏」） */
+    if(!e.clientX&&!e.clientY)return;
+    if(t.closest(SKIP))return;
+    const da=t.closest('[data-act]');if(da&&!da.classList.contains('kw'))return;
+    const host=t.closest(LPW.SEL);if(!host)return;
+    try{if(String(window.getSelection&&window.getSelection()||'').trim())return}catch(x){}
+    let ok=false;try{ok=lpwFire(host,e.clientX,e.clientY,false)}catch(err){console.warn('[lpw]',err)}
+    if(ok){e.preventDefault();e.stopPropagation()}
+  },true);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&LPW.cur){lpwClose();e.stopPropagation()}
+    else if(e.key==='Enter'&&e.target&&e.target.id==='lpwIn'){e.preventDefault();lpwSaveZh()}
+  },true);
+  document.addEventListener('scroll',function(e){cancel();
+    const tg=e.target;if(tg!==document&&tg!==document.documentElement&&tg!==document.body)return;
+    const p=$('lpwPop'),a=document.activeElement;
+    if(p&&!p.hidden&&Math.abs((window.scrollY||0)-LPW.sy)>80&&!(a&&a.closest&&a.closest('#lpwPop')))lpwClose()},{capture:true,passive:true});
+  window.addEventListener('resize',function(){lpwPlace()});
+  window.addEventListener('hashchange',lpwClose);
+  try{new MutationObserver(fwSchedule).observe(document.body,{childList:true,subtree:true})}catch(e){}
+  fwSchedule();
 }
 
 </script>
