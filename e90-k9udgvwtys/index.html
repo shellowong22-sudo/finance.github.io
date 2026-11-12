@@ -675,7 +675,34 @@ mark.fw{background:linear-gradient(transparent 58%,var(--accent-soft) 58%);color
 .favrow .ex b{color:var(--ink)}
 .bkhead .bkmeta a{color:var(--accent);font-weight:600}
 .docwrap .passage{white-space:pre-line;font-family:var(--font-body);font-size:15.5px;line-height:1.6}
-.gxq .seg.choice button{white-space:normal;text-align:left;line-height:1.35}
+.gxq .seg.choice button{white-space:normal;text-align:left;line-height:1.35}.sn-flash{position:fixed;z-index:57;pointer-events:none;border-radius:4px;background:var(--accent);opacity:.45;animation:snfl 1.1s ease-out forwards}
+@keyframes snfl{0%{opacity:.55}70%{opacity:.35}100%{opacity:0}}
+.sn-pop{top:auto}
+.sn-q{font-family:var(--font-display);font-size:17px;line-height:1.6;background:var(--surface-2);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:10px 0 6px}
+.sn-types{display:flex;flex-wrap:wrap;gap:6px}
+.sn-tag{display:inline-flex;gap:6px;align-items:center;border-radius:999px;padding:3px 10px;font-size:13px;background:var(--jade-soft);color:var(--ink)}
+.sn-tag b{font-size:11.5px;letter-spacing:.4px;color:var(--jade)}
+.sn-sk{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.sn-sk>div{flex:1 1 90px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:6px 10px;min-width:0}
+.sn-sk>div span{display:block;font-size:10.5px;letter-spacing:.6px;color:var(--muted);font-weight:700}
+.sn-sk>div b{font-family:var(--font-display);font-weight:600;overflow-wrap:anywhere}
+.sn-sk>i{align-self:center;font-style:normal;color:var(--muted)}
+.sn-flow{display:flex;flex-direction:column}
+.sn-ck{border:1px solid var(--line);border-left:4px solid var(--v5);border-radius:10px;padding:7px 10px;background:var(--surface);font-family:var(--font-display);font-size:15.5px;line-height:1.5}
+.sn-ck .sn-rl{display:block;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--muted)}
+.sn-ck.r-core,.sn-ck.r-then{border-left-color:var(--v1);background:var(--jade-soft)}
+.sn-ck.r-res,.sn-ck.r-pur{border-left-color:var(--v3)}.sn-ck.r-why{border-left-color:var(--v6)}.sn-ck.r-con{border-left-color:var(--v4)}.sn-ck.r-if{border-left-color:var(--v2)}.sn-ck.r-eg,.sn-ck.r-exp{border-left-color:var(--v2)}
+.sn-arr{text-align:center;color:var(--muted);line-height:1.2;font-size:13px}
+.sn-sig{background:var(--accent-soft);color:var(--accent-text);font-weight:700;border-radius:3px;padding:0 2px}
+.sn-ctx{font-family:var(--font-display);font-size:14px;color:var(--muted);border-left:2px dashed var(--line);padding-left:10px;margin:6px 0 0}
+.sn-ai{background:var(--surface-2);border-radius:10px;padding:8px 12px;margin-top:12px}.sn-ai p{margin:6px 0}
+.sn-big{font-family:var(--font-display);font-size:17px;font-weight:600;margin:0 0 10px}.sn-big span{display:block;font-family:var(--font-body);font-size:11px;letter-spacing:.6px;color:var(--muted);font-weight:700;text-transform:uppercase}
+.sn-map{list-style:none;margin:0;padding:0;counter-reset:sm;position:relative}
+.sn-map li{position:relative;display:flex;gap:10px;align-items:flex-start;padding:8px 0 8px 0;border-top:1px solid var(--line)}
+.sn-map li:first-child{border-top:0}
+.sn-mt{flex:0 0 86px;font-size:11px;font-weight:800;letter-spacing:.5px;color:var(--jade);padding-top:3px}.sn-mt i{display:block;font-style:normal;font-weight:500;color:var(--muted);letter-spacing:0}
+.sn-map li.m-but .sn-mt{color:var(--bad)}.sn-map li.m-so .sn-mt,.sn-map li.m-key .sn-mt{color:var(--ok)}.sn-map li.m-eg .sn-mt,.sn-map li.m-if .sn-mt{color:var(--accent-text)}
+.sn-ms{flex:1;font-family:var(--font-display);font-size:15.5px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -4837,7 +4864,7 @@ function blockDesc(n,k){
 
 /* ---------- 存儲（本機 + 雲端同步，均可失敗降級） ---------- */
 const KEY='hkfe90.v1';
-function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},fav:{},pg:{},tm:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true,mixAcc:false},updatedAt:0}}
+function fresh(){return {v:1,cur:1,max:1,done:{},fin:{},srs:{},quiz:{},self:{},log:{},mis:{g:{},s:{}},step:{},note:{},pr:{},book:{},bks:{},bkw:{},fav:{},pg:{},tm:{},sents:{},set:{accent:'en-GB',rate:0.9,voice:'',hidezh:false,noInstall:false,allInOne:false,lfirst:false,lastBk:0,ttsHint:'',aiAuto:true,mixAcc:false},updatedAt:0}}
 function migrate(o){
   const f=fresh();
   if(!o||typeof o!=='object')return f;
@@ -5505,10 +5532,10 @@ function vPlan(){
 
 /* ---------- 練習 ---------- */
 function vPractice(){
-  const nm=misCount(),tabs=[['cards','閃卡複習'],['fav','收藏'+(favKeys().length?' '+favKeys().length:'')],['trans','口頭翻譯'],['dict','聽寫'],['num','數字聽力'],['speak','跟讀打分'],['quiz','單詞測驗'],['talk','自由口語'],['mis','錯題本'+(nm?' '+nm:'')]];
+  const nm=misCount(),tabs=[['cards','閃卡複習'],['fav','收藏'+((favKeys().length+(S.sents?Object.keys(S.sents).length:0))?' '+(favKeys().length+(S.sents?Object.keys(S.sents).length:0)):'')],['trans','口頭翻譯'],['dict','聽寫'],['num','數字聽力'],['speak','跟讀打分'],['quiz','單詞測驗'],['talk','自由口語'],['mis','錯題本'+(nm?' '+nm:'')]];
   let h='<section class="hero" style="grid-template-columns:1fr;padding-bottom:0"><div class="htitle"><h1>練習</h1><div class="en">Review · Dictation · Speaking</div></div></section>';
   h+='<div class="tabs" role="tablist">'+tabs.map(function(t){return '<button data-act="ptab" data-tab="'+t[0]+'" aria-pressed="'+(PR.tab===t[0])+'">'+t[1]+'</button>'}).join('')+'</div>';
-  if(PR.tab==='cards')h+=pCards();else if(PR.tab==='dict')h+=pDict();else if(PR.tab==='speak')h+=pSpeak();else if(PR.tab==='quiz')h+=cardQuiz('p',learnedPool(),15,'已學單詞測驗');else if(PR.tab==='trans')h+=pTrans();else if(PR.tab==='num')h+=pNum();else if(PR.tab==='mis')h+=pMis();else if(PR.tab==='fav')h+=pFav();else h+=pTalk();
+  if(PR.tab==='cards')h+=pCards();else if(PR.tab==='dict')h+=pDict();else if(PR.tab==='speak')h+=pSpeak();else if(PR.tab==='quiz')h+=cardQuiz('p',learnedPool(),15,'已學單詞測驗');else if(PR.tab==='trans')h+=pTrans();else if(PR.tab==='num')h+=pNum();else if(PR.tab==='mis')h+=pMis();else if(PR.tab==='fav')h+=pFav()+(typeof snFavSection==='function'?snFavSection():'');else h+=pTalk();
   return h;
 }
 function srcBar(kind){
@@ -5818,6 +5845,7 @@ function act(a,ds,el){
   if(coAct(a,ds))return;
   if(pgAct(a,ds))return;
   if(lpwAct(a,ds))return;
+  if(typeof snAct==='function'&&snAct(a,ds))return;
   if(typeof suppAct==='function'&&suppAct(a,ds))return;
   switch(a){
   case 'sheet-close':closeSheet();break;
@@ -5954,7 +5982,7 @@ function boot(){
   document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')safe(function(){Cloud.refresh()},'cloud');else{ASR.abort();MIC.abort();if(Cloud.ref)Cloud.flush()}});
   document.addEventListener('focusout',function(){setTimeout(flushDeferred,300)});
   setInterval(flushDeferred,4000);
-  safe(favInit,'fav');safe(lpwInit,'lpw');safe(function(){UIM.resume()},'uim');uimInit();safe(tmStart,'tm');
+  safe(favInit,'fav');safe(lpwInit,'lpw');safe(function(){if(typeof snInit==='function')snInit()},'sn');safe(function(){UIM.resume()},'uim');uimInit();safe(tmStart,'tm');
   route();
   safe(registerSW,'sw');
   setTimeout(function(){safe(function(){Cloud.init()},'cloud')},200);
@@ -7437,7 +7465,7 @@ function bookChapter(id){
    '<details class="bksum" open><summary>中文導讀</summary><p>'+esc(ch.sum)+'</p></details></section>';
   h+='<article class="card bk">'+lpwHintHTML()+bkBody(ch,'app')+'</article>';
   h+='<section class="card"><h2 class="sec-h">本章關鍵詞 <span class="tag">Key Words · '+ch.kw.length+'</span></h2><div class="rows">'+ch.kw.map(function(k){const base=k[0].replace(/\s*\([^)]*\)/g,'').trim(),ip=ipaOf(base);return '<div class="row"><div class="txt"><div class="en">'+esc(k[0])+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div><div class="zh">'+esc(k[1])+'</div></div><div class="acts">'+sayBtn(base)+favBtn(base,k[1])+'</div></div>'}).join('')+'</div>'+(S.bkw&&S.bkw[ch.id]?'<div class="btns"><span class="pill ok" style="align-self:center">已加入單詞卡</span><button class="btn" data-act="bk-cards-go">去溫習</button></div>':'<div class="btns"><button class="btn jade" data-act="bk-cards" data-c="'+ch.id+'">加入單詞卡（'+ch.kw.length+' 個詞）</button></div>')+'</section>';
-  h+='<section class="card"><h2 class="sec-h">本章要點 <span class="tag">Key Points</span></h2>'+bkKeyPoints(ch)+'</section>'+bkSpeak(ch)+bkQuiz(ch);
+  h+='<section class="card"><h2 class="sec-h">本章要點 <span class="tag">Key Points</span></h2>'+bkKeyPoints(ch)+'</section>'+(typeof snChapterLogic==='function'?snChapterLogic(ch.id)+snChapterSaved(ch.id):'')+bkSpeak(ch)+bkQuiz(ch);
   h+='<div class="stepfoot">'+(prev?'<a class="btn" href="#lib-book-'+prev.id+'">‹ 第 '+(n-1)+' 章</a>':'<a class="btn" href="#lib-book">目錄</a>')+'<button class="btn'+(S.book[ch.id]?'':' gold')+'" data-act="bk-done" data-c="'+ch.id+'">'+(S.book[ch.id]?'✓ 已讀（點此取消）':'標記為已讀')+'</button>'+(next?'<a class="btn" href="#lib-book-'+next.id+'">第 '+(n+1)+' 章 ›</a>':'<a class="btn" href="#lib-book-glossary">詞彙表 ›</a>')+'</div>';
   return h;
 }
@@ -7489,7 +7517,7 @@ const LPW={SEL:'.bp,.bbox p,.bh,.passage,.txt .en,.ex',FW:'.bp,.bbox p,.passage,
 let FWV=1;
 const FAVAI={busy:false};
 
-function lpwHintHTML(){return '<p class="lpw-hint">唔識嘅字：<b>撳一下</b>睇意思，<b>長按</b>直接收藏（電腦可撳右鍵）。收藏過嘅字有金色底線。</p>'}
+function lpwHintHTML(){return '<p class="lpw-hint">唔識嘅字：<b>撳一下</b>睇意思，<b>長按</b>直接收藏（電腦可撳右鍵）。想收藏<b>整句</b>：對住句子<b>左右掃</b>（或長按後橫拉；電腦用滑鼠橫拖），再睇「🧠 英文邏輯分析」。</p>'}
 
 /* 本機詞典：讀本關鍵詞 → 金融義 → 課程單詞 → 詞族 / 詞根例字 */
 function lpwDict(){
@@ -7659,7 +7687,7 @@ function lpwHTML(o){
     h+='<div class="lpw-ph"><span class="pill grey xs">詞組</span><div class="lpw-pht"><b lang="en">'+esc(o.ph.en)+'</b> <span class="muted">'+esc(o.ph.zh)+'</span></div><button class="ic fav'+(pon?' on':'')+'" data-act="lpw-fav-ph" data-en="'+esc(o.ph.en)+'" aria-pressed="'+pon+'" aria-label="'+(pon?'取消收藏詞組':'收藏詞組')+'">'+(pon?'★':'☆')+'</button></div>'}
   h+='<div class="lpw-acts">'+(on?'<button class="btn gold" data-act="lpw-fav" aria-pressed="true">★ 已收藏</button>':'<button class="btn pri" data-act="lpw-fav" aria-pressed="false">☆ 收藏</button>')+
     (AI.ns&&!o.busy?'<button class="btn ghost" data-act="lpw-ai">AI 按語境解釋</button>':'')+
-    (!AI.ns&&!o.zh?'<button class="btn ghost" data-act="lpw-claude">問 Claude</button>':'')+'</div>';
+    (!AI.ns&&!o.zh?'<button class="btn ghost" data-act="lpw-claude">問 Claude</button>':'')+(o.ex?'<button class="btn ghost" data-act="sn-save-ex">★ 收藏整句</button>':'')+'</div>';
   if(on&&o.added)h+='<p class="lpw-tip">已收藏到「練習 → 收藏」，會按記憶曲線提你複習。再撳「已收藏」可以取消。</p>';
   return h;
 }
@@ -7946,6 +7974,235 @@ function suppAct(a,ds){
   return false;
 }
 
+</script>
+<script>
+/* 讀本每章英文邏輯鏈：q = 本章要答嘅大問題；f = [邏輯關係, 英文論點] */
+const BKLOGIC={
+c1:{q:"Why is money today worth more than the same money tomorrow?",f:[["CLAIM","Money has a price over time, and that price is interest."],["SO","Because interest is earned on past interest, compounding makes time the investor's strongest tool."],["BUT","Inflation quietly reduces what each dollar can buy."],["SO","We must judge returns in real terms: nominal return minus inflation."],["HOW","Present value and future value move money across time with a discount rate."],["KEY","Every later topic, from mortgages to bond prices, is an application of this idea."]]},
+c2:{q:"How does a bank turn deposits into profit, and what keeps it safe?",f:[["CLAIM","A bank borrows short from savers and lends longer to borrowers."],["SO","It earns the spread between the loan rate and the deposit rate, plus fees."],["IF","If too many depositors want their money at once, the bank faces a liquidity problem."],["SO","Regulators such as the HKMA require reserves, liquidity and capital buffers."],["BUT","Deposit protection covers deposits only, not investment products."]]},
+c3:{q:"Why do Hong Kong interest rates follow the US instead of local conditions?",f:[["CLAIM","Most central banks raise rates to cool inflation and cut rates to support growth."],["BUT","Hong Kong cannot set rates freely, because the HK dollar is linked to the US dollar between 7.75 and 7.85."],["SO","To defend the peg, Hong Kong rates generally follow US rates."],["EG","When HIBOR rises, H-plan mortgage payments rise too."],["KEY","To explain a client's mortgage, start with the Fed, then the peg, then HIBOR."]]},
+c4:{q:"How can you tell from the numbers whether a company is really healthy?",f:[["CLAIM","Three statements answer three different questions: profit, position and cash."],["HOW","The income statement covers a period; the balance sheet shows one date; cash flow explains the change in cash."],["SO","Assets must always equal liabilities plus equity."],["BUT","Profit is not cash: a firm can report profit and still run out of money."],["SO","Watch for red flags such as fast-rising receivables, negative operating cash flow and growing debt."]]},
+c5:{q:"What exactly do you own when you buy a share, and how is it traded?",f:[["CLAIM","A share is a piece of ownership, with a claim on dividends and a vote."],["WHY","Companies issue shares to raise capital without borrowing."],["HOW","New shares are sold in the primary market (IPO); later trading happens in the secondary market."],["SO","Prices are set in the order book, where the bid-ask spread is the cost of trading now."],["BUT","A limit order controls price, while a market order controls speed: you cannot have both."]]},
+c6:{q:"Is a stock cheap or expensive, and compared with what?",f:[["CLAIM","Price is what you pay; value is what you get."],["HOW","Ratios such as P/E, P/B and dividend yield link the price to profit, assets and income."],["BUT","A ratio means little alone; compare it with peers and with the company's own history."],["IF","If a share looks cheap because profits keep falling, it may be a value trap."],["KEY","Growth stocks trade on future profit; value stocks trade on present assets and cash."]]},
+c7:{q:"Why do bond prices fall when interest rates rise?",f:[["CLAIM","A bond pays fixed coupons and returns its face value at maturity."],["SO","When market yields rise, old fixed coupons look less attractive, so the bond price must fall."],["HOW","Duration measures how strongly the price reacts to a change in rates."],["BUT","Interest rate risk is not the only risk: lower credit ratings mean higher default risk."],["SO","Investors demand higher yields for longer maturities and weaker borrowers, which shapes the yield curve."]]},
+c24:{q:"How do lenders decide who gets money, and on what terms?",f:[["CLAIM","Every loan has a principal, a rate, a term and a repayment schedule."],["EG","In a mortgage, early payments are mostly interest; the principal share grows over time."],["HOW","Credit analysts judge borrowers with the five Cs: character, capacity, capital, collateral and conditions."],["SO","Collateral and covenants protect the lender if things go wrong."],["KEY","In trade, letters of credit replace trust between strangers with a bank's promise."]]},
+c8:{q:"Why pool money in a fund instead of buying shares yourself?",f:[["CLAIM","Funds pool money to give diversification and professional management."],["BUT","Most active managers fail to beat their index after fees."],["SO","Low-cost index funds and ETFs are an efficient way to own a whole market."],["EG","REITs pass most rental income to investors, so they are sensitive to interest rates."],["KEY","Fees compound like returns, only in reverse: always compare total costs."]]},
+c25:{q:"What do alternative investments offer, and what do they cost?",f:[["CLAIM","Alternatives include private equity, hedge funds, private credit, real estate and infrastructure."],["WHY","Investors use them for returns and diversification that public markets may not give."],["HOW","In private equity, GPs invest money from LPs and returns often follow a J-curve."],["BUT","Fees are high and money can be locked up for years."],["SO","Alternatives suit professional, long-term investors rather than everyday savers."]]},
+c9:{q:"What moves currencies and commodities, and how do businesses protect themselves?",f:[["CLAIM","An exchange rate is the price of one currency in another: USD/HKD 7.8125 means US$1 costs HK$7.8125."],["WHY","Rates, inflation, growth and sentiment push currencies up and down."],["IF","If a company will pay or receive foreign money later, it faces currency risk."],["SO","It can use a forward contract to lock in today's rate."],["KEY","Hong Kong adds a special role as the largest offshore renminbi centre."]]},
+c10:{q:"How can a small deposit control a large position, and why is that dangerous?",f:[["CLAIM","A derivative takes its value from an underlying asset."],["HOW","Futures are standardised and exchange-traded; forwards are private OTC contracts."],["SO","Because you only post margin, a small price move creates a large gain or loss: leverage."],["BUT","Mark-to-market means losses are paid daily, so a margin call can force you out."],["KEY","The same tool can reduce risk (hedging) or increase it (speculation)."]]},
+c11:{q:"What is the difference between having a right and having an obligation?",f:[["CLAIM","An option gives the buyer a right, not an obligation."],["SO","A buyer can lose at most the premium, while a seller can lose much more."],["HOW","Breakeven: call = strike + premium; put = strike − premium."],["BECAUSE","Premium = intrinsic value + time value, and time value shrinks as expiry approaches."],["EG","Hong Kong warrants and CBBCs package these ideas for retail investors, with extra risks."]]},
+c12:{q:"Why combine options instead of buying just one?",f:[["CLAIM","Each strategy trades one benefit for one cost."],["EG","A covered call gives income but gives up upside."],["EG","A protective put limits losses, like paying for insurance."],["BUT","A spread is cheaper, but it caps the profit."],["IF","If you expect a big move but not its direction, a straddle profits; if prices stay still, it loses."]]},
+c23:{q:"What makes an option's price change, and how can we measure it?",f:[["CLAIM","Six inputs drive the price: share price, strike, time, volatility, rates and dividends."],["HOW","Implied volatility is the volatility hidden inside the market price; it rises when investors are nervous."],["SO","Traders use the Greeks to measure each sensitivity separately."],["EG","Delta tracks the share price, gamma tracks how fast delta changes, theta is the daily cost of time and vega tracks volatility."],["KEY","Knowing the Greeks lets you explain why an option lost value even when the share did not move."]]},
+c13:{q:"How can contracts that look simple hide large risks?",f:[["CLAIM","A swap exchanges fixed payments for floating payments on a notional amount."],["SO","Companies use swaps to fix their borrowing costs."],["BUT","Structured products wrap derivatives inside a deposit or bond, so the real risk is in the conditions."],["EG","Accumulators and Lehman minibonds caused heavy losses for investors who did not understand them."],["SO","Clear explanation and suitability checks are essential before selling complex products."]]},
+c14:{q:"What is a business really worth, independent of today's price?",f:[["CLAIM","Fundamental analysis estimates intrinsic value from the business and its numbers."],["HOW","DCF discounts expected free cash flow back to today."],["BUT","Small changes in growth or discount-rate assumptions change the value a lot."],["SO","Analysts cross-check with relative valuation against peers."],["KEY","Because forecasts are often wrong, buy only with a margin of safety."]]},
+c15:{q:"What can price and volume tell us, and what can they not?",f:[["CLAIM","Technical analysis studies the market's footprints: price, trend and volume."],["HOW","An uptrend makes higher highs and higher lows; support and resistance mark where buyers or sellers appear."],["EG","Moving-average crossovers and the RSI signal trend and momentum."],["BUT","Charts suggest probabilities; they do not guarantee outcomes."],["SO","Always plan the exit with a stop-loss before you enter."]]},
+c16:{q:"How do economic numbers move markets?",f:[["CLAIM","GDP, CPI, unemployment and PMI describe the health of the economy."],["HOW","The economy moves through a cycle: expansion, peak, contraction and trough."],["SO","Governments respond with fiscal policy (tax and spending) and central banks with monetary policy (rates)."],["BUT","Markets react to data compared with expectations, not to the data alone."],["KEY","Hong Kong's open economy means global news often matters more than local news."]]},
+c17:{q:"How much risk must you take to earn a return?",f:[["CLAIM","Total return = income + capital gain."],["HOW","Volatility and maximum drawdown measure risk in different ways."],["SO","Higher expected return usually comes with higher risk."],["BUT","Diversification removes company-specific risk, though not market risk."],["KEY","The Sharpe ratio compares managers fairly: return per unit of risk."]]},
+c18:{q:"How do you build a portfolio that a real client can stick with?",f:[["CLAIM","Asset allocation is the most important portfolio decision."],["WHY","Because goals, time horizon and tolerance for losses differ from client to client."],["HOW","A diversified mix can sit on the efficient frontier: the best return for each level of risk."],["BUT","Markets move the mix away from target over time."],["SO","Rebalance regularly and invest a fixed amount to keep emotions out of decisions."]]},
+c26:{q:"Why do smart people make predictable money mistakes?",f:[["CLAIM","Investors are human, so emotions and mental shortcuts shape decisions."],["EG","Losses hurt about twice as much as equal gains feel good (loss aversion)."],["EG","Overconfidence, anchoring, herding and confirmation bias lead to costly errors."],["SO","Good intentions are not enough; the solution is structure."],["HOW","Advisers use written plans, rebalancing rules and clear explanations to protect clients from themselves."]]},
+c19:{q:"In what order should a family protect and grow its wealth?",f:[["CLAIM","Wealth management is a cycle: discover, analyse, recommend, implement, review."],["WHY","Because one illness or loss of income can destroy years of investing."],["SO","Build an emergency fund and close the protection gap before investing for growth."],["HOW","The MPF builds retirement savings through 5% contributions from both employee and employer."],["KEY","Finally, wills, trusts and insurance pass wealth on to the next generation."]]},
+c20:{q:"How do investment banks help companies raise money and grow?",f:[["CLAIM","Investment banks raise capital (ECM, DCM) and advise on mergers and acquisitions."],["HOW","In a Hong Kong IPO, sponsors prepare the company and underwriters guarantee the sale."],["SO","Book building measures demand, and cornerstone investors give confidence by accepting lock-ups."],["BUT","In M&A, buyers pay a premium for expected synergies."],["KEY","Synergies are often hard to achieve, so many deals fail to create value."]]},
+c21:{q:"How is technology changing finance, and what new risks does it bring?",f:[["CLAIM","Fintech makes payments, banking and advice faster and cheaper."],["EG","FPS and virtual banks made Hong Kong banking instant and mobile."],["BUT","AI can automate tasks, yet trust and judgment still need people."],["IF","If an asset is digital and lightly regulated, the risk of loss and fraud is higher."],["SO","Hong Kong licenses platforms and stablecoin issuers, and investors must watch for greenwashing in ESG."]]},
+c22:{q:"Why is finance so heavily regulated, and what does it mean for daily work?",f:[["CLAIM","Finance uses other people's money and trust, so it must be regulated."],["HOW","The SFC, HKMA, IA and MPFA each supervise a different part of the system."],["SO","Staff must be licensed, fit and proper, and keep training every year."],["EG","KYC and AML rules require due diligence and reporting of suspicious transactions."],["KEY","Every recommendation must be suitable, and insider dealing or manipulation is a serious offence."]]},
+c27:{q:"What does it take to build a career in Hong Kong finance?",f:[["CLAIM","Hong Kong is a global centre because of rule of law, free capital flows, simple tax and links with the mainland."],["HOW","Firms split work into front office (revenue), middle office (risk) and back office (operations)."],["SO","Regulated roles need licences: SFC after HKSI exams, IA for insurance, MPFA for MPF."],["EG","Job descriptions use standard phrases you can learn to decode."],["KEY","Clear English and good networking turn knowledge into opportunities."]]}
+};
+
+/* ================= 句子收藏 + 英文邏輯分析 =================
+   手勢：喺文章句子上面「左右掃」（或者長按之後橫向拉）即收藏整句；電腦用滑鼠橫向拖過句子。
+   生詞卡亦有「收藏整句」掣。收藏咗嘅句子可以睇「英文邏輯分析」。 */
+const SN={st:null,ms:null};
+const SN_TAG={CLAIM:['CLAIM','論點'],WHY:['WHY','原因'],BECAUSE:['BECAUSE','原因'],SO:['SO','結果'],BUT:['BUT','轉折'],IF:['IF','條件'],EG:['FOR EXAMPLE','舉例'],HOW:['HOW','方法'],KEY:['KEY POINT','重點']};
+function snSents(){if(!S.sents||typeof S.sents!=='object'||Array.isArray(S.sents))S.sents={};return S.sents}
+function snKey(t){t=String(t).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return 'sn'+(h>>>0).toString(36)}
+function snKeys(){const o=snSents();return Object.keys(o).filter(function(k){return o[k]&&o[k].en}).sort(function(a,b){return (o[b].t||0)-(o[a].t||0)})}
+function snOn(en){return !!snSents()[snKey(en)]}
+/* 句子邊界（唔截斷） */
+function snBounds(T,g){
+  const abbr=/\b(e\.g|i\.e|etc|vs|Mr|Ms|Mrs|Dr|Inc|Ltd|Co|No|U\.S|approx)\.$/i,stop=/[㐀-鿿\n]/;let s=Math.max(0,Math.min(g,T.length)),e=s;
+  while(s>0){const c=T.charAt(s-1);if(stop.test(c))break;if(/[.!?]/.test(c)&&/\s/.test(T.charAt(s)||' ')&&!abbr.test(T.slice(Math.max(0,s-6),s)))break;s--}
+  while(e<T.length){const c=T.charAt(e);if(stop.test(c))break;e++;if(/[.!?]/.test(c)&&/\s/.test(T.charAt(e)||' ')&&!abbr.test(T.slice(Math.max(0,e-6),e)))break}
+  while(s<e&&/\s/.test(T.charAt(s)))s++;while(e>s&&/\s/.test(T.charAt(e-1)))e--;
+  return [s,e];
+}
+function snClean(t){return String(t||'').replace(/\s+/g,' ').replace(/\s+([,.;:!?])/g,'$1').trim()}
+function snAt(T,g){const b=snBounds(T,g);return {s:b[0],e:b[1],en:snClean(T.slice(b[0],b[1]))}}
+/* 文字位移 → DOM Range（用嚟閃一下高亮） */
+function snRange(host,s,e){const wk=document.createTreeWalker(host,NodeFilter.SHOW_TEXT,null),r=document.createRange();let n,pos=0,ok=0;
+  while((n=wk.nextNode())){const L=n.data.length;if(!ok&&s<=pos+L){r.setStart(n,Math.max(0,s-pos));ok=1}if(ok&&e<=pos+L){r.setEnd(n,Math.max(0,e-pos));return r}pos+=L}return null}
+function snFlash(host,s,e){try{const r=snRange(host,s,e);if(!r)return;const rs=r.getClientRects();for(let i=0;i<rs.length;i++){const b=rs[i];if(b.width<2)continue;const d=document.createElement('div');d.className='sn-flash';d.style.left=b.left+'px';d.style.top=b.top+'px';d.style.width=b.width+'px';d.style.height=b.height+'px';document.body.appendChild(d);setTimeout(function(){d.remove()},1100)}}catch(x){}}
+function snFromPoint(host,x,y){
+  let hit=null;const tries=[[0,0],[0,-10],[0,10],[-14,0],[14,0],[-28,0],[28,0]];
+  for(let i=0;i<tries.length&&!hit;i++)hit=lpwHit(host,x+tries[i][0],y+tries[i][1]);
+  if(!hit){toast('請喺英文句子上面橫向掃');return false}
+  const T=hit.T,cur=snAt(T,hit.g);if(cur.en.length<8)return false;
+  const prev=cur.s>1?snAt(T,cur.s-2):null,next=cur.e<T.length-1?snAt(T,cur.e+1):null;
+  const o={en:cur.en,prev:prev&&prev.s<cur.s?prev.en:'',next:next&&next.s>cur.s?next.en:'',src:lpwSrc()};
+  snFlash(host,cur.s,cur.e);try{if(navigator.vibrate)navigator.vibrate([10,40,10])}catch(e){}
+  snAdd(o,true);return true;
+}
+function snAdd(o,pop){const k=snKey(o.en),db=snSents();
+  if(!db[k]){db[k]={en:o.en,prev:o.prev||'',next:o.next||'',src:o.src||'',t:Date.now()};save()}
+  if(pop)snShowPop(k);else toast('★ 已收藏句子');
+  snRefreshLists();return k}
+function snRemove(k){const db=snSents();if(db[k]){delete db[k];save()}snRefreshLists()}
+function snRefreshLists(){try{if(SHEET)return;if((view==='practice'&&PR.tab==='fav')||(view==='lib'&&viewArg&&/^book-c\d+$/.test(viewArg))){const el=$('snChList');if(el&&view==='lib'){el.outerHTML=snChapterSaved(viewArg.slice(5))}else if(view==='practice')renderKeep()}}catch(e){}}
+/* 收藏後彈出小卡 */
+function snShowPop(k){const f=snSents()[k];if(!f)return;lpwClose();let el=$('snPop');
+  if(!el){el=document.createElement('div');el.id='snPop';el.className='lpw-pop sn-pop';el.setAttribute('role','dialog');el.setAttribute('aria-label','已收藏句子');document.body.appendChild(el)}
+  el.innerHTML='<div class="lpw-top"><div class="lpw-wd"><b>★ 已收藏句子</b></div>'+sayBtn(f.en)+'<button class="ic" data-act="sn-pop-close" aria-label="關閉">✕</button></div>'+
+   '<div class="lpw-ex" lang="en">'+esc(f.en)+'</div><div class="lpw-acts"><button class="btn pri" data-act="sn-logic" data-k="'+k+'">🧠 英文邏輯分析</button><button class="btn ghost" data-act="sn-undo" data-k="'+k+'">取消收藏</button></div>';
+  el.hidden=false;const vw=window.innerWidth||360,W=Math.min(380,vw-24);el.style.width=W+'px';el.style.left=Math.round((vw-W)/2)+'px';el.style.top='';el.style.bottom=(vw<1000?96:24)+'px';
+  clearTimeout(SN.pt);SN.pt=setTimeout(snClosePop,7000)}
+function snClosePop(){const el=$('snPop');if(el){el.hidden=true;el.innerHTML=''}clearTimeout(SN.pt)}
+
+/* ---------- 英文邏輯分析（本機規則，唔使網絡） ---------- */
+const SN_CON=[
+ ['as a result','res'],['this is why','res'],['that is why','res'],['which means','res'],['this means','res'],['therefore','res'],['thus','res'],['hence','res'],['so that','pur'],['in order to','pur'],['so','res'],
+ ['because of','why'],['because','why'],['since','why'],['due to','why'],['thanks to','why'],['owing to','why'],
+ ['even though','con'],['even if','con'],['although','con'],['though','con'],['however','con'],['whereas','con'],['while','con'],['but','con'],['yet','con'],['instead','con'],['in contrast','con'],['on the other hand','con'],['despite','con'],['unlike','con'],['rather than','con'],
+ ['as long as','if'],['provided that','if'],['unless','if'],['if','if'],['when','if'],['whenever','if'],['once','if'],
+ ['for example','eg'],['for instance','eg'],['such as','eg'],['e.g.','eg'],['imagine','eg'],['including','eg'],
+ ['in addition','add'],['moreover','add'],['furthermore','add'],['also','add'],['as well as','add'],
+ ['which','rel'],['who','rel'],['where','rel'],['whose','rel'],
+ ['first','seq'],['then','seq'],['next','seq'],['finally','seq'],['after','seq'],['before','seq'],['over time','seq']];
+const SN_ROLE={core:['CORE','主幹','main idea'],res:['RESULT','結果','so / therefore'],why:['REASON','原因','because'],con:['CONTRAST','轉折／對比','but / however'],'if':['CONDITION','條件','if / when'],eg:['EXAMPLE','舉例','for example'],add:['ADDITION','補充','also'],rel:['EXTRA INFO','補充說明','which / who'],seq:['SEQUENCE','次序','first / then'],pur:['PURPOSE','目的','so that / to'],exp:['EXPLANATION','解釋','colon :'],then:['THEN','咁就','result of the condition']};
+function snLead(seg){const s=seg.toLowerCase().replace(/^[\s,;:—–\-]+/,'');for(let i=0;i<SN_CON.length;i++){const c=SN_CON[i][0];if(s.indexOf(c)===0&&!/[a-z]/.test(s.charAt(c.length)||' '))return SN_CON[i]}return null}
+function snChunks(en){
+  const body=en.replace(/[.!?]+["']?$/,'');
+  /* 先按標點切，再喺子句連接詞前面切 */
+  const marks=/(;\s|:\s|\s[—–]\s|,\s)/g;let parts=[],last=0,m,sepPrev='';
+  while((m=marks.exec(body))){parts.push({t:body.slice(last,m.index),sep:sepPrev});sepPrev=m[1].trim();last=m.index+m[1].length}
+  parts.push({t:body.slice(last),sep:sepPrev});
+  /* 逗號只喺子句邊界切：後一段以連接詞開頭，或者前一段係引導子句（If…, / Although…, / For example,） */
+  {const P=[];parts.forEach(function(p,i){if(i&&p.sep===','&&!snLead(p.t)&&!(P[P.length-1].lead)){P[P.length-1].t+=', '+p.t}else{P.push({t:p.t,sep:p.sep,lead:!!snLead(p.t)&&p.sep!==';'})}});parts=P}
+  const CUT=/\s(?=(because|although|whereas|while|unless|so that|which|who|but|so|if|when|such as|for example|for instance|as a result|even though|even if|rather than|instead of|due to)\b)/i;
+  let out=[];parts.forEach(function(p){let t=p.t,first=true;let mm;while((mm=CUT.exec(t))&&mm.index>8){out.push({t:t.slice(0,mm.index),sep:first?p.sep:''});t=t.slice(mm.index+1);first=false}out.push({t:t,sep:first?p.sep:''})});
+  /* 標角色 */
+  out=out.map(function(c){const L=snLead(c.t);return {t:c.t.trim(),sep:c.sep,r:c.sep===':'?'exp':(L?L[1]:null),w:L?L[0]:''}}).filter(function(c){return c.t});
+  /* 冇連接詞嘅短碎片（列舉）併返去上一段 */
+  const merged=[];out.forEach(function(c){const nw=c.t.split(/\s+/).length;const pr=merged.length?merged[merged.length-1].r:'';if(merged.length&&!c.r&&c.sep!==';'&&c.sep!==':'&&(pr==='eg'||pr==='rel'||(nw<4&&!pr))){const p=merged[merged.length-1];p.t+=(c.sep===','?', ':' ')+c.t}else merged.push(c)});
+  /* 條件句：If X, Y → Y 係 THEN；冇標記嘅第一段 = 主幹 */
+  let core=false;merged.forEach(function(c,i){if(!c.r){if(i>0&&merged[i-1].r==='if'&&!core){c.r='then'}else c.r=core?'add':'core';core=true}});
+  if(!merged.some(function(c){return c.r==='core'||c.r==='then'})&&merged.length){const c=merged.filter(function(x){return x.r==='res'})[0];if(!c)merged[0].r2='core'}
+  return merged;
+}
+const SN_AUX=/^(is|are|was|were|be|been|being|has|have|had|can|could|will|would|may|might|must|should|shall|do|does|did|cannot|can't|won't|isn't|aren't|doesn't|don't|didn't)$/i;
+const SN_VB=/^(choose|chooses|chose|decide|decides|decided|expect|expects|say|says|said|find|finds|found|see|sees|plan|plans|try|tries|continue|continues|start|starts|remain|remains|go|goes|went|come|comes|came|enter|enters|join|joins|pass|passes|repay|repays|raise|raises|cut|cuts|support|supports|bring|brings|enable|enables|prefer|prefers|pay|pays|paid|earn|earns|earned|make|makes|made|give|gives|gave|show|shows|showed|mean|means|meant|help|helps|use|uses|used|buy|buys|bought|sell|sells|sold|rise|rises|rose|fall|falls|fell|move|moves|moved|tell|tells|told|measure|measures|reduce|reduces|reduced|increase|increases|increased|grow|grows|grew|become|becomes|became|lose|loses|lost|gain|gains|offer|offers|offered|need|needs|want|wants|take|takes|took|keep|keeps|kept|let|lets|allow|allows|require|requires|charge|charges|lend|lends|borrow|borrows|hold|holds|follow|follows|compare|compares|depend|depends|protect|protects|cover|covers|include|includes|create|creates|set|sets|trade|trades|issue|issues|own|owns|work|works|cost|costs|carry|carries|look|looks|seem|seems|get|gets|got|put|puts|turn|turns|combine|combines|explain|explains|ask|asks|happen|happens|change|changes|stay|stays|know|knows|think|thinks|calculate|calculates|estimate|estimates|exchange|exchanges|receive|receives|provide|provides|manage|manages|invest|invests|apply|applies|supervise|supervises|regulate|regulates|limit|limits|lock|locks|link|links|run|runs|study|studies|focus|focuses|suit|suits|fail|fails|signal|signals|track|tracks|matter|matters|drive|drives|push|pushes)$/i;
+function snSkeleton(t){
+  const w=t.replace(/^(and|but|so|yet|then|also)\s+/i,'').split(/\s+/);if(w.length<3)return null;
+  let sub=0;for(let i=1;i<w.length&&i<32;i++){const x=w[i].replace(/[^A-Za-z']/g,'');if(/^(that|which|who|whom|whose|how|what|why|whether|where|if|when)$/i.test(w[i-1].replace(/[^A-Za-z]/g,''))){sub=1}if(/^(that|which|who|how|what|why|whether|where)$/i.test(x))sub=1;if(sub&&(SN_AUX.test(x)||SN_VB.test(x))){sub=0;continue}if(SN_AUX.test(x)||SN_VB.test(x)){
+    let j=i;if(SN_AUX.test(x)){while(j+1<w.length&&/^(not|also|usually|often|always|never|only|still|just|be|been|being|have|has|had)$/i.test(w[j+1]))j++;if(j+1<w.length&&!/^(a|an|the|this|that|these|those|my|your|his|her|its|our|their|to|of|in|on|at|for|with|by|from|as|than|more|less|very|not)$/i.test(w[j+1])&&(/(ed|en|ing)$/i.test(w[j+1])||!/^(is|are|was|were|be)$/i.test(w[i])))j++}
+    const subj=w.slice(0,i).join(' '),verb=w.slice(i,j+1).join(' '),rest=w.slice(j+1).join(' ');
+    if(/^(to|of|in|on|at|for|with|by)$/i.test(w[i-1]))continue;
+    return {s:subj,v:verb,o:rest}}}
+  return null}
+function snTypes(en){const s=' '+en.toLowerCase()+' ',t=[];
+  if(/\bif\b|\bunless\b|\bas long as\b|\bwhen\b/.test(s))t.push(['IF','條件 → 結果','What happens, and under what condition?']);
+  if(/\bbut\b|\bhowever\b|\balthough\b|\bwhile\b|\bwhereas\b|\byet\b|\binstead\b|\bdespite\b|\bunlike\b/.test(s))t.push(['BUT','對比／轉折','What are the two sides, and which side matters more?']);
+  if(/\bbecause\b|\bsince\b|\bdue to\b|\bso\b|\btherefore\b|\bas a result\b|\bthis means\b|\bwhich means\b|\bthis is why\b|\bthat is why\b|\bleads? to\b|\bcauses?\b/.test(s))t.push(['SO','因果','What is the cause, and what is the effect?']);
+  if(/\bfor example\b|\bfor instance\b|\bsuch as\b|\bimagine\b|\be\.g\./.test(s))t.push(['EG','舉例','Which general idea does this example prove?']);
+  if(/\b(is|are) called\b|\bmeans\b|\brefers to\b|\bis (a|an|the) [a-z]+/.test(s)&&!/\bthis means\b|\bwhich means\b/.test(s))t.push(['DEF','定義','What is the term, and what is its meaning?']);
+  if(/\bthan\b|\bcompared (with|to)\b|\b(more|less|higher|lower|bigger|smaller|cheaper|faster|slower)\b/.test(s))t.push(['CMP','比較','What is compared with what, and which is bigger?']);
+  if(/\d|%|hk\$|us\$|×|÷|=/.test(s))t.push(['NUM','數字／計算','What do the numbers show? Can you check the maths?']);
+  if(/\b(should|must|always|never|need to|make sure|check)\b/.test(s))t.push(['ADV','建議／規則','What should someone do, and why?']);
+  if(!t.length)t.push(['FACT','陳述事實','What is the one main point of this sentence?']);
+  return t}
+function snLinkPrev(en,prev){const s=en.toLowerCase();
+  if(!prev)return null;
+  if(/^(however|but|yet|although|in contrast|on the other hand|instead|unlike)\b/.test(s))return ['BUT','同上一句形成對比：上一句講一面，呢句講另一面（常常係真正重點）。','It contrasts with the previous sentence.'];
+  if(/^(for example|for instance|imagine|e\.g\.)/.test(s))return ['EG','用例子證明上一句嘅概念：讀嘅時候問自己「呢個例子證明咗咩？」','It gives an example of the previous idea.'];
+  if(/^(so|therefore|as a result|this is why|that is why|thus|hence|this means)\b/.test(s))return ['SO','係上一句嘅結果／結論：上一句 = 原因，呢句 = 結果。','It states the result of the previous sentence.'];
+  if(/^(because|since)\b/.test(s))return ['WHY','解釋上一句嘅原因。','It explains why the previous sentence is true.'];
+  if(/^(also|in addition|moreover|furthermore|another)\b/.test(s))return ['ADD','喺上一句之上再加一點。','It adds another point to the previous one.'];
+  if(/^(if|when|unless|once)\b/.test(s))return ['IF','設定一個條件，講喺咩情況下會點。','It sets a condition and shows what follows.'];
+  if(/^(this|these|that|those|it|they|such)\b/.test(s))return ['REF','開頭嘅 '+en.split(/\s+/)[0]+' 指返上一句講嘅嘢：先搵出佢指咩，再讀落去。','It continues the previous idea (“'+en.split(/\s+/)[0]+'” points back).'];
+  if(/^(first|then|next|finally|after|before)\b/.test(s))return ['SEQ','講步驟／次序嘅下一步。','It is the next step in a sequence.'];
+  return ['NEW','開始一個新嘅小論點（同上一句並列）。','It adds a new point on the same topic.']}
+function lc1(t){return t?t.charAt(0).toLowerCase()+t.slice(1):t}
+function uc1(t){return t?t.charAt(0).toUpperCase()+t.slice(1):t}
+function snStrip(t,w){return t.replace(new RegExp('^\\s*'+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*,?\\s*','i'),'').trim()}
+/* 換個連接詞重寫：訓練「同一個邏輯，唔同講法」 */
+function snRewrites(ch){const out=[],core=ch.filter(function(c){return c.r==='core'||c.r==='then'})[0];
+  ch.forEach(function(c,i){
+    if(!core||c===core)return;const A=core.t.replace(/[,;]$/,''),B=snStrip(c.t,c.w||'');if(!B||B.split(/\s+/).length<3)return;
+    if(c.r==='res'&&i>ch.indexOf(core))out.push(['Because '+lc1(A)+', '+B+'.','原句「A, so B」→ 用 because 由原因講起']);
+    if(c.r==='why')out.push([uc1(B)+', so '+lc1(A)+'.','原句「A because B」→ 用 so 由原因推去結果']);
+    if(c.r==='if'&&core.r==='then')out.push([uc1(A)+' '+c.w.toLowerCase()+' '+B+'.','條件放後面：先講結果，再講條件']);
+    if(c.r==='con'&&/^(but|yet)$/i.test(c.w))out.push(['Although '+lc1(A)+', '+B+'.','「A, but B」→「Although A, B」：重點都係 B']);
+    if(c.r==='con'&&/^(although|though|even though|while|whereas)$/i.test(c.w))out.push([uc1(B)+'. However, '+lc1(A)+'.','拆成兩句，用 However 帶出重點']);
+  });
+  return out.slice(0,3)}
+function snTerms(en){const low=en.toLowerCase(),out=[],seen={};try{bkGloss().forEach(function(x){const b=String(x.base||'').toLowerCase();if(b.length<3||seen[b])return;const re=new RegExp('\\b'+b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(s|es)?\\b');if(re.test(low)){seen[b]=1;out.push([x.t,x.z&&x.z[0]?x.z[0].zh:''])}})}catch(e){}
+  return out.sort(function(a,b){return b[0].length-a[0].length}).filter(function(x,i,a){return !a.some(function(y,j){return j<i&&y[0].toLowerCase().indexOf(x[0].toLowerCase())>=0})}).slice(0,6)}
+function snLogicHTML(o,k){
+  const en=o.en,ch=snChunks(en),types=snTypes(en),link=snLinkPrev(en,o.prev),coreC=ch.filter(function(c){return c.r==='core'||c.r==='then'})[0]||ch[0],sk=coreC?snSkeleton(snStrip(coreC.t,coreC.w||'')):null,rw=snRewrites(ch),terms=snTerms(en),src=typeof favSrcLink==='function'?favSrcLink(o.src):'';
+  let h='<h3>英文邏輯分析 <span class="tag">Think in English</span></h3><p class="sn-q" lang="en">'+esc(en)+' '+sayBtn(en)+sayBtn(en,true)+'</p>'+(src?'<p class="small muted" style="margin:0 0 6px">來自'+src+'</p>':'');
+  h+='<h4 class="ch">① 呢句做緊咩？<span class="tag">Sentence job</span></h4><div class="sn-types">'+types.map(function(t){return '<span class="sn-tag t-'+t[0].toLowerCase()+'"><b>'+t[0]+'</b> '+esc(t[1])+'</span>'}).join('')+'</div>'+
+   '<p class="small" style="margin:6px 0 0"><b lang="en">Ask yourself:</b> <span lang="en">'+esc(types[0][2])+'</span></p>';
+  if(sk)h+='<h4 class="ch">② 句子主幹 <span class="tag">Who · does what · to what</span></h4><div class="sn-sk"><div><span>WHO / WHAT</span><b lang="en">'+esc(sk.s)+'</b></div><i>→</i><div><span>DOES</span><b lang="en">'+esc(sk.v)+'</b></div>'+(sk.o?'<i>→</i><div><span>WHAT / HOW</span><b lang="en">'+esc(sk.o)+'</b></div>':'')+'</div><p class="small muted" style="margin:6px 0 0">先搵「邊個 → 做咩」，其他都係修飾。讀長句唔好逐字翻譯，抓住主幹就明。</p>';
+  h+='<h4 class="ch">'+(sk?'③':'②')+' 意群拆解 <span class="tag">Chunks &amp; signal words</span></h4><div class="sn-flow">'+ch.map(function(c,i){const R=SN_ROLE[c.r]||SN_ROLE.core;let t=esc(c.t);if(c.w){const re=new RegExp('^(\\s*)('+c.w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','i');t=t.replace(re,'$1<mark class="sn-sig">$2</mark>')}
+    return (i?'<div class="sn-arr" aria-hidden="true">↓</div>':'')+'<div class="sn-ck r-'+c.r+'"><span class="sn-rl">'+R[0]+' · '+R[1]+'</span><span lang="en">'+t+'</span></div>'}).join('')+'</div>';
+  let n=sk?4:3;
+  if(link)h+='<h4 class="ch">'+'①②③④⑤⑥'.charAt(n-1)+' 同上一句嘅關係 <span class="tag">Link to context</span></h4>'+(o.prev?'<p class="sn-ctx" lang="en">'+esc(o.prev)+'</p>':'')+'<p style="margin:6px 0 0"><span class="sn-tag"><b>'+link[0]+'</b></span> <span lang="en"><b>'+esc(link[2])+'</b></span><br><span class="small">'+esc(link[1])+'</span></p>'+(o.next?'<p class="sn-ctx" lang="en">→ Next: '+esc(o.next)+'</p>':''),n++;
+  if(rw.length)h+='<h4 class="ch">'+'①②③④⑤⑥'.charAt(n-1)+' 同一邏輯，換個講法 <span class="tag">Rewrite the logic</span></h4><div class="rows">'+rw.map(function(r){return '<div class="row"><div class="txt"><div class="en">'+esc(r[0])+'</div><div class="zh">'+esc(r[1])+'</div></div><div class="acts">'+sayBtn(r[0])+'</div></div>'}).join('')+'</div>',n++;
+  if(terms.length)h+='<h4 class="ch">'+'①②③④⑤⑥'.charAt(n-1)+' 句中關鍵詞 <span class="tag">Key terms</span></h4><div class="rows">'+terms.map(function(t){return '<div class="row"><div class="txt"><div class="en">'+esc(t[0])+'</div><div class="zh">'+esc(t[1])+'</div></div><div class="acts">'+sayBtn(t[0])+'</div></div>'}).join('')+'</div>';
+  h+='<p class="tip" style="margin-top:12px"><b>英文思維練習：</b>遮住中文，用英文講出呢句嘅邏輯：「<span lang="en">The main idea is … because/so/but …</span>」講得出就真係明。</p>';
+  const ai=k&&snSents()[k]&&snSents()[k].ai;
+  h+='<div id="snAiOut">'+(ai?snAiHTML(ai):'')+'</div><div class="btns">'+(AI.ns?'<button class="btn jade" data-act="sn-ai" data-k="'+esc(k||'')+'">'+(ai?'AI 再分析一次':'AI 深入講解')+'</button>':'<button class="btn jade" data-act="sn-claude" data-k="'+esc(k||'')+'">問 Claude 深入講解</button>')+
+   (k?(snSents()[k]?'<button class="btn ghost" data-act="sn-del" data-k="'+k+'">取消收藏</button>':''):'')+'</div>';
+  return h}
+function snAiPrompt(o){return '你係香港金融英文老師，學生母語係粵語，想訓練「用英文思考」。請分析以下金融英文句子嘅邏輯。\n\n句子：'+o.en+(o.prev?'\n上一句：'+o.prev:'')+(o.next?'\n下一句：'+o.next:'')+
+  '\n\n只回覆一個 JSON：{"plain":"用最簡單英文重講（B1 程度，一句）","logic":"用箭咀表示邏輯鏈，英文，例如 rates rise → bond prices fall","why":"作者點解要寫呢句（英文一句）","zh":"用香港粵語解釋句意同邏輯（繁體，最多 80 字）","q":"一條考理解嘅英文問題","a":"答案（英文）"}'}
+function snAiHTML(r){return '<div class="sn-ai"><div class="small muted">AI 講解</div>'+
+  (r.plain?'<p><b>In plain English:</b> <span lang="en">'+esc(r.plain)+'</span> '+sayBtn(r.plain)+'</p>':'')+(r.logic?'<p><b>Logic chain:</b> <span lang="en">'+esc(r.logic)+'</span></p>':'')+(r.why?'<p><b>Why the writer says it:</b> <span lang="en">'+esc(r.why)+'</span></p>':'')+(r.zh?'<p>'+esc(r.zh)+'</p>':'')+
+  (r.q?'<details><summary lang="en">'+esc(r.q)+'</summary><p lang="en">'+esc(r.a||'')+'</p></details>':'')+'</div>'}
+function snAi(k){const f=snSents()[k]||SN.cur;if(!f||!AI.ns)return;const out=$('snAiOut');if(out)out.innerHTML='<p class="small muted">AI 分析緊…</p>';
+  lpwJson(snAiPrompt(f),{}).then(function(r){if(!r||typeof r!=='object')throw {code:'invalid_json'};const x={};['plain','logic','why','zh','q','a'].forEach(function(n){x[n]=String(r[n]||'').trim().slice(0,400)});
+    if(snSents()[k]){snSents()[k].ai=x;save()}const o=$('snAiOut');if(o)o.innerHTML=snAiHTML(x)},function(e){const o=$('snAiOut');if(o)o.innerHTML='<p class="note warn small">'+esc(lpwErr(e)||'已取消')+'</p>'})}
+function snOpenLogic(k,o){snClosePop();lpwClose();SN.cur=o||snSents()[k];if(!SN.cur)return;openSheet(function(){return snLogicHTML(SN.cur,k)})}
+
+/* ---------- 讀本章節：邏輯鏈 + 本章收藏句子 ---------- */
+function snChapterLogic(id){const L=BKLOGIC[id];if(!L)return '';
+  return '<section class="card"><h2 class="sec-h">本章邏輯鏈 <span class="tag">English Logic Map</span></h2><p class="sn-big" lang="en"><span>Big question</span>'+esc(L.q)+' '+sayBtn(L.q)+'</p><ol class="sn-map">'+
+   L.f.map(function(s){const T=SN_TAG[s[0]]||[s[0],''];return '<li class="m-'+s[0].toLowerCase()+'"><span class="sn-mt">'+T[0]+'<i>'+T[1]+'</i></span><span class="sn-ms" lang="en">'+esc(s[1])+'</span>'+sayBtn(s[1])+'</li>'}).join('')+'</ol>'+
+   '<p class="small muted" style="margin:8px 0 0">用英文複述：跟住 <b lang="en">CLAIM → WHY/HOW → BUT → SO</b> 嘅次序，用自己嘅說話講一次成章嘅論證。</p><div class="btns"><button class="btn" data-say="'+esc(L.f.map(function(s){return s[1]}).join(' '))+'">'+ICON.play+' 朗讀邏輯鏈</button></div></section>'}
+function snChapterSaved(id){const ks=snKeys().filter(function(k){return snSents()[k].src===id});
+  return '<section class="card" id="snChList"><h2 class="sec-h">本章收藏句子 <span class="tag">Saved sentences · '+ks.length+'</span></h2>'+(ks.length?snRows(ks):'<p class="small muted" style="margin:0">喺正文任何一句上面<b>左右掃一下</b>（或者長按之後橫向拉；電腦用滑鼠橫向拖過句子），就會收藏整句，再撳「🧠」睇英文邏輯分析。</p>')+'</section>'}
+function snRows(ks){return '<div class="rows">'+ks.map(function(k){const f=snSents()[k],src=favSrcLink(f.src);return '<div class="row"><div class="txt"><div class="en" style="font-weight:500">'+esc(f.en)+'</div>'+(src?'<div class="zh">'+src+'</div>':'')+'</div><div class="acts">'+sayBtn(f.en)+'<button class="ic" data-act="sn-logic" data-k="'+k+'" aria-label="英文邏輯分析" title="英文邏輯分析">🧠</button><button class="ic" data-act="sn-del" data-k="'+k+'" aria-label="取消收藏" title="取消收藏">✕</button></div></div>'}).join('')+'</div>'}
+function snFavSection(){const ks=snKeys();
+  return '<section class="card"><h2 class="sec-h">收藏句子 <span class="tag">Sentences · '+ks.length+'</span></h2>'+(ks.length?snRows(ks):'<p class="small muted" style="margin:0">未有收藏句子。喺金融讀本或者閱讀文章入面，對住一句<b>左右掃一下</b>就收藏，然後可以睇英文邏輯分析。</p>')+'</section>'}
+
+function snAct(a,ds){
+  switch(a){
+  case 'sn-pop-close':snClosePop();return true;
+  case 'sn-undo':snRemove(ds.k);snClosePop();toast('已取消收藏句子');return true;
+  case 'sn-logic':snOpenLogic(ds.k);return true;
+  case 'sn-del':{snRemove(ds.k);if(SHEET)closeSheet();toast('已取消收藏句子');return true}
+  case 'sn-ai':snAi(ds.k);return true;
+  case 'sn-claude':{const f=snSents()[ds.k]||SN.cur;if(f)aiOpenClaude(snAiPrompt(f).replace(/\n\n只回覆[\s\S]*$/,'\n\n請用香港粵語講解：1) 用簡單英文重講；2) 用箭咀寫出邏輯鏈（英文）；3) 句子主幹；4) 同上下文嘅關係；5) 出一條英文理解題。'));return true}
+  case 'sn-save-ex':{const o=LPW.cur;if(!o||!o.ex)return true;const k=snAdd({en:snClean(String(o.ex).replace(/^…|…$/g,'')),src:o.src||lpwSrc()},false);lpwClose();snShowPop(k);return true}
+  }
+  return false}
+function snInit(){
+  if(snInit.done)return;snInit.done=1;
+  const SKIP='button,input,textarea,select,a[href],#lpwPop,#snPop,.acts,svg';
+  const begin=function(t,x,y,kind){if(!t||!t.closest||t.closest(SKIP)){SN.st=null;return}const host=t.closest(LPW.SEL);SN.st=host?{host:host,x:x,y:y,t:Date.now(),done:false,kind:kind}:null};
+  const fire=function(){const st=SN.st;if(!st||st.done)return;st.done=true;
+    /* 長按已經收藏咗單詞再橫拉 → 改為收藏句子，撤回個字 */
+    if(LPW.firedAt>=st.t&&LPW.cur&&LPW.cur.added){try{favRemove(favKey(LPW.cur.en))}catch(e){}}
+    if(LPW.t){clearTimeout(LPW.t);LPW.t=null}lpwClose();LPW.swallow=true;
+    try{snFromPoint(st.host,st.x,st.y)}catch(e){console.warn('[sn]',e)}};
+  document.addEventListener('touchstart',function(e){const tt=e.touches&&e.touches[0];if(!tt||e.touches.length!==1){SN.st=null;return}
+    const pop=$('snPop');if(pop&&!pop.hidden&&!(e.target.closest&&e.target.closest('#snPop')))snClosePop();begin(e.target,tt.clientX,tt.clientY,'touch')},{capture:true,passive:true});
+  document.addEventListener('touchmove',function(e){const st=SN.st,tt=e.touches&&e.touches[0];if(!st||st.done||!tt)return;const dx=tt.clientX-st.x,dy=tt.clientY-st.y;
+    if(Math.abs(dy)>40&&Math.abs(dy)>Math.abs(dx)){SN.st=null;return}if(Math.abs(dx)>=56&&Math.abs(dx)>1.6*Math.abs(dy))fire()},{capture:true,passive:true});
+  document.addEventListener('touchend',function(){SN.st=null},{capture:true,passive:true});
+  document.addEventListener('touchcancel',function(){SN.st=null},{capture:true,passive:true});
+  /* 滑鼠：橫向拖過句子 */
+  document.addEventListener('pointerdown',function(e){if(e.pointerType==='touch'||e.button>0)return;const pop=$('snPop');if(pop&&!pop.hidden&&!(e.target.closest&&e.target.closest('#snPop')))snClosePop();begin(e.target,e.clientX,e.clientY,'mouse')},true);
+  document.addEventListener('pointerup',function(e){const st=SN.st;if(e.pointerType==='touch'||!st||st.kind!=='mouse')return;SN.st=null;const dx=e.clientX-st.x,dy=e.clientY-st.y;
+    if(Math.abs(dx)>=80&&Math.abs(dy)<28){SN.st=st;try{const sel=window.getSelection&&window.getSelection();if(sel)sel.removeAllRanges()}catch(x){}fire();SN.st=null}},true);
+}
 </script>
 </body>
 </html>
