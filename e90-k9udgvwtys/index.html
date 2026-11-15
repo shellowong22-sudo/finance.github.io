@@ -664,6 +664,8 @@ mark.fw{background:linear-gradient(transparent 58%,var(--accent-soft) 58%);color
 .lpw-ph{display:flex;align-items:center;gap:8px;font-size:14px;border-top:1px dashed var(--line);padding-top:8px;margin-top:10px}
 .lpw-pht{flex:1;min-width:0}
 .lpw-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.lpw-aibox{margin:8px 0 0;padding:8px 10px;border-radius:10px;background:var(--jade-soft);font-size:14.5px;line-height:1.55}.lpw-aibox b{font-size:16px}.lpw-aibox.busy{display:flex;align-items:center;gap:8px;color:var(--jade)}.lpw-aibox.err{background:var(--warn-soft);color:var(--ink)}
+.lpw-spin{width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:lpwspin .8s linear infinite;flex:none}@keyframes lpwspin{to{transform:rotate(360deg)}}
 .lpw-acts .btn{min-height:38px;padding:7px 12px}
 .lpw-tip{font-size:12.5px;color:var(--ok);margin:8px 0 0}
 .favstat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0}
@@ -6745,7 +6747,7 @@ function coFreeHTML(r,id){
 }
 
 /* ---------- AI 老師：喺 Claude 入面直接用；喺主屏幕 App 就轉去 Claude App ---------- */
-const AI={ns:null,src:'',init:function(){if(typeof DS==='object'&&DS.ok()){AI.ns=dsNs;AI.src='ds';return}try{if(window.claude&&typeof window.claude.use==='function')window.claude.use('sample').then(function(s){AI.ns=s||null},function(){})}catch(e){}},busy:false,ctl:null};
+const AI={ns:null,src:'',lastRun:null,init:function(){if(typeof dsBoot==='function')dsBoot();if(typeof DS==='object'&&DS.ok())return;if(!(window.claude&&typeof window.claude.use==='function')){if(typeof dsNs==='function'){AI.ns=dsNs;AI.src='ds'}return}try{if(window.claude&&typeof window.claude.use==='function')window.claude.use('sample').then(function(s){AI.ns=s||null},function(){})}catch(e){}},busy:false,ctl:null};
 const AI_HEAD='你係香港一位專業英文口語老師。學生係香港人，母語係粵語，準備喺香港金融業用英文工作。請用香港粵語口語（繁體中文）回覆，英文句子保留英文。語氣友善、直接、具體，唔好長篇大論，唔好用表格。';
 function aiPromptT(target,said){return AI_HEAD+'\n\n【練習句子】'+target+'\n【學生講咗（語音轉文字，可能有少少識別誤差）】'+(said||'（冇內容）')+'\n\n請用以下格式回覆：\n**評分**：X/100（一句講原因）\n**即時糾正**：逐點列出錯處 → 正確講法（全對就講「全對」）\n**文法重點**：最多 3 點，用簡單粵語解釋\n**英文邏輯**：解釋呢句嘅結構，同粵語思維有咩唔同\n**再練一句**：畀一句類似嘅英文句子，附粵語意思'}
 function aiPromptF(ctx,model,said){return AI_HEAD+'\n\n【題目】'+(ctx||'自由講')+(model?'\n【參考答案（只供你參考）】'+model:'')+'\n【學生講咗（語音轉文字，可能有少少識別誤差）】'+(said||'（冇內容）')+'\n\n請用以下格式回覆：\n**評分**：內容 X/25、文法 X/25、用字 X/25、邏輯同流暢 X/25，總分 X/100\n**即時糾正**：逐句列出錯處 → 正確講法（最多 6 點）\n**改寫版本**：用學生自己嘅意思，改成自然、專業嘅英文（大約同原文一樣長）\n**文法重點**：最多 3 點\n**英文邏輯**：佢嘅結構邊度可以改善（例如結論先行、PREP、連接詞）\n**下一步**：一個具體練習建議'}
@@ -6757,7 +6759,7 @@ function aiOpenClaude(prompt){
   toast('已複製問題，正在打開 Claude。如果冇自動填好，貼上就得。');
 }
 function aiRun(outId,prompt,tier){
-  const out=$(outId);
+  AI.lastRun=[outId,prompt,tier];const out=$(outId);
   if(!AI.ns){if(out)out.innerHTML='<p class="note small" style="margin-top:10px">呢個版本冇內置 AI，已經幫你打開 Claude App 批改（問題已複製）。喺 Claude 入面打開呢個學習程式，就可以直接喺度睇 AI 講解。</p>';aiOpenClaude(prompt);return}
   if(AI.busy){try{if(AI.ctl)AI.ctl.abort()}catch(e){}}
   AI.busy=true;let ctl=null;try{ctl=new AbortController()}catch(e){}AI.ctl=ctl;
@@ -6766,7 +6768,7 @@ function aiRun(outId,prompt,tier){
   AI.ns(prompt,opt).then(function(r){AI.busy=false;const o=$(outId);if(o&&r&&r.text)o.innerHTML='<div class="aiout">'+aiMd(r.text)+'</div>';S.log[dkey()]=1;save()},function(e){AI.busy=false;const o=$(outId),code=e&&e.code;
     if(code==='not_granted'){AI.ns=null;if(o)o.innerHTML='<p class="note small" style="margin-top:10px">未有授權使用 AI。可以撳多一次，喺彈出視窗允許；或者改用 Claude App。</p>'}
     else if(code==='rate_limited'){if(o)o.innerHTML='<p class="note warn small" style="margin-top:10px">用得太密，請等一陣再試。</p>'}
-    else if(o)o.innerHTML='<p class="note warn small" style="margin-top:10px">AI 暫時用唔到：'+esc((e&&e.message)||'請稍後再試')+'</p>'});
+    else if(o)o.innerHTML=(e&&(e.ds||e.code==='no_key')&&typeof dsErrHTML==='function')?dsErrHTML(e):'<p class="note warn small" style="margin-top:10px">AI 暫時用唔到：'+esc((e&&e.message)||'請稍後再試')+'</p>'});
 }
 
 /* ---------- 跟讀 / 講句子（目標句子） ---------- */
@@ -8229,15 +8231,16 @@ function lpwHTML(o){
   let h='<div class="lpw-top"><div class="lpw-wd"><b lang="en">'+esc(o.en)+'</b>'+(ip?' <span class="ipa">/'+esc(ip)+'/</span>':'')+'</div>'+sayBtn(o.en)+'<button class="ic" data-act="lpw-close" aria-label="關閉">✕</button></div>';
   if(o.w&&favKey(o.w)!==k)h+='<div class="small muted">原文：<span lang="en">'+esc(o.w)+'</span></div>';
   h+='<div class="lpw-zh">'+(o.zh?esc(o.zh)+(o.from?' <span class="lpw-src">'+(o.from==='ai'?'AI 按語境':'詞典')+'</span>':''):(o.busy?'<span class="muted">AI 查緊意思…</span>':'<span class="muted">未有中文解釋</span>'))+'</div>';
-  if(o.busy&&o.zh)h+='<div class="lpw-note">AI 按句子語境核對緊…</div>';
-  if(o.note)h+='<div class="lpw-note">'+esc(o.note)+'</div>';
-  if(o.err)h+='<div class="lpw-note warn">'+esc(o.err)+'</div>';
+  if(o.busy)h+='<div class="lpw-aibox busy"><span class="lpw-spin" aria-hidden="true"></span>AI（DeepSeek）按呢句語境分析緊…</div>';
+  else if(o.ai)h+='<div class="lpw-aibox"><div class="small muted">🤖 AI 按語境解釋'+(o.ai.same?'（同詞典一致）':'')+'</div><b>'+esc(o.ai.zh||'')+'</b>'+(o.ai.note?'<div>'+esc(o.ai.note)+'</div>':'')+'</div>';
+  else if(o.note)h+='<div class="lpw-note">'+esc(o.note)+'</div>';
+  if(o.err&&!o.busy)h+='<div class="lpw-aibox err">'+esc(o.err)+'<div class="lpw-acts" style="margin-top:6px"><button class="btn" data-act="lpw-ai">重試</button>'+(/Key/.test(o.err)?'<a class="btn ghost" href="#me">去設定 Key</a>':'')+'</div></div>';
   if(o.ex)h+='<div class="lpw-ex" lang="en">'+favExHTML(o.ex,o)+'</div>';
   if(!o.zh&&!o.busy)h+='<div class="lpw-edit"><input type="text" id="lpwIn" placeholder="自己寫中文意思…" autocomplete="off"><button class="btn" data-act="lpw-zh">儲存</button></div>';
   if(o.ph&&favKey(o.ph.en)!==k){const pon=!!(S.fav&&S.fav[favKey(o.ph.en)]);
     h+='<div class="lpw-ph"><span class="pill grey xs">詞組</span><div class="lpw-pht"><b lang="en">'+esc(o.ph.en)+'</b> <span class="muted">'+esc(o.ph.zh)+'</span></div><button class="ic fav'+(pon?' on':'')+'" data-act="lpw-fav-ph" data-en="'+esc(o.ph.en)+'" aria-pressed="'+pon+'" aria-label="'+(pon?'取消收藏詞組':'收藏詞組')+'">'+(pon?'★':'☆')+'</button></div>'}
   h+='<div class="lpw-acts">'+(on?'<button class="btn gold" data-act="lpw-fav" aria-pressed="true">★ 已收藏</button>':'<button class="btn pri" data-act="lpw-fav" aria-pressed="false">☆ 收藏</button>')+
-    (AI.ns&&!o.busy?'<button class="btn ghost" data-act="lpw-ai">AI 按語境解釋</button>':'')+
+    (AI.ns?'<button class="btn ghost" data-act="lpw-ai"'+(o.busy?' disabled':'')+'>'+(o.busy?'AI 分析緊…':(o.ai?'AI 再解釋一次':'AI 按語境解釋'))+'</button>':'')+
     (!AI.ns&&!o.zh?'<button class="btn ghost" data-act="lpw-claude">問 Claude</button>':'')+(o.ex?'<button class="btn ghost" data-act="sn-save-ex">★ 收藏整句</button>':'')+'</div>';
   if(on&&o.added)h+='<p class="lpw-tip">已收藏到「練習 → 收藏」，會按記憶曲線提你複習。再撳「已收藏」可以取消。</p>';
   return h;
@@ -8298,7 +8301,7 @@ function lpwJson(prompt,opt){
   if(AI.ns&&typeof AI.ns.json==='function')return AI.ns.json(prompt,opt);
   return AI.ns(prompt,opt).then(function(r){const t=String(r&&r.text||''),a=t.search(/[\[{]/),b=Math.max(t.lastIndexOf('}'),t.lastIndexOf(']'));if(a<0||b<a)throw {code:'invalid_json'};return JSON.parse(t.slice(a,b+1))});
 }
-function lpwErr(e){const c=e&&e.code;if(c==='cancelled')return '';
+function lpwErr(e){const c=e&&e.code;if(c==='cancelled')return '';if(e&&e.ds)return e.message;
   if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c)>=0){AI.ns=null;return '未有授權使用 AI，可以自己寫中文意思。'}
   if(c==='rate_limited')return 'AI 用得太密，等一陣再試。';if(c==='invalid_json')return 'AI 回覆格式有誤，可以再撳一次。';return 'AI 暫時用唔到，可以自己寫中文意思。'}
 function lpwPrompt(word,ex){return '你係香港金融英文老師。香港學生（母語粵語）讀金融英文時唔識呢個詞，請按句子語境解釋。\n\n詞：'+word+'\n句子：'+(ex||'（冇）')+
@@ -8316,7 +8319,7 @@ function lpwAsk(o,force){
     let k=favKey(o.en);const saved=!!(S.fav&&S.fav[k]);
     if(!o.dict&&base&&favKey(base)!==k&&lpwPlausible(base,o.w||o.en)){if(saved){k=favRekey(k,base);o.en=S.fav[k].en}else o.en=base}
     const zz=zh?((pos&&zh.indexOf(pos)!==0?pos+' ':'')+zh):'';
-    if(zz){if(force||!o.zh){o.zh=zz;o.from='ai'}o.note=note}
+    const prevZh=o.zh;if(zz){o.ai={zh:zz,note:note,same:!!prevZh&&prevZh.replace(/^[a-z.\s]+/i,'')===zh};if(force||!o.zh){o.zh=zz;o.from='ai'}o.note=note}else if(note)o.ai={zh:'',note:note};
     if(ipa&&!ipaOf(o.en))o.ipa=ipa;
     if(S.fav&&S.fav[k]){const f=S.fav[k];if(o.zh&&(force||!f.zh))f.zh=o.zh;if(o.note)f.note=o.note;if(o.ipa&&!ipaOf(f.en))f.ipa=o.ipa;favWmap(k,f);save();fwSchedule();if(view==='practice'&&PR.tab==='fav'&&!SHEET)renderKeep()}
     if(LPW.cur===o)lpwRefresh();
@@ -8970,57 +8973,106 @@ function lgMakeDir(){
 function lgMakeOrder(){const ids=Object.keys(BKLOGIC).filter(function(id){return bkById(id)}),id=lgRand(ids),L=BKLOGIC[id];return {mode:'order',c:id,q:L.q,steps:L.f.map(function(s){return s[1]}),tags:L.f.map(function(s){return s[0]}),shuf:lgShuffle(L.f.map(function(_,i){return i}))}}
 function lgRender(){try{if(view==='lib'&&viewArg==='logic'){const y=window.scrollY||0;render();const el=$('lgEx');if(el&&LG.mode){const r=el.getBoundingClientRect();if(r.top<0||r.top>(window.innerHeight||600)*0.6)window.scrollTo(0,r.top+(window.scrollY||0)-70);else window.scrollTo(0,y)}else window.scrollTo(0,y)}}catch(e){console.warn('[lg]',e)}}
 
-/* ================= DeepSeek（用戶自己嘅 API Key，只存喺本機） =================
-   模型：deepseek-flash（DeepSeek-V4.1-Flash），關閉思考模式＝最快。Key 唔會寫入 S、唔會雲端同步。 */
-const DS={K:'hkfe90.dsk',URL:'https://api.deepseek.com/chat/completions',MODEL:'deepseek-flash',last:0,
-  key(){try{return localStorage.getItem(this.K)||''}catch(e){return ''}},
-  set(k){try{if(k)localStorage.setItem(this.K,k);else localStorage.removeItem(this.K)}catch(e){}},
-  ok(){return !!this.key()}};
+/* ================= DeepSeek（穩定版）=================
+   用戶自己嘅 API Key，只存喺本機（localStorage＋IndexedDB 雙重備份，唔會同步、唔會上傳）。
+   穩定措施：逾時、自動重試（網絡／繁忙／限流）、模型與網址後備、串流失敗轉非串流、同時請求上限、JSON 結果快取、健康狀態與一鍵診斷。 */
+const DS={K:'hkfe90.dsk',GK:'hkfe90.dsg',CK:'hkfe90.dsc',
+  URLS:['https://api.deepseek.com/chat/completions','https://api.deepseek.com/v1/chat/completions'],
+  MODELS:['deepseek-flash','deepseek-v4-flash','deepseek-v4-pro'],
+  ui:0,mi:0,last:0,run:0,max:2,waitq:[],st:{ok:0,fail:0,err:'',at:0},
+  key(){try{return (localStorage.getItem(this.K)||'').trim()}catch(e){return this._mem||''}},
+  set(k){this._mem=k||'';try{if(k)localStorage.setItem(this.K,k);else localStorage.removeItem(this.K)}catch(e){}dsIdb(k||'');if(k)try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}},
+  ok(){return !!this.key()},
+  model(){return this.MODELS[this.mi]||this.MODELS[0]},url(){return this.URLS[this.ui]||this.URLS[0]},
+  loadGood(){try{const g=JSON.parse(localStorage.getItem(this.GK)||'null');if(g){if(g.m>=0&&g.m<this.MODELS.length)this.mi=g.m;if(g.u>=0&&g.u<this.URLS.length)this.ui=g.u}}catch(e){}},
+  saveGood(){try{localStorage.setItem(this.GK,JSON.stringify({m:this.mi,u:this.ui}))}catch(e){}}};
+/* IndexedDB 後備：localStorage 被清走都可以搵返條 Key */
+function dsIdbOpen(){return new Promise(function(res,rej){try{const r=indexedDB.open('hkfe90-ai',1);r.onupgradeneeded=function(){r.result.createObjectStore('kv')};r.onsuccess=function(){res(r.result)};r.onerror=function(){rej(r.error)}}catch(e){rej(e)}})}
+function dsIdb(v){dsIdbOpen().then(function(db){const tx=db.transaction('kv','readwrite');if(v)tx.objectStore('kv').put(v,'dsk');else tx.objectStore('kv').delete('dsk')}).catch(function(){})}
+function dsRestore(){if(DS.ok())return Promise.resolve(true);return dsIdbOpen().then(function(db){return new Promise(function(res){const r=db.transaction('kv','readonly').objectStore('kv').get('dsk');r.onsuccess=function(){const v=r.result;if(v){try{localStorage.setItem(DS.K,v)}catch(e){DS._mem=v}dsActivate();res(true)}else res(false)};r.onerror=function(){res(false)}})}).catch(function(){return false})}
 function dsErr(status,msg){
-  const code=status===401?'bad_key':status===402?'no_balance':status===429?'rate_limited':status===0?'network':(status>=500?'server':'http_'+status);
-  const m={bad_key:'DeepSeek API Key 唔啱或者已失效，請喺「我的 → AI 模型」重新輸入。',no_balance:'DeepSeek 戶口餘額不足，請到 platform.deepseek.com 增值。',rate_limited:'用得太密，請等一陣再試。',network:'連唔到 DeepSeek，請檢查網絡。',server:'DeepSeek 伺服器暫時繁忙，請稍後再試。'}[code];
-  return {code:code,message:m||('DeepSeek 錯誤 '+status+(msg?'：'+msg:''))}}
-function dsCall(prompt,opt){opt=opt||{};const key=DS.key();
-  if(!key)return Promise.reject({code:'no_key',message:'未設定 DeepSeek API Key（我的 → AI 模型）。'});
-  const stream=typeof opt.onText==='function'&&!opt.json;
-  const body={model:DS.MODEL,messages:[{role:'system',content:opt.system||'You are a patient finance-English tutor for a Hong Kong learner whose first language is Cantonese. Follow the user\'s output format exactly. Be accurate; if unsure, say so.'},{role:'user',content:String(prompt)}],
+  const code=status===401?'bad_key':status===402?'no_balance':status===429?'rate_limited':status==='offline'?'offline':status==='timeout'?'timeout':status===0?'network':(status>=500?'server':'http_'+status);
+  const m={bad_key:'DeepSeek API Key 唔啱或者已失效，請喺「我的 → AI 模型」重新輸入。',no_balance:'DeepSeek 戶口餘額不足，請到 platform.deepseek.com 增值。',rate_limited:'DeepSeek 暫時限流，已自動重試幾次，請等一分鐘再試。',offline:'部機而家冇網絡，連返網再試。',timeout:'DeepSeek 回應太慢，已自動重試幾次，請再試一次。',network:'連唔到 DeepSeek（網絡不穩），已自動重試幾次，請再試一次。',server:'DeepSeek 伺服器繁忙，已自動重試幾次，請稍後再試。'}[code];
+  return {code:code,ds:true,status:status,message:m||('DeepSeek 錯誤 '+status+(msg?'：'+msg:''))}}
+function dsRetryable(e){return e&&['network','timeout','server','rate_limited','stream'].indexOf(e.code)>=0}
+function dsSleep(ms,sig){return new Promise(function(res,rej){const t=setTimeout(res,ms);if(sig)sig.addEventListener('abort',function(){clearTimeout(t);rej({code:'cancelled',message:'已取消'})},{once:true})})}
+function dsSlot(){return new Promise(function(res){if(DS.run<DS.max){DS.run++;res()}else DS.waitq.push(res)})}
+function dsFree(){DS.run=Math.max(0,DS.run-1);const n=DS.waitq.shift();if(n){DS.run++;n()}}
+function dsHash(s){let h=5381;s=String(s);for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36)+'_'+s.length}
+function dsCacheGet(k){try{const c=JSON.parse(localStorage.getItem(DS.CK)||'{}');return c[k]?c[k].t:null}catch(e){return null}}
+function dsCachePut(k,t){try{const c=JSON.parse(localStorage.getItem(DS.CK)||'{}');c[k]={t:t,a:Date.now()};const ks=Object.keys(c);if(ks.length>150)ks.sort(function(a,b){return c[a].a-c[b].a}).slice(0,ks.length-150).forEach(function(x){delete c[x]});localStorage.setItem(DS.CK,JSON.stringify(c))}catch(e){}}
+/* 單次請求：有逾時（首字 25 秒、串流中途 20 秒冇新內容） */
+function dsOnce(prompt,opt,stream){const key=DS.key(),ctl=new AbortController();let timer=null,abortedByUser=false;
+  const arm=function(ms){clearTimeout(timer);timer=setTimeout(function(){ctl.abort()},ms)};
+  if(opt.signal){if(opt.signal.aborted){abortedByUser=true;ctl.abort()}else opt.signal.addEventListener('abort',function(){abortedByUser=true;ctl.abort()},{once:true})}
+  const body={model:DS.model(),messages:[{role:'system',content:opt.system||'You are a patient finance-English tutor for a Hong Kong learner whose first language is Cantonese. Follow the user\'s output format exactly. Be accurate; if unsure, say so.'},{role:'user',content:String(prompt)}],
     stream:stream,thinking:{type:'disabled'},temperature:opt.json?0.2:0.6,max_tokens:opt.max||1200};
-  const t0=Date.now();
-  return fetch(DS.URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify(body),signal:opt.signal}).then(function(res){
-    if(!res.ok)return res.text().then(function(t){let m='';try{m=JSON.parse(t).error.message}catch(e){}throw dsErr(res.status,m)});
-    if(!stream||!res.body||!res.body.getReader)return res.json().then(function(j){DS.last=Date.now()-t0;const t=(j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content)||'';if(typeof opt.onText==='function'&&!opt.json)try{opt.onText({text:t})}catch(e){}return {text:t}});
-    const rd=res.body.getReader(),dec=new TextDecoder();let buf='',text='';
+  const t0=Date.now();arm(stream?20000:30000);
+  const fail=function(e){clearTimeout(timer);if(abortedByUser)throw {code:'cancelled',message:'已取消'};if(e&&e.name==='AbortError')throw dsErr('timeout');if(e&&typeof e.code==='string')throw e;throw dsErr(navigator.onLine===false?'offline':0)};
+  return fetch(DS.url(),{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify(body),signal:ctl.signal,cache:'no-store'}).then(function(res){
+    if(!res.ok)return res.text().then(function(t){let m='';try{m=JSON.parse(t).error.message||''}catch(e){m=String(t).slice(0,120)}const er=dsErr(res.status,m);er.msg=m;throw er});
+    if(!stream||!res.body||!res.body.getReader)return res.json().then(function(j){clearTimeout(timer);DS.last=Date.now()-t0;const t=(j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content)||'';if(!t)throw {code:'stream',message:'空白回覆'};return {text:t}});
+    const rd=res.body.getReader(),dec=new TextDecoder();let buf='',text='';arm(20000);
     const pump=function(){return rd.read().then(function(r){
-      if(r.done){DS.last=Date.now()-t0;return {text:text}}
-      buf+=dec.decode(r.value,{stream:true});let i;
+      if(r.done){clearTimeout(timer);DS.last=Date.now()-t0;if(!text)throw {code:'stream',message:'串流中斷'};return {text:text}}
+      arm(20000);buf+=dec.decode(r.value,{stream:true});let i;
       while((i=buf.indexOf('\n'))>=0){const line=buf.slice(0,i).trim();buf=buf.slice(i+1);if(line.indexOf('data:')!==0)continue;const d=line.slice(5).trim();if(!d||d==='[DONE]')continue;
         try{const j=JSON.parse(d),c=j.choices&&j.choices[0]&&j.choices[0].delta&&j.choices[0].delta.content;if(c){text+=c;try{opt.onText({text:text})}catch(e){}}}catch(e){}}
-      return pump()})};
-    return pump();
-  }).catch(function(e){if(e&&e.name==='AbortError')throw {code:'cancelled',message:'已取消'};if(e&&e.code)throw e;throw dsErr(0)})}
+      return pump()},function(e){if(text&&!abortedByUser){clearTimeout(timer);throw {code:'stream',message:'串流中斷',partial:text}}throw e})};
+    return pump()}).catch(fail)}
+/* 對外：自動重試＋後備 */
+function dsCall(prompt,opt){opt=opt||{};
+  if(!DS.ok())return Promise.reject({code:'no_key',ds:true,message:'未設定 DeepSeek API Key：請到「我的 → AI 模型」貼上（sk- 開頭）。'});
+  if(navigator.onLine===false)return Promise.reject(dsErr('offline'));
+  const ck=opt.json?dsHash(DS.model()+'|'+prompt):'';if(ck){const c=dsCacheGet(ck);if(c)return Promise.resolve({text:c,cached:true})}
+  let stream=typeof opt.onText==='function'&&!opt.json,tries=0,swaps=0;const waits=[700,1800,4000];
+  const go=function(){return dsOnce(prompt,opt,stream).then(function(r){DS.st.ok++;DS.st.err='';DS.st.at=Date.now();DS.saveGood();if(ck)dsCachePut(ck,r.text);return r},function(e){
+    if(e&&e.code==='cancelled')throw e;
+    /* 模型名或網址失效：換後備，唔計重試次數 */
+    if(e&&(e.status===400||e.status===404||e.status===422)&&/model|not exist|not found|unknown/i.test(String(e.msg||''))&&swaps<4){swaps++;if(DS.mi<DS.MODELS.length-1)DS.mi++;else{DS.mi=0;DS.ui=(DS.ui+1)%DS.URLS.length}return go()}
+    if(e&&e.status===404&&swaps<4){swaps++;DS.ui=(DS.ui+1)%DS.URLS.length;return go()}
+    if(e&&e.code==='stream'){stream=false}
+    if(e&&e.code==='timeout'&&tries>=1){DS.st.fail++;DS.st.err=e.message;DS.st.at=Date.now();throw e}
+    if(dsRetryable(e)&&tries<waits.length){const w=waits[tries++]+Math.floor(Math.random()*400);return dsSleep(w,opt.signal).then(go)}
+    DS.st.fail++;DS.st.err=e&&e.message||'';DS.st.at=Date.now();throw (e&&typeof e.code==='string'?e:dsErr(0))})};
+  return dsSlot().then(function(){return go().then(function(r){dsFree();if(!stream&&typeof opt.onText==='function'&&!opt.json)try{opt.onText({text:r.text})}catch(x){}return r},function(e){dsFree();throw e})})}
 function dsNs(prompt,opt){return dsCall(prompt,opt)}
 dsNs.json=function(prompt,opt){const o=Object.assign({},opt||{},{json:true});delete o.onText;
-  return dsCall(prompt+'\n\n（只輸出 JSON，唔好加任何解釋或 Markdown 代碼框。）',o).then(function(r){const t=String(r.text||''),a=t.search(/[\[{]/),b=Math.max(t.lastIndexOf('}'),t.lastIndexOf(']'));if(a<0||b<a)throw {code:'invalid_json',message:'AI 回覆格式唔啱，請再試'};return JSON.parse(t.slice(a,b+1))})};
+  const parse=function(r){const t=String(r.text||''),a=t.search(/[\[{]/),b=Math.max(t.lastIndexOf('}'),t.lastIndexOf(']'));if(a<0||b<a)throw {code:'invalid_json',message:'AI 回覆格式唔啱'};return JSON.parse(t.slice(a,b+1))};
+  const p=prompt+'\n\n（只輸出 JSON，唔好加任何解釋或 Markdown 代碼框。）';
+  return dsCall(p,o).then(parse).catch(function(e){if(e&&(e.code==='invalid_json'||e instanceof SyntaxError)){try{const c=JSON.parse(localStorage.getItem(DS.CK)||'{}');delete c[dsHash(DS.model()+'|'+p)];localStorage.setItem(DS.CK,JSON.stringify(c))}catch(x){}return dsCall(p+'\n再強調：只輸出一個有效 JSON。',o).then(parse)}throw e})};
 function dsActivate(){if(DS.ok()){AI.ns=dsNs;AI.src='ds'}}
-function dsCard(){const on=DS.ok();
-  return '<section class="card" id="dsCard"><h2 class="sec-h">AI 模型：DeepSeek <span class="tag">'+(on?'已連接 · '+DS.MODEL:'未設定')+'</span></h2>'+
-   '<p style="margin:0">輸入你自己嘅 DeepSeek API Key 之後，App 入面<b>所有 AI 功能</b>都會用 DeepSeek 最快嘅模型 <b>deepseek-flash</b>（關閉思考模式）回答：生詞語境解釋、句子邏輯分析、口語批改、英文邏輯訓練批改、AI 老師問答。</p>'+
-   (on?'<p class="small" style="margin:8px 0 0">已儲存 Key：<code>'+esc(DS.key().slice(0,5))+'…'+esc(DS.key().slice(-4))+'</code>'+(DS.last?' · 上次回應 '+(DS.last/1000).toFixed(1)+' 秒':'')+'</p>':'')+
+function dsBoot(){DS.loadGood();dsActivate();dsRestore().then(function(ok){if(ok&&typeof renderKeep==='function'&&(view==='me'||view==='lib'))try{renderKeep()}catch(e){}});
+  window.addEventListener('online',function(){DS.st.err=''});}
+function dsState(){if(!DS.ok())return ['warn','未設定 Key'];if(navigator.onLine===false)return ['warn','冇網絡'];if(DS.st.err&&DS.st.at&&Date.now()-DS.st.at<10*60000)return ['warn','上次出錯'];if(DS.st.ok)return ['ok','運作正常'];return ['grey','已設定']}
+function dsInlineHTML(id){id=id||'dsIn'+Math.floor(Math.random()*1e6);return '<div class="note" style="margin-top:10px"><b>未設定 DeepSeek API Key</b><p class="small" style="margin:4px 0">貼上你嘅 Key（sk- 開頭）就可以即刻用。Key 只存喺呢部機。</p><input type="password" id="'+id+'" placeholder="sk-…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100%"><div class="btns"><button class="btn pri" data-act="ds-save-inline" data-in="'+id+'">儲存並重試</button><a class="btn ghost" href="#me">去 AI 設定</a></div></div>'}
+function dsErrHTML(e){if(e&&e.code==='no_key')return dsInlineHTML();return '<div class="note warn small" style="margin-top:10px">'+esc((e&&e.message)||'AI 暫時用唔到')+'<div class="btns"><button class="btn" data-act="ai-retry">重試</button>'+(e&&e.code==='bad_key'?'<a class="btn ghost" href="#me">更換 Key</a>':'<button class="btn ghost" data-act="ds-diag-go">診斷</button>')+'</div></div>'}
+function dsCard(){const on=DS.ok(),s=dsState();
+  return '<section class="card" id="dsCard"><h2 class="sec-h">AI 模型：DeepSeek <span class="tag">'+(on?DS.model():'未設定')+'</span></h2>'+
+   '<p style="margin:0 0 6px">狀態：<span class="pill '+s[0]+'">'+s[1]+'</span>'+(DS.last?' <span class="small muted">上次回應 '+(DS.last/1000).toFixed(1)+' 秒</span>':'')+'</p>'+
+   '<p style="margin:0">App 入面<b>所有 AI 功能</b>都用 DeepSeek 最快模型（關閉思考模式）。已加入穩定措施：網絡斷咗或者 DeepSeek 繁忙會<b>自動重試</b>，太慢會自動逾時重試，模型名稱改咗會自動轉後備模型。</p>'+
+   (on?'<p class="small" style="margin:8px 0 0">已儲存 Key：<code>'+esc(DS.key().slice(0,5))+'…'+esc(DS.key().slice(-4))+'</code>（本機雙重備份）</p>':'')+
    '<label class="f" for="dsKey">'+(on?'更換 API Key':'DeepSeek API Key')+'</label><input type="password" id="dsKey" placeholder="sk-…" autocomplete="off" autocapitalize="off" spellcheck="false">'+
-   '<div class="btns"><button class="btn pri" data-act="ds-save">儲存並測試</button>'+(on?'<button class="btn" data-act="ds-test">測試連線</button><button class="btn ghost" data-act="ds-del">刪除 Key</button>':'')+'</div><div id="dsMsg"></div>'+
-   '<details class="dd" style="margin-top:8px"><summary>點樣攞 Key？安全嗎？</summary><ol class="small" style="line-height:1.7"><li>去 platform.deepseek.com 登入 → API keys → Create new API key，複製以 sk- 開頭嘅 Key。</li><li>Key 只儲存喺<b>呢部機</b>嘅瀏覽器（localStorage），唔會寫入學習進度、唔會雲端同步、唔會上傳到 GitHub。每部機要各自輸入一次。</li><li>App 直接由你部機連去 api.deepseek.com，費用由你嘅 DeepSeek 戶口支付（flash 模型收費低，價錢以 DeepSeek 官網為準）。</li><li>如果 Key 外洩，去 DeepSeek 網站刪除再整過一條就得。</li></ol></details></section>'}
+   '<div class="btns"><button class="btn pri" data-act="ds-save">儲存並測試</button>'+(on?'<button class="btn" data-act="ds-diag">一鍵診斷</button><button class="btn ghost" data-act="ds-del">刪除 Key</button>':'')+'</div><div id="dsMsg"></div>'+
+   '<details class="dd" style="margin-top:8px"><summary>點樣攞 Key？點解有時用唔到？</summary><ol class="small" style="line-height:1.7"><li>去 platform.deepseek.com → API keys → Create new API key，複製 sk- 開頭嘅 Key。</li><li><b>iPhone 注意：</b>主屏幕 App、Safari、Claude App 係三個分開嘅儲存空間，喺邊度用就要喺邊度貼一次 Key。</li><li>Key 只存喺呢部機（兩份備份），唔會上傳、唔會同步。</li><li>用唔到時撳「一鍵診斷」：會逐步檢查 Key、網絡、DeepSeek 連線同戶口餘額，話你知係邊一步出事。</li><li>費用由你嘅 DeepSeek 戶口支付，價錢以官網為準；餘額用完會顯示「餘額不足」。</li></ol></details></section>'}
+function dsDiag(){const out=$('dsMsg')||$('dsDiagOut');if(!out)return;const rows=[];const show=function(){out.innerHTML='<div class="rows ds-diag">'+rows.map(function(r){return '<div class="row"><div class="txt">'+esc(r[1])+(r[2]?'<div class="zh">'+esc(r[2])+'</div>':'')+'</div><span class="pill '+(r[0]==='ok'?'ok':r[0]==='run'?'grey':'warn')+'">'+(r[0]==='ok'?'✓':r[0]==='run'?'…':'✗')+'</span></div>'}).join('')+'</div>'};
+  rows.push([DS.ok()?'ok':'bad','1. API Key 已儲存',DS.ok()?'':'請喺上面貼上 Key']);if(!DS.ok())return show();
+  rows.push([navigator.onLine===false?'bad':'ok','2. 部機有網絡',navigator.onLine===false?'請連返 Wi-Fi 或流動數據':'']);if(navigator.onLine===false)return show();
+  rows.push(['run','3. 連線 DeepSeek 同驗證 Key','測試緊…']);show();
+  const t0=Date.now();dsCall('Reply with exactly the word: OK',{max:5}).then(function(){rows[2]=['ok','3. 連線 DeepSeek 同驗證 Key','成功，'+((Date.now()-t0)/1000).toFixed(1)+' 秒 · 模型 '+DS.model()];rows.push(['ok','4. 一切正常','AI 功能可以用。'])},
+   function(e){rows[2]=['bad','3. 連線 DeepSeek 同驗證 Key',(e&&e.message)||'失敗'];rows.push(['bad','建議',{bad_key:'喺上面重新貼上正確 Key（DeepSeek 網站可以整新嘅）。',no_balance:'去 platform.deepseek.com 增值。',offline:'連返網絡。',rate_limited:'等一分鐘再試。'}[e&&e.code]||'等一陣再試；如果持續失敗，到 status.deepseek.com 睇 DeepSeek 有冇故障。'])}).then(show)}
 function dsAct(a,ds){
   switch(a){
-  case 'ds-save':{const el=$('dsKey'),k=String(el&&el.value||'').trim().replace(/\s+/g,''),msg=$('dsMsg');if(!k){if(msg)msg.innerHTML='<p class="note warn small">請先貼上 API Key。</p>';return true}
-    if(!/^sk-[A-Za-z0-9_\-]{10,}$/.test(k)){if(msg)msg.innerHTML='<p class="note warn small">格式好似唔啱：DeepSeek Key 通常以 sk- 開頭。</p>';return true}
-    DS.set(k);dsActivate();if(el)el.value='';dsTest(true);return true}
-  case 'ds-test':dsTest(false);return true;
-  case 'ds-del':DS.set('');if(AI.src==='ds'){AI.ns=null;AI.src='';try{AI.init()}catch(e){}}toast('已刪除 DeepSeek Key');renderKeep();return true;
+  case 'ds-save':case 'ds-save-inline':{const el=$(a==='ds-save'?'dsKey':ds.in),k=String(el&&el.value||'').trim().replace(/\s+/g,''),msg=$('dsMsg');
+    if(!/^sk-[A-Za-z0-9_\-]{10,}$/.test(k)){toast(k?'格式好似唔啱：DeepSeek Key 以 sk- 開頭':'請先貼上 API Key');return true}
+    DS.set(k);dsActivate();if(el)el.value='';
+    if(a==='ds-save'){if(msg){dsDiag()}}else{toast('已儲存 Key，重試緊…');if(AI.lastRun)aiRun.apply(null,AI.lastRun);else renderKeep()}return true}
+  case 'ds-test':case 'ds-diag':dsDiag();return true;
+  case 'ds-diag-go':location.hash='#me';setTimeout(function(){const c=$('dsCard');if(c)c.scrollIntoView();dsDiag()},400);return true;
+  case 'ds-del':DS.set('');try{localStorage.removeItem(DS.CK)}catch(e){}if(AI.src==='ds'){AI.ns=dsNs;AI.src='ds'}toast('已刪除 DeepSeek Key');renderKeep();return true;
+  case 'ai-retry':if(AI.lastRun)aiRun.apply(null,AI.lastRun);return true;
   }
   return false}
-function dsTest(fresh){const msg=$('dsMsg');if(msg)msg.innerHTML='<p class="small muted">連緊 DeepSeek…</p>';
-  dsCall('Reply with exactly the word: OK',{max:5}).then(function(){const m=$('dsMsg');toast('DeepSeek 已連接');renderKeep();setTimeout(function(){const m2=$('dsMsg');if(m2)m2.innerHTML='<p class="note small" style="color:var(--ok)">✓ 連接成功（'+(DS.last/1000).toFixed(1)+' 秒）。而家所有 AI 功能都會用 DeepSeek。</p>'},50)},
-   function(e){const m=$('dsMsg');if(e&&e.code==='bad_key'&&fresh){DS.set('');AI.ns=null;AI.src='';try{AI.init()}catch(x){}}if(m)m.innerHTML='<p class="note warn small">'+esc((e&&e.message)||'連接失敗')+'</p>'})}
 
 /* ---------- 邏輯訓練 v2：新題型、每日 10 題、錯題本、AI 批改（DeepSeek） ---------- */
 const LG_FALL=[
